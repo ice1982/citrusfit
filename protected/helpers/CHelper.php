@@ -65,8 +65,6 @@ class CHelper
 
         $url_array = explode('/', $url);
 
-
-
         foreach ($url_array as $key => $value) {
             if (
                 ($value === '') ||

@@ -1,11 +1,11 @@
 <?php
 
 /**
- * This is the model class for table "club_halls".
+ * This is the model class for table "catalog_groups".
  *
- * The followings are the available columns in table 'club_halls':
+ * The followings are the available columns in table 'catalog_groups':
  * @property integer $id
- * @property integer $club_id
+ * @property string $alias
  * @property string $title
  * @property string $created_ip
  * @property string $created_date
@@ -18,17 +18,21 @@
  * @property integer $active
  *
  * The followings are the available model relations:
- * @property ClubItems $club
- * @property TimeboardItems[] $timeboardItems
+ * @property CatalogItems[] $catalogItems
  */
-class ClubHall extends CActiveRecord
+class CatalogGroup extends BaseActiveRecord
 {
+	public static function model($className = __CLASS__)
+    {
+        return parent::model($className);
+    }
+
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'club_halls';
+		return 'catalog_groups';
 	}
 
 	/**
@@ -39,14 +43,36 @@ class ClubHall extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('club_id, title, created_username, modified_username', 'required'),
-			array('club_id, created_user, modified_user, active', 'numerical', 'integerOnly'=>true),
-			array('title, created_ip, modified_ip, modified_username', 'length', 'max'=>300),
-			array('created_username', 'length', 'max'=>200),
-			array('created_date, modified_date', 'safe'),
+			array(
+				'alias, title, created_username, modified_username',
+				'required',
+			),
+			array(
+				'created_user, modified_user, active',
+				'numerical',
+				'integerOnly' => true,
+			),
+			array(
+				'alias, title, created_username',
+				'length',
+				'max' => 200,
+			),
+			array(
+				'created_ip, modified_ip, modified_username',
+				'length',
+				'max' => 300,
+			),
+			array(
+				'created_date, modified_date',
+				'safe',
+			),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, club_id, title, created_ip, created_date, created_user, created_username, modified_ip, modified_date, modified_user, modified_username, active', 'safe', 'on'=>'search'),
+			array(
+				'id, alias, title, created_ip, created_date, created_user, created_username, modified_ip, modified_date, modified_user, modified_username, active',
+				'safe',
+				'on' => 'search'
+			),
 		);
 	}
 
@@ -58,8 +84,7 @@ class ClubHall extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'club' => array(self::BELONGS_TO, 'ClubItems', 'club_id'),
-			'timeboardItems' => array(self::HAS_MANY, 'TimeboardItems', 'hall_id'),
+			'catalogItems' => array(self::HAS_MANY, 'CatalogItems', 'group_id'),
 		);
 	}
 
@@ -70,7 +95,7 @@ class ClubHall extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'club_id' => 'Club',
+			'alias' => 'Alias',
 			'title' => 'Title',
 			'created_ip' => 'Created Ip',
 			'created_date' => 'Created Date',
@@ -100,34 +125,23 @@ class ClubHall extends CActiveRecord
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
-		$criteria=new CDbCriteria;
+		$criteria = new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
-		$criteria->compare('club_id',$this->club_id);
-		$criteria->compare('title',$this->title,true);
-		$criteria->compare('created_ip',$this->created_ip,true);
-		$criteria->compare('created_date',$this->created_date,true);
-		$criteria->compare('created_user',$this->created_user);
-		$criteria->compare('created_username',$this->created_username,true);
-		$criteria->compare('modified_ip',$this->modified_ip,true);
-		$criteria->compare('modified_date',$this->modified_date,true);
-		$criteria->compare('modified_user',$this->modified_user);
-		$criteria->compare('modified_username',$this->modified_username,true);
-		$criteria->compare('active',$this->active);
+		$criteria->compare('id', $this->id);
+		$criteria->compare('alias', $this->alias, true);
+		$criteria->compare('title', $this->title, true);
+		$criteria->compare('created_ip', $this->created_ip, true);
+		$criteria->compare('created_date', $this->created_date, true);
+		$criteria->compare('created_user', $this->created_user);
+		$criteria->compare('created_username', $this->created_username, true);
+		$criteria->compare('modified_ip', $this->modified_ip, true);
+		$criteria->compare('modified_date', $this->modified_date, true);
+		$criteria->compare('modified_user', $this->modified_user);
+		$criteria->compare('modified_username', $this->modified_username, true);
+		$criteria->compare('active', $this->active);
 
 		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
+			'criteria' => $criteria,
 		));
-	}
-
-	/**
-	 * Returns the static model of the specified AR class.
-	 * Please note that you should have this exact method in all your CActiveRecord descendants!
-	 * @param string $className active record class name.
-	 * @return ClubHall the static model class
-	 */
-	public static function model($className=__CLASS__)
-	{
-		return parent::model($className);
 	}
 }

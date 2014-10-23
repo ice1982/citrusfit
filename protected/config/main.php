@@ -72,5 +72,19 @@ return array(
         ),
 	),
 
+    'modules' => array(
+        'articles',
+        'banners',
+        'blocks',
+        'catalog',
+        'clubs',
+        'forms',
+        'gallery',
+        'instructors',
+        'pages',
+        'timeboard',
+        'users',
+    ),
+
 	'params' => $params,
 );

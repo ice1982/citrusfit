@@ -10,17 +10,15 @@ class FrontEndController extends BaseController
 
     public $breadcrumbs;
 
-
-
     public function behaviors()
     {
         return array(
             'InlineWidgetsBehavior' => array(
-                'class'      => 'DInlineWidgetsBehavior',
-                'location'   => 'application.components.frontend.widgets',
+                'class' => 'DInlineWidgetsBehavior',
+                'location' => 'application.components.frontend.widgets',
                 'startBlock' => '{{w:',
-                'endBlock'   => '}}',
-                'widgets'    => array(
+                'endBlock' => '}}',
+                'widgets' => array(
                     'GalleryBlock',
                     'CurrentYear',
                     'HomeUrl',

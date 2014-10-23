@@ -2,6 +2,35 @@
 
 class BaseActiveRecord extends CActiveRecord
 {
+    protected function _setScopes()
+    {
+        $scopes = array();
+
+        try {
+            $active = $this->active;
+            $active = true;
+        } catch (Exception $e) {
+            $active = false;
+        }
+
+        if ($active) {
+            $scopes = array(
+                'active' => array(
+                    'condition' => 'active = 1'
+                )
+            );
+        }
+
+        return $scopes;
+    }
+
+    public function scopes()
+    {
+        $scopes = $this->_setScopes();
+
+        return $scopes;
+    }
+
     /**
      * TODO
      */

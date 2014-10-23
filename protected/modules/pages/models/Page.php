@@ -31,8 +31,13 @@
  * The followings are the available model relations:
  * @property ClubItems $club
  */
-class Page extends CActiveRecord
+class Page extends BaseActiveRecord
 {
+    public static function model($className = __CLASS__)
+    {
+        return parent::model($className);
+    }
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -49,16 +54,46 @@ class Page extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('title, created_username, modified_username', 'required'),
-			array('nn, club_id, show_in_menu, show_title, meta_index, created_user, modified_user, active', 'numerical', 'integerOnly'=>true),
-			array('alias, created_username', 'length', 'max'=>200),
-			array('title, meta_title, created_ip, modified_ip, modified_username', 'length', 'max'=>300),
-			array('template', 'length', 'max'=>50),
-			array('meta_keywords, meta_description', 'length', 'max'=>500),
-			array('begin_body, end_body, created_date, modified_date', 'safe'),
+			array(
+				'title, created_username, modified_username',
+				'required',
+			),
+			array(
+				'nn, club_id, show_in_menu, show_title, meta_index, created_user, modified_user, active',
+				'numerical',
+				'integerOnly' => true,
+			),
+			array(
+				'alias, created_username',
+				'length',
+				'max' => 200,
+			),
+			array(
+				'title, meta_title, created_ip, modified_ip, modified_username',
+				'length',
+				'max' => 300,
+			),
+			array(
+				'template',
+				'length',
+				'max' => 50,
+			),
+			array(
+				'meta_keywords, meta_description',
+				'length',
+				'max' => 500,
+			),
+			array(
+				'begin_body, end_body, created_date, modified_date',
+				'safe',
+			),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, alias, title, begin_body, end_body, nn, club_id, show_in_menu, show_title, template, meta_index, meta_title, meta_keywords, meta_description, created_ip, created_date, created_user, created_username, modified_ip, modified_date, modified_user, modified_username, active', 'safe', 'on'=>'search'),
+			array(
+				'id, alias, title, begin_body, end_body, nn, club_id, show_in_menu, show_title, template, meta_index, meta_title, meta_keywords, meta_description, created_ip, created_date, created_user, created_username, modified_ip, modified_date, modified_user, modified_username, active',
+				'safe',
+				'on' => 'search',
+			),
 		);
 	}
 
@@ -122,45 +157,35 @@ class Page extends CActiveRecord
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
-		$criteria=new CDbCriteria;
+		$criteria = new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
-		$criteria->compare('alias',$this->alias,true);
-		$criteria->compare('title',$this->title,true);
-		$criteria->compare('begin_body',$this->begin_body,true);
-		$criteria->compare('end_body',$this->end_body,true);
-		$criteria->compare('nn',$this->nn);
-		$criteria->compare('club_id',$this->club_id);
-		$criteria->compare('show_in_menu',$this->show_in_menu);
-		$criteria->compare('show_title',$this->show_title);
-		$criteria->compare('template',$this->template,true);
-		$criteria->compare('meta_index',$this->meta_index);
-		$criteria->compare('meta_title',$this->meta_title,true);
-		$criteria->compare('meta_keywords',$this->meta_keywords,true);
-		$criteria->compare('meta_description',$this->meta_description,true);
-		$criteria->compare('created_ip',$this->created_ip,true);
-		$criteria->compare('created_date',$this->created_date,true);
-		$criteria->compare('created_user',$this->created_user);
-		$criteria->compare('created_username',$this->created_username,true);
-		$criteria->compare('modified_ip',$this->modified_ip,true);
-		$criteria->compare('modified_date',$this->modified_date,true);
-		$criteria->compare('modified_user',$this->modified_user);
-		$criteria->compare('modified_username',$this->modified_username,true);
-		$criteria->compare('active',$this->active);
+		$criteria->compare('id', $this->id);
+		$criteria->compare('alias', $this->alias, true);
+		$criteria->compare('title', $this->title, true);
+		$criteria->compare('begin_body', $this->begin_body, true);
+		$criteria->compare('end_body', $this->end_body, true);
+		$criteria->compare('nn', $this->nn);
+		$criteria->compare('club_id', $this->club_id);
+		$criteria->compare('show_in_menu', $this->show_in_menu);
+		$criteria->compare('show_title', $this->show_title);
+		$criteria->compare('template', $this->template, true);
+		$criteria->compare('meta_index', $this->meta_index);
+		$criteria->compare('meta_title', $this->meta_title, true);
+		$criteria->compare('meta_keywords', $this->meta_keywords, true);
+		$criteria->compare('meta_description', $this->meta_description, true);
+		$criteria->compare('created_ip', $this->created_ip, true);
+		$criteria->compare('created_date', $this->created_date, true);
+		$criteria->compare('created_user', $this->created_user);
+		$criteria->compare('created_username', $this->created_username, true);
+		$criteria->compare('modified_ip', $this->modified_ip, true);
+		$criteria->compare('modified_date', $this->modified_date, true);
+		$criteria->compare('modified_user', $this->modified_user);
+		$criteria->compare('modified_username', $this->modified_username, true);
+		$criteria->compare('active', $this->active);
 
 		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
+			'criteria' => $criteria,
 		));
 	}
 
-	/**
-	 * Returns the static model of the specified AR class.
-	 * Please note that you should have this exact method in all your CActiveRecord descendants!
-	 * @param string $className active record class name.
-	 * @return Page the static model class
-	 */
-	public static function model($className=__CLASS__)
-	{
-		return parent::model($className);
-	}
 }

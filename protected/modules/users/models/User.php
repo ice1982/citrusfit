@@ -17,8 +17,13 @@
  * @property integer $modified_user
  * @property string $modified_username
  */
-class User extends CActiveRecord
+class User extends BaseActiveRecord
 {
+	public static function model($className = __CLASS__)
+    {
+        return parent::model($className);
+    }
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -35,15 +40,41 @@ class User extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('username, password, created_username, modified_username', 'required'),
-			array('role, created_user, modified_user', 'numerical', 'integerOnly'=>true),
-			array('username, password', 'length', 'max'=>50),
-			array('created_ip, modified_ip, modified_username', 'length', 'max'=>300),
-			array('created_username', 'length', 'max'=>200),
-			array('created_date, modified_date', 'safe'),
+			array(
+				'username, password, created_username, modified_username',
+				'required',
+			),
+			array(
+				'role, created_user, modified_user',
+				'numerical',
+				'integerOnly' => true,
+			),
+			array(
+				'username, password',
+				'length',
+				'max' => 50,
+			),
+			array(
+				'created_ip, modified_ip, modified_username',
+				'length',
+				'max' => 300,
+			),
+			array(
+				'created_username',
+				'length',
+				'max' => 200,
+			),
+			array(
+				'created_date, modified_date',
+				'safe',
+			),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, username, password, role, created_ip, created_date, created_user, created_username, modified_ip, modified_date, modified_user, modified_username', 'safe', 'on'=>'search'),
+			array(
+				'id, username, password, role, created_ip, created_date, created_user, created_username, modified_ip, modified_date, modified_user, modified_username',
+				'safe',
+				'on' => 'search',
+			),
 		);
 	}
 
@@ -55,6 +86,7 @@ class User extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+
 		);
 	}
 
@@ -95,34 +127,23 @@ class User extends CActiveRecord
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
-		$criteria=new CDbCriteria;
+		$criteria = new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
-		$criteria->compare('username',$this->username,true);
-		$criteria->compare('password',$this->password,true);
-		$criteria->compare('role',$this->role);
-		$criteria->compare('created_ip',$this->created_ip,true);
-		$criteria->compare('created_date',$this->created_date,true);
-		$criteria->compare('created_user',$this->created_user);
-		$criteria->compare('created_username',$this->created_username,true);
-		$criteria->compare('modified_ip',$this->modified_ip,true);
-		$criteria->compare('modified_date',$this->modified_date,true);
-		$criteria->compare('modified_user',$this->modified_user);
-		$criteria->compare('modified_username',$this->modified_username,true);
+		$criteria->compare('id', $this->id);
+		$criteria->compare('username', $this->username, true);
+		$criteria->compare('password', $this->password, true);
+		$criteria->compare('role', $this->role);
+		$criteria->compare('created_ip', $this->created_ip, true);
+		$criteria->compare('created_date', $this->created_date, true);
+		$criteria->compare('created_user', $this->created_user);
+		$criteria->compare('created_username', $this->created_username, true);
+		$criteria->compare('modified_ip', $this->modified_ip, true);
+		$criteria->compare('modified_date', $this->modified_date, true);
+		$criteria->compare('modified_user', $this->modified_user);
+		$criteria->compare('modified_username', $this->modified_username, true);
 
 		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
+			'criteria' => $criteria,
 		));
-	}
-
-	/**
-	 * Returns the static model of the specified AR class.
-	 * Please note that you should have this exact method in all your CActiveRecord descendants!
-	 * @param string $className active record class name.
-	 * @return User the static model class
-	 */
-	public static function model($className=__CLASS__)
-	{
-		return parent::model($className);
 	}
 }

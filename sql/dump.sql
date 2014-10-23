@@ -10,11 +10,6 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
--- Дамп структуры базы данных v3.citrusfit
-CREATE DATABASE IF NOT EXISTS `v3.citrusfit` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `v3.citrusfit`;
-
-
 -- Дамп структуры для таблица v3.citrusfit.article_items
 DROP TABLE IF EXISTS `article_items`;
 CREATE TABLE IF NOT EXISTS `article_items` (
@@ -229,7 +224,7 @@ CREATE TABLE IF NOT EXISTS `catalog_items` (
   CONSTRAINT `catalog_items_ibfk_2` FOREIGN KEY (`club_id`) REFERENCES `club_items` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 COMMENT='Каталог товаров';
 
--- Дамп данных таблицы v3.citrusfit.catalog_items: ~36 rows (приблизительно)
+-- Дамп данных таблицы v3.citrusfit.catalog_items: ~29 rows (приблизительно)
 DELETE FROM `catalog_items`;
 /*!40000 ALTER TABLE `catalog_items` DISABLE KEYS */;
 INSERT INTO `catalog_items` (`id`, `alias`, `club_id`, `group_id`, `title`, `image`, `image_attr_alt`, `image_attr_title`, `body`, `related`, `nn`, `meta_index`, `meta_title`, `meta_keywords`, `meta_description`, `created_ip`, `created_date`, `created_user`, `created_username`, `modified_ip`, `modified_date`, `modified_user`, `modified_username`, `active`) VALUES
@@ -343,7 +338,7 @@ CREATE TABLE IF NOT EXISTS `form_requests` (
   CONSTRAINT `form_requests_ibfk_1` FOREIGN KEY (`club_id`) REFERENCES `club_items` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=957 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы v3.citrusfit.form_requests: ~935 rows (приблизительно)
+-- Дамп данных таблицы v3.citrusfit.form_requests: ~948 rows (приблизительно)
 DELETE FROM `form_requests`;
 /*!40000 ALTER TABLE `form_requests` DISABLE KEYS */;
 INSERT INTO `form_requests` (`id`, `club_id`, `fio`, `phone`, `description`, `created_ip`, `created_date`) VALUES

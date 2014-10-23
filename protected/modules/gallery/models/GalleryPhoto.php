@@ -26,8 +26,13 @@
  * The followings are the available model relations:
  * @property GalleryAlbums $album
  */
-class GalleryPhoto extends CActiveRecord
+class GalleryPhoto extends BaseActiveRecord
 {
+	public static function model($className = __CLASS__)
+    {
+        return parent::model($className);
+    }
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -44,15 +49,41 @@ class GalleryPhoto extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('album_id, image, created_username, modified_username', 'required'),
-			array('album_id, nn, created_user, modified_user, active', 'numerical', 'integerOnly'=>true),
-			array('image, created_username', 'length', 'max'=>200),
-			array('image_attr_title, image_attr_alt, title, tags, created_ip, modified_ip, modified_username', 'length', 'max'=>300),
-			array('description', 'length', 'max'=>1024),
-			array('created_date, modified_date', 'safe'),
+			array(
+				'album_id, image, created_username, modified_username',
+				'required',
+			),
+			array(
+				'album_id, nn, created_user, modified_user, active',
+				'numerical',
+				'integerOnly' => true,
+			),
+			array(
+				'image, created_username',
+				'length',
+				'max' => 200,
+			),
+			array(
+				'image_attr_title, image_attr_alt, title, tags, created_ip, modified_ip, modified_username',
+				'length',
+				'max' => 300,
+			),
+			array(
+				'description',
+				'length',
+				'max' => 1024,
+			),
+			array(
+				'created_date, modified_date',
+				'safe',
+			),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, album_id, image, image_attr_title, image_attr_alt, title, description, tags, nn, created_ip, created_date, created_user, created_username, modified_ip, modified_date, modified_user, modified_username, active', 'safe', 'on'=>'search'),
+			array(
+				'id, album_id, image, image_attr_title, image_attr_alt, title, description, tags, nn, created_ip, created_date, created_user, created_username, modified_ip, modified_date, modified_user, modified_username, active',
+				'safe',
+				'on' => 'search',
+			),
 		);
 	}
 
@@ -111,40 +142,29 @@ class GalleryPhoto extends CActiveRecord
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
-		$criteria=new CDbCriteria;
+		$criteria = new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
-		$criteria->compare('album_id',$this->album_id);
-		$criteria->compare('image',$this->image,true);
-		$criteria->compare('image_attr_title',$this->image_attr_title,true);
-		$criteria->compare('image_attr_alt',$this->image_attr_alt,true);
-		$criteria->compare('title',$this->title,true);
-		$criteria->compare('description',$this->description,true);
-		$criteria->compare('tags',$this->tags,true);
-		$criteria->compare('nn',$this->nn);
-		$criteria->compare('created_ip',$this->created_ip,true);
-		$criteria->compare('created_date',$this->created_date,true);
-		$criteria->compare('created_user',$this->created_user);
-		$criteria->compare('created_username',$this->created_username,true);
-		$criteria->compare('modified_ip',$this->modified_ip,true);
-		$criteria->compare('modified_date',$this->modified_date,true);
-		$criteria->compare('modified_user',$this->modified_user);
-		$criteria->compare('modified_username',$this->modified_username,true);
-		$criteria->compare('active',$this->active);
+		$criteria->compare('id', $this->id);
+		$criteria->compare('album_id', $this->album_id);
+		$criteria->compare('image', $this->image, true);
+		$criteria->compare('image_attr_title', $this->image_attr_title, true);
+		$criteria->compare('image_attr_alt', $this->image_attr_alt, true);
+		$criteria->compare('title', $this->title, true);
+		$criteria->compare('description', $this->description, true);
+		$criteria->compare('tags', $this->tags, true);
+		$criteria->compare('nn', $this->nn);
+		$criteria->compare('created_ip', $this->created_ip, true);
+		$criteria->compare('created_date', $this->created_date, true);
+		$criteria->compare('created_user', $this->created_user);
+		$criteria->compare('created_username', $this->created_username, true);
+		$criteria->compare('modified_ip', $this->modified_ip, true);
+		$criteria->compare('modified_date', $this->modified_date, true);
+		$criteria->compare('modified_user', $this->modified_user);
+		$criteria->compare('modified_username', $this->modified_username, true);
+		$criteria->compare('active', $this->active);
 
 		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
+			'criteria' => $criteria,
 		));
-	}
-
-	/**
-	 * Returns the static model of the specified AR class.
-	 * Please note that you should have this exact method in all your CActiveRecord descendants!
-	 * @param string $className active record class name.
-	 * @return GalleryPhoto the static model class
-	 */
-	public static function model($className=__CLASS__)
-	{
-		return parent::model($className);
 	}
 }

@@ -28,8 +28,13 @@
  * The followings are the available model relations:
  * @property TimeboardItems[] $timeboardItems
  */
-class InstructorItem extends CActiveRecord
+class InstructorItem extends BaseActiveRecord
 {
+	public static function model($className = __CLASS__)
+    {
+        return parent::model($className);
+    }
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -46,16 +51,45 @@ class InstructorItem extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('fio, image, annotation, body, created_username, modified_username', 'required'),
-			array('meta_index, created_user, modified_user, active', 'numerical', 'integerOnly'=>true),
-			array('fio, tags, meta_title, created_ip, modified_ip, modified_username', 'length', 'max'=>300),
-			array('image, created_username', 'length', 'max'=>200),
-			array('annotation, meta_keywords, meta_description', 'length', 'max'=>500),
-			array('clubs', 'length', 'max'=>100),
-			array('created_date, modified_date', 'safe'),
+			array(
+				'fio, image, annotation, body, created_username, modified_username',
+				'required',
+			),
+			array(
+				'meta_index, created_user, modified_user, active',
+				'numerical',
+				'integerOnly' => true,
+			),
+			array(
+				'fio, tags, meta_title, created_ip, modified_ip, modified_username',
+				'length',
+				'max' => 300,
+			),
+			array(
+				'image, created_username',
+				'length',
+				'max' => 200,
+			),
+			array(
+				'annotation, meta_keywords, meta_description',
+				'length',
+				'max' => 500,
+			),
+			array(
+				'clubs', 'length',
+				'max' => 100,
+			),
+			array(
+				'created_date, modified_date',
+				'safe',
+			),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, fio, image, annotation, body, clubs, tags, meta_index, meta_title, meta_keywords, meta_description, created_ip, created_date, created_user, created_username, modified_ip, modified_date, modified_user, modified_username, active', 'safe', 'on'=>'search'),
+			array(
+				'id, fio, image, annotation, body, clubs, tags, meta_index, meta_title, meta_keywords, meta_description, created_ip, created_date, created_user, created_username, modified_ip, modified_date, modified_user, modified_username, active',
+				'safe',
+				'on' => 'search',
+			),
 		);
 	}
 
@@ -116,41 +150,41 @@ class InstructorItem extends CActiveRecord
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
-		$criteria=new CDbCriteria;
+		$criteria = new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
-		$criteria->compare('fio',$this->fio,true);
-		$criteria->compare('image',$this->image,true);
-		$criteria->compare('annotation',$this->annotation,true);
-		$criteria->compare('body',$this->body,true);
-		$criteria->compare('clubs',$this->clubs,true);
-		$criteria->compare('tags',$this->tags,true);
-		$criteria->compare('meta_index',$this->meta_index);
-		$criteria->compare('meta_title',$this->meta_title,true);
-		$criteria->compare('meta_keywords',$this->meta_keywords,true);
-		$criteria->compare('meta_description',$this->meta_description,true);
-		$criteria->compare('created_ip',$this->created_ip,true);
-		$criteria->compare('created_date',$this->created_date,true);
-		$criteria->compare('created_user',$this->created_user);
-		$criteria->compare('created_username',$this->created_username,true);
-		$criteria->compare('modified_ip',$this->modified_ip,true);
-		$criteria->compare('modified_date',$this->modified_date,true);
-		$criteria->compare('modified_user',$this->modified_user);
-		$criteria->compare('modified_username',$this->modified_username,true);
-		$criteria->compare('active',$this->active);
+		$criteria->compare('id', $this->id);
+		$criteria->compare('fio', $this->fio, true);
+		$criteria->compare('image', $this->image, true);
+		$criteria->compare('annotation', $this->annotation, true);
+		$criteria->compare('body', $this->body, true);
+		$criteria->compare('clubs', $this->clubs, true);
+		$criteria->compare('tags', $this->tags, true);
+		$criteria->compare('meta_index', $this->meta_index);
+		$criteria->compare('meta_title', $this->meta_title, true);
+		$criteria->compare('meta_keywords', $this->meta_keywords, true);
+		$criteria->compare('meta_description', $this->meta_description, true);
+		$criteria->compare('created_ip', $this->created_ip, true);
+		$criteria->compare('created_date', $this->created_date, true);
+		$criteria->compare('created_user', $this->created_user);
+		$criteria->compare('created_username', $this->created_username, true);
+		$criteria->compare('modified_ip', $this->modified_ip, true);
+		$criteria->compare('modified_date', $this->modified_date, true);
+		$criteria->compare('modified_user', $this->modified_user);
+		$criteria->compare('modified_username', $this->modified_username, true);
+		$criteria->compare('active', $this->active);
 
 		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
+			'criteria' => $criteria,
 		));
 	}
 
 	/**
 	 * Returns the static model of the specified AR class.
-	 * Please note that you should have this exact method in all your CActiveRecord descendants!
+	 * Please note that you should have this exact method in all your BaseActiveRecord descendants!
 	 * @param string $className active record class name.
 	 * @return InstructorItem the static model class
 	 */
-	public static function model($className=__CLASS__)
+	public static function model($className = __CLASS__)
 	{
 		return parent::model($className);
 	}
