@@ -13,15 +13,11 @@ class ModalItemRequestForm extends CFormModel
     {
         return array(
             array(
-                'fio, phone, email, quantity',
+                'fio, phone',
                 'required',
             ),
             array(
-                'email',
-                'email',
-            ),
-            array(
-                'fio, email',
+                'fio',
                 'length',
                 'max' => 100,
             ),
@@ -34,11 +30,6 @@ class ModalItemRequestForm extends CFormModel
                 'item',
                 'length',
                 'max' => 400,
-            ),
-            array(
-                'quantity',
-                'length',
-                'max' => 20,
             ),
             array(
                 'comment',
@@ -71,7 +62,6 @@ class ModalItemRequestForm extends CFormModel
 
         $message .= $this->getAttributeLabel('fio') . ': ' . $this->fio . '<br>';
         $message .= $this->getAttributeLabel('phone') . ': ' . $this->phone . '<br>';
-        $message .= $this->getAttributeLabel('email') . ': ' . $this->email . '<br>';
 
         $message .= '<br>';
 
@@ -82,7 +72,6 @@ class ModalItemRequestForm extends CFormModel
 
         $message .= '<br>';
 
-        $message .= $this->getAttributeLabel('quantity') . ': ' . $this->quantity . '<br>';
         $message .= $this->getAttributeLabel('comment') . ': ' . $this->comment . '<br>';
 
         return SendMail::sendEmail($from, $email, $subject, $message);

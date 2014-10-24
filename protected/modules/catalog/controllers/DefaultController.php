@@ -36,4 +36,15 @@ class DefaultController extends FrontEndController
         }
 
 	}
+
+    public function actionView($id)
+    {
+        $catalog_item = $this->_loadModel($id, CatalogItem::model(), true);
+
+        $this->render('view',
+            array(
+                'catalog_item' => $catalog_item,
+            )
+        );
+    }
 }
