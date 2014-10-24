@@ -80,22 +80,6 @@ var s = document.createElement('script'); s.type = 'text/javascript'; s.async = 
 <!-- {/literal} END JIVOSITE CODE -->
 
 
-<div style="display:none">
-    <div id="modalSuccess" class="modal-window">
-        <div class="message">
-
-        </div>
-    </div>
-</div>
-
-<div style="display:none">
-    <div id="modalError" class="modal-window">
-        <div class="message">
-
-        </div>
-    </div>
-</div>
-
 </body>
 
 

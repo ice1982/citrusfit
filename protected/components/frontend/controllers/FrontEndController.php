@@ -10,6 +10,26 @@ class FrontEndController extends BaseController
 
     public $breadcrumbs;
 
+    public function init()
+    {
+        parent::init();
+
+        Yii::import('application.modules.blocks.*');
+        Yii::import('application.modules.blocks.models.*');
+        Yii::import('application.modules.blocks.models._forms.*');
+        Yii::import('application.modules.blocks.models._base.*');
+
+        Yii::import('application.modules.clubs.*');
+        Yii::import('application.modules.clubs.models.*');
+        Yii::import('application.modules.clubs.models._forms.*');
+        Yii::import('application.modules.clubs.models._base.*');
+    }
+
+    public function checkClubSession()
+    {
+
+    }
+
     public function behaviors()
     {
         return array(
@@ -82,6 +102,21 @@ class FrontEndController extends BaseController
 
         if (isset($block_model->body)) {
             return $block_model->body;
+        }
+    }
+
+    protected function _loadModel($id, $object, $active = false)
+    {
+        if ($active) {
+            $model = $object->active()->findByPk($id);
+        } else {
+            $model = $object->findByPk($id);
+        }
+
+        if (isset($model->id)) {
+            return $model;
+        } else {
+            throw new CHttpException(404, 'Запрашиваемая страница не найдена.');
         }
     }
 }

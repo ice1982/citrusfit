@@ -9,6 +9,7 @@
  * @property integer $club_id
  * @property integer $group_id
  * @property string $title
+ * @property string $annotation
  * @property string $image
  * @property string $image_attr_alt
  * @property string $image_attr_title
@@ -76,6 +77,11 @@ class CatalogItem extends BaseActiveRecord
 				'max' => 300,
 			),
 			array(
+				'annotation',
+				'length',
+				'max' => 300,
+			),
+			array(
 				'image, image_attr_alt, image_attr_title',
 				'length',
 				'max' => 512,
@@ -123,6 +129,7 @@ class CatalogItem extends BaseActiveRecord
 			'club_id' => 'Club',
 			'group_id' => 'Group',
 			'title' => 'Title',
+			'annotation' => 'Annotation',
 			'image' => 'Image',
 			'image_attr_alt' => 'Image Attr Alt',
 			'image_attr_title' => 'Image Attr Title',
@@ -192,4 +199,28 @@ class CatalogItem extends BaseActiveRecord
 			'criteria' => $criteria,
 		));
 	}
+
+	public function findAllItemsOfClub($club_id, $active = true)
+	{
+		$condition = array('club_id' => $club_id);
+
+		$criteria = new CDbCriteria;
+
+		if ($active) {
+			$criteria->scopes = array('active');
+		}
+
+		$criteria->condition = 'club_id = :club_id';
+		$criteria->addCondition('club_id IS NULL', 'OR');
+		$criteria->params = array(':club_id' => $club_id);
+
+		$criteria->order = 'group_id, nn';
+
+		$model = $this->findAll($criteria);
+
+		// $model = ($active) ? $this->active()->findAllByAttributes($condition) : $this->findAllByAttributes($condition);
+
+		return $model;
+	}
+
 }

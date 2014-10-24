@@ -32,6 +32,7 @@ class BaseWebModule extends CWebModule
             $this->id . '.components.*',
             $this->id . '.components.custom.*',
             $this->id . '.components.widgets.*',
+            $this->id . '.components.widgets.views.*',
         ));
     }
 }

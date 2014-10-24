@@ -188,4 +188,11 @@ class Page extends BaseActiveRecord
 		));
 	}
 
+	public function findMenuPages()
+	{
+		$models = $this->active()->findAllByAttributes(array('show_in_menu' => 1), array('order' => 'nn'));
+
+		return $models;
+	}
+
 }

@@ -6,6 +6,11 @@
  * The followings are the available columns in table 'club_items':
  * @property integer $id
  * @property string $title
+ * @property string $description
+ * @property string $contact_phones
+ * @property string $contact_address
+ * @property string $contact_info
+ * @property string $contact_coordinates
  * @property string $created_ip
  * @property string $created_date
  * @property integer $created_user
@@ -56,9 +61,14 @@ class ClubItem extends BaseActiveRecord
 				'integerOnly' => true,
 			),
 			array(
-				'title, created_ip, modified_ip, modified_username',
+				'title, contact_phones, created_ip, modified_ip, modified_username',
 				'length',
 				'max' => 300,
+			),
+			array(
+				'contact_address',
+				'length',
+				'max' => 500,
 			),
 			array(
 				'created_username',
@@ -71,7 +81,7 @@ class ClubItem extends BaseActiveRecord
 			),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, title, created_ip, created_date, created_user, created_username, modified_ip, modified_date, modified_user, modified_username, active',
+			array('id, title, description, contact_phones, contact_address, contact_info, contact_coordinates, created_ip, created_date, created_user, created_username, modified_ip, modified_date, modified_user, modified_username, active',
 				'safe',
 				'on' => 'search'
 			),
@@ -102,6 +112,11 @@ class ClubItem extends BaseActiveRecord
 		return array(
 			'id' => 'ID',
 			'title' => 'Title',
+			'description' => 'Description',
+			'contact_phones' => 'Contact Phones',
+			'contact_address' => 'Contact Address',
+			'contact_info' => 'Contact Info',
+			'contact_coordinates' => 'Contact coordinates',
 			'created_ip' => 'Created Ip',
 			'created_date' => 'Created Date',
 			'created_user' => 'Created User',
@@ -147,5 +162,10 @@ class ClubItem extends BaseActiveRecord
 		return new CActiveDataProvider($this, array(
 			'criteria' => $criteria,
 		));
+	}
+
+	public function switchClub($id)
+	{
+		Yii::app()->session['club'] = $id;
 	}
 }

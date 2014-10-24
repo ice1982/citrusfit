@@ -13,7 +13,9 @@ class DefaultController extends FrontEndController
 
         $page_content = $page_model->active()->findByAlias($alias);
 
-        $this->layout = '//templates/homepage';
+        if (!empty($page_content->template)) {
+            $this->layout = '//templates/' . $page_content->template;
+        }
 
         $this->render('view', array(
                 'page_content' => $page_content,
