@@ -29,18 +29,19 @@
                         </div>
                     </div>
                     <div class="col-xs-3">
-                        <a
-                            class="btn btn-primary btn-lg modal-item-request fancybox-modal"
-                            href="#modalItemRequest"
-                            data-item="<?=json_encode(
-                                array(
-                                    $catalog_item->getAttributeLabel('title') => $catalog_item->title,
-                                )
-                            )?>"
-                            data-item-text="<?=$catalog_item->title?>"
-                        >
-                            Узнать стоимость
-                        </a>
+                        <?php
+                            $this->widget('ItemRequestButtonWidget', array(
+                                'load_form' => false,
+
+                                'form_caption' => $catalog_item->title,
+                                'form_button' => 'Оставить заявку',
+                                'form_item' => $catalog_item->group->title . ': ' . $catalog_item->title,
+
+                                'button_item' => $catalog_item->title,
+                                'button_text' => 'Оставить запрос',
+                                'button_href' => '#modalItemRequest',
+                            ));
+                        ?>
                     </div>
                 </div>
             </div>
@@ -52,213 +53,16 @@
 <?php endforeach; ?>
 
 
-
-
-
-
-
-<?php
-$form_model = new ModalItemRequestForm;
-$caption = 'Узнать подробную информацию';
-$button = 'Узнать стоимость';
-
-?>
-
-
-
-
-
 <div style="display:none">
     <div id="modalItemRequest" class="modal-window">
-        <h4><?=$caption?></h4>
-        <?php $form = $this->beginWidget('CActiveForm', array(
-            'id' => 'modalItemRequestForm',
-            'action' => Yii::app()->createUrl('ajax/sendFromModalItemRequestForm'),
-            'enableAjaxValidation' => true,
-            'enableClientValidation' => true,
-            'clientOptions' => array(
-                'validationUrl' => Yii::app()->createUrl("ajax/sendFromModalItemRequestValidation" ),
-                'validateOnSubmit' => true,
-                'validateOnChange' => true,
-                'validateOnType' => false,
-                'afterValidate' => "js: function(form, data, hasError) {
-
-                    if ( !hasError ) {
-
-                        $.ajax( {
-                            type: 'POST',
-                            url: form[0].action,
-                            data: $( form ).serialize(),
-                            dataType: 'json',
-                            success: function( response ) {
-
-                                $( '#modalSuccess .message' ).text( response.message );
-
-                                form[0].reset();
-
-                                $.fancybox({
-                                    closeBtn: true,
-                                    href: '#modalSuccess',
-                                    type: 'inline'
-                                });
-
-                                setTimeout( function() {
-                                    $.fancybox.close();
-                                }, 3000);
-
-                            },
-                            error: function( jqXHR, textStatus, errorThrown ) {
-                                $( '#modalError .message' ).text( jqXHR.responseText );
-
-                                form[0].reset();
-
-                                $.fancybox({
-                                    closeBtn: true,
-                                    href: '#modalError',
-                                    type: 'inline'
-                                });
-
-                                setTimeout( function() {
-                                    $.fancybox.close({
-                                        href: '#modalError'
-                                    });
-                                }, 3000);
-                            }
-                        } );
-                    }
-
-                    return false;
-
-                }",
-            ),
-            'htmlOptions' => array(
-                'class' => 'form-horizontal',
-                'role' => 'form',
-            ),
-        )); ?>
-            <p id="itemName"></p>
-            <div class="form-group">
-                <?=$form->labelEx(
-                    $form_model,
-                    'fio',
-                    array(
-                        'class' => 'col-xs-3 control-label',
-                    )
-                );?>
-                <div class="col-xs-9">
-                    <?=$form->textField(
-                        $form_model,
-                        'fio',
-                        array(
-                            'class' => 'form-control',
-                            'placeholder' => 'Введите Ф.И.О.',
-                            'type' => 'text',
-                        )
-                    );?>
-                    <?=$form->error($form_model, 'fio');?>
-                </div>
-            </div>
-            <div class="form-group">
-                <?=$form->labelEx(
-                    $form_model,
-                    'phone',
-                    array(
-                        'class' => 'col-xs-3 control-label',
-                    )
-                );?>
-                <div class="col-xs-7">
-                    <?=$form->textField(
-                        $form_model,
-                        'phone',
-                        array(
-                            'class' => 'form-control',
-                            'placeholder' => 'Введите номер телефона',
-                            'type' => 'phone',
-                        )
-                    );?>
-                    <?=$form->error($form_model, 'phone');?>
-                </div>
-            </div>
-
-            <?=$form->hiddenField(
-                $form_model,
-                'item',
-                array(
-                    'class' => 'hidden-input-field',
-                )
-            );?>
-
-            <div class="form-group">
-                <?=$form->labelEx(
-                    $form_model,
-                    'comment',
-                    array(
-                        'class' => 'col-xs-3 control-label',
-                    )
-                );?>
-                <div class="col-xs-9">
-                    <?=$form->textArea(
-                        $form_model,
-                        'comment',
-                        array(
-                            'class' => 'form-control',
-                            'placeholder' => 'Введите комментарий',
-                        )
-                    );?>
-                    <?=$form->error($form_model, 'comment');?>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-xs-3 control-label"></div>
-                <div class="col-xs-9">
-                    <?=CHtml::submitButton(
-                        $button,
-                        array(
-                            'id' => 'modalItemRequestFormSubmit',
-                            'class' => 'btn btn-primary',
-                            'data-item' => '',
-                        )
-                    );?>
-                </div>
-            </div>
-        <?php $this->endWidget(); ?>
+        <?php
+            $this->widget('ItemRequestFormWidget', array(
+                'form_caption' => '',
+                'form_button' => 'Оставить заявку',
+            ));
+        ?>
     </div>
 </div>
 
-<?php
-
-$script = "
-    $( 'body' ).on( 'click', '.modal-item-request', function( e ) {
-        e.preventDefault();
-
-        var item = $( this ).data( 'item' );
-
-        $( '#itemName' ).text( $( this ).data( 'item-text' ));
-        $( '#modalItemRequestForm .hidden-input-field' ).val( JSON.stringify( $( this ).data( 'item' ) ) );
-    } );
-";
-
-Yii::app()->clientScript->registerScript('modalItemRequestFormScript', $script, CClientScript::POS_END);
-
-?>
 
 
-
-
-<?php // $this->widget('ModalItemRequestFormWidget'); ?>
-
-<div style="display:none">
-    <div id="modalSuccess" class="modal-window">
-        <div class="message">
-
-        </div>
-    </div>
-</div>
-
-<div style="display:none">
-    <div id="modalError" class="modal-window">
-        <div class="message">
-
-        </div>
-    </div>
-</div>

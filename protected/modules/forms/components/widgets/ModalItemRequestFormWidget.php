@@ -1,10 +1,7 @@
 <?php
 
-class ModalItemRequestFormWidget extends CWidget
+class ModalItemRequestFormWidget extends BaseModalFormWidget
 {
-    public $caption = 'Узнать подробную информацию';
-    public $button = 'Узнать стоимость';
-
     public function run()
     {
         $form_model = new ModalItemRequestForm;
