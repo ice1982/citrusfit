@@ -19,6 +19,8 @@
 
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,300italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 
+    <script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css?css=1">
@@ -86,7 +88,7 @@
     </div>
 
     <div class="content">
-        <div class="blank">
+        <div class="blank citrus-pattern">
             <div class="container">
                 <div id="carousel-generic" class="carousel slide" data-ride="carousel">
                     <!-- Indicators -->
@@ -127,35 +129,215 @@
         </div>
 
         <div class="blank">
-            <div class="container">
 
+            <div class="notched-section__top"></div>
+            <div class="notched-section__content">
+                <table class="beginners">
+                    <tr>
+                        <td width="20%">Выберите свой клуб</td>
+                        <td width="20%">Виды направлений</td>
+                        <td width="20%">Абонементы и тарифы</td>
+                        <td width="20%">Специальные предложения</td>
+                        <td width="20%">Корпоративный фитнес</td>
+                    </tr>
+                </table>
             </div>
+            <div class="notched-section__bottom"></div>
         </div>
 
         <div class="blank">
             <div class="container">
+                <div class="font-h3 margin-h3">Новости сети</div>
                 <div class="row">
                     <div class="col-xs-6">
-                        <h3>Новости сети</h3>
+                        <div class="news-block">
+                            <div class="item media">
+                                <a class="img pull-left" href="#">
+                                    <img class="media-object" src="img/news/article0.jpg" alt="...">
+                                </a>
+                                <div class="media-body">
+                                    <div class="media-heading title">Йога студия</div>
+                                    <div class="date">21 июля 2014 года</div>
+                                    <div class="annotation">
+                                        22 сентября на Ярославской 72 начинается ЙОГА!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item media">
+                                <a class="img pull-left" href="#">
+                                    <img class="media-object" src="img/news/article1.jpg" alt="...">
+                                </a>
+                                <div class="media-body">
+                                    <div class="media-heading title">"Цитрус Байконур" открыл для Вас свои двери!</div>
+                                    <div class="date">21 июля 2014 года</div>
+                                    <div class="annotation">
+                                        Сегодня мы провели первую тренировку в новом клубе!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item media">
+                                <a class="img pull-left" href="#">
+                                    <img class="media-object" src="img/news/article2.jpg" alt="...">
+                                </a>
+                                <div class="media-body">
+                                    <div class="media-heading title">Вышла статья в журнале "Авто Гид" о нашем клубе</div>
+                                    <div class="date">21 июля 2014 года</div>
+                                    <div class="annotation">
+                                        Вышла статья в журнале "Авто Гид" о нашем новом клубе в МКР "Байконур"
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item media">
+                                <a class="img pull-left" href="#">
+                                    <img class="media-object" src="img/news/article3.jpg" alt="...">
+                                </a>
+                                <div class="media-body">
+                                    <div class="media-heading title">The Cure-сеть SPA салонов</div>
+                                    <div class="date">21 июля 2014 года</div>
+                                    <div class="annotation">
+                                        Сеть SPA салонов проводит набор специалистов
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item media">
+                                <a class="img pull-left" href="#">
+                                    <img class="media-object" src="img/news/article4.jpg" alt="...">
+                                </a>
+                                <div class="media-body">
+                                    <div class="media-heading title">100 персональных занятий за 10 тысяч!</div>
+                                    <div class="date">21 июля 2014 года</div>
+                                    <div class="annotation">
+                                        Успей записаться! Всего 10 мест в программе!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                     <div class="col-xs-6">
-                        <h3>События сети</h3>
+                        <div class="news-block">
+                            <div class="item media">
+                                <a class="img pull-left" href="#">
+                                    <img class="media-object" src="img/news/article5.jpg" alt="...">
+                                </a>
+                                <div class="media-body">
+                                    <div class="media-heading title">6=3</div>
+                                    <div class="date">21 июля 2014 года</div>
+                                    <div class="annotation">
+                                        Полная карта на 6 месяцев по цене 3!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item media">
+                                <a class="img pull-left" href="#">
+                                    <img class="media-object" src="img/news/article6.jpg" alt="...">
+                                </a>
+                                <div class="media-body">
+                                    <div class="media-heading title">2 по цене 1</div>
+                                    <div class="date">21 июля 2014 года</div>
+                                    <div class="annotation">
+                                        Вместе веселее! Дарим вторую карту до 31 октября!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item media">
+                                <a class="img pull-left" href="#">
+                                    <img class="media-object" src="img/news/article7.jpg" alt="...">
+                                </a>
+                                <div class="media-body">
+                                    <div class="media-heading title">Открытие йога студии</div>
+                                    <div class="date">21 июля 2014 года</div>
+                                    <div class="annotation">
+                                        Открытие Йога-студии "ЦИТРУС"
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item media">
+                                <a class="img pull-left" href="#">
+                                    <img class="media-object" src="img/news/article8.jpg" alt="...">
+                                </a>
+                                <div class="media-body">
+                                    <div class="media-heading title">День открытых дверей</div>
+                                    <div class="date">21 июля 2014 года</div>
+                                    <div class="annotation">
+                                        Ждем всех желающих. Море эмоций и позитива. Классы с лучшими тренерами клуба!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item media">
+                                <a class="img pull-left" href="#">
+                                    <img class="media-object" src="img/news/article9.jpg" alt="...">
+                                </a>
+                                <div class="media-body">
+                                    <div class="media-heading title">#ДевочкиТакиеДевочки открылись</div>
+                                    <div class="date">21 июля 2014 года</div>
+                                    <div class="annotation">
+                                        #ДевочкиТакиеДевочки открылись! Мы рады представить новый проект кофейни и маникюрного салона!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
                 </div>
             </div>
         </div>
 
         <div class="blank">
             <div class="container">
+                <div class="font-h3 margin-h3">О сети &laquo;Цитрус&raquo;</div>
 
+                <div>
+                    Фитнес клуб «Цитрус» — уютное место в центре Северо-Западного района г.Чебоксары, где Вы можете отложить все свои проблемы и посвятить время только себе и своему телу. Удобные сауны в раздевалках снимут стресс и облегчат усталость после тренировки.
+
+                    Для Вас ежедневно открыты двери тренажерного зала, двух залов групповых занятий, двух залов персонального тренинга, маникюрного салона, spa-кабинета и солярия. Различные танцевальные направления, несколько видов йоги и аэробики, пилатеса и стрейтчинга, посещение тренажерного зала-в комплексе помогут Вам находится в тонусе и хорошем самочувствии всегда!
+
+                    Все это в шаговой доступности от остановки общ. транспорта «Природа» с удобной охраняемой парковкой для автомобилей.
+
+                    Ценителям индивидуального подхода мы предлагаем персональные занятия с инструктором, как в тренажерном зале, так и в залах персональных тренировок. Наши специалисты проведут фитнес тестирование и подберут нужную Вам программу питания и тренировок.
+
+                    Занятия фитнесом для будущих мам возможны в индивидуальном порядке и в коммерческих группах до 6 человек. Тренировки проводят сертифицированные специалисты в любое удобное для Вас время!
+
+
+                    <>
+                    12
+                    Наш клуб работает по системе клубных карт, что является неоспоримым преимуществом в Чебоксарах. Плюсы клубной системы заключаются в возможности посещения различных видов групповых занятий, а также тренажерного зала без ограничений, участии в проходящих в клубе семинарах, в скидках и бонусах на пользование дополнительными услугами клуба.
+
+                    Дополнительную информацию о ценах на клубные карты и индивидуальные занятия Вы можете узнать в отделе продаж клуба «Цитрус» или во вкладке Прайс-лист. Для корпоративных клентов действует гибкая система скидок и различные схемы оплаты (подробности: корпоративный фитнес).
+
+                    Звоните нам по телефону 45-25-16, менеджеры клуба ответят на все Ваши вопросы. Фитнес-клуб работает с понедельника по пятницу с 8:00 до 22:00, по выходным с 9:00 до 21:00. Наш адрес-улица Мичмана Павлова 10 Б, 1 минуту пешком от остановки «Природа», 3 минуты от остановки «Чебоксарец» и 5 минут от «Кривова» (подробная схема проезда).
+
+                    Всегда рады видеть Вас на занятиях в фитнес-клубе «Цитрус»!
+                </div>
             </div>
         </div>
 
-        <div class="blank">
-            <div class="container">
+        <div class="blank no-padding gray-blank">
+            <script type="text/javascript">
+            ymaps.ready(function () {
+                var myMap = new ymaps.Map('map', {
+                        center: [56.136577, 47.249965],
+                        zoom: 16
+                    }),
+                    myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
+                        hintContent: '#ДевочкиТакиеДевочки, улица Яроскавская, 62'
+                    }, {
+                        // Опции.
+                        // Необходимо указать данный тип макета.
+                        iconLayout: 'default#image',
+                        // Своё изображение иконки метки.
+                        iconImageHref: 'img/map-point.png',
+                        // Размеры метки.
+                        iconImageSize: [400, 194],
+                        // Смещение левого верхнего угла иконки относительно
+                        // её "ножки" (точки привязки).
+                        iconImageOffset: [-115, -195]
+                    });
 
-            </div>
+                myMap.geoObjects.add(myPlacemark);
+                myMap.behaviors.disable('scrollZoom')
+            });
+            </script>
+            <div id="map"></div>
         </div>
 
     </div>
