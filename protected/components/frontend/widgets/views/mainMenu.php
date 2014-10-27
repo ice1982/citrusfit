@@ -1,7 +1,14 @@
 <ul class="nav navbar-nav">
-    <li>
-        <a href="<?=Yii::app()->createUrl('clubs/default/index')?>">Выбрать клуб</a>
-    </li>
+    <?php if (isset($club->id)) : ?>
+        <li>
+            <a href="<?=Yii::app()->createUrl('clubs/default/index')?>"><?=$club->title?><br>Сменить клуб</a>
+        </li>
+    <?php else: ?>
+        <li>
+            <a href="<?=Yii::app()->createUrl('clubs/default/index')?>">Выбрать клуб</a>
+        </li>
+    <?php endif; ?>
+
     <li>
         <a href="<?=Yii::app()->createUrl('page/default/view', array('alias' => 'about'))?>">О сети &laquo;Цитрус&raquo;</a>
     </li>

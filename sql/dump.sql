@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `article_items` (
   KEY `articles_ibfk_2` (`club_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8 COMMENT='Статьи сайта';
 
--- Дамп данных таблицы v3.citrusfit.article_items: ~19 rows (приблизительно)
+-- Дамп данных таблицы v3.citrusfit.article_items: ~23 rows (приблизительно)
 DELETE FROM `article_items`;
 /*!40000 ALTER TABLE `article_items` DISABLE KEYS */;
 INSERT INTO `article_items` (`id`, `type_id`, `title`, `annotation`, `club_id`, `image`, `image_attr_title`, `image_attr_alt`, `body`, `pubdate`, `meta_index`, `meta_title`, `meta_keywords`, `meta_description`, `created_ip`, `created_date`, `created_user`, `created_username`, `modified_ip`, `modified_date`, `modified_user`, `modified_username`, `active`) VALUES
@@ -226,7 +226,7 @@ CREATE TABLE IF NOT EXISTS `catalog_items` (
   CONSTRAINT `catalog_items_ibfk_2` FOREIGN KEY (`club_id`) REFERENCES `club_items` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 COMMENT='Каталог товаров';
 
--- Дамп данных таблицы v3.citrusfit.catalog_items: ~40 rows (приблизительно)
+-- Дамп данных таблицы v3.citrusfit.catalog_items: ~28 rows (приблизительно)
 DELETE FROM `catalog_items`;
 /*!40000 ALTER TABLE `catalog_items` DISABLE KEYS */;
 INSERT INTO `catalog_items` (`id`, `alias`, `club_id`, `group_id`, `title`, `annotation`, `image`, `image_attr_alt`, `image_attr_title`, `body`, `related`, `nn`, `meta_index`, `meta_title`, `meta_keywords`, `meta_description`, `created_ip`, `created_date`, `created_user`, `created_username`, `modified_ip`, `modified_date`, `modified_user`, `modified_username`, `active`) VALUES
@@ -318,15 +318,16 @@ CREATE TABLE IF NOT EXISTS `club_items` (
   `modified_username` varchar(300) NOT NULL,
   `active` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='Клубы';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='Клубы';
 
 -- Дамп данных таблицы v3.citrusfit.club_items: ~3 rows (приблизительно)
 DELETE FROM `club_items`;
 /*!40000 ALTER TABLE `club_items` DISABLE KEYS */;
 INSERT INTO `club_items` (`id`, `title`, `description`, `contact_phones`, `contact_address`, `contact_info`, `contact_coordinates`, `created_ip`, `created_date`, `created_user`, `created_username`, `modified_ip`, `modified_date`, `modified_user`, `modified_username`, `active`) VALUES
-	(1, 'Цитрус СЗР', NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '', 1),
-	(2, 'Цитрус ЮЗР', NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '', 1),
-	(3, 'Йога студия', NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '', 1);
+	(-1, 'Цитрус', NULL, '8 (800) 123-45-67', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '', 0),
+	(1, 'Цитрус СЗР', NULL, '8 (8352) 12-34-56', 'г. Чебоксары, проспект мичмана Павлова 12Б', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '', 1),
+	(2, 'Цитрус ЮЗР', NULL, '8 (8352) 78-90-12', 'г. Чебоксары, ул. академика Королева, 2', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '', 1),
+	(3, 'Йога студия', NULL, '8 (8352) 34-56-78', 'г. Чебоксары, ул. Ярославская, дом 72', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '', 1);
 /*!40000 ALTER TABLE `club_items` ENABLE KEYS */;
 
 
@@ -345,7 +346,7 @@ CREATE TABLE IF NOT EXISTS `form_requests` (
   CONSTRAINT `form_requests_ibfk_1` FOREIGN KEY (`club_id`) REFERENCES `club_items` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=957 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы v3.citrusfit.form_requests: ~1 010 rows (приблизительно)
+-- Дамп данных таблицы v3.citrusfit.form_requests: ~923 rows (приблизительно)
 DELETE FROM `form_requests`;
 /*!40000 ALTER TABLE `form_requests` DISABLE KEYS */;
 INSERT INTO `form_requests` (`id`, `club_id`, `fio`, `phone`, `description`, `created_ip`, `created_date`) VALUES
@@ -1468,7 +1469,7 @@ CREATE TABLE IF NOT EXISTS `pages` (
   CONSTRAINT `pages_ibfk_1` FOREIGN KEY (`club_id`) REFERENCES `club_items` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8 COMMENT='Страницы сайта';
 
--- Дамп данных таблицы v3.citrusfit.pages: ~35 rows (приблизительно)
+-- Дамп данных таблицы v3.citrusfit.pages: ~49 rows (приблизительно)
 DELETE FROM `pages`;
 /*!40000 ALTER TABLE `pages` DISABLE KEYS */;
 INSERT INTO `pages` (`id`, `alias`, `title`, `begin_body`, `end_body`, `nn`, `club_id`, `show_in_menu`, `show_title`, `template`, `meta_index`, `meta_title`, `meta_keywords`, `meta_description`, `created_ip`, `created_date`, `created_user`, `created_username`, `modified_ip`, `modified_date`, `modified_user`, `modified_username`, `active`) VALUES

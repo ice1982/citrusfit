@@ -3,11 +3,6 @@
 
 <?=$this->decodeWidgets($this->loadBlockBody('header'));?>
 
-<nav class="main-navbar navbar navbar-default" role="navigation">
-    <div class="collapse navbar-collapse navbar-ex1-collapse container">
-        <?php $this->widget('MainMenu'); ?>
-    </div>
-</nav>
 
 <?php echo $content; ?>
 

@@ -96,11 +96,11 @@ class ClubItem extends BaseActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'banners' => array(self::HAS_MANY, 'Banners', 'club_id'),
-			'catalogItems' => array(self::HAS_MANY, 'CatalogItems', 'club_id'),
-			'clubHalls' => array(self::HAS_MANY, 'ClubHalls', 'club_id'),
-			'formRequests' => array(self::HAS_MANY, 'FormRequests', 'club_id'),
-			'pages' => array(self::HAS_MANY, 'Pages', 'club_id'),
+			'banners' => array(self::HAS_MANY, 'Banner', 'club_id'),
+			'catalogItems' => array(self::HAS_MANY, 'CatalogItem', 'club_id'),
+			'clubHalls' => array(self::HAS_MANY, 'ClubHall', 'club_id'),
+			'formRequests' => array(self::HAS_MANY, 'FormRequest', 'club_id'),
+			'pages' => array(self::HAS_MANY, 'Page', 'club_id'),
 		);
 	}
 

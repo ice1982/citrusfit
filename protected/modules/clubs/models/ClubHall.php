@@ -85,8 +85,8 @@ class ClubHall extends BaseActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'club' => array(self::BELONGS_TO, 'ClubItems', 'club_id'),
-			'timeboardItems' => array(self::HAS_MANY, 'TimeboardItems', 'hall_id'),
+			'club' => array(self::BELONGS_TO, 'ClubItem', 'club_id'),
+			'timeboardItems' => array(self::HAS_MANY, 'TimeboardItem', 'hall_id'),
 		);
 	}
 

@@ -94,8 +94,8 @@ class TimeboardItem extends BaseActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'hall' => array(self::BELONGS_TO, 'ClubHalls', 'hall_id'),
-			'instructor' => array(self::BELONGS_TO, 'InstructorItems', 'instructor_id'),
+			'hall' => array(self::BELONGS_TO, 'ClubHall', 'hall_id'),
+			'instructor' => array(self::BELONGS_TO, 'InstructorItem', 'instructor_id'),
 		);
 	}
 
@@ -163,4 +163,31 @@ class TimeboardItem extends BaseActiveRecord
 			'criteria' => $criteria,
 		));
 	}
+
+	public function findAllItemsOfClub($club_id)
+	{
+		$halls = ClubHall::model()->active()->findAllByAttributes(array('club_id' => $club_id));
+
+		$condition = array('club_id' => $club_id);
+
+		$criteria = new CDbCriteria;
+
+		$criteria->scopes = array('active');
+
+		$params = array();
+		foreach ($halls as $key => $hall) {
+			$criteria->addCondition('hall_id = :hall_id' . $key, 'OR');
+			$params[':hall_id' . $key] = $hall->id;
+		}
+
+		$criteria->params = $params;
+
+		$criteria->order = 'hall_id, time_start';
+
+		$model = $this->findAll($criteria);
+
+
+		return $model;
+	}
+
 }

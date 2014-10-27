@@ -80,6 +80,7 @@ class ArticleType extends BaseActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'items' => array(self::HAS_MANY, 'ArticleType', 'type_id'),
 		);
 	}
 
@@ -136,16 +137,5 @@ class ArticleType extends BaseActiveRecord
 		return new CActiveDataProvider($this, array(
 			'criteria' => $criteria,
 		));
-	}
-
-	/**
-	 * Returns the static model of the specified AR class.
-	 * Please note that you should have this exact method in all your BaseActiveRecord descendants!
-	 * @param string $className active record class name.
-	 * @return ArticleType the static model class
-	 */
-	public static function model($className = __CLASS__)
-	{
-		return parent::model($className);
 	}
 }

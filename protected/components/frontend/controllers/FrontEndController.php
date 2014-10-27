@@ -1,4 +1,28 @@
 <?php
+
+Yii::import('application.modules.blocks.*');
+Yii::import('application.modules.blocks.models.*');
+Yii::import('application.modules.blocks.models._forms.*');
+Yii::import('application.modules.blocks.models._base.*');
+
+Yii::import('application.modules.pages.*');
+Yii::import('application.modules.pages.models.*');
+Yii::import('application.modules.pages.models._forms.*');
+Yii::import('application.modules.pages.models._base.*');
+
+Yii::import('application.modules.forms.*');
+Yii::import('application.modules.forms.models.*');
+Yii::import('application.modules.forms.models._forms.*');
+Yii::import('application.modules.forms.models._base.*');
+Yii::import('application.modules.forms.components.*');
+Yii::import('application.modules.forms.components.custom.*');
+Yii::import('application.modules.forms.components.widgets.*');
+
+Yii::import('application.modules.clubs.*');
+Yii::import('application.modules.clubs.models.*');
+Yii::import('application.modules.clubs.models._forms.*');
+Yii::import('application.modules.clubs.models._base.*');
+
 class FrontEndController extends BaseController
 {
     public $layout = '//templates/default';
@@ -10,37 +34,30 @@ class FrontEndController extends BaseController
 
     public $breadcrumbs;
 
+    public $club;
+
     public function init()
     {
+        $this->checkClubSession();
+
         parent::init();
-
-        Yii::import('application.modules.blocks.*');
-        Yii::import('application.modules.blocks.models.*');
-        Yii::import('application.modules.blocks.models._forms.*');
-        Yii::import('application.modules.blocks.models._base.*');
-
-        Yii::import('application.modules.pages.*');
-        Yii::import('application.modules.pages.models.*');
-        Yii::import('application.modules.pages.models._forms.*');
-        Yii::import('application.modules.pages.models._base.*');
-
-        Yii::import('application.modules.forms.*');
-        Yii::import('application.modules.forms.models.*');
-        Yii::import('application.modules.forms.models._forms.*');
-        Yii::import('application.modules.forms.models._base.*');
-        Yii::import('application.modules.forms.components.*');
-        Yii::import('application.modules.forms.components.custom.*');
-        Yii::import('application.modules.forms.components.widgets.*');
-
-        Yii::import('application.modules.clubs.*');
-        Yii::import('application.modules.clubs.models.*');
-        Yii::import('application.modules.clubs.models._forms.*');
-        Yii::import('application.modules.clubs.models._base.*');
     }
 
     public function checkClubSession()
     {
+        $club_id = Yii::app()->session['club'];
 
+        // var_dump($club_id);
+
+        $club_model = ClubItem::model();
+
+        if (!empty($club_id)) {
+            $this->club = $club_model->active()->findByPk($club_id);
+        } else {
+            $this->club = $club_model->findByPk(-1);
+        }
+
+        // var_dump($this->club);
     }
 
     public function behaviors()
@@ -132,4 +149,6 @@ class FrontEndController extends BaseController
             throw new CHttpException(404, 'Запрашиваемая страница не найдена.');
         }
     }
+
+
 }

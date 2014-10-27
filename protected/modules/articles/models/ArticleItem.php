@@ -102,7 +102,8 @@ class ArticleItem extends BaseActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-
+			'type' => array(self::BELONGS_TO, 'ArticleType', 'type_id'),
+			'club' => array(self::BELONGS_TO, 'ClubItem', 'club_id'),
 		);
 	}
 
@@ -185,14 +186,33 @@ class ArticleItem extends BaseActiveRecord
 		));
 	}
 
-	/**
-	 * Returns the static model of the specified AR class.
-	 * Please note that you should have this exact method in all your BaseActiveRecord descendants!
-	 * @param string $className active record class name.
-	 * @return ArticleItem the static model class
-	 */
-	public static function model($className = __CLASS__)
+	public function findAllItemsOfType($type_id, $active = false, $adp = false)
 	{
-		return parent::model($className);
+		$condition = array('type_id' => $type_id);
+
+		$criteria = new CDbCriteria;
+
+		if ($active) {
+			$criteria->scopes = array('active');
+		}
+
+		if ($type_id !== false) {
+			$criteria->condition = 'type_id = :type_id';
+			$criteria->params = array(':type_id' => $type_id);
+		}
+
+		$criteria->order = 'pubdate DESC';
+
+		if ($adp) {
+			return new CActiveDataProvider($this, array(
+				'criteria' => $criteria,
+			));
+		} else {
+			$model = $this->findAll($criteria);
+			return $model;
+		}
+
+
 	}
+
 }
