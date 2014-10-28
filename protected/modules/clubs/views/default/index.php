@@ -1,3 +1,6 @@
+<div class="font-h2 margin-h3">Клубы сети &laquo;Цитрус&raquo;</div>
+<div class="font-h3 margin-h3">Выберите интересующий вас клуб</div>
+
 <?php foreach ($clubs_content as $club) : ?>
 
     <div class="club-item margin-h2">

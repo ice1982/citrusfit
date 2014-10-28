@@ -6,7 +6,7 @@ class DefaultController extends FrontEndController
     {
         ClubItem::model()->switchClub($id);
 
-        $referer = CHttpRequest::getUrlReferrer();
+        $referer = Yii::app()->request->getUrlReferrer();
         if (empty($referer)) {
             $previous = false;
         }

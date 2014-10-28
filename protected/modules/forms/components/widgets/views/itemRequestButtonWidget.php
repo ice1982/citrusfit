@@ -17,6 +17,7 @@
                     'form_caption' => $form_caption,
                     'form_button' => $form_button,
                     'form_item_name' => $form_item_name,
+                    'form_class' => $form_class,
 
                     'form_widget_id' => $form_widget_id,
 

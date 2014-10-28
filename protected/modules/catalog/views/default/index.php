@@ -27,7 +27,7 @@
                             </a>
                         </div>
                         <div class="col-xs-6">
-                        <div><a href="<?=Yii::app()->createUrl('catalog/default/view', array('id' => $catalog_item->id))?>"><?=$catalog_item->title?></a></div>
+                        <div class="font-h4 margin-h3"><a href="<?=Yii::app()->createUrl('catalog/default/view', array('id' => $catalog_item->id))?>"><?=$catalog_item->title?></a></div>
                             <div>
                                 <?=$catalog_item->annotation?>
                             </div>

@@ -7,6 +7,8 @@ class ItemRequestButtonWidget extends BaseFormWidget
     public $button_text = '';
     public $button_item = '';
 
+    public $form_class = '';
+
     public function run()
     {
         $widget_id = $this->genegateWidgetId('itemRequestButtonWidget');
@@ -27,6 +29,7 @@ class ItemRequestButtonWidget extends BaseFormWidget
                 'form_caption' => $this->form_caption,
                 'form_button' => $this->form_button,
                 'form_item_name' => $this->form_item,
+                'form_class' => $this->form_class,
                 'form_widget_id' => $widget_form_id,
 
                 'button_text' => $this->button_text,

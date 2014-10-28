@@ -1,4 +1,4 @@
-<h4 class="form-caption"><?=$form_caption?></h4>
+
 <?php $form = $this->beginWidget('CActiveForm', array(
     'id' => $form_widget_id,
     'action' => Yii::app()->createUrl('forms/ajax/sendFromItemRequestForm'),
@@ -60,10 +60,12 @@
         }",
     ),
     'htmlOptions' => array(
-        'class' => 'form-horizontal',
+        'class' => 'form-horizontal ' . $form_class,
         'role' => 'form',
     ),
 )); ?>
+
+    <h4 class="form-caption"><?=$form_caption?></h4>
 
     <!-- <p id="itemName"><?=$form_item_name?></p> -->
     <?=$form->hiddenField(

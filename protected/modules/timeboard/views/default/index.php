@@ -1,7 +1,9 @@
+<div class="font-h2 margin-h2">Расписание занятий в клубе &laquo;<?=$this->club->title?>&raquo;</div>
+
 <div class="workout-view">
     <?php if (count($dump)) : ?>
         <?php foreach ($dump as $hall => $workouts) : ?>
-            <h2><?=ClubHall::model()->findByPK($hall)->title?></h2>
+            <div class="font-h3 margin-h3"><?=ClubHall::model()->findByPK($hall)->title?></div>
             <div>
                 <table class="table table-striped">
                     <thead>

@@ -18,7 +18,7 @@
                     </div>
                 </div>
             <?php endforeach; ?>
-            <a class="more-link pull-right">Все новости клуба</a>
+            <a href="<?=Yii::app()->createUrl('articles/default/index')?>" class="more-link pull-right">Все новости клуба</a>
         <?php else: ?>
             <p>К сожалению, актуальных новостей клуба пока нет.</p>
         <?php endif; ?>
@@ -42,7 +42,7 @@
                 </div>
             </div>
         <?php endforeach; ?>
-            <a class="more-link pull-right">Все новости сети</a>
+            <a href="<?=Yii::app()->createUrl('articles/default/index', array('club' => 'all'))?>" class="more-link pull-right">Все новости сети</a>
         </div>
     </div>
 </div>

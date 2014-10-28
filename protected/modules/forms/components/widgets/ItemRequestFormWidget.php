@@ -2,6 +2,8 @@
 
 class ItemRequestFormWidget extends BaseFormWidget
 {
+    public $form_class = '';
+
     public function run()
     {
         $widget_id = $this->genegateWidgetId('itemRequestFormWidget');
@@ -15,6 +17,7 @@ class ItemRequestFormWidget extends BaseFormWidget
             'form_item_name' => $this->form_item,
 
             'form_widget_id' => $widget_id,
+            'form_class' => $this->form_class,
         ));
     }
 

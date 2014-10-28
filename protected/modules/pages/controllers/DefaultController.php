@@ -10,19 +10,16 @@ class DefaultController extends FrontEndController
     public function actionView($alias = '')
     {
         $page_model = Page::model();
-        $page_content = $page_model->active()->findByAlias($alias);
+        $this->page = $page_model->active()->findByAlias($alias);
 
-        if (!isset($page_content->id)) {
+        if (!isset($this->page->id)) {
             throw new CHttpException(404, 'Запрашиваемая страница не найдена.');
         }
 
-        if (!empty($page_content->template)) {
-            $this->layout = '//templates/' . $page_content->template;
+        if (!empty($this->page->template)) {
+            $this->layout = '//templates/' . $this->page->template;
         }
 
-        $this->render('view', array(
-                'page_content' => $page_content,
-            )
-        );
+        $this->render('view');
     }
 }

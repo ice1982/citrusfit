@@ -49,4 +49,4 @@
     </div>
 </div>
 
-<a class="more-link pull-right">Все новости сети</a>
+<a href="<?=Yii::app()->createUrl('articles/default/index', array('club' => 'all'))?>" class="more-link pull-right">Все новости сети</a>
