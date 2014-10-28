@@ -101,7 +101,7 @@ class InstructorItem extends BaseActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'timeboardItems' => array(self::HAS_MANY, 'TimeboardItems', 'instructor_id'),
+			'timeboardItems' => array(self::HAS_MANY, 'TimeboardItem', 'instructor_id'),
 		);
 	}
 

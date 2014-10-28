@@ -53,20 +53,15 @@ return CMap::mergeArray(
                 ),
             ),
 
-            // 'urlManager' => array(
-            //     'urlFormat' => 'path',
-            //     'showScriptName' => false,
-            //     'rules'     => array(
-
-            //         'ajax/<action:\w+>'=>'ajax/<action>',
-
-            //         '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
-
-            //         '' => 'page/view',
-            //         '<alias:[\w\-]+>/*' => 'page/view',
-
-            //     ),
-            // ),
+            'urlManager' => array(
+                'urlFormat' => 'path',
+                'showScriptName' => false,
+                'rules' => array(
+                    '' => 'pages/default/view',
+                    '<module:\w+>/<controller:\w+>/<action:\w+>' => '<module>/<controller>/<action>',
+                    '<alias:[\w\-]+>/*' => 'pages/default/view/<alias>',
+                ),
+            ),
         ),
     )
 );

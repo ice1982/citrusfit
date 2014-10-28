@@ -2,9 +2,12 @@
 
 class BaseWebModule extends CWebModule
 {
+    public $page = false;
+
     public function init()
     {
         $this->_setImport();
+
     }
 
     public function beforeControllerAction($controller, $action)
@@ -34,5 +37,13 @@ class BaseWebModule extends CWebModule
             $this->id . '.components.widgets.*',
             $this->id . '.components.widgets.views.*',
         ));
+    }
+
+    protected function _setPage()
+    {
+        if ($this->id != 'pages') {
+            Yii::import('application.modules.pages.models.*');
+            $this->page = Page::model()->active()->findByAttributes(array('module' => $this->id));
+        }
     }
 }

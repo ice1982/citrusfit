@@ -5,6 +5,7 @@
  *
  * The followings are the available columns in table 'pages':
  * @property integer $id
+ * @property string $module
  * @property string $alias
  * @property string $title
  * @property string $begin_body
@@ -64,7 +65,7 @@ class Page extends BaseActiveRecord
 				'integerOnly' => true,
 			),
 			array(
-				'alias, created_username',
+				'alias, module, created_username',
 				'length',
 				'max' => 200,
 			),
@@ -90,7 +91,7 @@ class Page extends BaseActiveRecord
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array(
-				'id, alias, title, begin_body, end_body, nn, club_id, show_in_menu, show_title, template, meta_index, meta_title, meta_keywords, meta_description, created_ip, created_date, created_user, created_username, modified_ip, modified_date, modified_user, modified_username, active',
+				'id, module, alias, title, begin_body, end_body, nn, club_id, show_in_menu, show_title, template, meta_index, meta_title, meta_keywords, meta_description, created_ip, created_date, created_user, created_username, modified_ip, modified_date, modified_user, modified_username, active',
 				'safe',
 				'on' => 'search',
 			),
@@ -116,6 +117,7 @@ class Page extends BaseActiveRecord
 	{
 		return array(
 			'id' => 'ID',
+			'module' => 'Module',
 			'alias' => 'Alias',
 			'title' => 'Title',
 			'begin_body' => 'Begin Body',
@@ -160,6 +162,7 @@ class Page extends BaseActiveRecord
 		$criteria = new CDbCriteria;
 
 		$criteria->compare('id', $this->id);
+		$criteria->compare('module', $this->module, true);
 		$criteria->compare('alias', $this->alias, true);
 		$criteria->compare('title', $this->title, true);
 		$criteria->compare('begin_body', $this->begin_body, true);

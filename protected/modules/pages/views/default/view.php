@@ -3,9 +3,9 @@
 <?php endif; ?>
 
 <div>
-    <?=$page_content->begin_body?>
+    <?=$this->decodeWidgets($page_content->begin_body)?>
 </div>
 
 <div>
-    <?=$page_content->end_body?>
+    <?=$this->decodeWidgets($page_content->end_body)?>
 </div>

@@ -84,4 +84,6 @@ class BaseActiveRecord extends CActiveRecord
         return $items_model;
     }
 
+
+
 }

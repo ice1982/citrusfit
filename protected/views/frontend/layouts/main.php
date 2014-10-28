@@ -22,6 +22,10 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
+    <script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,300italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
     <meta name="description" content='<?php echo CHtml::encode($this->pageDescription); ?>'>
     <meta name="keywords" content='<?php echo CHtml::encode($this->pageKeywords); ?>'>
 
@@ -32,31 +36,41 @@
 
     <div class="header">
         <div class="container">
-            <div class="row">
-                <div class="col-xs-3">
-                    <img src="/img/logo.png" class="img-responsive" alt="">
-                </div>
-                <div class="col-xs-4">
-                    <div class="btn btn-danger">
-                        Записаться на бесплатное занятие
-                    </div>
-                </div>
-                <div class="col-xs-5">
-                    <div><?=$this->club->contact_phones?></div>
-                    <div><?=$this->club->contact_address?></div>
-                </div>
-            </div>
-        </div>
+            <table>
+                <tr>
+                    <td class="header-block header-block1 border-divider">
+                        <a href="/" title="На главную">
+                            <img class="img-responsive" style="width: 200px" src="/img/logo.png" alt="Бристоль">
+                        </a>
+                    </td>
+                    <td class="header-block header-block2 border-divider">
 
+                        <?php
+                            $this->widget('FreeWorkoutRequestFormWidget');
+                        ?>
+                    </td>
+                    <td class="header-block header-block3">
+                        <div class="contacts phone"><span class="glyphicon glyphicon-earphone"></span> <?=$this->club->contact_phones?></div>
+                        <?php if (!empty(Yii::app()->session['club'])) : ?>
+                            <div class="contacts club"><?=$this->club->title?></div>
+                            <div class="contacts address"><?=$this->club->contact_address?></div>
+                        <?php endif; ?>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
 
     <div class="main-navbar navbar navbar-default" role="navigation">
-        <div class="collapse navbar-collapse navbar-ex1-collapse container">
+        <div class="collapse navbar-collapse navbar-collapse container">
             <?php $this->widget('MainMenu', array('club_model' => $this->club)); ?>
         </div>
     </div>
 
-	<?php echo $content; ?>
+    <div class="content">
+        <?php echo $content; ?>
+    </div>
+
 
     <div class="footer">
         <div class="container">

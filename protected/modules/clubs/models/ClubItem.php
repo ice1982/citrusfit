@@ -168,4 +168,15 @@ class ClubItem extends BaseActiveRecord
 	{
 		Yii::app()->session['club'] = $id;
 	}
+
+	public function getClubsList()
+	{
+		$models = $this->active()->findAll(array('order' => 'title'));
+
+		$list = CHtml::listData($models, 'id', function($model) {
+			return CHtml::encode($model->title . ' (' . $model->contact_address . ')');
+		});
+
+		return $list;
+	}
 }

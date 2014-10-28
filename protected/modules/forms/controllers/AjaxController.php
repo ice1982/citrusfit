@@ -61,6 +61,55 @@ class AjaxController extends FrontEndController
         }
     }
 
+    public function actionSendFromFreeWorkoutRequestForm()
+    {
+        $model = new FreeWorkoutRequestForm;
+
+        $status = array();
+
+        if (isset($_POST['FreeWorkoutRequestForm'])) {
+
+            $model->attributes = $_POST['FreeWorkoutRequestForm'];
+
+            if ($model->validate()) {
+                if ($model->send('С сайта поступил заказ на пробную тренировку.')) {
+                    $status = array(
+                        'status' => 'success',
+                        'message' => 'Ваша заявка успешно отправлена. В самое ближайшее время с вами свяжется наш менеджер.',
+                    );
+                } else {
+                    // TODO: Логирование ошибок!
+
+                    $status = array(
+                        'status' => 'error',
+                        'message' => 'Произошла ошибка почтового сервера. Попробуйте отправить заявку еще раз.',
+                        'code' => 500,
+                    );
+                }
+            } else {
+                // TODO: Логирование ошибок!
+                $status = array(
+                    'status' => 'error',
+                    'message' => 'Произошла ошибка валидации. Попробуйте отправить заявку еще раз.',
+                    'code' => 500,
+                );
+            }
+        }
+
+        $this->renderArrayAsJson($status);
+    }
+
+    public function actionValidationFreeWorkoutRequest($widget_id)
+    {
+        $model = new FreeWorkoutRequestForm;
+
+        if (isset($_POST['ajax']) && $_POST['ajax'] === $widget_id) {
+            echo CActiveForm::validate($model);
+            Yii::app()->end();
+        }
+    }
+
+
 
 }
 

@@ -11,6 +11,8 @@ class ItemRequestButtonWidget extends BaseFormWidget
     {
         $widget_id = $this->genegateWidgetId('itemRequestButtonWidget');
 
+        $button_class = $this->generateClasses();
+
         $load_form = (bool) $this->load_form;
         if ($load_form === true) {
 
@@ -31,6 +33,8 @@ class ItemRequestButtonWidget extends BaseFormWidget
                 'button_href' => $this->button_href,
                 'button_item' => $this->button_item,
                 'button_widget_id' => $widget_id,
+
+                'button_class' => $button_class,
             ));
 
         } else {
@@ -43,10 +47,11 @@ class ItemRequestButtonWidget extends BaseFormWidget
                 'button_text' => $this->button_text,
                 'button_href' => $this->button_href,
                 'button_widget_id' => $widget_id,
+
+                'button_class' => $button_class,
             ));
         }
-
-
     }
+
 
 }

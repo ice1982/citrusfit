@@ -40,6 +40,13 @@ class FrontEndController extends BaseController
     {
         $this->checkClubSession();
 
+        // unset($_SESSION);
+        // unset($SESSION);
+
+        if (isset(Yii::app()->controller->module->page)) {
+            $this->page = Yii::app()->controller->module->page;
+        }
+
         parent::init();
     }
 
@@ -73,11 +80,13 @@ class FrontEndController extends BaseController
                     'CurrentYear',
                     'HomeUrl',
                     'MainMenu',
-                    'SpecialBlock',
 
-                    'ModalCallbackRequestFormWidget',
-                    'ModalPriceRequestFormWidget',
-                    'ModalGroupRequestFormWidget',
+                    'BannersWidget',
+                    'BeginnersWidget',
+                    'NewsBlockWidget',
+                    'AboutClubWidget',
+                    'MapWidget',
+                    'ContactsWidget',
                 ),
             ),
         );

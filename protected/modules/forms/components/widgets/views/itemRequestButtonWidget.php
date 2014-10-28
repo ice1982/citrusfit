@@ -1,8 +1,8 @@
 <?php if ($load_form) : ?>
 
     <a
-        class="btn btn-primary btn-lg modal-item-request-button fancybox-modal"
-        href="#<?=$form_widget_id?>"
+        class="<?=$button_class?>"
+        href="#modal<?=$form_widget_id?>"
         data-form-item="<?=$form_item_name?>",
         data-item="<?=$form_item_name?>",
     >
@@ -10,7 +10,7 @@
     </a>
 
     <div style="display:none">
-        <div id="<?=$form_widget_id?>" class="modal-window">
+        <div id="modal<?=$form_widget_id?>" class="modal-window">
             <?php
                 $this->render('itemRequestFormWidget', array(
                     'form_model' => $form_model,
@@ -19,6 +19,8 @@
                     'form_item_name' => $form_item_name,
 
                     'form_widget_id' => $form_widget_id,
+
+                    'button_class' => $button_class,
                 ));
             ?>
         </div>
@@ -27,7 +29,7 @@
 <?php else: ?>
 
     <a
-        class="btn btn-primary btn-lg modal-item-request-button fancybox-modal"
+        class="<?=$button_class?>"
         href="<?=$button_href?>"
         data-form-item="<?=$form_item_name?>",
         data-item="<?=$button_item?>",
