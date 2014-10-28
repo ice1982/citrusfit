@@ -43,6 +43,9 @@ class FrontEndController extends BaseController
         // unset($_SESSION);
         // unset($SESSION);
 
+        // $club_id = Yii::app()->request->getQuery('club_id');
+        // var_dump($club_id);
+
         if (isset(Yii::app()->controller->module->page)) {
             $this->page = Yii::app()->controller->module->page;
         }
