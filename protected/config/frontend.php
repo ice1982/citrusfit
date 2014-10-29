@@ -4,7 +4,7 @@ return CMap::mergeArray(
     require_once(dirname(__FILE__) . '/main.php'),
     array(
         // стандартный контроллер
-        'defaultController' => 'site',
+        'defaultController' => 'pages/default/view/',
 
         'import' => array(
             'application.components.frontend.*.*',
@@ -56,10 +56,27 @@ return CMap::mergeArray(
             'urlManager' => array(
                 'urlFormat' => 'path',
                 'showScriptName' => false,
+                'urlSuffix' => '',
                 'rules' => array(
-                    '' => 'pages/default/view',
-                    '<module:\w+>/<controller:\w+>/<action:\w+>' => '<module>/<controller>/<action>',
-                    '<alias:[\w\-]+>/*' => 'pages/default/view/<alias>',
+
+                    'forms/ajax/<action:\d+>/*' => 'forms/ajax/<action>',
+
+                    'catalog' => 'catalog/default/index',
+                    'catalog/<id:\d+>' => 'catalog/default/view/',
+
+                    'timeboard' => 'timeboard/default/index',
+
+                    'instructors' => 'instructors/default/index',
+                    'instructors/<id:\d+>' => 'instructors/default/view/',
+
+                    'clubs' => 'clubs/default/index',
+                    'clubs/<id:\d+>' => 'clubs/default/view/',
+                    'clubs/switch/<id:\d+>' => 'clubs/default/switchClub/',
+
+                    'articles' => 'articles/default/index',
+                    'articles/<id:\d+>' => 'articles/default/view/',
+
+                    '<alias:[\w\-]+>/*' => array('pages/default/view/', 'alias'=>'<alias>'),
                 ),
             ),
         ),

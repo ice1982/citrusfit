@@ -40,34 +40,44 @@ class FrontEndController extends BaseController
     {
         $this->checkClubSession();
 
+        if (isset(Yii::app()->controller->module->page)) {
+            $this->page = Yii::app()->controller->module->page;
+        }
+
+        // var_dump($this->page);
+
+        if (!empty($this->page->club_id)) {
+            Yii::app()->session['club'] = $this->page->club_id;
+            $this->checkClubSession();
+        }
+
         // unset($_SESSION);
         // unset($SESSION);
 
         // $club_id = Yii::app()->request->getQuery('club_id');
         // var_dump($club_id);
 
-        if (isset(Yii::app()->controller->module->page)) {
-            $this->page = Yii::app()->controller->module->page;
-        }
-
         parent::init();
     }
 
     public function checkClubSession()
     {
-        $club_id = Yii::app()->session['club'];
-
-        // var_dump($club_id);
+        $club_id = Yii::app()->request->getQuery('club_id');
+        if (empty($club_id)) {
+            $club_id = Yii::app()->session['club'];
+        }
 
         $club_model = ClubItem::model();
 
         if (!empty($club_id)) {
             $this->club = $club_model->active()->findByPk($club_id);
+
+            if (!isset($this->club->id)) {
+                $this->club = $club_model->findByPk(-1);
+            }
         } else {
             $this->club = $club_model->findByPk(-1);
         }
-
-        // var_dump($this->club);
     }
 
     public function behaviors()
@@ -79,7 +89,7 @@ class FrontEndController extends BaseController
                 'startBlock' => '{{w:',
                 'endBlock' => '}}',
                 'widgets' => array(
-                    'GalleryBlock',
+                    // 'GalleryBlock',
                     'CurrentYear',
                     'HomeUrl',
                     'MainMenu',

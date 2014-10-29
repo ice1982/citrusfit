@@ -2,11 +2,17 @@
 
 class DefaultController extends FrontEndController
 {
-	public function actionIndex($type_id = false)
+	public function actionIndex($type = false, $club = false)
 	{
-        $articles_model = ArticleItem::model()->findAllItemsOfType($type_id, true, true);
+        if ($club == 'all') {
+            $club_id = false;
+        } else {
+            $club_id = (int)$club;
+        }
 
-        if ($type_id === false) {
+        $articles_model = ArticleItem::model()->findAllItemsOfType($type, $club_id, true, true);
+
+        if ($type === false) {
             $show_group = true;
         } else {
             $show_group = false;

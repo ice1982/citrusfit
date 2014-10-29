@@ -1,10 +1,10 @@
-<a class="<?=$button_class?>" href="#modal<?=$form_widget_id?>">
-    Записаться на бесплатное занятие
+<a class="<?=$button_class?>" href="#modal<?=$form_widget_id?>" id="<?=$button_widget_id?>">
+    <?=$button_text?>
 </a>
 
 <div style="display:none">
     <div id="modal<?=$form_widget_id?>" class="modal-window">
-        <h4 class="form-caption">Записаться на бесплатное занятие</h4>
+        <h4 class="form-caption"><?=$form_caption?></h4>
         <?php $form = $this->beginWidget('CActiveForm', array(
             'id' => $form_widget_id,
             'action' => Yii::app()->createUrl('forms/ajax/sendFromFreeWorkoutRequestForm'),
@@ -141,10 +141,10 @@
                 <div class="col-xs-3 control-label"></div>
                 <div class="col-xs-9">
                     <?=CHtml::submitButton(
-                        'Записаться',
+                        $form_button_text,
                         array(
                             'id' => 'modalItemRequestFormSubmit',
-                            'class' => 'btn btn-primary',
+                            'class' => $form_button_class,
                             'data-item' => '',
                         )
                     );?>

@@ -18,7 +18,7 @@
                     </div>
                 </div>
             <?php endforeach; ?>
-            <a href="<?=Yii::app()->createUrl('articles/default/index')?>" class="more-link pull-right">Все новости клуба</a>
+            <a href="<?=Yii::app()->createUrl('articles/default/index', array('club' => Yii::app()->session['club']))?>" class="more-link pull-right">Все новости клуба</a>
         <?php else: ?>
             <p>К сожалению, актуальных новостей клуба пока нет.</p>
         <?php endif; ?>

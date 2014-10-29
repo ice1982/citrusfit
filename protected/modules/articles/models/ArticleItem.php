@@ -186,9 +186,10 @@ class ArticleItem extends BaseActiveRecord
 		));
 	}
 
-	public function findAllItemsOfType($type_id, $active = false, $adp = false)
+	public function findAllItemsOfType($type_id, $club_id, $active = false, $adp = false)
 	{
-		$condition = array('type_id' => $type_id);
+		// $condition = array();
+		$params = array();
 
 		$criteria = new CDbCriteria;
 
@@ -197,9 +198,21 @@ class ArticleItem extends BaseActiveRecord
 		}
 
 		if ($type_id !== false) {
-			$criteria->condition = 'type_id = :type_id';
-			$criteria->params = array(':type_id' => $type_id);
+			// $condition['type_id'] = ':type_id';
+			$params[':type_id'] = $type_id;
+
+			$criteria->addCondition("type_id = :type_id");
 		}
+
+		if ($club_id !== false) {
+			// $conditionon['type_id'] = ':type_id';
+			$params[':club_id'] = $club_id;
+
+			$criteria->addCondition("club_id = :club_id");
+		}
+
+		// $criteria->condition = $condition;
+		$criteria->params = $params;
 
 		$criteria->order = 'pubdate DESC';
 
@@ -211,8 +224,6 @@ class ArticleItem extends BaseActiveRecord
 			$model = $this->findAll($criteria);
 			return $model;
 		}
-
-
 	}
 
 }

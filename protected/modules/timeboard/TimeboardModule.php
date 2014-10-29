@@ -2,8 +2,8 @@
 
 class TimeboardModule extends BaseWebModule
 {
-	public function init()
-	{
-		$this->_setImport();
-	}
+	// public function init()
+	// {
+	// 	$this->_setImport();
+	// }
 }

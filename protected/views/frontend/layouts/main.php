@@ -46,12 +46,40 @@
                     <td class="header-block header-block2 border-divider">
 
                         <?php
-                            $this->widget('FreeWorkoutRequestFormWidget');
+                            $this->widget('FreeWorkoutWidget',
+                                array(
+                                    'type' => 'form',
+
+                                    'form_caption' => 'Записаться на бесплатное занятие',
+
+                                    'form_button_text' => 'Записаться',
+                                    'form_button_size' => 'default',
+                                    'form_button_type' => 'red',
+
+                                    'button_text' => 'Записаться на бесплатное занятие',
+                                    'button_type' => 'red',
+                                )
+                            );
+                        ?>
+
+                        <?php
+                            // $this->widget('FreeWorkoutRequestFormWidget',
+                            //     array(
+                            //         'button_text',
+                            //         'button_type',
+                            //         'button_size',
+
+                            //         'form_caption',
+                            //         'form_button_text',
+                            //         'form_button_type',
+                            //         'form_button_size',
+                            //     )
+                            // );
                         ?>
                     </td>
                     <td class="header-block header-block3">
                         <div class="contacts phone"><span class="glyphicon glyphicon-earphone"></span> <?=$this->club->contact_phones?></div>
-                        <?php if (!empty(Yii::app()->session['club'])) : ?>
+                        <?php if ( (!empty(Yii::app()->session['club'])) && ($this->club->id != -1) ) : ?>
                             <div class="contacts club"><?=$this->club->title?></div>
                             <div class="contacts address"><?=$this->club->contact_address?></div>
                         <?php endif; ?>
@@ -67,7 +95,7 @@
         </div>
     </div>
 
-    <div class="content">
+    <div class="">
         <?php echo $content; ?>
     </div>
 

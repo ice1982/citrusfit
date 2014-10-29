@@ -1,13 +1,7 @@
 <?php
 
-abstract class BaseFormWidget extends CWidget
+class BaseFormWidget extends CWidget
 {
-    /**
-     * form, button_with_form, button_without_form
-     * @var string
-     */
-    public $type;
-
     public $form_caption = 'form_caption';
     public $form_width = 'auto';
     public $form_height = 'auto';
@@ -19,34 +13,6 @@ abstract class BaseFormWidget extends CWidget
     public $form_button_type = 'default';
     public $form_button_size = 'default';
 
-    public $button_text = 'button';
-    public $button_href = '#';
-    public $button_type = 'default';
-    public $button_size = 'default';
-
-    protected $types = array('form', 'button_with_form', 'button_without_form');
-
-    abstract protected function _loadFormWidget();
-
-    abstract protected function _loadButtonWithFormWidget();
-
-    abstract protected function _loadButtonWithoutFormWidget();
-
-    public function run()
-    {
-        if (!in_array($this->type, $this->types)) {
-            return false;
-        }
-
-        if ($this->type == 'form') {
-            $this->_loadFormWidget();
-        } elseif ($this->type == 'button_with_form') {
-            $this->_loadButtonWithFormWidget();
-        } elseif ($this->type == 'button_without_form') {
-            $this->_loadButtonWithoutFormWidget();
-        }
-    }
-
     public function genegateWidgetId($string = '')
     {
         $widget_id = $string . md5(time() . rand(1, 9999999));
@@ -54,11 +20,12 @@ abstract class BaseFormWidget extends CWidget
         return $widget_id;
     }
 
-    public function generateClasses($type, $size)
+    public function generateClasses()
     {
         $class_array[] = 'btn modal-item-request-button fancybox-modal';
+        // $class_array[] = 'btn-' . $this->type;
 
-        switch ($type) {
+        switch ($this->type) {
             case 'green':
                 $class_array[] = 'btn-success';
                 break;
@@ -79,7 +46,7 @@ abstract class BaseFormWidget extends CWidget
                 break;
         }
 
-        switch ($size) {
+        switch ($this->size) {
             case 'large':
                 $class_array[] = 'btn-lg';
                 break;
@@ -95,8 +62,6 @@ abstract class BaseFormWidget extends CWidget
 
         return $class;
     }
-
-
 
 
 }

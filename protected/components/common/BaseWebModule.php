@@ -7,7 +7,7 @@ class BaseWebModule extends CWebModule
     public function init()
     {
         $this->_setImport();
-
+        $this->_setPage();
     }
 
     public function beforeControllerAction($controller, $action)
