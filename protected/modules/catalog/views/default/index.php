@@ -33,6 +33,23 @@
                             </div>
                         </div>
                         <div class="col-xs-3">
+
+                            <?php
+                                $this->widget('SimpleFormWidget',
+                                    array(
+                                        'type' => 'button_without_form',
+
+                                        'form_caption' => 'Оставить заявку',
+                                        'form_item' => $catalog_item->group->title . ': ' . $catalog_item->title,
+                                        'form_class' => 'catalog-form',
+
+                                        'form_button_text' => 'Отправить',
+                                        'form_button_size' => 'default',
+                                        'form_button_type' => 'red',
+                                    )
+                                );
+                            ?>
+
                             <?php
                                 $this->widget('ItemRequestButtonWidget', array(
                                     'load_form' => false,

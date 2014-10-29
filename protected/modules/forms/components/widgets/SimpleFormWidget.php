@@ -2,71 +2,60 @@
 
 Yii::import('application.modules.clubs.models.*');
 
-class FreeWorkoutWidget extends BaseFormWidget
+class SimpleFormWidget extends BaseFormWidget
 {
     protected function _loadFormWidget()
     {
-        $form_widget_id = $this->genegateWidgetId('freeWorkoutFormWidget');
+        $form_widget_id = $this->genegateWidgetId('simpleFormWidget');
         $form_button_class = $this->generateClasses($this->form_button_type, $this->form_button_size);
 
-        $form_model = new FreeWorkoutRequestForm;
-        if (!empty(Yii::app()->session['club'])) {
-            $form_model->club = Yii::app()->session['club'];
-        }
+        $form_model = new ItemRequestForm;
 
-        $clubs_list = ClubItem::model()->getClubsList();
-
-        $this->render('freeWorkoutFormWidget', array(
+        $this->render('simpleFormWidget', array(
             'form_model' => $form_model,
 
             'form_caption' => $this->form_caption,
             'form_button_class' => $form_button_class,
             'form_button_text' => $this->form_button_text,
-
-            'form_widget_id' => $form_widget_id,
             'form_class' => $this->form_class,
 
-            'clubs_list' => $clubs_list,
+            'form_item' => $this->form_item,
+
+            'form_widget_id' => $form_widget_id,
         ));
     }
 
     protected function _loadButtonWithFormWidget()
     {
-        $form_widget_id = $this->genegateWidgetId('freeWorkoutFormWidget');
+        $form_widget_id = $this->genegateWidgetId('simpleFormWidget');
         $form_button_class = $this->generateClasses($this->form_button_type, $this->form_button_size);
 
-        $button_widget_id = $this->genegateWidgetId('freeWorkoutButtonWidget');
+        $button_widget_id = $this->genegateWidgetId('simpleFormButtonWidget');
         $button_class = $this->generateClasses($this->button_type, $this->button_size, true);
 
-        $form_model = new FreeWorkoutRequestForm;
-        if (!empty(Yii::app()->session['club'])) {
-            $form_model->club = Yii::app()->session['club'];
-        }
+        $form_model = new ItemRequestForm;
 
-        $clubs_list = ClubItem::model()->getClubsList();
-
-        $this->render('freeWorkoutButtonAndFormWidget', array(
+        $this->render('simpleButtonAndFormWidget', array(
             'form_model' => $form_model,
             'form_caption' => $this->form_caption,
             'form_button_class' => $form_button_class,
             'form_button_text' => $this->form_button_text,
             'form_widget_id' => $form_widget_id,
             'form_class' => $this->form_class,
+            'form_item' => $this->form_item,
 
             'button_widget_id' => $button_widget_id,
             'button_class' => $button_class,
             'button_text' => $this->button_text,
-
-            'clubs_list' => $clubs_list,
         ));
     }
 
     protected function _loadButtonWithoutFormWidget()
     {
-        $button_widget_id = $this->genegateWidgetId('freeWorkoutButtonWidget');
+        $button_widget_id = $this->genegateWidgetId('simpleButtonWidget');
         $button_class = $this->generateClasses($this->button_type, $this->button_size, true);
 
-        $this->render('freeWorkoutButtonWidget', array(
+        $this->render('simpleButtonWidget', array(
             'button_widget_id' => $button_widget_id,
             'button_class' => $button_class,
             'button_text' => $this->button_text,
@@ -74,4 +63,5 @@ class FreeWorkoutWidget extends BaseFormWidget
         ));
     }
 
-}
+
+} 

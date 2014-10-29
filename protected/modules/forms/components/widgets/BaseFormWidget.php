@@ -54,9 +54,13 @@ abstract class BaseFormWidget extends CWidget
         return $widget_id;
     }
 
-    public function generateClasses($type, $size)
+    public function generateClasses($type, $size, $modal = false)
     {
-        $class_array[] = 'btn modal-item-request-button fancybox-modal';
+        if ($modal == true) {
+            $class_array[] = 'modal-item-request-button fancybox-modal';
+        }
+
+        $class_array[] = 'btn';
 
         switch ($type) {
             case 'green':

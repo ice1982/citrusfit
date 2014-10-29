@@ -48,7 +48,7 @@
                         <?php
                             $this->widget('FreeWorkoutWidget',
                                 array(
-                                    'type' => 'form',
+                                    'type' => 'button_with_form',
 
                                     'form_caption' => 'Записаться на бесплатное занятие',
 

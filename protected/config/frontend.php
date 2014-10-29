@@ -59,7 +59,8 @@ return CMap::mergeArray(
                 'urlSuffix' => '',
                 'rules' => array(
 
-                    'forms/ajax/<action:\d+>/*' => 'forms/ajax/<action>',
+//                    'forms/ajax/<action:\d+>/*' => 'forms/ajax/<action>',
+                    '<module:(forms)>/<controller:(ajax)>/<action:\w+>' => '<module>/<controller>/<action>',
 
                     'catalog' => 'catalog/default/index',
                     'catalog/<id:\d+>' => 'catalog/default/view/',

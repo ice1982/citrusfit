@@ -21,14 +21,19 @@
     </div>
     <div class="col-xs-5">
         <?php
-            $this->widget('ItemRequestFormWidget', array(
-                'form_caption' => 'Оставить заявку на этот товар',
-                'form_button' => 'Оставить заявку',
+            $this->widget('SimpleFormWidget',
+                array(
+                    'type' => 'form',
 
-                'form_item' => $catalog_item->group->title . ': ' . $catalog_item->title,
+                    'form_caption' => 'Оставить заявку',
+                    'form_item' => $catalog_item->group->title . ': ' . $catalog_item->title,
+                    'form_class' => 'catalog-form',
 
-                'form_class' => 'catalog-form',
-            ));
+                    'form_button_text' => 'Отправить',
+                    'form_button_size' => 'default',
+                    'form_button_type' => 'red',
+                )
+            );
         ?>
     </div>
 </div>

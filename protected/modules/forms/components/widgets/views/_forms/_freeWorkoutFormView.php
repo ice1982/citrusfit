@@ -1,11 +1,10 @@
-
 <?php $form = $this->beginWidget('CActiveForm', array(
     'id' => $form_widget_id,
-    'action' => Yii::app()->createUrl('forms/ajax/sendFromItemRequestForm'),
+    'action' => Yii::app()->createUrl('forms/ajax/sendFromFreeWorkoutRequestForm'),
     'enableAjaxValidation' => true,
     'enableClientValidation' => true,
     'clientOptions' => array(
-        'validationUrl' => Yii::app()->createUrl("forms/ajax/validationItemRequest", array('widget_id' => $form_widget_id)),
+        'validationUrl' => Yii::app()->createUrl("forms/ajax/validationFreeWorkoutRequest", array('widget_id' => $form_widget_id)),
         'validateOnSubmit' => true,
         'validateOnChange' => true,
         'validateOnType' => false,
@@ -60,93 +59,90 @@
         }",
     ),
     'htmlOptions' => array(
-        'class' => 'form-horizontal ' . $form_class,
+        'class' => 'form-horizontal',
         'role' => 'form',
     ),
 )); ?>
 
-    <h4 class="form-caption"><?=$form_caption?></h4>
+<h4 class="form-caption"><?=$form_caption?></h4>
 
-    <!-- <p id="itemName"><?=$form_item_name?></p> -->
-    <?=$form->hiddenField(
+<div class="form-group">
+    <?=$form->labelEx(
         $form_model,
-        'item',
+        'club',
         array(
-            'class' => 'hidden-input-field',
-            'value' => $form_item_name,
+            'class' => 'col-xs-3 control-label',
         )
     );?>
 
-    <div class="form-group">
-        <?=$form->labelEx(
+    <div class="col-xs-9">
+        <?=$form->dropDownList(
+            $form_model,
+            'club',
+            $clubs_list,
+            array(
+                'class' => 'form-control',
+                'empty' => '--- Выерите клуб ---',
+            )
+        );?>
+        <?=$form->error($form_model, 'club');?>
+    </div>
+</div>
+
+<div class="form-group">
+    <?=$form->labelEx(
+        $form_model,
+        'fio',
+        array(
+            'class' => 'col-xs-3 control-label',
+        )
+    );?>
+    <div class="col-xs-9">
+        <?=$form->textField(
             $form_model,
             'fio',
             array(
-                'class' => 'col-xs-3 control-label',
+                'class' => 'form-control',
+                'placeholder' => 'Введите Ф.И.О.',
+                'type' => 'text',
             )
         );?>
-        <div class="col-xs-9">
-            <?=$form->textField(
-                $form_model,
-                'fio',
-                array(
-                    'class' => 'form-control',
-                    'placeholder' => 'Введите Ф.И.О.',
-                    'type' => 'text',
-                )
-            );?>
-            <?=$form->error($form_model, 'fio');?>
-        </div>
+        <?=$form->error($form_model, 'fio');?>
     </div>
-    <div class="form-group">
-        <?=$form->labelEx(
+</div>
+<div class="form-group">
+    <?=$form->labelEx(
+        $form_model,
+        'phone',
+        array(
+            'class' => 'col-xs-3 control-label',
+        )
+    );?>
+    <div class="col-xs-7">
+        <?=$form->textField(
             $form_model,
             'phone',
             array(
-                'class' => 'col-xs-3 control-label',
+                'class' => 'form-control',
+                'placeholder' => 'Введите номер телефона',
+                'type' => 'phone',
             )
         );?>
-        <div class="col-xs-7">
-            <?=$form->textField(
-                $form_model,
-                'phone',
-                array(
-                    'class' => 'form-control',
-                    'placeholder' => 'Введите номер телефона',
-                    'type' => 'phone',
-                )
-            );?>
-            <?=$form->error($form_model, 'phone');?>
-        </div>
+        <?=$form->error($form_model, 'phone');?>
     </div>
+</div>
 
-    <div class="form-group">
-        <div class="col-xs-3 control-label"></div>
-        <div class="col-xs-9">
-            <?=CHtml::submitButton(
-                $form_button,
-                array(
-                    'id' => 'modalItemRequestFormSubmit',
-                    'class' => 'btn btn-primary',
-                    'data-item' => '',
-                )
-            );?>
-        </div>
+<div class="form-group">
+    <div class="col-xs-3 control-label"></div>
+    <div class="col-xs-9">
+        <?=CHtml::submitButton(
+            $form_button_text,
+            array(
+//                    'id' => 'modalItemRequestFormSubmit',
+                'class' => $form_button_class,
+                'data-item' => '',
+            )
+        );?>
     </div>
+</div>
 <?php $this->endWidget(); ?>
-
-<div style="display:none">
-    <div id="modalSuccess<?=$form_widget_id?>" class="modal-window">
-        <div class="message">
-
-        </div>
-    </div>
-</div>
-
-<div style="display:none">
-    <div id="modalError<?=$form_widget_id?>" class="modal-window">
-        <div class="message">
-
-        </div>
-    </div>
-</div>
