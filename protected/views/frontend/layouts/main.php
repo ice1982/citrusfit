@@ -56,6 +56,8 @@
                                     'form_button_size' => 'default',
                                     'form_button_type' => 'red',
 
+                                    'form_class' => 'catalog-form',
+
                                     'button_text' => 'Записаться на бесплатное занятие',
                                     'button_type' => 'red',
                                 )

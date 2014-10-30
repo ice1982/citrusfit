@@ -4,12 +4,16 @@ class DefaultController extends FrontEndController
 {
 	public function actionIndex()
 	{
-        // Yii::app()->session['club'] = 0;
-
         if (empty(Yii::app()->session['club'])) {
             // Выбор клуба
             $club_model = ClubItem::model();
             $clubs_content = $club_model->active()->findAll();
+
+            // Главная
+            // Выбор клуба
+            $this->breadcrumbs = array(
+                'Выбор клуба',
+            );
 
             $this->render('application.modules.clubs.views.default.index',
                 array(
@@ -27,6 +31,16 @@ class DefaultController extends FrontEndController
 
             $catalog_group_models = CatalogGroup::model()->active()->findAll();
 
+            // Главная
+            // Сеть Цитрус
+            // Клуб
+            // Клубные карты
+            $this->breadcrumbs = array(
+                'Сеть клубов &laquo;Цитрус&raquo;' => Yii::app()->createUrl('clubs/default/index'),
+                'Клуб &laquo;' . $this->club->title . '&raquo;' => Yii::app()->createUrl('clubs/default/view', array('id' => $club_id)),
+                'Клубные карты и абонементы',
+            );
+
             $this->render('index',
                 array(
                     'catalog_items_content' => $catalog_items_content,
@@ -39,7 +53,20 @@ class DefaultController extends FrontEndController
 
     public function actionView($id)
     {
+
         $catalog_item = $this->_loadModel($id, CatalogItem::model(), true);
+
+        // Главная
+        // Сеть Цитрус
+        // Клуб
+        // Клубные карты
+        // Карта
+            $this->breadcrumbs = array(
+                'Сеть клубов &laquo;Цитрус&raquo;' => Yii::app()->createUrl('clubs/default/index'),
+                'Клуб &laquo;' . $this->club->title . '&raquo;' => Yii::app()->createUrl('clubs/default/view', array('id' => $club_id)),
+                'Клубные карты и абонементы' => Yii::app()->createUrl('catalog/default/index'),
+                $catalog_item->title,
+            );
 
         $this->render('view',
             array(

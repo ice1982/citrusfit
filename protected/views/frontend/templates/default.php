@@ -7,6 +7,13 @@
 
         <div class="container blank-padding white-blank">
 
+            <?php if(isset($this->breadcrumbs)):?>
+                <?php $this->widget('zii.widgets.CBreadcrumbs', array(
+                    'homeLink' => CHtml::link('Главная', Yii::app()->createUrl('pages/default/view')),
+                    'links' => $this->breadcrumbs,
+                )); ?>
+            <?php endif?>
+
             <?php if (isset($this->page->id) && $this->page->show_title == 1) : ?>
                 <div class="font-h1 margin-h2"><?=$this->page->title?></div>
             <?php endif; ?>

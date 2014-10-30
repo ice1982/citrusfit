@@ -1,10 +1,10 @@
 <?php $form = $this->beginWidget('CActiveForm', array(
     'id' => $form_widget_id,
-    'action' => Yii::app()->createUrl('forms/ajax/sendFromFreeWorkoutRequestForm'),
+    'action' => Yii::app()->createUrl('forms/ajax/sendFromItemRequestForm'),
     'enableAjaxValidation' => true,
     'enableClientValidation' => true,
     'clientOptions' => array(
-        'validationUrl' => Yii::app()->createUrl("forms/ajax/validationFreeWorkoutRequest", array('widget_id' => $form_widget_id)),
+        'validationUrl' => Yii::app()->createUrl("forms/ajax/validationItemRequest", array('widget_id' => $form_widget_id)),
         'validateOnSubmit' => true,
         'validateOnChange' => true,
         'validateOnType' => false,
@@ -66,28 +66,16 @@
 
 <h4 class="form-caption"><?=$form_caption?></h4>
 
-<div class="form-group">
-    <?=$form->labelEx(
-        $form_model,
-        'club',
-        array(
-            'class' => 'col-xs-3 control-label',
-        )
-    );?>
+<p id="itemName"><?=$form_item?></p>
 
-    <div class="col-xs-9">
-        <?=$form->dropDownList(
-            $form_model,
-            'club',
-            $clubs_list,
-            array(
-                'class' => 'form-control',
-                'empty' => '--- Выерите клуб ---',
-            )
-        );?>
-        <?=$form->error($form_model, 'club');?>
-    </div>
-</div>
+<?=$form->hiddenField(
+    $form_model,
+    'item',
+    array(
+        'class' => 'hidden-input-field',
+        'value' => $form_item,
+    )
+);?>
 
 <div class="form-group">
     <?=$form->labelEx(
@@ -138,9 +126,8 @@
         <?=CHtml::submitButton(
             $form_button_text,
             array(
-//                    'id' => 'modalItemRequestFormSubmit',
                 'class' => $form_button_class,
-                'data-item' => '',
+                'data-item' => $form_item,
             )
         );?>
     </div>

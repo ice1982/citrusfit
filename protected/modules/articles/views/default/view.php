@@ -1,4 +1,4 @@
-<h1><?php echo $model->title; ?></h1>
+<div class="font-h2 margin-h2"><?=$model->title; ?></div>
 
 <div class="article-view">
     <div class="date">

@@ -45,6 +45,8 @@ class FreeWorkoutWidget extends BaseFormWidget
 
         $clubs_list = ClubItem::model()->getClubsList();
 
+        // var_dump($this->form_class);
+
         $this->render('freeWorkoutButtonAndFormWidget', array(
             'form_model' => $form_model,
             'form_caption' => $this->form_caption,

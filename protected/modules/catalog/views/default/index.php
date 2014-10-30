@@ -33,36 +33,9 @@
                             </div>
                         </div>
                         <div class="col-xs-3">
-
-                            <?php
-                                $this->widget('SimpleFormWidget',
-                                    array(
-                                        'type' => 'button_without_form',
-
-                                        'form_caption' => 'Оставить заявку',
-                                        'form_item' => $catalog_item->group->title . ': ' . $catalog_item->title,
-                                        'form_class' => 'catalog-form',
-
-                                        'form_button_text' => 'Отправить',
-                                        'form_button_size' => 'default',
-                                        'form_button_type' => 'red',
-                                    )
-                                );
-                            ?>
-
-                            <?php
-                                $this->widget('ItemRequestButtonWidget', array(
-                                    'load_form' => false,
-
-                                    'form_caption' => $catalog_item->title,
-                                    'form_button' => 'Оставить заявку',
-                                    'form_item' => $catalog_item->group->title . ': ' . $catalog_item->title,
-
-                                    'button_item' => $catalog_item->title,
-                                    'button_text' => 'Оставить запрос',
-                                    'button_href' => '#modalItemRequest',
-                                ));
-                            ?>
+                            <a class="btn btn-default modal-item-request-button fancybox-modal" href="#modalCatalogItemRequest" data-item="<?=$catalog_item->group->title . ': ' . $catalog_item->title?>" data-item-text="<?=$catalog_item->title?>">
+                                Оставить запрос
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -77,15 +50,38 @@
 
 
 <div style="display:none">
-    <div id="modalItemRequest" class="modal-window">
+    <div id="modalCatalogItemRequest" class="modal-window">
         <?php
-            $this->widget('ItemRequestFormWidget', array(
-                'form_caption' => '',
-                'form_button' => 'Оставить заявку',
-            ));
+            $this->widget('SimpleFormWidget',
+                array(
+                    'type' => 'form',
+
+                    'form_caption' => 'Оставить заявку',
+                    'form_class' => 'catalog-form',
+
+                    'form_button_text' => 'Отправить',
+                    'form_button_size' => 'default',
+                    'form_button_type' => 'red',
+                )
+            );
         ?>
     </div>
 </div>
 
+<?php
 
+$script = "
+    $( 'body' ).on( 'click', '.modal-item-request-button', function( e ) {
+        e.preventDefault();
+
+        var item = $( this ).data( 'item' );
+
+        $( '#itemName' ).text( $( this ).data( 'item-text' ));
+        $( '#modalCatalogItemRequest .hidden-input-field' ).val( item );
+    } );
+";
+
+Yii::app()->clientScript->registerScript('catalogItemRequestFormScript', $script, CClientScript::POS_END);
+
+?>
 
