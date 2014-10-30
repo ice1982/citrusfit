@@ -21,6 +21,10 @@ class DefaultController extends FrontEndController
             $club_model = ClubItem::model();
             $clubs_content = $club_model->active()->findAll();
 
+            $this->breadcrumbs = array(
+                'Выбор клуба для показа расписания',
+            );
+
             $this->render('application.modules.clubs.views.default.index',
                 array(
                     'clubs_content' => $clubs_content,
@@ -34,6 +38,12 @@ class DefaultController extends FrontEndController
             foreach ($workouts as $workout) {
                 $dump[$workout->hall->id][$workout->time_start][$workout->day_of_week] = $workout;
             }
+
+            $this->breadcrumbs = array(
+                'Сеть клубов &laquo;Цитрус&raquo;' => Yii::app()->createUrl('clubs/default/index'),
+                'Клуб &laquo;' . $this->club->title . '&raquo;' => Yii::app()->createUrl('clubs/default/view', array('id' => $club_id)),
+                'Расписание',
+            );
 
             $this->render('index', array(
                 'dump' => $dump,

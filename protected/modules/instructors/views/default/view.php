@@ -7,16 +7,16 @@
             </div>
         </div>
         <div class="col-xs-8">
-            <h1><?=$instructor->fio?></h1>
+            <div class="font-h2 margin-h3"><?=$instructor->fio?></div>
 
-            <div class="annotation"><?=$instructor->annotation?></div>
+            <div class="annotation margin-h3"><?=$instructor->annotation?></div>
 
-            <div><?=$this->decodeWidgets($instructor->body)?></div>
+            <div class="margin-h3"><?=$this->decodeWidgets($instructor->body)?></div>
 
             <div class="workouts">
                 <?php foreach ($days as $number => $day) : ?>
                     <?php if (isset($workouts[$number])) : ?>
-                        <h3><?=$day?></h3>
+                        <div class="font-h3 margin-h4"><?=$day?></div>
                         <table class="table">
                         <?php foreach ($workouts[$number] as $workout) : ?>
                             <tr>

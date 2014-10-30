@@ -167,4 +167,28 @@ class GalleryPhoto extends BaseActiveRecord
 			'criteria' => $criteria,
 		));
 	}
+
+    public function findAllByAlbumTitle($title, $order, $limit = false)
+    {
+//        var_dump($title);
+
+        $album_model = GalleryAlbum::model()->findByAttributes(array('title' => $title));
+
+//        var_dump($album_model);
+
+        if (!isset($album_model->id)) {
+            return false;
+        }
+        $criteria = new CDbCriteria;
+        $criteria->condition = 'album_id = :album_id';
+        $criteria->params = array(':album_id' => $album_model->id);
+        if ($limit != false) {
+            $criteria->limit = $limit;
+        }
+        $criteria->order = $order;
+        $items_model = $this->findAll($criteria);
+        return $items_model;
+    }
+
+
 }

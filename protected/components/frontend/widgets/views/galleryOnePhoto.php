@@ -1,3 +1,14 @@
-<a href="/uploads/<?=$photo->image?>" rel="lightbox" title="<?=empty($photo->image_attr_title) ? $photo->title : $photo->image_attr_title?>">
-    <img src="/uploads/thumb_<?=$photo->image?>" alt="<?=$photo->image_attr_alt?>" class="img-responsive">
-</a>
+<?php if ($modal === true) : ?>
+    <a href="/uploads/<?=$photo->image?>" rel="<?=$widget_id?>" class="fancybox-image-link" title="<?=$photo->title?>">
+<?php endif; ?>
+
+    <img
+        src="/uploads/<?=($modal) ? 'thumb_' : ''?><?=$photo->image?>"
+        alt="<?=$photo->title?>"
+        title="<?=$photo->title?>"
+        style="<?=$style?>"
+        >
+
+<?php if ($modal === true) : ?>
+    </a>
+<?php endif; ?>

@@ -12,7 +12,7 @@ class DefaultController extends FrontEndController
             // Главная
             // Выбор клуба
             $this->breadcrumbs = array(
-                'Выбор клуба',
+                'Выбор клуба для показа каталога',
             );
 
             $this->render('application.modules.clubs.views.default.index',
@@ -53,7 +53,6 @@ class DefaultController extends FrontEndController
 
     public function actionView($id)
     {
-
         $catalog_item = $this->_loadModel($id, CatalogItem::model(), true);
 
         // Главная
@@ -61,12 +60,17 @@ class DefaultController extends FrontEndController
         // Клуб
         // Клубные карты
         // Карта
-            $this->breadcrumbs = array(
-                'Сеть клубов &laquo;Цитрус&raquo;' => Yii::app()->createUrl('clubs/default/index'),
-                'Клуб &laquo;' . $this->club->title . '&raquo;' => Yii::app()->createUrl('clubs/default/view', array('id' => $club_id)),
-                'Клубные карты и абонементы' => Yii::app()->createUrl('catalog/default/index'),
-                $catalog_item->title,
-            );
+        $this->breadcrumbs['Сеть клубов &laquo;Цитрус&raquo;'] = Yii::app()->createUrl('clubs/default/index');
+        if (isset($catalog_item->club->id)) {
+            $this->breadcrumbs['Клуб &laquo;' . $catalog_item->club->title . '&raquo;'] = Yii::app()->createUrl('clubs/default/view', array('id' => $catalog_item->club_id));
+        } elseif (!empty(Yii::app()->session['club'])) {
+            $club_id = Yii::app()->session['club'];
+            $club_model = ClubItem::model()->active()->findByPk($club_id);
+
+            $this->breadcrumbs['Клуб &laquo;' . $club_model->title . '&raquo;'] = Yii::app()->createUrl('clubs/default/view', array('id' => $club_id));
+        }
+        $this->breadcrumbs['Клубные карты и абонементы'] = Yii::app()->createUrl('catalog/default/index');
+        $this->breadcrumbs[] = $catalog_item->title;
 
         $this->render('view',
             array(

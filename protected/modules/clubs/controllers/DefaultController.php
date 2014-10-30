@@ -26,6 +26,11 @@ class DefaultController extends FrontEndController
         $model->switchClub($id);
 
         $club_content = $this->_loadModel($id, $model, true);
+        $this->breadcrumbs = array(
+            'Сеть клубов &laquo;Цитрус&raquo;' => Yii::app()->createUrl('clubs/default/index'),
+            'Клуб &laquo;' . $club_content->title . '&raquo;',
+        );
+
         $this->render('view',
             array(
                 'club_content' => $club_content,
@@ -37,6 +42,11 @@ class DefaultController extends FrontEndController
 	{
         $club_model = ClubItem::model();
         $clubs_content = $club_model->active()->findAll();
+
+        $this->breadcrumbs = array(
+            'Сеть клубов &laquo;Цитрус&raquo;' => Yii::app()->createUrl('clubs/default/index'),
+            'Выбор клуба',
+        );
 
 		$this->render('index',
             array(

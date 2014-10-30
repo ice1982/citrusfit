@@ -6,6 +6,6 @@ $( document ).ready( function() {
         minWidth: 500
     });
 
-    $('.fancybox-image').fancybox();
+    $('.fancybox-image-link').fancybox();
 
 } );

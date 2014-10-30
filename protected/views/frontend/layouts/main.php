@@ -44,7 +44,6 @@
                         </a>
                     </td>
                     <td class="header-block header-block2 border-divider">
-
                         <?php
                             $this->widget('FreeWorkoutWidget',
                                 array(
@@ -62,21 +61,6 @@
                                     'button_type' => 'red',
                                 )
                             );
-                        ?>
-
-                        <?php
-                            // $this->widget('FreeWorkoutRequestFormWidget',
-                            //     array(
-                            //         'button_text',
-                            //         'button_type',
-                            //         'button_size',
-
-                            //         'form_caption',
-                            //         'form_button_text',
-                            //         'form_button_type',
-                            //         'form_button_size',
-                            //     )
-                            // );
                         ?>
                     </td>
                     <td class="header-block header-block3">
@@ -118,7 +102,23 @@
                 </div>
             </div>
             <div class="row">
+                <div class="col-xs-4">
+                    <?php
+                        $this->widget('SubscribeWidget',
+                            array(
+                                'type' => 'form',
 
+                                'form_caption' => 'Подписаться на акции и спецпредложения',
+
+                                'form_button_text' => 'Подписаться',
+                                'form_button_size' => 'default',
+                                'form_button_type' => 'red',
+
+                                'form_class' => 'subscribe-form',
+                            )
+                        );
+                    ?>
+                </div>
             </div>
         </div>
     </div>

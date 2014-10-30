@@ -33,6 +33,11 @@ class DefaultController extends FrontEndController
             ksort($workouts[$key]);
         }
 
+        $this->breadcrumbs = array(
+            'Инструктора сети клубов &laquo;Цитрус&raquo;' => Yii::app()->createUrl('instructors/default/index'),
+            $instructor->fio,
+        );
+
         $this->render('view', array(
             'instructor' => $instructor,
             'clubs' => $clubs,
@@ -46,9 +51,11 @@ class DefaultController extends FrontEndController
      */
     public function actionIndex()
     {
-
-
         $instructors = InstructorItem::model()->active()->findAll();
+
+        $this->breadcrumbs = array(
+            'Инструктора сети клубов &laquo;Цитрус&raquo;'
+        );
 
         $this->render('index', array(
             'instructors' => $instructors,

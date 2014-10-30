@@ -2,7 +2,7 @@
     <?php foreach ($instructors as $key => $instructor) : ?>
 
         <?php if ($key % 4 == 0) : ?>
-            <div class="row">
+            <div class="row margin-h2">
         <?php endif; ?>
 
         <div class="col-xs-3">
@@ -10,7 +10,7 @@
 
             <div class="instructor-item">
 
-                <div>
+                <div class="margin-h3">
                     <a href="<?=Yii::app()->createUrl('instructors/default/view/' , array('id' => $instructor->id))?>" title="<?=$instructor->fio?>">
                         <?php if (file_exists('/uploads/thumb_' . $instructor->image)) : ?>
                             <img class="img-responsive instructor-item-img" src="/uploads/thumb_<?=$instructor->image?>" alt="<?=$instructor->fio?>" title="<?=$instructor->fio?>">

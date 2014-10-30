@@ -109,6 +109,56 @@ class AjaxController extends FrontEndController
         }
     }
 
+    public function actionSendFromSubscribeForm()
+    {
+        $model = new SubscribeForm;
+
+        $status = array();
+
+        if (isset($_POST['SubscribeForm'])) {
+
+            $model->attributes = $_POST['SubscribeForm'];
+
+            if ($model->validate()) {
+                if ($model->send('С сайта поступил заказ на подписку на события клуба.')) {
+                    $status = array(
+                        'status' => 'success',
+                        'message' => 'Ваша заявка успешно отправлена.',
+                    );
+                } else {
+                    // TODO: Логирование ошибок!
+
+                    $status = array(
+                        'status' => 'error',
+                        'message' => 'Произошла ошибка почтового сервера. Попробуйте отправить заявку еще раз.',
+                        'code' => 500,
+                    );
+                }
+            } else {
+                // TODO: Логирование ошибок!
+                $status = array(
+                    'status' => 'error',
+                    'message' => 'Произошла ошибка валидации. Попробуйте отправить заявку еще раз.',
+                    'code' => 500,
+                );
+            }
+        }
+
+        $this->renderArrayAsJson($status);
+    }
+
+    public function actionValidationSubscribe($widget_id)
+    {
+        $model = new SubscribeForm;
+
+        if (isset($_POST['ajax']) && $_POST['ajax'] === $widget_id) {
+            echo CActiveForm::validate($model);
+            Yii::app()->end();
+        }
+    }
+
+
+
 
 
 }

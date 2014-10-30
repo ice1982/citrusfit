@@ -1,9 +1,11 @@
-<div class="font-h2 margin-h2"><?=$model->title; ?></div>
+<div class="font-h2 margin-h3"><?=$model->title; ?></div>
 
 <div class="article-view">
-    <div class="date">
+    <div class="date orange">
         <?=CHelper::sqlDateToRussianDate($model->pubdate)?>
     </div>
+
+    <hr/>
 
     <div>
         <?php if (!empty($model->image)) : ?>
@@ -13,7 +15,7 @@
                 </div>
                 <div class="col-xs-9">
                     <div class="annotation">
-                        <?=$model->annotation?>
+                        <i><?=$model->annotation?></i>
                     </div>
                 </div>
             </div>
@@ -22,6 +24,7 @@
                 <?=$model->annotation?>
             </div>
         <?php endif; ?>
+        <hr/>
         <div class="body">
             <?=$this->decodeWidgets($model->body)?>
         </div>

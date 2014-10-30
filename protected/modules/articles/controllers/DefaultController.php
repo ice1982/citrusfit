@@ -4,18 +4,19 @@ class DefaultController extends FrontEndController
 {
 	public function actionIndex($type = false, $club = false)
 	{
+        // Главная
+        // Новости
+
         $group_title = false;
-        $title = 'Новости';
+        $title = 'Новости сети клубов &laquo;Цитрус&raquo;';
 
-        if ($club == 'all') {
+        if (($club == 'all') || ($club == false)) {
             $club_id = false;
-
-            $title = 'Новости сети';
         } else {
             $club_id = (int)$club;
 
             $club_model = ClubItem::model()->active()->findByPk($club_id);
-            if (isset($club_model->od)) {
+            if (isset($club_model->id)) {
                 $title = 'Новости клуба &laquo;' . $club_model->title . '&raquo;';
             }
         }
@@ -26,9 +27,10 @@ class DefaultController extends FrontEndController
             $show_group = true;
         } else {
             $show_group = false;
-
             $group_title = ArticleType::model()->findByPk($type)->title;
         }
+
+        $this->breadcrumbs[] = $title;
 
 		$this->render('index',
             array(
@@ -44,6 +46,11 @@ class DefaultController extends FrontEndController
     public function actionView($id)
     {
         $article_item = $this->_loadModel($id, ArticleItem::model(), true);
+
+        $this->breadcrumbs = array(
+            'Новости сети клубов &laquo;Цитрус&raquo;' => Yii::app()->createUrl('articles/default/index'),
+            $article_item->title,
+        );
 
         $this->render('view',
             array(

@@ -107,6 +107,9 @@ div {
 .margin-h3 {
   margin-bottom: 20px;
 }
+.margin-h4 {
+  margin-bottom: 12px;
+}
 .font-h {
   font-weight: 300;
   text-transform: uppercase;
@@ -296,6 +299,11 @@ span.required {
 .news-block .date {
   color: grey;
   font-size: 10px;
+}
+.article-item .image {
+  width: 200px;
+  overflow: hidden;
+  height: 150px;
 }
 .notched-section__top,
 .notched-section__bottom {

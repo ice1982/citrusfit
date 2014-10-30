@@ -7,12 +7,20 @@
 
         <div class="container blank-padding white-blank">
 
-            <?php if(isset($this->breadcrumbs)):?>
-                <?php $this->widget('zii.widgets.CBreadcrumbs', array(
-                    'homeLink' => CHtml::link('Главная', Yii::app()->createUrl('pages/default/view')),
+            <?php if (isset($this->breadcrumbs)) : ?>
+                <?php $this->widget('MyBreadcrumbs', array(
+                    'homeLink' => CHtml::link('Главная', '/'),
                     'links' => $this->breadcrumbs,
+                    'tagName' => 'ol',
+                    'htmlOptions' => array(
+                        'class' => 'breadcrumb',
+                    ),
+                    'activeLinkTemplate' => '<li><a href="{url}" title="{label}">{label}</a></li>',
+                    'inactiveLinkTemplate' => '<li class="active">{label}</li>',
+                    'separator' => false,
+                    'encodeLabel' => false,
                 )); ?>
-            <?php endif?>
+            <?php endif; ?>
 
             <?php if (isset($this->page->id) && $this->page->show_title == 1) : ?>
                 <div class="font-h1 margin-h2"><?=$this->page->title?></div>

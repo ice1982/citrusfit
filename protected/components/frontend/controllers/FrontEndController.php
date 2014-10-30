@@ -23,6 +23,11 @@ Yii::import('application.modules.clubs.models.*');
 Yii::import('application.modules.clubs.models._forms.*');
 Yii::import('application.modules.clubs.models._base.*');
 
+Yii::import('application.modules.gallery.*');
+Yii::import('application.modules.gallery.models.*');
+Yii::import('application.modules.gallery.models._forms.*');
+Yii::import('application.modules.gallery.models._base.*');
+
 class FrontEndController extends BaseController
 {
     public $layout = '//templates/default';
@@ -89,7 +94,7 @@ class FrontEndController extends BaseController
                 'startBlock' => '{{w:',
                 'endBlock' => '}}',
                 'widgets' => array(
-                    // 'GalleryBlock',
+                     'GalleryBlock',
                     'CurrentYear',
                     'HomeUrl',
                     'MainMenu',

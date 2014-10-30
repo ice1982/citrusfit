@@ -6,6 +6,7 @@
  * The followings are the available columns in table 'club_items':
  * @property integer $id
  * @property string $title
+ * @property string $annotation
  * @property string $description
  * @property string $contact_phones
  * @property string $contact_address
@@ -70,6 +71,11 @@ class ClubItem extends BaseActiveRecord
 				'length',
 				'max' => 500,
 			),
+            array(
+                'annotation',
+                'length',
+                'max' => 500,
+            ),
 			array(
 				'created_username',
 				'length',
@@ -112,6 +118,7 @@ class ClubItem extends BaseActiveRecord
 		return array(
 			'id' => 'ID',
 			'title' => 'Title',
+            'annotation' => 'Annotation',
 			'description' => 'Description',
 			'contact_phones' => 'Contact Phones',
 			'contact_address' => 'Contact Address',

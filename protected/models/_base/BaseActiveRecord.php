@@ -73,14 +73,15 @@ class BaseActiveRecord extends CActiveRecord
         return $id;
     }
 
-    public function findAllByPkArray($array)
+    public function findAllByPkArray($array, $order = false, $limit = false)
     {
         $criteria = new CDbCriteria;
-
         $criteria->addInCondition('id', $array);
-
+        if ($limit != false) {
+            $criteria->limit = $limit;
+        }
+        $criteria->order = $order;
         $items_model = $this->findAll($criteria);
-
         return $items_model;
     }
 
