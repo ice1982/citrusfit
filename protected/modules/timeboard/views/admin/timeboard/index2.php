@@ -47,8 +47,6 @@ $this->menu = array(
         <div class="tab-pane fade in <?=($club->id == $default_club) ? 'active' : '' ?>" id="club<?=$club->id?>">
             <?php if (isset($dump[$club->id])) : ?>
 
-
-
                 <?php foreach ($dump[$club->id] as $hall => $workouts) : ?>
                     <h2><?=Hall::model()->findByPK($hall)->title?></h2>
                         <div>

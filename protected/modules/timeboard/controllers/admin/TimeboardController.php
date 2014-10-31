@@ -74,24 +74,6 @@ class TimeboardController extends BackEndController
 		}
 	}
 
-	/**
-	 * Lists all models.
-	 */
-	public function actionIndex2()
-	{
-        $workouts = TimeboardItem::model()->findAll(array('order' => 'hall_id, time_start'));
-        foreach ($workouts as $workout) {
-			$dump[$workout->hall->club->id][$workout->hall->id][$workout->time_start][$workout->day_of_week] = $workout;
-		}
-
-        $clubs = ClubItem::model()->findAll();
-
-		$this->render('index', array(
-            'dump'  => $dump,
-            'clubs' => $clubs,
-		));
-	}
-
     public function actionIndex($club_id = false)
     {
         if ($club_id == false) {
@@ -109,18 +91,20 @@ class TimeboardController extends BackEndController
                 )
             );
         } else {
+            $club = ClubItem::model()->findByPk($club_id);
+
             $workouts = TimeboardItem::model()->findAllItemsOfClub($club_id);
             foreach ($workouts as $workout) {
                 $dump[$workout->hall->id][$workout->time_start][$workout->day_of_week] = $workout;
             }
 
-            // $this->breadcrumbs = array(
-            //     'Сеть клубов &laquo;Цитрус&raquo;' => Yii::app()->createUrl('clubs/default/index'),
-            //     'Клуб &laquo;' . $this->club->title . '&raquo;' => Yii::app()->createUrl('clubs/default/view', array('id' => $club_id)),
-            //     'Расписание',
-            // );
+             $this->breadcrumbs = array(
+                 'Клуб &laquo;' . $club->title . '&raquo;' => Yii::app()->createUrl('timeboard/admin/timeboard/index'),
+                 'Расписание',
+             );
 
             $this->render('index', array(
+                'club' => $club,
                 'dump' => $dump,
             ));
         }
