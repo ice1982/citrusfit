@@ -62,6 +62,8 @@
                     'form_button_text' => 'Отправить',
                     'form_button_size' => 'default',
                     'form_button_type' => 'red',
+
+                    'show_form_item' => true,
                 )
             );
         ?>

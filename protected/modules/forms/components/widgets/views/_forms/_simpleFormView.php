@@ -59,14 +59,16 @@
         }",
     ),
     'htmlOptions' => array(
-        'class' => 'form-horizontal ' . $form_class,
+        'class' => $form_class,
         'role' => 'form',
     ),
 )); ?>
 
 <h4 class="form-caption"><?=$form_caption?></h4>
 
-<p id="itemName"><?=$form_item?></p>
+<?php if ((bool) $show_form_item) : ?>
+    <p id="itemName"><?=$form_item?></p>
+<?php endif; ?>
 
 <?=$form->hiddenField(
     $form_model,
@@ -82,54 +84,47 @@
         $form_model,
         'fio',
         array(
-            'class' => 'col-xs-3 control-label',
+            'class' => '',
         )
     );?>
-    <div class="col-xs-9">
-        <?=$form->textField(
-            $form_model,
-            'fio',
-            array(
-                'class' => 'form-control',
-                'placeholder' => 'Введите Ф.И.О.',
-                'type' => 'text',
-            )
-        );?>
-        <?=$form->error($form_model, 'fio');?>
-    </div>
+    <?=$form->textField(
+        $form_model,
+        'fio',
+        array(
+            'class' => 'form-control',
+            'placeholder' => 'Введите Ф.И.О.',
+            'type' => 'text',
+        )
+    );?>
+    <?=$form->error($form_model, 'fio');?>
 </div>
 <div class="form-group">
     <?=$form->labelEx(
         $form_model,
         'phone',
         array(
-            'class' => 'col-xs-3 control-label',
+            'class' => '',
         )
     );?>
-    <div class="col-xs-7">
-        <?=$form->textField(
-            $form_model,
-            'phone',
-            array(
-                'class' => 'form-control',
-                'placeholder' => 'Введите номер телефона',
-                'type' => 'phone',
-            )
-        );?>
-        <?=$form->error($form_model, 'phone');?>
-    </div>
+    <?=$form->textField(
+        $form_model,
+        'phone',
+        array(
+            'class' => 'form-control',
+            'placeholder' => 'Введите номер телефона',
+            'type' => 'phone',
+        )
+    );?>
+    <?=$form->error($form_model, 'phone');?>
 </div>
 
 <div class="form-group">
-    <div class="col-xs-3 control-label"></div>
-    <div class="col-xs-9">
-        <?=CHtml::submitButton(
-            $form_button_text,
-            array(
-                'class' => $form_button_class,
-                'data-item' => $form_item,
-            )
-        );?>
-    </div>
+    <?=CHtml::submitButton(
+        $form_button_text,
+        array(
+            'class' => $form_button_class,
+            'data-item' => $form_item,
+        )
+    );?>
 </div>
 <?php $this->endWidget(); ?>

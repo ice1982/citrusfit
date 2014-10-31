@@ -4,6 +4,8 @@ Yii::import('application.modules.clubs.models.*');
 
 class SimpleFormWidget extends BaseFormWidget
 {
+    public $show_form_item = false;
+
     protected function _loadFormWidget()
     {
         $form_widget_id = $this->genegateWidgetId('simpleFormWidget');
@@ -22,6 +24,8 @@ class SimpleFormWidget extends BaseFormWidget
             'form_item' => $this->form_item,
 
             'form_widget_id' => $form_widget_id,
+
+            'show_form_item' => $this->show_form_item,
         ));
     }
 
@@ -47,6 +51,8 @@ class SimpleFormWidget extends BaseFormWidget
             'button_widget_id' => $button_widget_id,
             'button_class' => $button_class,
             'button_text' => $this->button_text,
+
+            'show_form_item' => $this->show_form_item,
         ));
     }
 
@@ -64,4 +70,4 @@ class SimpleFormWidget extends BaseFormWidget
     }
 
 
-} 
+}

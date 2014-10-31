@@ -11,7 +11,7 @@ switch (dirname(__FILE__)) {
         break;
     default:
         $environment = 'production';
-        $yii = dirname(__FILE__) . '/../../frameworks/Yii/1.1.15/framework/yiilite.php';
+        $yii = dirname(__FILE__) . '/../../frameworks/Yii/1.1.15/yiilite.php';
         $protected = '/../app/protected';
         break;
 }

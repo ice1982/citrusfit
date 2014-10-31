@@ -7,40 +7,33 @@
 
     <?php Yii::app()->clientScript->registerPackage('jquery'); ?>
 
-    <?php Yii::app()->bootstrap->register(); ?>
+    <?php // Yii::app()->bootstrap->register(); ?>
 
+    <?php Yii::app()->clientScript->registerPackage('bootstrap3'); ?>
     <?php Yii::app()->clientScript->registerPackage('jquery-ui'); ?>
+    <?php Yii::app()->clientScript->registerPackage('nested-sortable'); ?>
     <?php Yii::app()->clientScript->registerPackage('my-admin-js'); ?>
     <?php Yii::app()->clientScript->registerPackage('my-admin-css'); ?>
-
-    <?php if ($this->loginPage === false) : ?>
-        <?php Yii::app()->getClientScript()->registerScriptFile(Yii::app()->baseUrl . '/js/jquery-ui-1.10.2.custom.min.js'); ?>
-        <?php Yii::app()->getClientScript()->registerScriptFile(Yii::app()->baseUrl . '/js/jquery.mjs.nestedSortable.js'); ?>
-        <?php Yii::app()->getClientScript()->registerScriptFile(Yii::app()->baseUrl . '/js/admin.js'); ?>
-    <?php endif; ?>
-
-    <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/admin.css" rel="stylesheet">
 
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 
 <body>
 
-<?php if ($this->loginPage === false) : ?>
-    <?php $this->widget('AdminMainMenu')?>
-<?php endif; ?>
+
+<?php $this->widget('AdminMainMenu')?>
 
 <div class="container-fluid" id="page">
 
-<?php if ($this->loginPage === false) : ?>
 
-	<?php if(isset($this->breadcrumbs)):?>
-		<?php $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
+
+	<?php if (isset($this->breadcrumbs)):?>
+		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
 			'links'=>$this->breadcrumbs,
 		)); ?><!-- breadcrumbs -->
 	<?php endif?>
 
-<?php endif; ?>
+
 
 	<?php echo $content; ?>
 
@@ -50,7 +43,6 @@
 
 </body>
 
-<?php if ($this->loginPage === false) : ?>
     <!-- TinyMCE -->
     <script type="text/javascript" src="/js/tinymce/tinymce.min.js"></script>
     <script type="text/javascript">
@@ -80,6 +72,6 @@
         });
     </script>
     <!-- /TinyMCE -->
-<?php endif; ?>
+
 
 </html>

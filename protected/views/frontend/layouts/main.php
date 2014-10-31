@@ -108,11 +108,11 @@
                             array(
                                 'type' => 'form',
 
-                                'form_caption' => 'Подписаться на акции и спецпредложения',
+                                'form_caption' => 'Подписка на спецпредложения',
 
                                 'form_button_text' => 'Подписаться',
-                                'form_button_size' => 'default',
-                                'form_button_type' => 'red',
+                                'form_button_size' => 'tiny',
+                                'form_button_type' => 'default',
 
                                 'form_class' => 'subscribe-form',
                             )

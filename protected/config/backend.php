@@ -1,5 +1,7 @@
 <?php
 
+// Yii::setPathOfAlias('bootstrap', dirname(__FILE__).'/../extensions/bootstrap');
+
 return CMap::mergeArray(
 
     require_once(dirname(__FILE__) . '/main.php'),
@@ -7,7 +9,7 @@ return CMap::mergeArray(
     array(
         // стандартный контроллер
         'defaultController' => 'site/index',
-        'homeUrl'           => array('site/index'),
+        'homeUrl' => array('site/index'),
 
         'import' => array(
             'application.components.backend.*',
@@ -15,30 +17,52 @@ return CMap::mergeArray(
             'application.components.backend.widgets.*',
         ),
 
-        'modules'=>array(
-            'gii'=>array(
-                'generatorPaths'=>array(
-                    'bootstrap.gii',
-                ),
-            ),
-        ),
+        // 'modules'=>array(
+        //     'gii'=>array(
+        //         'generatorPaths'=>array(
+        //             'bootstrap.gii',
+        //         ),
+        //     ),
+        // ),
 
         // компоненты
         'components' => array(
             'clientScript' => array(
                 'coreScriptPosition' => CClientScript::POS_HEAD,
                 'packages' => array(
+                    'bootstrap3' => array(
+                        'baseUrl' => '',
+                        'js' => array(
+                            YII_DEBUG ? 'js/bootstrap.js' : 'js/bootstrap.min.js'
+                        ),
+                        'css' => array(
+                            'css/bootstrap.min.css',
+                            'css/bootstrap-theme.min.css',
+                        ),
+                        'depends' =>array('jquery'),
+                    ),
+                    'jquery-ui' => array(
+                        'baseUrl' => 'js/ui/',
+                        'js' => array(YII_DEBUG ? 'jquery-ui.js' : 'minified/jquery-ui.min.js'),
+                        'depends' => array('jquery'),
+                    ),
+                    'nested-sortable' => array(
+                        'baseUrl' => 'js/',
+                        'js' => array('jquery.mjs.nestedSortable.js'),
+                        'depends' => array('jquery', 'jquery-ui'),
+                    ),
                     'my-admin-js' => array(
                         'baseUrl' => 'js/',
-                        'js'      => array(
+                        'js' => array(
                             YII_DEBUG ? 'admin.js' : 'admin.min.js'
                         ),
                         'depends' =>array('jquery'),
                     ),
                     'my-admin-css' => array(
                         'baseUrl' => 'css/',
-                        'css'      => array('admin.css'),
+                        'css' => array('admin.css'),
                     ),
+
                 ),
             ),
 
@@ -55,9 +79,9 @@ return CMap::mergeArray(
                     'driver' => 'GD',
             ),
 
-            'bootstrap' => array(
-                'class' => 'bootstrap.components.Bootstrap',
-            ),
+            // 'bootstrap' => array(
+            //     'class' => 'bootstrap.components.Bootstrap',
+            // ),
         ),
     )
 );

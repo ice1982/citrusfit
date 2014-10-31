@@ -1,7 +1,5 @@
 <?php
 
-Yii::setPathOfAlias('bootstrap', dirname(__FILE__).'/../extensions/bootstrap');
-
 require_once(dirname(__FILE__) . '/params.php');
 
 return array(

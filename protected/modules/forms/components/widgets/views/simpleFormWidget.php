@@ -8,4 +8,6 @@
     'form_item' => $form_item,
     'form_widget_id' => $form_widget_id,
     'form_class' => $form_class,
+
+    'show_form_item' => $this->show_form_item,
 )); ?>

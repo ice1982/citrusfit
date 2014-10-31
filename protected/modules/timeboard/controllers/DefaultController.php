@@ -49,7 +49,6 @@ class DefaultController extends FrontEndController
                 'dump' => $dump,
             ));
         }
-
     }
 
 }

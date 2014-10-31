@@ -59,7 +59,7 @@
         }",
     ),
     'htmlOptions' => array(
-        'class' => 'form-horizontal ' . $form_class,
+        'class' => $form_class,
         'role' => 'form',
     ),
 )); ?>
@@ -71,55 +71,48 @@
         $form_model,
         'fio',
         array(
-            'class' => 'col-xs-3 control-label',
+            'class' => '',
         )
     );?>
-    <div class="col-xs-9">
-        <?=$form->textField(
-            $form_model,
-            'fio',
-            array(
-                'class' => 'form-control',
-                'placeholder' => 'Введите Ф.И.О.',
-                'type' => 'text',
-            )
-        );?>
-        <?=$form->error($form_model, 'fio');?>
-    </div>
+    <?=$form->textField(
+        $form_model,
+        'fio',
+        array(
+            'class' => 'form-control',
+            'placeholder' => 'Введите Ф.И.О.',
+            'type' => 'text',
+        )
+    );?>
+    <?=$form->error($form_model, 'fio');?>
 </div>
 <div class="form-group">
     <?=$form->labelEx(
         $form_model,
         'email',
         array(
-            'class' => 'col-xs-3 control-label',
+            'class' => '',
         )
     );?>
-    <div class="col-xs-7">
-        <?=$form->textField(
-            $form_model,
-            'email',
-            array(
-                'class' => 'form-control',
-                'placeholder' => 'Введите email',
-                'type' => 'email',
-            )
-        );?>
-        <?=$form->error($form_model, 'phone');?>
-    </div>
+    <?=$form->textField(
+        $form_model,
+        'email',
+        array(
+            'class' => 'form-control',
+            'placeholder' => 'Введите email',
+            'type' => 'email',
+        )
+    );?>
+    <?=$form->error($form_model, 'phone');?>
 </div>
 
 <div class="form-group">
-    <div class="col-xs-3 control-label"></div>
-    <div class="col-xs-9">
-        <?=CHtml::submitButton(
-            $form_button_text,
-            array(
+    <?=CHtml::submitButton(
+        $form_button_text,
+        array(
 //                    'id' => 'modalItemRequestFormSubmit',
-                'class' => $form_button_class,
-                'data-item' => '',
-            )
-        );?>
-    </div>
+            'class' => $form_button_class,
+            'data-item' => '',
+        )
+    );?>
 </div>
 <?php $this->endWidget(); ?>

@@ -88,13 +88,16 @@ class FrontEndController extends BaseController
     public function behaviors()
     {
         return array(
-            'InlineWidgetsBehavior' => array(
-                'class' => 'DInlineWidgetsBehavior',
-                'location' => 'application.components.frontend.widgets',
+            'InlineCommonWidgetsBehavior' => array(
+                'class' => 'MyInlineWidgetsBehavior',
+                'location' => array(
+                    'application.components.frontend.widgets',
+                    'application.modules.forms.components.widgets',
+                ),
                 'startBlock' => '{{w:',
                 'endBlock' => '}}',
                 'widgets' => array(
-                     'GalleryBlock',
+                    'GalleryBlock',
                     'CurrentYear',
                     'HomeUrl',
                     'MainMenu',
@@ -105,8 +108,19 @@ class FrontEndController extends BaseController
                     'AboutClubWidget',
                     'MapWidget',
                     'ContactsWidget',
+
+                    'SimpleFormWidget',
                 ),
             ),
+            // 'InlineFormWidgetsBehavior' => array(
+            //     'class' => 'DInlineWidgetsBehavior',
+            //     'location' => 'application.modules.forms.components.widgets',
+            //     'startBlock' => '{{w:',
+            //     'endBlock' => '}}',
+            //     'widgets' => array(
+            //         'SimpleFormWidget',
+            //     ),
+            // ),
         );
     }
 

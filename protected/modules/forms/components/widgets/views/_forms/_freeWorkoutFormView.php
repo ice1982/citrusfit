@@ -59,7 +59,7 @@
         }",
     ),
     'htmlOptions' => array(
-        'class' => 'form-horizontal ' . $form_class,
+        'class' => $form_class,
         'role' => 'form',
     ),
 )); ?>
@@ -71,11 +71,11 @@
         $form_model,
         'club',
         array(
-            'class' => 'col-xs-3 control-label',
+            'class' => '',
         )
     );?>
 
-    <div class="col-xs-9">
+
         <?=$form->dropDownList(
             $form_model,
             'club',
@@ -86,7 +86,7 @@
             )
         );?>
         <?=$form->error($form_model, 'club');?>
-    </div>
+
 </div>
 
 <div class="form-group">
@@ -94,10 +94,9 @@
         $form_model,
         'fio',
         array(
-            'class' => 'col-xs-3 control-label',
+            'class' => '',
         )
     );?>
-    <div class="col-xs-9">
         <?=$form->textField(
             $form_model,
             'fio',
@@ -108,17 +107,16 @@
             )
         );?>
         <?=$form->error($form_model, 'fio');?>
-    </div>
+
 </div>
 <div class="form-group">
     <?=$form->labelEx(
         $form_model,
         'phone',
         array(
-            'class' => 'col-xs-3 control-label',
+            'class' => '',
         )
     );?>
-    <div class="col-xs-7">
         <?=$form->textField(
             $form_model,
             'phone',
@@ -129,20 +127,17 @@
             )
         );?>
         <?=$form->error($form_model, 'phone');?>
-    </div>
+
 </div>
 
 <div class="form-group">
-    <div class="col-xs-3 control-label"></div>
-    <div class="col-xs-9">
-        <?=CHtml::submitButton(
-            $form_button_text,
-            array(
+    <?=CHtml::submitButton(
+        $form_button_text,
+        array(
 //                    'id' => 'modalItemRequestFormSubmit',
-                'class' => $form_button_class,
-                'data-item' => '',
-            )
-        );?>
-    </div>
+            'class' => $form_button_class,
+            'data-item' => '',
+        )
+    );?>
 </div>
 <?php $this->endWidget(); ?>
