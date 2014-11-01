@@ -11,25 +11,45 @@ class TimeboardController extends BackEndController
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate()
+	public function actionCreate($club_id = false)
 	{
-		$model = new TimeboardItem;
+        if ($club_id == false) {
+            // Выбор клуба
+            $club_model = ClubItem::model();
+            $clubs_content = $club_model->active()->findAll();
 
-		// $this->performAjaxValidation($model);
+            $this->breadcrumbs = array(
+                'Выбор клуба для создания расписания',
+            );
 
-		if (isset($_POST['TimeboardItem'])) {
-			$model->attributes = $_POST['TimeboardItem'];
-			if ($model->save()) {
-				$this->setSuccess('Занятие создано!');
-				$this->redirect(array('index&hall_id=' . $model->hall_id));
-			} else {
-				$this->setError('Занятие не создано!');
-			}
-		}
+            $this->render('select_club',
+                array(
+                    'clubs_content' => $clubs_content,
+                    'action' => 'create',
+                )
+            );
+        } else {
+            $model = new TimeboardItem;
 
-		$this->render('create', array(
-			'model' => $model,
-		));
+            $club = ClubItem::model()->findByPk($club_id);
+
+            // $this->performAjaxValidation($model);
+
+            if (isset($_POST['TimeboardItem'])) {
+                $model->attributes = $_POST['TimeboardItem'];
+                if ($model->save()) {
+                    $this->setSuccess('Занятие создано!');
+                    $this->redirect(Yii::app()->createUrl('index', array('hall_id' => $model->hall_id)));
+                } else {
+                    $this->setError('Занятие не создано!');
+                }
+            }
+
+            $this->render('create', array(
+                'model' => $model,
+                'club' => $club,
+            ));
+        }
 	}
 
 	/**
@@ -44,10 +64,10 @@ class TimeboardController extends BackEndController
 		// $this->performAjaxValidation($model);
 
 		if (isset($_POST['TimeboardItem'])) {
-			$model->attributes=$_POST['TimeboardItem'];
+			$model->attributes = $_POST['TimeboardItem'];
 			if ($model->save()) {
 				$this->setSuccess('Изменения сохранены!');
-				$this->redirect(array('index&hall_id=' . $model->hall_id));
+				$this->redirect(Yii::app()->createUrl('index', array('hall_id' => $model->hall_id)));
 			} else {
 				$this->setError('Изменения не сохранены!');
 			}
@@ -65,12 +85,16 @@ class TimeboardController extends BackEndController
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
+		$model = $this->loadModel($id);
+
+        $club_id = $model->hall->club->id;
+
+        $model->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if (!isset($_GET['ajax'])) {
 			$this->setNotice('Занятие удалено!');
-			$this->redirect(array('index'));
+			$this->redirect(Yii::app()->createUrl('timeboard/admin/timeboard/index', array('club_id' => $club_id)));
 		}
 	}
 
@@ -88,6 +112,7 @@ class TimeboardController extends BackEndController
             $this->render('select_club',
                 array(
                     'clubs_content' => $clubs_content,
+                    'action' => 'index',
                 )
             );
         } else {
