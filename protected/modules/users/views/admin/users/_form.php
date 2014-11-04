@@ -6,7 +6,7 @@
 
 <div class="form">
 
-<?php $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
+<?php $form = $this->beginWidget('CActiveForm', array(
 	'id'                   => 'user-form',
 	'enableAjaxValidation' => true,
 	'clientOptions'        => array(
@@ -18,16 +18,16 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<div class="input-field">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'username'); ?>
-		<?php echo $form->textField($model,'username', array('class' => 'input-large')); ?>
+		<?php echo $form->textField($model,'username', array('class' => 'form-control input-large')); ?>
 		<?php echo $form->error($model,'username'); ?>
 	</div>
 
 	<?php if (empty($model->id)) : ?>
-	<div class="input-field">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'password'); ?>
-		<?php echo $form->passwordField($model,'password', array('class' => 'input-large')); ?>
+		<?php echo $form->passwordField($model,'password', array('class' => 'form-control input-large')); ?>
 		<?php echo $form->error($model,'password'); ?>
 	</div>
 	<?php endif; ?>

@@ -6,9 +6,9 @@
 
 <div class="form">
 
-<?php $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
+<?php $form = $this->beginWidget('CActiveForm', array(
 	'id'                   => 'article-form',
-	'enableAjaxValidation' => true,
+	'enableAjaxValidation' => false,
 	'htmlOptions'         => array(
 		'enctype' => 'multipart/form-data',
 	),
@@ -21,7 +21,7 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<div class="input-field">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'club_id'); ?>
 		<?php
 			echo $form->dropDownList($model, 'club_id',
@@ -32,7 +32,7 @@
 		<?php echo $form->error($model,'club_id'); ?>
 	</div>
 
-	<div class="input-field">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'type_id'); ?>
 		<?php
 			echo $form->dropDownList($model,'type_id',
@@ -43,28 +43,28 @@
 		<?php echo $form->error($model,'type_id'); ?>
 	</div>
 
-	<div class="input-field">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'title'); ?>
-		<?php echo $form->textField($model,'title', array('class' => 'input-large')); ?>
+		<?php echo $form->textField($model,'title', array('class' => 'form-control input-large')); ?>
 		<?php echo $form->error($model,'title'); ?>
 	</div>
 
-	<div class="input-field">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'slug'); ?>
 		<?php echo $form->textField($model,'slug',
 			array(
-				'class' => 'input-large',
+				'class' => 'form-control input-large',
 			)
 		); ?>
 		<p class="help-block">Латинское название, которое будет отображаться в строке браузера.</p>
 		<?php echo $form->error($model,'slug'); ?>
 	</div>
 
-	<div class="input-field">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'annotation'); ?>
 		<?php echo $form->textArea($model, 'annotation',
 			array(
-				'class' => 'input-large',
+				'class' => 'form-control input-large',
 			)
 		); ?>
 		<p class="help-block">Короткий текст, который будет отображаться на главной странице сайта.</p>
@@ -72,30 +72,30 @@
 	</div>
 
 	<?php if (!empty($model->image)) : ?>
-	<div class="input-field">
+	<div class="form-group">
 		<img width=100 src="uploads/<?=$model->image?>" alt="">
 	</div>
 	<?php endif; ?>
 
-	<div class="input-field">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'image'); ?>
-		<?php echo $form->fileField($model,'image', array('class' => 'input-large')); ?>
+		<?php echo $form->fileField($model,'image', array('class' => 'form-control input-large')); ?>
 		<?php echo $form->error($model,'image'); ?>
 	</div>
 
-	<div class="input-field">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'image_attr_title'); ?>
-		<?php echo $form->textArea($model,'image_attr_title', array('class' => 'input-large')); ?>
+		<?php echo $form->textArea($model,'image_attr_title', array('class' => 'form-control input-large')); ?>
 		<?php echo $form->error($model,'image_attr_title'); ?>
 	</div>
 
-	<div class="input-field">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'image_attr_alt'); ?>
-		<?php echo $form->textArea($model,'image_attr_alt', array('class' => 'input-large')); ?>
+		<?php echo $form->textArea($model,'image_attr_alt', array('class' => 'form-control input-large')); ?>
 		<?php echo $form->error($model,'image_attr_alt'); ?>
 	</div>
 
-	<div class="input-field">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'body'); ?>
 		<?php echo $form->textArea(
 			$model,
@@ -109,7 +109,7 @@
 		<?php echo $form->error($model,'body'); ?>
 	</div>
 
-	<div class="input-field">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'pubdate'); ?>
 		<?php $this->widget('zii.widgets.jui.CJuiDatePicker', array(
             'name'      => 'pubdate',
@@ -126,13 +126,13 @@
             ),
             'htmlOptions' => array(
                 'value' => CHelper::sqlDateToHumanDate($model->pubdate),
-                'class' => 'input-small',
+                'class' => 'form-control input-small',
             ),
         )); ?>
 		<?php echo $form->error($model,'pubdate'); ?>
 	</div>
 
-	<div class="input-field">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'meta_index'); ?>
 		<?php echo $form->dropDownList($model,'meta_index',
 			array(0 => 'Нет', 1 => 'Да'),
@@ -141,21 +141,21 @@
 		<?php echo $form->error($model,'meta_index'); ?>
 	</div>
 
-	<div class="input-field">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'meta_title'); ?>
-		<?php echo $form->textField($model,'meta_title', array('class' => 'input-large')); ?>
+		<?php echo $form->textField($model,'meta_title', array('class' => 'form-control input-large')); ?>
 		<?php echo $form->error($model,'meta_title'); ?>
 	</div>
 
-	<div class="input-field">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'meta_keywords'); ?>
-		<?php echo $form->textArea($model,'meta_keywords', array('class' => 'input-large')); ?>
+		<?php echo $form->textArea($model,'meta_keywords', array('class' => 'form-control input-large')); ?>
 		<?php echo $form->error($model,'meta_keywords'); ?>
 	</div>
 
-	<div class="input-field">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'meta_description'); ?>
-		<?php echo $form->textArea($model,'meta_description', array('class' => 'input-large')); ?>
+		<?php echo $form->textArea($model,'meta_description', array('class' => 'form-control input-large')); ?>
 		<?php echo $form->error($model,'meta_description'); ?>
 	</div>
 

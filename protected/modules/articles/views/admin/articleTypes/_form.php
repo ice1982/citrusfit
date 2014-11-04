@@ -6,9 +6,9 @@
 
 <div class="form">
 
-<?php $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
+<?php $form = $this->beginWidget('CActiveForm', array(
 	'id'                   => 'type-of-article-form',
-	'enableAjaxValidation' => true,
+	'enableAjaxValidation' => false,
 	'clientOptions'        => array(
     	'validateOnSubmit' => true,
     ),
@@ -18,15 +18,15 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<div class="input-field">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'slug'); ?>
-		<?php echo $form->textField($model,'slug', array('class' => 'input-large')); ?>
+		<?php echo $form->textField($model,'slug', array('class' => 'form-control input-large')); ?>
 		<?php echo $form->error($model,'slug'); ?>
 	</div>
 
-	<div class="input-field">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'title'); ?>
-		<?php echo $form->textField($model,'title', array('class' => 'input-large')); ?>
+		<?php echo $form->textField($model,'title', array('class' => 'form-control input-large')); ?>
 		<?php echo $form->error($model,'title'); ?>
 	</div>
 

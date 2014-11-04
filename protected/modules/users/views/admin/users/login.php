@@ -8,7 +8,7 @@
 <h1>Вход</h1>
 
 <div class="form">
-<?php $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
+<?php $form = $this->beginWidget('CActiveForm', array(
 	'id'                     => 'login-form',
 	'enableClientValidation' => true,
 	'clientOptions'          => array(
@@ -18,13 +18,13 @@
 
 	<p class="note">Поля, отмеченные <span class="required">*</span>, обязательны для заполнения.</p>
 
-	<div class="input-field">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'username'); ?>
 		<?php echo $form->textField($model,'username'); ?>
 		<?php echo $form->error($model,'username'); ?>
 	</div>
 
-	<div class="input-field">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'password'); ?>
 		<?php echo $form->passwordField($model,'password'); ?>
 		<?php echo $form->error($model,'password'); ?>

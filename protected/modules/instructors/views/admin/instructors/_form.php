@@ -6,7 +6,7 @@
 
 <div class="form">
 
-<?php $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
+<?php $form = $this->beginWidget('CActiveForm', array(
 	'id'                   => 'instructor-form',
 	'enableAjaxValidation' => true,
 	'htmlOptions'         => array(
@@ -21,17 +21,17 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<div class="input-field">
+	<div class="form-group">
 		<?php echo $form->labelEx($model, 'fio'); ?>
-		<?php echo $form->textField($model, 'fio', array('class' => 'input-large')); ?>
+		<?php echo $form->textField($model, 'fio', array('class' => 'form-control input-large')); ?>
 		<?php echo $form->error($model, 'fio'); ?>
 	</div>
 
-	<div class="input-field">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'annotation'); ?>
 		<?php echo $form->textArea($model, 'annotation',
 			array(
-				'class' => 'input-large',
+				'class' => 'form-control input-large',
 			)
 		); ?>
 		<p class="help-block">Короткий текст.</p>
@@ -39,18 +39,18 @@
 	</div>
 
 	<?php if (!empty($model->image)) : ?>
-	<div class="input-field">
+	<div class="form-group">
 		<img width=100 src="uploads/<?=$model->image?>" alt="">
 	</div>
 	<?php endif; ?>
 
-	<div class="input-field">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'image'); ?>
-		<?php echo $form->fileField($model,'image', array('class' => 'input-large')); ?>
+		<?php echo $form->fileField($model,'image', array('class' => 'form-control input-large')); ?>
 		<?php echo $form->error($model,'image'); ?>
 	</div>
 
-	<div class="input-field">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'body'); ?>
 		<?php echo $form->textArea(
 			$model,
@@ -64,20 +64,20 @@
 		<?php echo $form->error($model,'body'); ?>
 	</div>
 
-	<div class="input-field">
+	<div class="form-group">
 		<?php echo $form->labelEx($model, 'clubs'); ?>
 		<?php echo $form->listBox($model, 'clubs', CHtml::listData( $clubs, 'id', 'title' ), array('class' => 'chosen-select', 'multiple' => 'multiple', 'data-placeholder' => 'Выберите клубы')); ?>
 		<?php echo $form->error($model,'clubs'); ?>
 	</div>
 
-	<div class="input-field">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'tags'); ?>
-		<?php echo $form->textField($model,'tags', array('class' => 'input-large')); ?>
+		<?php echo $form->textField($model,'tags', array('class' => 'form-control input-large')); ?>
 		<p class="help-block">Через запятую</p>
 		<?php echo $form->error($model,'tags'); ?>
 	</div>
 
-	<div class="input-field">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'meta_index'); ?>
 		<?php echo $form->dropDownList($model,'meta_index',
 			array(0 => 'Нет', 1 => 'Да'),
@@ -86,21 +86,21 @@
 		<?php echo $form->error($model,'meta_index'); ?>
 	</div>
 
-	<div class="input-field">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'meta_title'); ?>
-		<?php echo $form->textField($model,'meta_title', array('class' => 'input-large')); ?>
+		<?php echo $form->textField($model,'meta_title', array('class' => 'form-control input-large')); ?>
 		<?php echo $form->error($model,'meta_title'); ?>
 	</div>
 
-	<div class="input-field">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'meta_keywords'); ?>
-		<?php echo $form->textArea($model,'meta_keywords', array('class' => 'input-large')); ?>
+		<?php echo $form->textArea($model,'meta_keywords', array('class' => 'form-control input-large')); ?>
 		<?php echo $form->error($model,'meta_keywords'); ?>
 	</div>
 
-	<div class="input-field">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'meta_description'); ?>
-		<?php echo $form->textArea($model,'meta_description', array('class' => 'input-large')); ?>
+		<?php echo $form->textArea($model,'meta_description', array('class' => 'form-control input-large')); ?>
 		<?php echo $form->error($model,'meta_description'); ?>
 	</div>
 

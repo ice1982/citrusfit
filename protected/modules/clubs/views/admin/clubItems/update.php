@@ -38,7 +38,7 @@ $this->menu = array(
 
 <h1>Редактировать клуб "<?php echo $model->title; ?>"</h1>
 
-<?php $this->widget('bootstrap.widgets.TbAlert', array(
+<?php $this->widget('Alert', array(
     'block'     => true,
     'fade'      => true,
     'closeText' => '&times;',

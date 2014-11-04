@@ -6,7 +6,7 @@
 
 <div class="form">
 
-<?php $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
+<?php $form = $this->beginWidget('CActiveForm', array(
 	'id'                   => 'hall-form',
 	'enableAjaxValidation' => true,
 	'clientOptions'        => array(
@@ -18,7 +18,7 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<div class="input-field">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'club_id'); ?>
 		<?php
 			echo $form->dropDownList($model,'club_id',
@@ -30,9 +30,9 @@
 	</div>
 
 
-	<div class="input-field">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'title'); ?>
-		<?php echo $form->textField($model,'title', array('class' => 'input-large')); ?>
+		<?php echo $form->textField($model,'title', array('class' => 'form-control input-large')); ?>
 		<?php echo $form->error($model,'title'); ?>
 	</div>
 

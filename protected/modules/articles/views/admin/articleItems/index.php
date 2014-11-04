@@ -33,7 +33,7 @@ $('.search-form form').submit(function(){
 
 <h1>Публикации сайта</h1>
 
-<?php $this->widget('bootstrap.widgets.TbAlert', array(
+<?php $this->widget('Alert', array(
     'block'     => true,
     'fade'      => true,
     'closeText' => '&times;',
