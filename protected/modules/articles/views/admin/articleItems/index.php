@@ -46,12 +46,11 @@ $('.search-form form').submit(function(){
 )); ?>
 </div><!-- search-form -->
 
-<?php $this->widget('bootstrap.widgets.TbGridView', array(
+<?php $this->widget('zii.widgets.grid.CGridView', array(
     'id'                    => 'article-grid',
     'dataProvider'          => $model->search(),
     'selectableRows'        => 0,
     'rowCssClassExpression' => '($data->active == 1) ? "row-on" : "row-off"',
-    'type'                  => 'striped',
     'columns'               => array(
         array(
             'class'               => 'DataColumn',
@@ -81,7 +80,7 @@ $('.search-form form').submit(function(){
             'value' => '$data->type->title',
         ),
         array(
-            'class'              => 'bootstrap.widgets.TbButtonColumn',
+            'class'              => 'CButtonColumn',
             'template'           => '{delete}',
             'deleteConfirmation' => "js:'Вы действительно хотите удалить публикацию ' + $(this).parents('tr').children('.article-title').text() + '?'",
             'buttons'            => array(

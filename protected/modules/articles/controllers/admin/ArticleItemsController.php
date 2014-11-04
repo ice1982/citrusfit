@@ -1,6 +1,6 @@
 <?php
 
-class ArticlesItemsController extends BackEndController
+class ArticleItemsController extends BackEndController
 {
 	/**
 	 * Creates a new model.
@@ -8,12 +8,12 @@ class ArticlesItemsController extends BackEndController
 	 */
 	public function actionCreate()
 	{
-		$model = new Article;
+		$model = new ArticleItem;
 
 		$this->performAjaxValidation($model);
 
-		if (isset($_POST['Article'])) {
-			$model->attributes = $_POST['Article'];
+		if (isset($_POST['ArticleItem'])) {
+			$model->attributes = $_POST['ArticleItem'];
 			if ($model->save()) {
 				$this->setSuccess('Статья создана!');
 				$this->redirect(array('index'));
@@ -78,10 +78,10 @@ class ArticlesItemsController extends BackEndController
 	 */
 	public function actionIndex()
 	{
-		$model = new Article('search');
+		$model = new ArticleItem('search');
 		$model->unsetAttributes();  // clear any default values
-		if (isset($_GET['Article'])) {
-			$model->attributes = $_GET['Article'];
+		if (isset($_GET['ArticleItem'])) {
+			$model->attributes = $_GET['ArticleItem'];
 		}
 
 		$this->render('index', array(
@@ -114,7 +114,7 @@ class ArticlesItemsController extends BackEndController
 	 */
 	public function loadModel($id)
 	{
-		$model = Article::model()->of_club()->findByPk($id);
+		$model = ArticleItem::model()->of_club()->findByPk($id);
 		if ($model === null) {
 			throw new CHttpException(404, 'Запрашиваемая публикация не найдена.');
 		}

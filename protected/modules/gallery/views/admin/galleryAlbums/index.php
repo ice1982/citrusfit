@@ -16,7 +16,7 @@ $this->menu=array(
 
 <h1>Manage Gallery Albums</h1>
 
-<?php $this->widget('bootstrap.widgets.TbGridView', array(
+<?php $this->widget('zii.widgets.grid.CGridView', array(
     'id'                    => 'gallery-album-grid',
     'dataProvider'          => $model->search(),
     'selectableRows'        => 0,
@@ -29,7 +29,7 @@ $this->menu=array(
             'value'       => 'CHtml::link(CHtml::encode($data->title), array("update", "id" => $data->id))'
         ),
         array(
-            'class'              => 'bootstrap.widgets.TbButtonColumn',
+            'class'              => 'CButtonColumn',
             'template'           => '{delete}',
             'deleteConfirmation' => "js:'Вы действительно хотите удалить альбом ' + $(this).parents('tr').children('.gallery-album-title').text() + '?'",
             'buttons'            => array(

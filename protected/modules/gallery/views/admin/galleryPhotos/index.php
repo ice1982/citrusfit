@@ -30,7 +30,7 @@ $this->menu = array(
     'closeText' => '&times;',
 )); ?>
 
-<?php $this->widget('bootstrap.widgets.TbGridView', array(
+<?php $this->widget('zii.widgets.grid.CGridView', array(
     'id'             => 'gallery-photo-grid',
     'dataProvider'   => $model->search(),
     'selectableRows' => 0,
@@ -53,7 +53,7 @@ $this->menu = array(
             'value' => '$data->galleryAlbum->title',
         ),
         array(
-            'class'              => 'bootstrap.widgets.TbButtonColumn',
+            'class'              => 'CButtonColumn',
             'template'           => '{delete}',
             'deleteConfirmation' => "js:'Вы действительно хотите удалить это фото?'",
             'buttons'            => array(

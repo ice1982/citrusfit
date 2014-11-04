@@ -32,7 +32,7 @@ $this->menu = array(
     'closeText' => '&times;',
 )); ?>
 
-<?php $this->widget('bootstrap.widgets.TbGridView', array(
+<?php $this->widget('zii.widgets.grid.CGridView', array(
     'id'             => 'catalog-grid',
     'dataProvider'   => $model->search(),
     'selectableRows' => 0,
@@ -56,7 +56,7 @@ $this->menu = array(
         ),
         'price',
         array(
-            'class'              => 'bootstrap.widgets.TbButtonColumn',
+            'class'              => 'CButtonColumn',
             'template'           => '{delete}',
             'deleteConfirmation' => "js:'Вы действительно хотите удалить карту ' + $(this).parents('tr').children('.article-title').text() + '?'",
             'buttons'            => array(

@@ -27,7 +27,7 @@ $this->menu = array(
     'closeText' => '&times;',
 )); ?>
 
-<?php $this->widget('bootstrap.widgets.TbGridView', array(
+<?php $this->widget('zii.widgets.grid.CGridView', array(
     'id'               => 'club-grid',
     'dataProvider'     => $model->search(),
     'selectableRows'   => 0,
@@ -51,7 +51,7 @@ $this->menu = array(
             'value'       => 'CHtml::link(CHtml::encode($data->title), array("update", "id" => $data->id))'
         ),
         array(
-            'class'              => 'bootstrap.widgets.TbButtonColumn',
+            'class'              => 'CButtonColumn',
             'template'           => '{delete}',
             'deleteConfirmation' => "js:'Вы действительно хотите удалить клуб ' + $(this).parents('tr').children('.club-title').text() + '?'",
             'buttons'            => array(

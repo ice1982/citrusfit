@@ -25,9 +25,9 @@
 	</div>
 
 	<div class="form-group">
-		<?php echo $form->labelEx($model,'slug'); ?>
-		<?php echo $form->textField($model,'slug', array('class' => 'form-control input-large')); ?>
-		<?php echo $form->error($model,'slug'); ?>
+		<?php echo $form->labelEx($model,'alias'); ?>
+		<?php echo $form->textField($model,'alias', array('class' => 'form-control input-large')); ?>
+		<?php echo $form->error($model,'alias'); ?>
 	</div>
 
 	<div class="buttons">

@@ -27,7 +27,7 @@ $this->menu = array(
     'closeText' => '&times;',
 )); ?>
 
-<?php $this->widget('bootstrap.widgets.TbGridView', array(
+<?php $this->widget('zii.widgets.grid.CGridView', array(
     'id'               => 'type-of-article-grid',
     'dataProvider'     => $model->search(),
     'selectableRows'   => 0,
@@ -51,6 +51,6 @@ $this->menu = array(
             'type'  => 'html',
             'value' => 'CHtml::link(CHtml::encode($data->title), array("update", "id" => $data->id))',
         ),
-        'slug',
+        'alias',
     ),
 )); ?>

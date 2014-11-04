@@ -16,7 +16,7 @@ $this->menu=array(
 
 <h1>Manage Instructors</h1>
 
-<?php $this->widget('bootstrap.widgets.TbGridView', array(
+<?php $this->widget('zii.widgets.grid.CGridView', array(
     'id'                    => 'instructor-grid',
     'dataProvider'          => $model->search(),
     'selectableRows'        => 0,
@@ -30,7 +30,7 @@ $this->menu=array(
             'value'       => 'CHtml::link(CHtml::encode($data->fio), array("update", "id" => $data->id))'
         ),
         array(
-            'class'              => 'bootstrap.widgets.TbButtonColumn',
+            'class'              => 'CButtonColumn',
             'template'           => '{delete}',
             'deleteConfirmation' => "js:'Вы действительно хотите удалить инструктора ' + $(this).parents('tr').children('.instructor-fio').text() + '?'",
             'buttons'            => array(

@@ -25,8 +25,8 @@
 		<?php echo $form->labelEx($model,'club_id'); ?>
 		<?php
 			echo $form->dropDownList($model, 'club_id',
-				CHelper::getList(new Club),
-				array('empty' => 'Для всех клубов')
+				CHtml::listData(ClubHall::model()->findAll(array('order' => 'title')),'id','title'),
+				array('empty' => 'Для всех клубов', 'class' => 'form-control input-large')
 			);
 		?>
 		<?php echo $form->error($model,'club_id'); ?>
@@ -36,8 +36,8 @@
 		<?php echo $form->labelEx($model,'type_id'); ?>
 		<?php
 			echo $form->dropDownList($model,'type_id',
-				CHelper::getList(new TypeOfArticle),
-				array('empty' => 'Выберите тип публикации')
+                CHtml::listData(ArticleType::model()->active()->findAll(array('order' => 'title')),'id','title'),
+				array('empty' => 'Выберите тип публикации', 'class' => 'form-control input-large')
 			);
 		?>
 		<?php echo $form->error($model,'type_id'); ?>
@@ -47,17 +47,6 @@
 		<?php echo $form->labelEx($model,'title'); ?>
 		<?php echo $form->textField($model,'title', array('class' => 'form-control input-large')); ?>
 		<?php echo $form->error($model,'title'); ?>
-	</div>
-
-	<div class="form-group">
-		<?php echo $form->labelEx($model,'slug'); ?>
-		<?php echo $form->textField($model,'slug',
-			array(
-				'class' => 'form-control input-large',
-			)
-		); ?>
-		<p class="help-block">Латинское название, которое будет отображаться в строке браузера.</p>
-		<?php echo $form->error($model,'slug'); ?>
 	</div>
 
 	<div class="form-group">

@@ -25,7 +25,7 @@
 		<?php echo $form->labelEx($model,'club_id'); ?>
 		<?php
 			echo $form->dropDownList($model, 'club_id',
-				CHelper::getList(new Club),
+				CHtml::listData(ClubHall::model()->findAllByAttributes(array('club_id' => $club->id), array('order' => 'title')),'id','title'),
 				array('empty' => 'Для всех клубов')
 			);
 		?>

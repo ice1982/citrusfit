@@ -32,7 +32,7 @@ $this->menu = array(
     'closeText' => '&times;',
 )); ?>
 
-<?php $this->widget('bootstrap.widgets.TbGridView', array(
+<?php $this->widget('zii.widgets.grid.CGridView', array(
     'id'               => 'page-grid',
     'dataProvider'     => $model->search(),
     // 'dataProvider'     => new CArrayDataProvider($model, array()),
@@ -61,14 +61,14 @@ $this->menu = array(
             'type'        => 'html',
             'value'       => 'isset($data->club->title) ? $data->club->title : "Все"',
         ),
-        'slug',
+        'alias',
         array(
             'name'        => 'parent_id',
             'type'        => 'html',
             'value'       => 'empty($data->parent_id) ? "" : "$data->parent_id->title"',
         ),
         array(
-            'class'              => 'bootstrap.widgets.TbButtonColumn',
+            'class'              => 'CButtonColumn',
             'template'           => '{delete}',
             'deleteConfirmation' => "js:'Вы действительно хотите удалить станицу ' + $(this).parents('tr').children('.page-title').text() + '?'",
             'buttons'            => array(
