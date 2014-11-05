@@ -1,15 +1,19 @@
 <?php
-/* @var $this InstructorController */
-/* @var $model Instructor */
 
-$this->breadcrumbs=array(
-    'Instructors'=>array('index'),
+$this->breadcrumbs = array(
+    'Instructors' => array('index'),
     'Manage',
 );
 
-$this->menu=array(
-    array('label'=>'List Instructor', 'url'=>array('index')),
-    array('label'=>'Create Instructor', 'url'=>array('create')),
+$this->menu = array(
+    array(
+        'label' => 'List Instructor',
+        'url' => array('index'),
+    ),
+    array(
+        'label' => 'Create Instructor',
+        'url'=>array('create'),
+    ),
 );
 
 ?>
@@ -17,27 +21,27 @@ $this->menu=array(
 <h1>Manage Instructors</h1>
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
-    'id'                    => 'instructor-grid',
-    'dataProvider'          => $model->search(),
-    'selectableRows'        => 0,
-    // 'rowCssClassExpression' => '($data->active == 1) ? "row-on" : "row-off"',
-    'type'                  => 'striped',
-    'columns'               => array(
+    'id' => 'instructor-grid',
+    'dataProvider' => $model->search(),
+    'selectableRows' => 0,
+    'rowCssClassExpression' => '($data->active == 1) ? "row-on" : "row-off"',
+    'itemsCssClass' => 'table table-striped',
+    'columns' => array(
         array(
-            'name'        => 'fio',
+            'name' => 'fio',
             'htmlOptions' => array('class' => 'instructor-fio'),
-            'type'        => 'html',
-            'value'       => 'CHtml::link(CHtml::encode($data->fio), array("update", "id" => $data->id))'
+            'type' => 'html',
+            'value' => 'CHtml::link(CHtml::encode($data->fio), array("update", "id" => $data->id))'
         ),
         array(
-            'class'              => 'CButtonColumn',
-            'template'           => '{delete}',
+            'class' => 'CButtonColumn',
+            'template' => '{delete}',
             'deleteConfirmation' => "js:'Вы действительно хотите удалить инструктора ' + $(this).parents('tr').children('.instructor-fio').text() + '?'",
-            'buttons'            => array(
+            'buttons' => array(
                 'delete' => array(
                     'label' => 'Удалить',
-                    'icon'  => 'remove',
-                    'url'   => 'Yii::app()->createUrl("instructor/delete", array("id" => $data->id))',
+                    'icon' => 'remove',
+                    'url' => 'Yii::app()->createUrl("instructor/delete", array("id" => $data->id))',
                 ),
             ),
         ),

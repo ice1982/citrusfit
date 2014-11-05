@@ -11,7 +11,7 @@ class CatalogGroupsController extends BackEndController
 		$model = new CatalogGroup;
 
 		// Uncomment the following line if AJAX validation is needed
-		$this->performAjaxValidation($model);
+		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['CatalogGroup'])) {
 			$model->attributes = $_POST['CatalogGroup'];
@@ -38,7 +38,7 @@ class CatalogGroupsController extends BackEndController
 		$model = $this->loadModel($id);
 
 		// Uncomment the following line if AJAX validation is needed
-		$this->performAjaxValidation($model);
+		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['CatalogGroup'])) {
 			$model->attributes = $_POST['CatalogGroup'];

@@ -6,9 +6,9 @@ class IpBehavior extends CActiveRecordBehavior
         $ip = Yii::app()->request->getUserHostAddress() . ' ' . Yii::app()->request->getUserAgent();
 
         if ($this->owner->isNewRecord) {
-            $this->owner->created_id = $this->owner->modified_id = $ip;
+            $this->owner->created_ip = $this->owner->modified_ip = $ip;
         } else {
-            $this->owner->modified_id = $ip;
+            $this->owner->modified_ip = $ip;
         }
     }
 }

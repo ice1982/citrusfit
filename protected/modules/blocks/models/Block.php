@@ -25,6 +25,23 @@ class Block extends BaseActiveRecord
         return parent::model($className);
     }
 
+    public function behaviors(){
+        return array(
+            'DatetimeBehavior' => array(
+                'class' => 'DatetimeBehavior',
+            ),
+            'IpBehavior' => array(
+                'class' => 'IpBehavior',
+            ),
+            // 'UserBehavior' => array(
+            //     'class' => 'UserBehavior',
+            // ),
+            // 'UsernameBehavior' => array(
+            //     'class' => 'UsernameBehavior',
+            // ),
+        );
+    }
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -42,7 +59,7 @@ class Block extends BaseActiveRecord
 		// will receive user inputs.
 		return array(
 			array(
-				'alias, title, created_username, modified_username',
+				'alias, title',
 				'required',
 			),
 			array(
@@ -61,7 +78,7 @@ class Block extends BaseActiveRecord
 				'max' => 300,
 			),
 			array(
-				'body, created_date, modified_date',
+				'title, alias, body',
 				'safe',
 			),
 			// The following rule is used by search().

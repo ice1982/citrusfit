@@ -1,15 +1,9 @@
-<?php
-/* @var $this BlockController */
-/* @var $model Block */
-/* @var $form CActiveForm */
-?>
-
 <div class="form">
 
 <?php $form = $this->beginWidget('CActiveForm', array(
-	'id'                   => 'block-form',
-	'enableAjaxValidation' => true,
-	'clientOptions'        => array(
+	'id' => 'block-form',
+	'enableAjaxValidation' => false,
+	'clientOptions' => array(
     	'validateOnSubmit' => true,
     ),
 )); ?>
@@ -36,8 +30,8 @@
 			$model,
 			'body',
 			array(
-				'rows'  => 6,
-				'cols'  => 50,
+				'rows' => 6,
+				'cols' => 50,
 				'class' => 'tinymce',
 			)
 		); ?>

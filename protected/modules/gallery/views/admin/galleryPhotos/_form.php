@@ -1,23 +1,17 @@
-<?php
-/* @var $this GalleryPhotoController */
-/* @var $model GalleryPhoto */
-/* @var $form CActiveForm */
-?>
-
 <div class="form">
 
 <?php $form = $this->beginWidget('CActiveForm', array(
-	'id'                   => 'gallery-photo-form',
-	'enableAjaxValidation' => true,
-	'htmlOptions'         => array(
+	'id' => 'gallery-photo-form',
+	'enableAjaxValidation' => false,
+	'htmlOptions'=> array(
 		'enctype' => 'multipart/form-data',
 	),
-	'clientOptions'        => array(
+	'clientOptions'=> array(
     	'validateOnSubmit' => true,
     ),
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<p class="note">Поля, отмеченные <span class="required">*</span>, обязательны для заполнения.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
@@ -25,8 +19,8 @@
 		<?php echo $form->labelEx($model,'album_id'); ?>
 		<?php
 			echo $form->dropDownList($model, 'album_id',
-				CHelper::getList(new GalleryAlbum),
-				array('empty' => 'Выберите альбом')
+				CHtml::listData(GalleryAlbum::model()->findAll(array('order' => 'title')), 'id','title'),
+				array('empty' => 'Выберите клуб', 'class' => 'form-control input-large')
 			);
 		?>
 		<?php echo $form->error($model,'album_id'); ?>
@@ -40,7 +34,7 @@
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'image'); ?>
-		<?php echo $form->fileField($model,'image'); ?>
+		<?php echo $form->fileField($model,'image', array('class' => 'form-control input-xlarge')); ?>
 		<?php echo $form->error($model,'image'); ?>
 	</div>
 

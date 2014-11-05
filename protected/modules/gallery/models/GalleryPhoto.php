@@ -33,6 +33,35 @@ class GalleryPhoto extends BaseActiveRecord
         return parent::model($className);
     }
 
+    public function behaviors(){
+        return array(
+            'ImageBehavior' => array(
+                'class' => 'ImageBehavior',
+                // 'image_path' => ,
+                // 'image_field' => ,
+                'original_resize' => true,
+                'original_resize_width' => 950,
+                'original_resize_height' => false,
+                'thumb' => true,
+                'thumb_width' => 300,
+                'thumb_height' => 225,
+                'original_image_filename' => 'photo_' . time(),
+            ),
+            'DatetimeBehavior' => array(
+                'class' => 'DatetimeBehavior',
+            ),
+            'IpBehavior' => array(
+                'class' => 'IpBehavior',
+            ),
+            // 'UserBehavior' => array(
+            //     'class' => 'UserBehavior',
+            // ),
+            // 'UsernameBehavior' => array(
+            //     'class' => 'UsernameBehavior',
+            // ),
+        );
+    }
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -50,7 +79,7 @@ class GalleryPhoto extends BaseActiveRecord
 		// will receive user inputs.
 		return array(
 			array(
-				'album_id, image, created_username, modified_username',
+				'album_id',
 				'required',
 			),
 			array(
@@ -74,7 +103,23 @@ class GalleryPhoto extends BaseActiveRecord
 				'max' => 1024,
 			),
 			array(
-				'created_date, modified_date',
+                'image',
+                'file',
+                'types' => 'jpg, gif, png',
+                'maxSize' => 1048576 * 5,
+                'allowEmpty' => false,
+                'on' => 'insert',
+            ),
+            array(
+                'image',
+                'file',
+                'types' => 'jpg, gif, png',
+                'maxSize' => 1048576 * 5,
+                'allowEmpty' => true,
+                'on' => 'update',
+            ),
+			array(
+				'album_id, image_attr_title, image_attr_alt, title, description, tags',
 				'safe',
 			),
 			// The following rule is used by search().
@@ -95,7 +140,7 @@ class GalleryPhoto extends BaseActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'album' => array(self::BELONGS_TO, 'GalleryAlbums', 'album_id'),
+			'album' => array(self::BELONGS_TO, 'GalleryAlbum', 'album_id'),
 		);
 	}
 
@@ -190,5 +235,15 @@ class GalleryPhoto extends BaseActiveRecord
         return $items_model;
     }
 
+    public function saveOrder($items)
+    {
+        if (count($items)) {
+            foreach ($items as $order => $item) {
+                if ($item['item_id'] != '') {
+                    $result = $this->updateByPk($item['item_id'], array('nn' => $order));
+                }
+            }
+        }
+    }
 
 }

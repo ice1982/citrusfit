@@ -27,6 +27,23 @@ class GalleryAlbum extends BaseActiveRecord
         return parent::model($className);
     }
 
+    public function behaviors(){
+        return array(
+            'DatetimeBehavior' => array(
+                'class' => 'DatetimeBehavior',
+            ),
+            'IpBehavior' => array(
+                'class' => 'IpBehavior',
+            ),
+            // 'UserBehavior' => array(
+            //     'class' => 'UserBehavior',
+            // ),
+            // 'UsernameBehavior' => array(
+            //     'class' => 'UsernameBehavior',
+            // ),
+        );
+    }
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -44,7 +61,7 @@ class GalleryAlbum extends BaseActiveRecord
 		// will receive user inputs.
 		return array(
 			array(
-				'title, created_username, modified_username',
+				'title',
 				'required',
 			),
 			array(
@@ -63,7 +80,7 @@ class GalleryAlbum extends BaseActiveRecord
 				'max' => 200,
 			),
 			array(
-				'created_date, modified_date',
+				'title, description',
 				'safe',
 			),
 			// The following rule is used by search().
@@ -84,7 +101,7 @@ class GalleryAlbum extends BaseActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'galleryPhotoses' => array(self::HAS_MANY, 'GalleryPhotos', 'album_id'),
+			'galleryPhotos' => array(self::HAS_MANY, 'GalleryPhoto', 'album_id'),
 		);
 	}
 

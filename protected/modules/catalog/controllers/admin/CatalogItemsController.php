@@ -8,15 +8,12 @@ class CatalogItemsController extends BackEndController
 	 */
 	public function actionCreate()
 	{
-		$model = new Catalog;
+		$model = new CatalogItem;
 
-		$related = Catalog::model()->active()->order()->findAll();
+		// $this->performAjaxValidation($model);
 
-		// Uncomment the following line if AJAX validation is needed
-		$this->performAjaxValidation($model);
-
-		if(isset($_POST['Catalog'])) {
-			$model->attributes = $_POST['Catalog'];
+		if (isset($_POST['CatalogItem'])) {
+			$model->attributes = $_POST['CatalogItem'];
 			if ($model->save()) {
 				$this->setSuccess('Карта создана!');
 				$this->redirect(array('index'));
@@ -26,8 +23,7 @@ class CatalogItemsController extends BackEndController
 		}
 
 		$this->render('create', array(
-			'model'   => $model,
-			'related' => $related,
+			'model' => $model,
 		));
 	}
 
@@ -38,16 +34,13 @@ class CatalogItemsController extends BackEndController
 	 */
 	public function actionUpdate($id)
 	{
-		$related = Catalog::model()->active()->order()->findAll();
-
 		$model = $this->loadModel($id);
-		$model->related = explode(',', $model->related);
 
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($model);
 
-		if(isset($_POST['Catalog'])) {
-			$model->attributes = $_POST['Catalog'];
+		if (isset($_POST['CatalogItem'])) {
+			$model->attributes = $_POST['CatalogItem'];
 			if ($model->save()) {
 				$this->setSuccess('Изменения сохранены!');
 				$this->redirect(array('index'));
@@ -57,8 +50,7 @@ class CatalogItemsController extends BackEndController
 		}
 
 		$this->render('update', array(
-			'model'   => $model,
-			'related' => $related,
+			'model' => $model,
 		));
 	}
 
@@ -83,10 +75,10 @@ class CatalogItemsController extends BackEndController
 	 */
 	public function actionIndex()
 	{
-		$model = new Catalog('search');
+		$model = new CatalogItem('search');
 		$model->unsetAttributes();  // clear any default values
-		if (isset($_GET['Catalog'])) {
-			$model->attributes = $_GET['Catalog'];
+		if (isset($_GET['CatalogItem'])) {
+			$model->attributes = $_GET['CatalogItem'];
 		}
 
 		$this->render('index', array(
@@ -98,12 +90,12 @@ class CatalogItemsController extends BackEndController
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Catalog the loaded model
+	 * @return CatalogItem the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model = Catalog::model()->findByPk($id);
+		$model = CatalogItem::model()->findByPk($id);
 		if ($model===null) {
 			throw new CHttpException(404, 'Запрашиваемый товар не найден.');
 		}
@@ -112,7 +104,7 @@ class CatalogItemsController extends BackEndController
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Catalog $model the model to be validated
+	 * @param CatalogItem $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
@@ -131,10 +123,10 @@ class CatalogItemsController extends BackEndController
 	{
 		// Save order from ajax call
 		if (isset($_POST['sortable'])) {
-			Catalog::model()->saveOrder($_POST['sortable']);
+			CatalogItem::model()->saveOrder($_POST['sortable']);
 		}
 
-		$items = Catalog::model()->active()->findAll(array('order' => '`order` ASC'));
+		$items = CatalogItem::model()->findAll(array('order' => '`nn` ASC'));
 
 		// Load view
 		$this->renderPartial('order_ajax', array('items' => $items));

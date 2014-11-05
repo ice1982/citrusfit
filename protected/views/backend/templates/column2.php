@@ -3,6 +3,13 @@
 <div class="row-fluid">
     <div class="span9">
         <div id="content">
+
+        <?php $this->widget('Alert', array(
+            'block' => true,
+            'fade' => true,
+            'closeText' => '&times;',
+        )); ?>
+
             <?php echo $content; ?>
         </div><!-- content -->
     </div>

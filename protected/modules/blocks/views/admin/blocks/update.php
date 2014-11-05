@@ -1,6 +1,4 @@
 <?php
-/* @var $this BlockController */
-/* @var $model Block */
 
 $this->pageTitle = Yii::app()->name . ' - ' . 'Редактировать блок "' . $model->title . '"';
 
@@ -30,11 +28,5 @@ $this->menu = array(
 ?>
 
 <h1>Редактировать блок "<?php echo $model->title; ?>"</h1>
-
-<?php $this->widget('Alert', array(
-    'block'     => true,
-    'fade'      => true,
-    'closeText' => '&times;',
-)); ?>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

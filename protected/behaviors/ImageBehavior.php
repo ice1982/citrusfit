@@ -1,53 +1,72 @@
 <?php
 class ImageBehavior extends CActiveRecordBehavior
 {
-    public $imagePath  = '';
-    public $imageField = '';
+    public $image_path = 'uploads';
+    public $image_field = 'image';
 
-    public $crop = true;
+    // Ресайзим ли оригинальное изображение?
+    public $original_resize = false;
+    public $original_resize_width = false;
+    public $original_resize_height = false;
 
-    public $newImageFilename = '';
-    public $newImageThumb    = true;
-    public $newImageResizeWidth    = 910;
-    public $newImageResizeHeight   = 350;
-    public $newImageCropWidth    = 910;
-    public $newImageCropHeight   = 350;
+    // Кропим ли оригинальное изображение?
+    public $original_crop = false;
+    public $original_crop_width = false;
+    public $original_crop_height = false;
 
-    public function getImageUrl(){
-        return $this->_getBaseImagePath() . $this->owner->{$this->imageField};
+    // Создаем ли иконку изображения?
+    public $thumb = false;
+    public $thumb_width = false;
+    public $thumb_height = false;
+
+    public $original_image_filename = '';
+
+    public function getImageUrl()
+    {
+        return $this->_getBaseImagePath() . $this->owner->{$this->image_field};
     }
 
-    public function getImageThumbUrl(){
-        return $this->_getBaseImagePath() . 'small_' . $this->owner->{$this->imageField};
+    public function getImageThumbUrl()
+    {
+        return $this->_getBaseImagePath() . 'thumb_' . $this->owner->{$this->image_field};
     }
 
-    private function _getBaseImagePath(){
-        return Yii::app()->request->baseUrl . '/' . $this->imagePath . '/';
+    private function _getBaseImagePath()
+    {
+        return Yii::app()->request->baseUrl . '/' . $this->image_path . '/';
     }
 
     public function beforeSave($event)
     {
         // $this->owner->image = 'TRUE';
 
-        if ($image_file = CUploadedFile::getInstance($this->owner, $this->imageField)) {
+        if ($image_file = CUploadedFile::getInstance($this->owner, $this->image_field)) {
+            // Получаем расширение файла
             $extension = $image_file->getExtensionName();
 
-            $filename         = $this->newImageFilename . '.' . $extension;
-            $filenameWithPath = $this->imagePath . '/' . $filename;
-            $thumbWithPath    = $this->imagePath . '/thumb_' . $filename;
+            // Определяем пути для нового файла
+            $filename = $this->original_image_filename . '.' . $extension;
+            $filename_with_path = $this->image_path . '/' . $filename;
 
-            if ($image_file->saveAs($filenameWithPath)) {
-                $image = Yii::app()->image->load($filenameWithPath);
-                $image->resize($this->newImageResizeWidth, null);
+            // Сохраняем новый файл
+            if ($image_file->saveAs($filename_with_path)) {
 
-                if ($this->crop == true) {
-                    $image->crop($this->newImageCropWidth, $this->newImageCropHeight);
+                $image = Yii::app()->image->load($filename_with_path);
+
+                if ($this->original_resize) {
+                    $image->resize($this->original_resize_width, $this->original_resize_height);
                 }
 
-                if ($this->newImageThumb === true) {
-                    $image->save($thumbWithPath);
-                } else {
-                    $image->save($filenameWithPath);
+                if ($this->original_crop) {
+                    $image->crop($this->original_crop_width, $this->original_crop_height);
+                }
+
+                $image->save($filename_with_path);
+
+                if ($this->thumb) {
+                    $thumb_with_path = $this->image_path . '/thumb_' . $filename;
+                    $image->resize($this->thumb_width, $this->thumb_height);
+                    $image->save($thumb_with_path);
                 }
                 $this->owner->image = $filename;
             }

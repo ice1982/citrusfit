@@ -12,23 +12,23 @@ $this->breadcrumbs = array(
 $this->menu = array(
     array(
         'label' => 'Список баннеров',
-        'icon'  => 'list',
-        'url'   => array('index')
+        'icon' => 'list',
+        'url' => array('index')
     ),
     array(
         'label' => 'Создать баннер',
-        'icon'  => 'plus',
-        'url'   => array('create')
+        'icon' => 'plus',
+        'url' => array('create')
     ),
     array(
         'label' => ($model->active == 1) ? 'Выключить баннер' : 'Включить баннер',
-        'icon'  => ($model->active == 1) ? 'icon-off' : 'icon-ok',
-        'url'   => ($model->active == 1) ? array('turnOff', 'id' => $model->id) : array('turnOn', 'id' => $model->id)
+        'icon' => ($model->active == 1) ? 'icon-off' : 'icon-ok',
+        'url' => ($model->active == 1) ? array('turnOff', 'id' => $model->id) : array('turnOn', 'id' => $model->id)
     ),
     array(
         'label' => 'Удалить баннер',
-        'icon'  => 'remove',
-        'url'   => array('delete', 'id' => $model->id),
+        'icon' => 'remove',
+        'url' => array('delete', 'id' => $model->id),
         'htmlOptions' => array(
             'confirm' => 'Вы действительно хотите удалить этот баннер (' . $model->title . ')?'
         ),
@@ -38,11 +38,5 @@ $this->menu = array(
 ?>
 
 <h1>Редактировать баннер "<?php echo $model->title; ?>"</h1>
-
-<?php $this->widget('Alert', array(
-    'block'     => true,
-    'fade'      => true,
-    'closeText' => '&times;',
-)); ?>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

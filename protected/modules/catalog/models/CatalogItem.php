@@ -5,7 +5,6 @@
  *
  * The followings are the available columns in table 'catalog_items':
  * @property integer $id
- * @property string $alias
  * @property integer $club_id
  * @property integer $group_id
  * @property string $title
@@ -14,7 +13,6 @@
  * @property string $image_attr_alt
  * @property string $image_attr_title
  * @property string $body
- * @property string $related
  * @property integer $nn
  * @property integer $meta_index
  * @property string $meta_title
@@ -41,6 +39,35 @@ class CatalogItem extends BaseActiveRecord
         return parent::model($className);
     }
 
+    public function behaviors(){
+        return array(
+            'ImageBehavior' => array(
+                'class' => 'ImageBehavior',
+                // 'image_path' => ,
+                // 'image_field' => ,
+                'original_resize' => true,
+                'original_resize_width' => 950,
+                'original_resize_height' => false,
+                'thumb' => true,
+                'thumb_width' => 300,
+                'thumb_height' => 225,
+                'original_image_filename' => 'catalog_' . time(),
+            ),
+            'DatetimeBehavior' => array(
+                'class' => 'DatetimeBehavior',
+            ),
+            'IpBehavior' => array(
+                'class' => 'IpBehavior',
+            ),
+            // 'UserBehavior' => array(
+            //     'class' => 'UserBehavior',
+            // ),
+            // 'UsernameBehavior' => array(
+            //     'class' => 'UsernameBehavior',
+            // ),
+        );
+    }
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -58,7 +85,7 @@ class CatalogItem extends BaseActiveRecord
 		// will receive user inputs.
 		return array(
 			array(
-				'alias, group_id, title, created_username, modified_username',
+				'group_id, title',
 				'required',
 			),
 			array(
@@ -67,12 +94,12 @@ class CatalogItem extends BaseActiveRecord
 				'integerOnly' => true,
 			),
 			array(
-				'alias, created_username',
+				'created_username',
 				'length',
 				'max' => 200,
 			),
 			array(
-				'title, related, meta_title, created_ip, modified_ip, modified_username',
+				'title, meta_title, created_ip, modified_ip, modified_username',
 				'length',
 				'max' => 300,
 			),
@@ -92,13 +119,13 @@ class CatalogItem extends BaseActiveRecord
 				'max' => 500,
 			),
 			array(
-				'body, created_date, modified_date',
+				'club_id, group_id, title, image_attr_alt, image_attr_title, body, meta_index, meta_title, meta_keywords, meta_description',
 				'safe',
 			),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array(
-				'id, alias, club_id, group_id, title, image, image_attr_alt, image_attr_title, body, related, nn, meta_index, meta_title, meta_keywords, meta_description, created_ip, created_date, created_user, created_username, modified_ip, modified_date, modified_user, modified_username, active',
+				'id, club_id, group_id, title, image, image_attr_alt, image_attr_title, body, nn, meta_index, meta_title, meta_keywords, meta_description, created_ip, created_date, created_user, created_username, modified_ip, modified_date, modified_user, modified_username, active',
 				'safe',
 				'on' => 'search'
 			),
@@ -125,7 +152,6 @@ class CatalogItem extends BaseActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'alias' => 'Alias',
 			'club_id' => 'Club',
 			'group_id' => 'Group',
 			'title' => 'Title',
@@ -134,7 +160,6 @@ class CatalogItem extends BaseActiveRecord
 			'image_attr_alt' => 'Image Attr Alt',
 			'image_attr_title' => 'Image Attr Title',
 			'body' => 'Body',
-			'related' => 'Related',
 			'nn' => 'Nn',
 			'meta_index' => 'Meta Index',
 			'meta_title' => 'Meta Title',
@@ -171,7 +196,6 @@ class CatalogItem extends BaseActiveRecord
 		$criteria = new CDbCriteria;
 
 		$criteria->compare('id', $this->id);
-		$criteria->compare('alias', $this->alias, true);
 		$criteria->compare('club_id', $this->club_id);
 		$criteria->compare('group_id', $this->group_id);
 		$criteria->compare('title', $this->title, true);
@@ -179,7 +203,6 @@ class CatalogItem extends BaseActiveRecord
 		$criteria->compare('image_attr_alt', $this->image_attr_alt, true);
 		$criteria->compare('image_attr_title', $this->image_attr_title, true);
 		$criteria->compare('body', $this->body, true);
-		$criteria->compare('related', $this->related, true);
 		$criteria->compare('nn', $this->nn);
 		$criteria->compare('meta_index', $this->meta_index);
 		$criteria->compare('meta_title', $this->meta_title, true);
@@ -222,5 +245,16 @@ class CatalogItem extends BaseActiveRecord
 
 		return $model;
 	}
+
+    public function saveOrder($items)
+    {
+        if (count($items)) {
+            foreach ($items as $order => $item) {
+                if ($item['item_id'] != '') {
+                    $result = $this->updateByPk($item['item_id'], array('nn' => $order));
+                }
+            }
+        }
+    }
 
 }

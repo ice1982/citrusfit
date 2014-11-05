@@ -36,6 +36,23 @@ class ClubItem extends BaseActiveRecord
         return parent::model($className);
     }
 
+    public function behaviors(){
+        return array(
+            'DatetimeBehavior' => array(
+                'class' => 'DatetimeBehavior',
+            ),
+            'IpBehavior' => array(
+                'class' => 'IpBehavior',
+            ),
+            // 'UserBehavior' => array(
+            //     'class' => 'UserBehavior',
+            // ),
+            // 'UsernameBehavior' => array(
+            //     'class' => 'UsernameBehavior',
+            // ),
+        );
+    }
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -53,7 +70,7 @@ class ClubItem extends BaseActiveRecord
 		// will receive user inputs.
 		return array(
 			array(
-				'title, created_username, modified_username',
+				'title',
 				'required',
 			),
 			array(
@@ -82,12 +99,12 @@ class ClubItem extends BaseActiveRecord
 				'max' => 200,
 			),
 			array(
-				'created_date, modified_date',
+				'title, annotation, description, contact_phones, contact_address, contact_info, contact_coordinates',
 				'safe',
 			),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, title, description, contact_phones, contact_address, contact_info, contact_coordinates, created_ip, created_date, created_user, created_username, modified_ip, modified_date, modified_user, modified_username, active',
+			array('id, title, annotation, description, contact_phones, contact_address, contact_info, contact_coordinates, created_ip, created_date, created_user, created_username, modified_ip, modified_date, modified_user, modified_username, active',
 				'safe',
 				'on' => 'search'
 			),

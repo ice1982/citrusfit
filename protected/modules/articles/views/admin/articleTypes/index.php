@@ -1,6 +1,4 @@
 <?php
-/* @var $this TypeOfArticleController */
-/* @var $model TypeOfArticle */
 
 $this->pageTitle = Yii::app()->name . ' - ' . 'Список типов публикаций';
 
@@ -12,20 +10,14 @@ $this->breadcrumbs=array(
 $this->menu = array(
     array(
         'label' => 'Добавить тип публикации',
-        'icon'  => 'plus',
-        'url'   => array('create')
+        'icon' => 'plus',
+        'url' => array('create')
     ),
 );
 
 ?>
 
 <h1>Список типов публикаций</h1>
-
-<?php $this->widget('Alert', array(
-    'block'     => true,
-    'fade'      => true,
-    'closeText' => '&times;',
-)); ?>
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
     'id'               => 'type-of-article-grid',

@@ -1,23 +1,17 @@
-<?php
-/* @var $this InstructorController */
-/* @var $model Instructor */
-/* @var $form CActiveForm */
-?>
-
 <div class="form">
 
 <?php $form = $this->beginWidget('CActiveForm', array(
-	'id'                   => 'instructor-form',
-	'enableAjaxValidation' => true,
-	'htmlOptions'         => array(
+	'id' => 'instructor-form',
+	'enableAjaxValidation' => false,
+	'htmlOptions' => array(
 		'enctype' => 'multipart/form-data',
 	),
-	'clientOptions'        => array(
+	'clientOptions' => array(
     	'validateOnSubmit' => true,
     ),
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<p class="note">Поля, отмеченные <span class="required">*</span>, обязательны для заполнения.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
@@ -56,25 +50,12 @@
 			$model,
 			'body',
 			array(
-				'rows'  => 6,
-				'cols'  => 50,
+				'rows' => 6,
+				'cols' => 50,
 				'class' => 'tinymce',
 			)
 		); ?>
 		<?php echo $form->error($model,'body'); ?>
-	</div>
-
-	<div class="form-group">
-		<?php echo $form->labelEx($model, 'clubs'); ?>
-		<?php echo $form->listBox($model, 'clubs', CHtml::listData( $clubs, 'id', 'title' ), array('class' => 'chosen-select', 'multiple' => 'multiple', 'data-placeholder' => 'Выберите клубы')); ?>
-		<?php echo $form->error($model,'clubs'); ?>
-	</div>
-
-	<div class="form-group">
-		<?php echo $form->labelEx($model,'tags'); ?>
-		<?php echo $form->textField($model,'tags', array('class' => 'form-control input-large')); ?>
-		<p class="help-block">Через запятую</p>
-		<?php echo $form->error($model,'tags'); ?>
 	</div>
 
 	<div class="form-group">

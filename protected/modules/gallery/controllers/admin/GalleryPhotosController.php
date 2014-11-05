@@ -9,7 +9,7 @@ class GalleryPhotosController extends BackEndController
 	public function actionCreate()
 	{
 		$model = new GalleryPhoto;
-		$this->performAjaxValidation($model);
+		// $this->performAjaxValidation($model);
 
 		if (isset($_POST['GalleryPhoto'])) {
 			$model->attributes = $_POST['GalleryPhoto'];
@@ -31,16 +31,11 @@ class GalleryPhotosController extends BackEndController
 	public function actionUpdate($id)
 	{
 		$model = $this->loadModel($id);
-		$image = $model->image;
 
-		$this->performAjaxValidation($model);
+		// $this->performAjaxValidation($model);
 
 		if (isset($_POST['GalleryPhoto'])) {
 			$model->attributes = $_POST['GalleryPhoto'];
-
-			if (empty($model->image)) {
-				$model->image = $image;
-			}
 
 			if ($model->save()) {
 				$this->redirect(array('index'));
@@ -112,7 +107,7 @@ class GalleryPhotosController extends BackEndController
 	{
 		$model = GalleryPhoto::model()->findByPk($id);
 		if ($model === null) {
-			throw new CHttpException(404, 'The requested page does not exist.');
+			throw new CHttpException(404, 'Выбранное фото не найдено.');
 		}
 		return $model;
 	}

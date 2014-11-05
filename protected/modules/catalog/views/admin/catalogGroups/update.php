@@ -12,18 +12,18 @@ $this->breadcrumbs = array(
 $this->menu = array(
     array(
         'label' => 'Список групп',
-        'icon'  => 'list',
-        'url'   => array('index')
+        'icon' => 'list',
+        'url' => array('index')
     ),
     array(
         'label' => 'Создать группу',
-        'icon'  => 'plus',
-        'url'   => array('create')
+        'icon' => 'plus',
+        'url' => array('create')
     ),
     array(
         'label' => 'Удалить группу',
-        'icon'  => 'remove',
-        'url'   => array('delete', 'id' => $model->id),
+        'icon' => 'remove',
+        'url' => array('delete', 'id' => $model->id),
         'htmlOptions' => array(
             'confirm' => 'Вы действительно хотите удалить эту группу (' . $model->title . ')?'
         ),
@@ -33,10 +33,4 @@ $this->menu = array(
 
 <h1>Редактировать группу "<?php echo $model->title; ?>"</h1>
 
-<?php $this->widget('Alert', array(
-    'block'     => true,
-    'fade'      => true,
-    'closeText' => '&times;',
-)); ?>
-
-<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php echo $this->renderPartial('_form', array('model' => $model)); ?>

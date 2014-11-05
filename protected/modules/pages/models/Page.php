@@ -56,7 +56,7 @@ class Page extends BaseActiveRecord
 		// will receive user inputs.
 		return array(
 			array(
-				'title, created_username, modified_username',
+				'title',
 				'required',
 			),
 			array(
@@ -85,7 +85,7 @@ class Page extends BaseActiveRecord
 				'max' => 500,
 			),
 			array(
-				'begin_body, end_body, created_date, modified_date',
+				'module, alias, title, begin_body, end_body, nn, club_id, show_in_menu, show_title, template, meta_index, meta_title, meta_keywords, meta_description',
 				'safe',
 			),
 			// The following rule is used by search().
@@ -106,7 +106,7 @@ class Page extends BaseActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'club' => array(self::BELONGS_TO, 'ClubItems', 'club_id'),
+			'club' => array(self::BELONGS_TO, 'ClubItem', 'club_id'),
 		);
 	}
 

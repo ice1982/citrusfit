@@ -30,6 +30,12 @@ return CMap::mergeArray(
             'clientScript' => array(
                 'coreScriptPosition' => CClientScript::POS_HEAD,
                 'packages' => array(
+                    'jquery' => array(
+                        'baseUrl' => 'js/',
+                        'js' => array(
+                            YII_DEBUG ? 'jquery-1.11.1.js' : 'jquery-1.11.1.min.js'
+                        ),
+                    ),
                     'bootstrap3' => array(
                         'baseUrl' => '',
                         'js' => array(

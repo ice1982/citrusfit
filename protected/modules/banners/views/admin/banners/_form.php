@@ -1,18 +1,12 @@
-<?php
-/* @var $this BannerController */
-/* @var $model Banner */
-/* @var $form CActiveForm */
-?>
-
 <div class="form">
 
 <?php $form = $this->beginWidget('CActiveForm', array(
-	'id'                   => 'banner-form',
-	'enableAjaxValidation' => true,
-	'htmlOptions'         => array(
+	'id' => 'banner-form',
+	'enableAjaxValidation' => false,
+	'htmlOptions' => array(
 		'enctype' => 'multipart/form-data',
 	),
-	'clientOptions'        => array(
+	'clientOptions' => array(
     	'validateOnSubmit' => true,
     ),
 )); ?>
@@ -25,8 +19,8 @@
 		<?php echo $form->labelEx($model,'club_id'); ?>
 		<?php
 			echo $form->dropDownList($model, 'club_id',
-				CHtml::listData(ClubHall::model()->findAllByAttributes(array('club_id' => $club->id), array('order' => 'title')),'id','title'),
-				array('empty' => 'Для всех клубов')
+				CHtml::listData(ClubItem::model()->findAll(array('order' => 'title')),'id','title'),
+				array('empty' => 'Для всех клубов', 'class' => 'form-control input-xlarge')
 			);
 		?>
 		<?php echo $form->error($model,'club_id'); ?>

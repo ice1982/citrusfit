@@ -28,6 +28,24 @@ class ClubHall extends BaseActiveRecord
         return parent::model($className);
     }
 
+    public function behaviors()
+    {
+        return array(
+            'DatetimeBehavior' => array(
+                'class' => 'DatetimeBehavior',
+            ),
+            'IpBehavior' => array(
+                'class' => 'IpBehavior',
+            ),
+            // 'UserBehavior' => array(
+            //     'class' => 'UserBehavior',
+            // ),
+            // 'UsernameBehavior' => array(
+            //     'class' => 'UsernameBehavior',
+            // ),
+        );
+    }
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -45,7 +63,7 @@ class ClubHall extends BaseActiveRecord
 		// will receive user inputs.
 		return array(
 			array(
-				'club_id, title, created_username, modified_username',
+				'club_id, title',
 				'required',
 			),
 			array(
@@ -64,7 +82,7 @@ class ClubHall extends BaseActiveRecord
 				'max' => 200,
 			),
 			array(
-				'created_date, modified_date',
+				'club_id, title',
 				'safe',
 			),
 			// The following rule is used by search().

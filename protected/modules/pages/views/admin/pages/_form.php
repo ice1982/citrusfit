@@ -1,15 +1,9 @@
-<?php
-/* @var $this PageController */
-/* @var $model Page */
-/* @var $form CActiveForm */
-?>
-
 <div class="form">
 
 <?php $form = $this->beginWidget('CActiveForm', array(
-	'id'                   => 'page-form',
-	'enableAjaxValidation' => true,
-	'clientOptions'        => array(
+	'id' => 'page-form',
+	'enableAjaxValidation' => false,
+	'clientOptions' => array(
     	'validateOnSubmit' => true,
     ),
 )); ?>
@@ -28,8 +22,8 @@
 		<?php echo $form->labelEx($model,'club_id'); ?>
 		<?php
 			echo $form->dropDownList($model, 'club_id',
-				CHtml::listData(ClubHall::model()->findAllByAttributes(array('club_id' => $club->id), array('order' => 'title')),'id','title'),
-				array('empty' => 'Для всех клубов')
+				CHtml::listData(ClubItem::model()->findAll(array('order' => 'title')), 'id', 'title'),
+				array('empty' => 'Для всех клубов', 'class' => 'form-control input-large')
 			);
 		?>
 		<?php echo $form->error($model,'club_id'); ?>
@@ -42,31 +36,31 @@
 	</div>
 
 	<div class="form-group">
-		<?php echo $form->labelEx($model,'body'); ?>
+		<?php echo $form->labelEx($model,'begin_body'); ?>
 		<?php echo $form->textArea(
 			$model,
-			'body',
+			'begin_body',
 			array(
-				'rows'  => 6,
-				'cols'  => 50,
+				'rows' => 6,
+				'cols' => 50,
 				'class' => 'tinymce',
 			)
 		); ?>
-		<?php echo $form->error($model,'body'); ?>
+		<?php echo $form->error($model,'begin_body'); ?>
 	</div>
 
 	<div class="form-group">
-		<?php echo $form->labelEx($model,'parent_id'); ?>
-		<?php
-			echo $form->dropDownList($model,'parent_id',
-				CHtml::listData(
-            		Page::model()->of_club()->findAll(array('order' => '`order`')),
-            		'id', 'title'
-        		),
-				array('empty' => 'Выберите страницу')
-			);
-		?>
-		<?php echo $form->error($model,'parent_id'); ?>
+		<?php echo $form->labelEx($model,'end_body'); ?>
+		<?php echo $form->textArea(
+			$model,
+			'end_body',
+			array(
+				'rows' => 6,
+				'cols' => 50,
+				'class' => 'tinymce',
+			)
+		); ?>
+		<?php echo $form->error($model,'end_body'); ?>
 	</div>
 
 	<div class="form-group">
@@ -85,6 +79,12 @@
 			array('class' => 'span2')
 		); ?>
 		<?php echo $form->error($model,'show_title'); ?>
+	</div>
+
+	<div class="form-group">
+		<?php echo $form->labelEx($model,'module'); ?>
+		<?php echo $form->textField($model,'module', array('class' => 'form-control input-medium')); ?>
+		<?php echo $form->error($model,'module'); ?>
 	</div>
 
 	<div class="form-group">

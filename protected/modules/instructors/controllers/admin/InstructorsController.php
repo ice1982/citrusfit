@@ -8,24 +8,19 @@ class InstructorsController extends BackEndController
 	 */
 	public function actionCreate()
 	{
-		$clubs = Club::model()->active()->findAll();
-		$tags = Tag::model()->findAll();
+		$model = new InstructorItem;
 
-		$model = new Instructor;
+		// $this->performAjaxValidation($model);
 
-		$this->performAjaxValidation($model);
-
-		if (isset($_POST['Instructor'])) {
-			$model->attributes = $_POST['Instructor'];
+		if (isset($_POST['InstructorItem'])) {
+			$model->attributes = $_POST['InstructorItem'];
 			if ($model->save()) {
 				$this->redirect(array('index'));
 			}
 		}
 
 		$this->render('create', array(
-			'clubs' => $clubs,
 			'model' => $model,
-			'tags' => $tags,
 		));
 	}
 
@@ -36,28 +31,18 @@ class InstructorsController extends BackEndController
 	 */
 	public function actionUpdate($id)
 	{
-		$clubs = Club::model()->active()->findAll();
-		$tags = Tag::model()->findAll();
-
 		$model = $this->loadModel($id);
-		$image = $model->image;
-		$model->clubs = explode(',', $model->clubs);
 
-		$this->performAjaxValidation($model);
+		// $this->performAjaxValidation($model);
 
-		if (isset($_POST['Instructor'])) {
-			$model->attributes = $_POST['Instructor'];
-			if (empty($model->image)) {
-				$model->image = $image;
-			}
+		if (isset($_POST['InstructorItem'])) {
+			$model->attributes = $_POST['InstructorItem'];
 			if ($model->save()) {
 				$this->redirect(array('index'));
 			}
 		}
 		$this->render('update', array(
-			'clubs' => $clubs,
 			'model' => $model,
-			'tags' => $tags,
 		));
 	}
 
@@ -82,10 +67,10 @@ class InstructorsController extends BackEndController
 	 */
 	public function actionIndex()
 	{
-		$model = new Instructor('search');
+		$model = new InstructorItem('search');
 		$model->unsetAttributes();  // clear any default values
-		if (isset($_GET['Instructor'])) {
-			$model->attributes = $_GET['Instructor'];
+		if (isset($_GET['InstructorItem'])) {
+			$model->attributes = $_GET['InstructorItem'];
 		}
 
 		$this->render('index',array(
@@ -97,21 +82,21 @@ class InstructorsController extends BackEndController
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Instructor the loaded model
+	 * @return InstructorItem the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model = Instructor::model()->findByPk($id);
+		$model = InstructorItem::model()->findByPk($id);
 		if ($model === null) {
-			throw new CHttpException(404, 'The requested page does not exist.');
+			throw new CHttpException(404, 'Выбранный инструктор не найден.');
 		}
 		return $model;
 	}
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Instructor $model the model to be validated
+	 * @param InstructorItem $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{

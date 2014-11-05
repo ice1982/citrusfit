@@ -1,15 +1,19 @@
 <?php
-/* @var $this InstructorController */
-/* @var $model Instructor */
 
-$this->breadcrumbs=array(
-	'Instructors'=>array('index'),
+$this->breadcrumbs = array(
+	'Instructors' => array('index'),
 	'Create',
 );
 
-$this->menu=array(
-	array('label'=>'List Instructor', 'url'=>array('index')),
-	array('label'=>'Manage Instructor', 'url'=>array('admin')),
+$this->menu = array(
+	array(
+        'label' => 'List Instructor',
+        'url'=>array('index'),
+    ),
+	array(
+        'label' => 'Manage Instructor',
+        'url' => array('admin'),
+    ),
 );
 ?>
 
@@ -18,7 +22,5 @@ $this->menu=array(
 <?php $this->renderPartial('_form',
     array(
         'model' => $model,
-        'clubs' => $clubs,
-        'tags' => $tags,
     )
 ); ?>

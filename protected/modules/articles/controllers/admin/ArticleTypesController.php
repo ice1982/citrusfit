@@ -8,12 +8,12 @@ class ArticleTypesController extends BackEndController
 	 */
 	public function actionCreate()
 	{
-		$model = new TypeOfArticle;
+		$model = new ArticleType;
 
-		$this->performAjaxValidation($model);
+		// $this->performAjaxValidation($model);
 
-		if (isset($_POST['TypeOfArticle'])) {
-			$model->attributes = $_POST['TypeOfArticle'];
+		if (isset($_POST['ArticleType'])) {
+			$model->attributes = $_POST['ArticleType'];
 			if ($model->save()) {
 				$this->setSuccess('Тип создан!');
 				$this->redirect(array('index'));
@@ -36,10 +36,10 @@ class ArticleTypesController extends BackEndController
 	{
 		$model = $this->loadModel($id);
 
-		$this->performAjaxValidation($model);
+		// $this->performAjaxValidation($model);
 
-		if (isset($_POST['TypeOfArticle'])) {
-			$model->attributes = $_POST['TypeOfArticle'];
+		if (isset($_POST['ArticleType'])) {
+			$model->attributes = $_POST['ArticleType'];
 			if ($model->save()) {
 				$this->setSuccess('Изменения сохранены!');
 				$this->redirect(array('index'));
@@ -75,10 +75,10 @@ class ArticleTypesController extends BackEndController
 	 */
 	public function actionIndex()
 	{
-		$model = new TypeOfArticle('search');
+		$model = new ArticleType('search');
 		$model->unsetAttributes();  // clear any default values
-		if (isset($_GET['TypeOfArticle'])) {
-			$model->attributes = $_GET['TypeOfArticle'];
+		if (isset($_GET['ArticleType'])) {
+			$model->attributes = $_GET['ArticleType'];
 		}
 
 		$this->render('index', array(
@@ -90,12 +90,12 @@ class ArticleTypesController extends BackEndController
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return TypeOfArticle the loaded model
+	 * @return ArticleType the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model = TypeOfArticle::model()->findByPk($id);
+		$model = ArticleType::model()->findByPk($id);
 		if ($model === null) {
 			throw new CHttpException(404, 'Запрашиваемый тип публикации не найден.');
 		}
@@ -105,11 +105,11 @@ class ArticleTypesController extends BackEndController
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param TypeOfArticle $model the model to be validated
+	 * @param ArticleType $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if (isset($_POST['ajax']) && $_POST['ajax'] === 'type-of-article-form') {
+		if (isset($_POST['ajax']) && $_POST['ajax'] === 'article-type-form') {
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}

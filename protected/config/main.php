@@ -38,17 +38,17 @@ return array(
 
 	// application components
 	'components' => array(
-        'clientScript' => array(
-            'coreScriptPosition' => CClientScript::POS_END,
-            'packages' => array(
-                'jquery' => array(
-                    'baseUrl' => 'js/',
-                    'js' => array(
-                        YII_DEBUG ? 'jquery-1.11.1.js' : 'jquery-1.11.1.min.js'
-                    ),
-                ),
-            ),
-        ),
+        // 'clientScript' => array(
+        //     'coreScriptPosition' => CClientScript::POS_END,
+        //     'packages' => array(
+        //         'jquery' => array(
+        //             'baseUrl' => 'js/',
+        //             'js' => array(
+        //                 YII_DEBUG ? 'jquery-1.11.1.js' : 'jquery-1.11.1.min.js'
+        //             ),
+        //         ),
+        //     ),
+        // ),
 
 		'errorHandler' => array(
 			'errorAction' => 'site/error',

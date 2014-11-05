@@ -1,6 +1,4 @@
 <?php
-/* @var $this BlockController */
-/* @var $model Block */
 
 $this->pageTitle = Yii::app()->name . ' - ' . 'Список блоков';
 
@@ -28,27 +26,26 @@ $this->menu = array(
 )); ?>
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
-    'id'               => 'type-of-article-grid',
-    'dataProvider'     => $model->search(),
-    'selectableRows'   => 0,
-    'type'             => 'striped',
+    'id' => 'blocks-grid',
+    'dataProvider' => $model->search(),
+    'selectableRows' => 0,
     'enablePagination' => false,
-    'summaryText'      => false,
-    // 'filter'        => $model,
-    'columns'          => array(
+    'summaryText' => false,
+    'itemsCssClass' => 'table table-striped',
+    'columns' => array(
         array(
-            'class'               => 'DataColumn',
+            'class' => 'DataColumn',
             'evaluateHtmlOptions' => true,
-            'type'        => 'html',
-            'htmlOptions'         => array(
+            'type' => 'html',
+            'htmlOptions' => array(
                 'class' => '($data->active == 1) ? "td-active" : "td-inactive"',
                 'title' => '($data->active == 1) ? "Выключить" : "Включить"',
             ),
-            'value'       => 'CHtml::link(($data->active == 1) ? "<i class=\'icon-off\'></i>" : "<i class=\'icon-play\'></i>", array(($data->active == 1) ? "turnOff" : "turnOn", "id" => $data->id))',
+            'value' => 'CHtml::link(($data->active == 1) ? "<span class=\'glyphicon glyphicon-off\'></span>" : "<span class=\'glyphicon glyphicon-play\'></span>", array(($data->active == 1) ? "turnOff" : "turnOn", "id" => $data->id))',
         ),
         array(
-            'name'  => 'title',
-            'type'  => 'html',
+            'name' => 'title',
+            'type' => 'html',
             'value' => 'CHtml::link(CHtml::encode($data->title), array("update", "id" => $data->id))',
         ),
         'alias',

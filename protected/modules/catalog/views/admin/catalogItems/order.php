@@ -32,7 +32,7 @@ $this->menu = array(
 
 <script>
 $(function() {
-    $.post( 'admin.php?r=catalog/orderAjax', {}, function( data ) {
+    $.post( '<?=Yii::app()->createUrl("catalog/admin/catalogItems/orderAjax")?>', {}, function( data ) {
         $( '#orderResult' ).html( data );
     });
 
@@ -40,7 +40,7 @@ $(function() {
         oSortable = $('.sortable').nestedSortable('toArray');
 
         $( '#orderResult' ).slideUp( function(){
-            $.post( 'admin.php?r=catalog/orderAjax', { sortable: oSortable }, function( data ) {
+            $.post( '<?=Yii::app()->createUrl("catalog/admin/catalogItems/orderAjax")?>', { sortable: oSortable }, function( data ) {
                 $( '#orderResult' ).html( data );
                 $( '#orderResult' ).slideDown();
             });

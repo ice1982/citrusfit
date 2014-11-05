@@ -8,12 +8,12 @@ class ClubItemsController extends BackEndController
 	 */
 	public function actionCreate()
 	{
-		$model = new Club;
+		$model = new ClubItem;
 
-		$this->performAjaxValidation($model);
+		// $this->performAjaxValidation($model);
 
-		if (isset($_POST['Club'])) {
-			$model->attributes = $_POST['Club'];
+		if (isset($_POST['ClubItem'])) {
+			$model->attributes = $_POST['ClubItem'];
 			if ($model->save()) {
 				$this->setSuccess('Клуб создан!');
 				$this->redirect(array('index'));
@@ -36,10 +36,10 @@ class ClubItemsController extends BackEndController
 	{
 		$model = $this->loadModel($id);
 
-		$this->performAjaxValidation($model);
+		// $this->performAjaxValidation($model);
 
-		if (isset($_POST['Club'])) {
-			$model->attributes = $_POST['Club'];
+		if (isset($_POST['ClubItem'])) {
+			$model->attributes = $_POST['ClubItem'];
 			if ($model->save()) {
 				$this->setSuccess('Изменения сохранены!');
 				$this->redirect(array('index'));
@@ -74,10 +74,10 @@ class ClubItemsController extends BackEndController
 	 */
 	public function actionIndex()
 	{
-		$model = new Club('search');
+		$model = new ClubItem('search');
 		$model->unsetAttributes();  // clear any default values
-		if (isset($_GET['Club'])) {
-			$model->attributes = $_GET['Club'];
+		if (isset($_GET['ClubItem'])) {
+			$model->attributes = $_GET['ClubItem'];
 		}
 
 		$this->render('index', array(
@@ -89,12 +89,12 @@ class ClubItemsController extends BackEndController
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Club the loaded model
+	 * @return ClubItem the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model = Club::model()->findByPk($id);
+		$model = ClubItem::model()->findByPk($id);
 		if ($model === null) {
 			throw new CHttpException(404, 'Запрашиваемый клуб не существует.');
 		}
@@ -103,7 +103,7 @@ class ClubItemsController extends BackEndController
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Club $model the model to be validated
+	 * @param ClubItem $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{

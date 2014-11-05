@@ -7,9 +7,9 @@
 <div class="form">
 
 <?php $form = $this->beginWidget('CActiveForm', array(
-	'id'                   => 'catalog-group-form',
+	'id' => 'catalog-group-form',
 	'enableAjaxValidation' => false,
-	'clientOptions'        => array(
+	'clientOptions' => array(
     	'validateOnSubmit' => true,
     ),
 )); ?>
@@ -22,12 +22,6 @@
 		<?php echo $form->labelEx($model,'title'); ?>
 		<?php echo $form->textField($model,'title', array('class' => 'form-control input-large')); ?>
 		<?php echo $form->error($model,'title'); ?>
-	</div>
-
-	<div class="form-group">
-		<?php echo $form->labelEx($model,'alias'); ?>
-		<?php echo $form->textField($model,'alias', array('class' => 'form-control input-large')); ?>
-		<?php echo $form->error($model,'alias'); ?>
 	</div>
 
 	<div class="buttons">

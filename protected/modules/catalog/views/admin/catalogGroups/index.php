@@ -1,6 +1,4 @@
 <?php
-/* @var $this CatalogGroupController */
-/* @var $model CatalogGroup */
 
 $this->pageTitle = Yii::app()->name . ' - ' . 'Список групп';
 
@@ -12,8 +10,8 @@ $this->breadcrumbs=array(
 $this->menu = array(
     array(
         'label' => 'Добавить группу',
-        'icon'  => 'plus',
-        'url'   => array('create')
+        'icon' => 'plus',
+        'url' => array('create')
     ),
 );
 
@@ -21,31 +19,25 @@ $this->menu = array(
 
 <h1>Группы товаров</h1>
 
-<?php $this->widget('Alert', array(
-    'block'     => true,
-    'fade'      => true,
-    'closeText' => '&times;',
-)); ?>
-
 <?php $this->widget('zii.widgets.grid.CGridView', array(
-    'id'           => 'catalog-group-grid',
+    'id' => 'catalog-group-grid',
     'dataProvider' => $model->search(),
-    // 'filter'       => $model,
-    'columns'      => array(
+    'itemsCssClass' => 'table table-striped',
+    'columns' => array(
         array(
-            'name'        => 'title',
-            'type'        => 'html',
-            'value'       => 'CHtml::link(CHtml::encode($data->title), array("update", "id" => $data->id))'
+            'name' => 'title',
+            'type' => 'html',
+            'value' => 'CHtml::link(CHtml::encode($data->title), array("update", "id" => $data->id))'
         ),
         array(
-            'class'              => 'CButtonColumn',
-            'template'           => '{delete}',
-            'deleteConfirmation' => "js:'Вы действительно хотите удалить группу ' + $(this).parents('tr').children('.article-title').text() + '?'",
-            'buttons'            => array(
+            'class' => 'CButtonColumn',
+            'template' => '{delete}',
+            'deleteConfirmation' => "js:'Вы действительно хотите удалить группу ' + $(this).parents('tr').children('.catalog-group-title').text() + '?'",
+            'buttons' => array(
                 'delete' => array(
                     'label' => 'Удалить',
-                    'icon'  => 'remove',
-                    'url'   => 'Yii::app()->createUrl("catalogGroup/delete", array("id" => $data->id))',
+                    'icon' => 'remove',
+                    'url' => 'Yii::app()->createUrl("catalog/admin/catalogGroups/delete", array("id" => $data->id))',
                 ),
             ),
         ),

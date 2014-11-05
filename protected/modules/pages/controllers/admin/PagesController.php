@@ -10,9 +10,7 @@ class PagesController extends BackEndController
 	{
 		$model = new Page;
 
-		$this->performAjaxValidation($model);
-
-		$model->club_id = Yii::app()->user->getState('club_id');
+		// $this->performAjaxValidation($model);
 
 		if (isset($_POST['Page'])) {
 			$model->attributes = $_POST['Page'];
@@ -38,7 +36,7 @@ class PagesController extends BackEndController
 	{
 		$model = $this->loadModel($id);
 
-		$this->performAjaxValidation($model);
+		// $this->performAjaxValidation($model);
 
 		if (isset($_POST['Page'])) {
 			$model->attributes = $_POST['Page'];
@@ -63,12 +61,6 @@ class PagesController extends BackEndController
 	public function actionDelete($id)
 	{
 		$page = $this->loadModel($id);
-
-		if ($page->undeletable == 1) {
-			$this->setError('Эту страницу нельзя удалять!');
-			$this->redirect(array('index'));
-		}
-
 		$page->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
@@ -105,7 +97,7 @@ class PagesController extends BackEndController
 	 */
 	public function loadModel($id)
 	{
-		$model = Page::model()->of_club()->findByPk($id);
+		$model = Page::model()->findByPk($id);
 		if ($model === null) {
 			throw new CHttpException(404, 'Запрашиваемая страница не найдена.');
 		}
@@ -123,25 +115,6 @@ class PagesController extends BackEndController
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
-	}
-
-
-	public function actionOrder()
-	{
-		$this->render('order');
-	}
-
-	public function actionOrderAjax()
-	{
-		// Save order from ajax call
-		if (isset($_POST['sortable'])) {
-			Page::model()->saveOrder($_POST['sortable']);
-		}
-
-		$pages = Page::model()->getNested();
-
-		// Load view
-		$this->renderPartial('order_ajax', array('pages' => $pages));
 	}
 
 	public function actionTurnOn($id)

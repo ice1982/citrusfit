@@ -1,18 +1,12 @@
-<?php
-/* @var $this ArticleController */
-/* @var $model Article */
-/* @var $form CActiveForm */
-?>
-
 <div class="form">
 
 <?php $form = $this->beginWidget('CActiveForm', array(
-	'id'                   => 'article-form',
+	'id' => 'article-form',
 	'enableAjaxValidation' => false,
-	'htmlOptions'         => array(
+	'htmlOptions' => array(
 		'enctype' => 'multipart/form-data',
 	),
-	'clientOptions'        => array(
+	'clientOptions' => array(
     	'validateOnSubmit' => true,
     ),
 )); ?>
@@ -25,7 +19,7 @@
 		<?php echo $form->labelEx($model,'club_id'); ?>
 		<?php
 			echo $form->dropDownList($model, 'club_id',
-				CHtml::listData(ClubHall::model()->findAll(array('order' => 'title')),'id','title'),
+				CHtml::listData(ClubItem::model()->findAll(array('order' => 'title')),'id','title'),
 				array('empty' => 'Для всех клубов', 'class' => 'form-control input-large')
 			);
 		?>
@@ -101,17 +95,17 @@
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'pubdate'); ?>
 		<?php $this->widget('zii.widgets.jui.CJuiDatePicker', array(
-            'name'      => 'pubdate',
-            'language'  => 'ru',
-            'model'     => $model,
+            'name' => 'pubdate',
+            'language' => 'ru',
+            'model' => $model,
             'attribute' => 'pubdate',
             'options'=>array(
-				'showAnim'    =>'fade',
-				'dateFormat'  =>'dd.mm.yy',
-				'changeYear'  => true,
+				'showAnim' =>'fade',
+				'dateFormat' =>'dd.mm.yy',
+				'changeYear' => true,
 				'changeMonth' => true,
-				'yearRange'   => (date('Y') - 1) . ':' . (date('Y') + 1),
-				'onSelect'    => false,
+				'yearRange' => (date('Y') - 1) . ':' . (date('Y') + 1),
+				'onSelect' => false,
             ),
             'htmlOptions' => array(
                 'value' => CHelper::sqlDateToHumanDate($model->pubdate),

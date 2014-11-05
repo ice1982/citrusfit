@@ -9,7 +9,7 @@ class GalleryAlbumsController extends BackEndController
 	public function actionCreate()
 	{
 		$model = new GalleryAlbum;
-		$this->performAjaxValidation($model);
+		// $this->performAjaxValidation($model);
 
 		if (isset($_POST['GalleryAlbum'])) {
 			$model->attributes = $_POST['GalleryAlbum'];
@@ -31,7 +31,7 @@ class GalleryAlbumsController extends BackEndController
 	public function actionUpdate($id)
 	{
 		$model = $this->loadModel($id);
-		$this->performAjaxValidation($model);
+		// $this->performAjaxValidation($model);
 
 		if (isset($_POST['GalleryAlbum'])) {
 			$model->attributes = $_POST['GalleryAlbum'];
@@ -88,7 +88,7 @@ class GalleryAlbumsController extends BackEndController
 	{
 		$model = GalleryAlbum::model()->findByPk($id);
 		if ($model === null) {
-			throw new CHttpException(404, 'The requested page does not exist.');
+			throw new CHttpException(404, 'Выбранный альбом не найден.');
 		}
 		return $model;
 	}

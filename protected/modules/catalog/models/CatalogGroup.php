@@ -5,7 +5,6 @@
  *
  * The followings are the available columns in table 'catalog_groups':
  * @property integer $id
- * @property string $alias
  * @property string $title
  * @property string $created_ip
  * @property string $created_date
@@ -27,6 +26,23 @@ class CatalogGroup extends BaseActiveRecord
         return parent::model($className);
     }
 
+    public function behaviors(){
+        return array(
+            'DatetimeBehavior' => array(
+                'class' => 'DatetimeBehavior',
+            ),
+            'IpBehavior' => array(
+                'class' => 'IpBehavior',
+            ),
+            // 'UserBehavior' => array(
+            //     'class' => 'UserBehavior',
+            // ),
+            // 'UsernameBehavior' => array(
+            //     'class' => 'UsernameBehavior',
+            // ),
+        );
+    }
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -44,7 +60,7 @@ class CatalogGroup extends BaseActiveRecord
 		// will receive user inputs.
 		return array(
 			array(
-				'alias, title, created_username, modified_username',
+				'title',
 				'required',
 			),
 			array(
@@ -53,7 +69,7 @@ class CatalogGroup extends BaseActiveRecord
 				'integerOnly' => true,
 			),
 			array(
-				'alias, title, created_username',
+				'title, created_username',
 				'length',
 				'max' => 200,
 			),
@@ -63,13 +79,13 @@ class CatalogGroup extends BaseActiveRecord
 				'max' => 300,
 			),
 			array(
-				'created_date, modified_date',
+				'title',
 				'safe',
 			),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array(
-				'id, alias, title, created_ip, created_date, created_user, created_username, modified_ip, modified_date, modified_user, modified_username, active',
+				'id, title, created_ip, created_date, created_user, created_username, modified_ip, modified_date, modified_user, modified_username, active',
 				'safe',
 				'on' => 'search'
 			),
@@ -95,7 +111,6 @@ class CatalogGroup extends BaseActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'alias' => 'Alias',
 			'title' => 'Title',
 			'created_ip' => 'Created Ip',
 			'created_date' => 'Created Date',
@@ -128,7 +143,6 @@ class CatalogGroup extends BaseActiveRecord
 		$criteria = new CDbCriteria;
 
 		$criteria->compare('id', $this->id);
-		$criteria->compare('alias', $this->alias, true);
 		$criteria->compare('title', $this->title, true);
 		$criteria->compare('created_ip', $this->created_ip, true);
 		$criteria->compare('created_date', $this->created_date, true);

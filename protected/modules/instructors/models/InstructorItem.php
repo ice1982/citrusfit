@@ -9,8 +9,6 @@
  * @property string $image
  * @property string $annotation
  * @property string $body
- * @property string $clubs
- * @property string $tags
  * @property integer $meta_index
  * @property string $meta_title
  * @property string $meta_keywords
@@ -35,6 +33,35 @@ class InstructorItem extends BaseActiveRecord
         return parent::model($className);
     }
 
+    public function behaviors(){
+        return array(
+            'ImageBehavior' => array(
+                'class' => 'ImageBehavior',
+                // 'image_path' => ,
+                // 'image_field' => ,
+                'original_resize' => true,
+                'original_resize_width' => 500,
+                'original_resize_height' => false,
+                'thumb' => true,
+                'thumb_width' => 250,
+                'thumb_height' => false,
+                'original_image_filename' => 'instructor_' . time(),
+            ),
+            'DatetimeBehavior' => array(
+                'class' => 'DatetimeBehavior',
+            ),
+            'IpBehavior' => array(
+                'class' => 'IpBehavior',
+            ),
+            // 'UserBehavior' => array(
+            //     'class' => 'UserBehavior',
+            // ),
+            // 'UsernameBehavior' => array(
+            //     'class' => 'UsernameBehavior',
+            // ),
+        );
+    }
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -52,7 +79,7 @@ class InstructorItem extends BaseActiveRecord
 		// will receive user inputs.
 		return array(
 			array(
-				'fio, image, annotation, body, created_username, modified_username',
+				'fio, annotation, body',
 				'required',
 			),
 			array(
@@ -61,7 +88,7 @@ class InstructorItem extends BaseActiveRecord
 				'integerOnly' => true,
 			),
 			array(
-				'fio, tags, meta_title, created_ip, modified_ip, modified_username',
+				'fio, meta_title, created_ip, modified_ip, modified_username',
 				'length',
 				'max' => 300,
 			),
@@ -76,17 +103,29 @@ class InstructorItem extends BaseActiveRecord
 				'max' => 500,
 			),
 			array(
-				'clubs', 'length',
-				'max' => 100,
-			),
+                'image',
+                'file',
+                'types' => 'jpg, gif, png',
+                'maxSize' => 1048576 * 5,
+                'allowEmpty' => false,
+                'on' => 'insert',
+            ),
+            array(
+                'image',
+                'file',
+                'types' => 'jpg, gif, png',
+                'maxSize' => 1048576 * 5,
+                'allowEmpty' => true,
+                'on' => 'update',
+            ),
 			array(
-				'created_date, modified_date',
+				'fio, annotation, body, meta_index, meta_title, meta_keywords, meta_description',
 				'safe',
 			),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array(
-				'id, fio, image, annotation, body, clubs, tags, meta_index, meta_title, meta_keywords, meta_description, created_ip, created_date, created_user, created_username, modified_ip, modified_date, modified_user, modified_username, active',
+				'id, fio, image, annotation, body, meta_index, meta_title, meta_keywords, meta_description, created_ip, created_date, created_user, created_username, modified_ip, modified_date, modified_user, modified_username, active',
 				'safe',
 				'on' => 'search',
 			),
@@ -116,8 +155,6 @@ class InstructorItem extends BaseActiveRecord
 			'image' => 'Image',
 			'annotation' => 'Annotation',
 			'body' => 'Body',
-			'clubs' => 'Clubs',
-			'tags' => 'Tags',
 			'meta_index' => 'Meta Index',
 			'meta_title' => 'Meta Title',
 			'meta_keywords' => 'Meta Keywords',
@@ -157,8 +194,6 @@ class InstructorItem extends BaseActiveRecord
 		$criteria->compare('image', $this->image, true);
 		$criteria->compare('annotation', $this->annotation, true);
 		$criteria->compare('body', $this->body, true);
-		$criteria->compare('clubs', $this->clubs, true);
-		$criteria->compare('tags', $this->tags, true);
 		$criteria->compare('meta_index', $this->meta_index);
 		$criteria->compare('meta_title', $this->meta_title, true);
 		$criteria->compare('meta_keywords', $this->meta_keywords, true);

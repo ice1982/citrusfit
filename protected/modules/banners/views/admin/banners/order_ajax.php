@@ -6,7 +6,7 @@
         $str .= '<ol class="sortable">';
 
         foreach ($items as $item) {
-            $str .= '<li id="list_' . $item->id .'"><div><img width="100" src="uploads/thumb_' . $item->image. '"> ' . $item->title .'</div></li>' . PHP_EOL;
+            $str .= '<li id="list_' . $item->id .'"><div><img width="100" src="uploads/' . $item->image. '"> ' . $item->title .'</div></li>' . PHP_EOL;
         }
 
         $str .= '</ol>' . PHP_EOL;

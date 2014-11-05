@@ -1,19 +1,13 @@
-<?php
-/* @var $this CatalogController */
-/* @var $model Catalog */
-/* @var $form CActiveForm */
-?>
-
 <div class="form">
 
 
 <?php $form = $this->beginWidget('CActiveForm', array(
-	'id'                   => 'catalog-form',
-	'enableAjaxValidation' => true,
-	'htmlOptions'         => array(
+	'id' => 'catalog-form',
+	'enableAjaxValidation' => false,
+	'htmlOptions' => array(
 		'enctype' => 'multipart/form-data',
 	),
-	'clientOptions'        => array(
+	'clientOptions' => array(
     	'validateOnSubmit' => true,
     ),
 )); ?>
@@ -26,8 +20,8 @@
 		<?php echo $form->labelEx($model,'club_id'); ?>
 		<?php
 			echo $form->dropDownList($model, 'club_id',
-				CHtml::listData(ClubHall::model()->findAllByAttributes(array('club_id' => $club->id), array('order' => 'title')),'id','title'),
-				array('empty' => 'Для всех клубов')
+				CHtml::listData(ClubItem::model()->findAll(array('order' => 'title')),'id','title'),
+				array('empty' => 'Для всех клубов', 'class' => 'form-control input-large')
 			);
 		?>
 		<?php echo $form->error($model,'club_id'); ?>
@@ -37,8 +31,8 @@
 		<?php echo $form->labelEx($model,'group_id'); ?>
 		<?php
 			echo $form->dropDownList($model,'group_id',
-				CHelper::getList(new CatalogGroup),
-				array('empty' => 'Выберите тип товара')
+				CHtml::listData(CatalogGroup::model()->findAll(array('order' => 'title')),'id','title'),
+				array('empty' => 'Выберите тип товара', 'class' => 'form-control input-large')
 			);
 		?>
 		<?php echo $form->error($model,'group_id'); ?>
@@ -48,12 +42,6 @@
 		<?php echo $form->labelEx($model,'title'); ?>
 		<?php echo $form->textField($model,'title', array('class' => 'form-control input-large')); ?>
 		<?php echo $form->error($model,'title'); ?>
-	</div>
-
-	<div class="form-group">
-		<?php echo $form->labelEx($model,'alias'); ?>
-		<?php echo $form->textField($model,'alias', array('class' => 'form-control input-large')); ?>
-		<?php echo $form->error($model,'alias'); ?>
 	</div>
 
 	<?php if (!empty($model->image)) : ?>
@@ -84,45 +72,6 @@
 		<?php echo $form->labelEx($model,'body'); ?>
 		<?php echo $form->textArea($model,'body', array('class' => 'form-control input-large tinymce')); ?>
 		<?php echo $form->error($model,'body'); ?>
-	</div>
-
-	<div class="form-group">
-		<?php echo $form->labelEx($model,'price'); ?>
-		<?php echo $form->textField($model,'price', array('class' => 'form-control input-small')); ?>
-		<?php echo $form->error($model,'price'); ?>
-	</div>
-
-	<div class="form-group">
-		<?php echo $form->labelEx($model,'price_to_view'); ?>
-		<?php echo $form->textField($model,'price_to_view', array('class' => 'form-control input-small')); ?>
-		<?php echo $form->error($model,'price_to_view'); ?>
-	</div>
-
-	<div class="form-group">
-		<?php echo $form->labelEx($model,'price_to_view_text'); ?>
-		<?php echo $form->textField($model,'price_to_view_text', array('class' => 'form-control input-large')); ?>
-		<?php echo $form->error($model,'price_to_view_text'); ?>
-	</div>
-
-	<div class="form-group">
-		<?php echo $form->labelEx($model,'related'); ?>
-		<?php echo $form->listBox($model, 'related', CHtml::listData( $related, 'id', 'title' ), array('class' => 'chosen-select', 'multiple' => 'multiple', 'data-placeholder' => 'Выберите сопутствующие товары')); ?>
-		<?php echo $form->error($model,'related'); ?>
-	</div>
-
-	<div class="form-group">
-		<?php echo $form->labelEx($model,'special'); ?>
-		<?php echo $form->dropDownList($model,'special',
-			array(0 => 'Нет', 1 => 'Да'),
-			array('class' => 'span2')
-		); ?>
-		<?php echo $form->error($model,'special'); ?>
-	</div>
-
-	<div class="form-group">
-		<?php echo $form->labelEx($model,'new_price'); ?>
-		<?php echo $form->textField($model,'new_price', array('class' => 'form-control input-small')); ?>
-		<?php echo $form->error($model,'new_price'); ?>
 	</div>
 
 	<div class="form-group">

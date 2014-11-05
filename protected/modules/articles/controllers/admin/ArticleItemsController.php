@@ -39,11 +39,15 @@ class ArticleItemsController extends BackEndController
 
 		$this->performAjaxValidation($model);
 
-		if (isset($_POST['Article'])) {
-			$model->attributes = $_POST['Article'];
-			if (empty($model->image)) {
-				$model->image = $image;
-			}
+		if (isset($_POST['ArticleItem'])) {
+			$model->attributes = $_POST['ArticleItem'];
+
+			// var_dump($_POST);
+			// var_dump($model->attributes);
+			// if (empty($model->image)) {
+			// 	$model->image = $image;
+			// }
+
 			if ($model->save()) {
 				$this->setSuccess('Изменения сохранены!');
 				$this->redirect(array('index'));
@@ -114,7 +118,7 @@ class ArticleItemsController extends BackEndController
 	 */
 	public function loadModel($id)
 	{
-		$model = ArticleItem::model()->of_club()->findByPk($id);
+		$model = ArticleItem::model()->findByPk($id);
 		if ($model === null) {
 			throw new CHttpException(404, 'Запрашиваемая публикация не найдена.');
 		}

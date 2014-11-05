@@ -9,13 +9,13 @@ $this->breadcrumbs=array(
 $this->menu = array(
     array(
         'label' => 'Добавить баннер',
-        'icon'  => 'plus',
-        'url'   => array('create')
+        'icon' => 'plus',
+        'url' => array('create')
     ),
     array(
         'label' => 'Список баннеров',
-        'icon'  => 'list',
-        'url'   => array('index')
+        'icon' => 'list',
+        'url' => array('index')
     ),
 );
 
@@ -32,7 +32,7 @@ $this->menu = array(
 
 <script>
 $(function() {
-    $.post( 'admin.php?r=banner/orderAjax', {}, function( data ) {
+    $.post( '<?=Yii::app()->createUrl("banners/admin/banners/orderAjax")?>', {}, function( data ) {
         $( '#orderResult' ).html( data );
     });
 
@@ -40,7 +40,7 @@ $(function() {
         oSortable = $('.sortable').nestedSortable('toArray');
 
         $( '#orderResult' ).slideUp( function(){
-            $.post( 'admin.php?r=banner/orderAjax', { sortable: oSortable }, function( data ) {
+            $.post( '<?=Yii::app()->createUrl("banners/admin/banners/orderAjax")?>', { sortable: oSortable }, function( data ) {
                 $( '#orderResult' ).html( data );
                 $( '#orderResult' ).slideDown();
             });

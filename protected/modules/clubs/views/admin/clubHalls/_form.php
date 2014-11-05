@@ -1,15 +1,9 @@
-<?php
-/* @var $this HallController */
-/* @var $model Hall */
-/* @var $form CActiveForm */
-?>
-
 <div class="form">
 
 <?php $form = $this->beginWidget('CActiveForm', array(
-	'id'                   => 'hall-form',
-	'enableAjaxValidation' => true,
-	'clientOptions'        => array(
+	'id' => 'club-hall-form',
+	'enableAjaxValidation' => false,
+	'clientOptions' => array(
     	'validateOnSubmit' => true,
     ),
 )); ?>
@@ -22,8 +16,8 @@
 		<?php echo $form->labelEx($model,'club_id'); ?>
 		<?php
 			echo $form->dropDownList($model,'club_id',
-				CHtml::listData(ClubHall::model()->findAllByAttributes(array('club_id' => $club->id), array('order' => 'title')),'id','title'),
-				array('empty' => 'Выберите клуб')
+				CHtml::listData(ClubItem::model()->findAll(array('order' => 'title')), 'id','title'),
+				array('empty' => 'Выберите клуб', 'class' => 'form-control input-large')
 			);
 		?>
 		<?php echo $form->error($model,'club_id'); ?>

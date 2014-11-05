@@ -8,12 +8,12 @@ class ClubHallsController extends BackEndController
 	 */
 	public function actionCreate()
 	{
-		$model = new Hall;
+		$model = new ClubHall;
 
-		$this->performAjaxValidation($model);
+		// $this->performAjaxValidation($model);
 
-		if (isset($_POST['Hall'])) {
-			$model->attributes = $_POST['Hall'];
+		if (isset($_POST['ClubHall'])) {
+			$model->attributes = $_POST['ClubHall'];
 			if ($model->save()) {
 				$this->setSuccess('Зал создан!');
 				$this->redirect(array('index'));
@@ -36,10 +36,10 @@ class ClubHallsController extends BackEndController
 	{
 		$model = $this->loadModel($id);
 
-		$this->performAjaxValidation($model);
+		// $this->performAjaxValidation($model);
 
-		if (isset($_POST['Hall'])) {
-			$model->attributes = $_POST['Hall'];
+		if (isset($_POST['ClubHall'])) {
+			$model->attributes = $_POST['ClubHall'];
 			if ($model->save()) {
 				$this->setSuccess('Изменения сохранены!');
 				$this->redirect(array('index'));
@@ -74,10 +74,10 @@ class ClubHallsController extends BackEndController
 	 */
 	public function actionIndex()
 	{
-		$model = new Hall('search');
+		$model = new ClubHall('search');
 		$model->unsetAttributes();  // clear any default values
-		if (isset($_GET['Hall'])) {
-			$model->attributes = $_GET['Hall'];
+		if (isset($_GET['ClubHall'])) {
+			$model->attributes = $_GET['ClubHall'];
 		}
 
 		$this->render('index', array(
@@ -89,12 +89,12 @@ class ClubHallsController extends BackEndController
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Hall the loaded model
+	 * @return ClubHall the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model = Hall::model()->findByPk($id);
+		$model = ClubHall::model()->findByPk($id);
 		if ($model === null) {
 			throw new CHttpException(404, 'Запрашиваемый зал не найден.');
 		}
@@ -103,11 +103,11 @@ class ClubHallsController extends BackEndController
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Hall $model the model to be validated
+	 * @param ClubHall $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if (isset($_POST['ajax']) && $_POST['ajax'] === 'hall-form') {
+		if (isset($_POST['ajax']) && $_POST['ajax'] === 'club-hall-form') {
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}

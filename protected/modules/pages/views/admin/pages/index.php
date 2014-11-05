@@ -4,21 +4,21 @@
 
 $this->pageTitle = Yii::app()->name . ' - ' . 'Список страниц';
 
-$this->breadcrumbs=array(
-    'Страницы'=>array('index'),
+$this->breadcrumbs = array(
+    'Страницы' => array('index'),
     'Список страниц',
 );
 
 $this->menu = array(
     array(
         'label' => 'Добавить страницу',
-        'icon'  => 'plus',
-        'url'   => array('create')
+        'icon' => 'plus',
+        'url' => array('create')
     ),
     array(
         'label' => 'Сортировать страницы',
-        'icon'  => 'move',
-        'url'   => array('order')
+        'icon' => 'move',
+        'url' => array('order')
     ),
 );
 
@@ -26,57 +26,44 @@ $this->menu = array(
 
 <h1>Страницы сайта</h1>
 
-<?php $this->widget('Alert', array(
-    'block'     => true,
-    'fade'      => true,
-    'closeText' => '&times;',
-)); ?>
-
 <?php $this->widget('zii.widgets.grid.CGridView', array(
-    'id'               => 'page-grid',
-    'dataProvider'     => $model->search(),
-    // 'dataProvider'     => new CArrayDataProvider($model, array()),
-    'selectableRows'   => 0,
+    'id' => 'page-grid',
+    'dataProvider' => $model->search(),
+    'itemsCssClass' => 'table table-striped',
+    'selectableRows' => 0,
     'rowCssClassExpression' => '($data->active == 1) ? "row-on" : "row-off"',
-    'type'                  => 'striped',
-    'columns'               => array(
+    'columns' => array(
         array(
-            'class'               => 'DataColumn',
+            'class' => 'DataColumn',
             'evaluateHtmlOptions' => true,
-            'type'        => 'html',
-            'htmlOptions'         => array(
+            'type' => 'html',
+            'htmlOptions' => array(
                 'class' => '($data->active == 1) ? "td-active" : "td-inactive"',
                 'title' => '($data->active == 1) ? "Выключить" : "Включить"',
             ),
-            'value'       => 'CHtml::link(($data->active == 1) ? "<i class=\'icon-off\'></i>" : "<i class=\'icon-play\'></i>", array(($data->active == 1) ? "turnOff" : "turnOn", "id" => $data->id))',
+            'value' => 'CHtml::link(($data->active == 1) ? "<span class=\'glyphicon glyphicon-off\'></span>" : "<span class=\'glyphicon glyphicon-play\'></span>", array(($data->active == 1) ? "turnOff" : "turnOn", "id" => $data->id))',
         ),
         array(
-            'name'        => 'title',
+            'name' => 'title',
             'htmlOptions' => array('class' => 'page-title'),
-            'type'        => 'html',
-            'value'       => 'CHtml::link(CHtml::encode($data->title), array("update", "id" => $data->id))'
+            'type' => 'html',
+            'value' => 'CHtml::link(CHtml::encode($data->title), array("update", "id" => $data->id))'
         ),
         array(
-            'name'        => 'club_id',
-            'type'        => 'html',
-            'value'       => 'isset($data->club->title) ? $data->club->title : "Все"',
+            'name' => 'club_id',
+            'type' => 'html',
+            'value' => 'isset($data->club->title) ? $data->club->title : "Все"',
         ),
         'alias',
         array(
-            'name'        => 'parent_id',
-            'type'        => 'html',
-            'value'       => 'empty($data->parent_id) ? "" : "$data->parent_id->title"',
-        ),
-        array(
-            'class'              => 'CButtonColumn',
-            'template'           => '{delete}',
+            'class' => 'CButtonColumn',
+            'template' => '{delete}',
             'deleteConfirmation' => "js:'Вы действительно хотите удалить станицу ' + $(this).parents('tr').children('.page-title').text() + '?'",
-            'buttons'            => array(
+            'buttons' => array(
                 'delete' => array(
-                    'visible' => '$data->undeletable == 0',
                     'label' => 'Удалить',
-                    'icon'  => 'remove',
-                    'url'   => 'Yii::app()->createUrl("page/delete", array("id" => $data->id))',
+                    'icon' => 'remove',
+                    'url' => 'Yii::app()->createUrl("pages/admin/pages/delete", array("id" => $data->id))',
                 ),
             ),
         ),

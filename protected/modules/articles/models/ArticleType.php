@@ -31,6 +31,23 @@ class ArticleType extends BaseActiveRecord
 		return 'article_types';
 	}
 
+    public function behaviors(){
+        return array(
+            'DatetimeBehavior' => array(
+                'class' => 'DatetimeBehavior',
+            ),
+            'IpBehavior' => array(
+                'class' => 'IpBehavior',
+            ),
+            // 'UserBehavior' => array(
+            //     'class' => 'UserBehavior',
+            // ),
+            // 'UsernameBehavior' => array(
+            //     'class' => 'UsernameBehavior',
+            // ),
+        );
+    }
+
 	/**
 	 * @return array validation rules for model attributes.
 	 */
@@ -40,7 +57,7 @@ class ArticleType extends BaseActiveRecord
 		// will receive user inputs.
 		return array(
 			array(
-				'title, created_username, modified_username',
+				'title',
 				'required',
 			),
 			array(
@@ -59,7 +76,7 @@ class ArticleType extends BaseActiveRecord
 				'max' => 200,
 			),
 			array(
-				'created_date, modified_date',
+				'title',
 				'safe',
 			),
 			// The following rule is used by search().
