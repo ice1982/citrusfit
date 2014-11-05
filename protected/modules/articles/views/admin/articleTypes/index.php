@@ -23,7 +23,7 @@ $this->menu = array(
     'id'               => 'type-of-article-grid',
     'dataProvider'     => $model->search(),
     'selectableRows'   => 0,
-    'type'             => 'striped',
+    'itemsCssClass' => 'table table-striped',
     'enablePagination' => false,
     'summaryText'      => false,
     // 'filter'        => $model,
@@ -43,7 +43,7 @@ $this->menu = array(
                 'delete' => array(
                     'label' => 'Удалить',
                     'icon'  => 'remove',
-                    'url'   => 'Yii::app()->createUrl("typeOfArticle/delete", array("id" => $data->id))',
+                    'url'   => 'Yii::app()->createUrl("articles/admin/articleTypes/delete", array("id" => $data->id))',
                 ),
             ),
         ),

@@ -2,107 +2,50 @@
 
 class InstructorsController extends BackEndController
 {
-	/**
-	 * Creates a new model.
-	 * If creation is successful, the browser will be redirected to the 'view' page.
-	 */
-	public function actionCreate()
-	{
-		$model = new InstructorItem;
+    private $_model_name = 'InstructorItem';
+    private $_e_404_message = 'Запрашиваемый инструктор не найден.';
 
-		// $this->performAjaxValidation($model);
-
-		if (isset($_POST['InstructorItem'])) {
-			$model->attributes = $_POST['InstructorItem'];
-			if ($model->save()) {
-				$this->redirect(array('index'));
-			}
-		}
-
-		$this->render('create', array(
-			'model' => $model,
-		));
-	}
-
-	/**
-	 * Updates a particular model.
-	 * If update is successful, the browser will be redirected to the 'view' page.
-	 * @param integer $id the ID of the model to be updated
-	 */
-	public function actionUpdate($id)
-	{
-		$model = $this->loadModel($id);
-
-		// $this->performAjaxValidation($model);
-
-		if (isset($_POST['InstructorItem'])) {
-			$model->attributes = $_POST['InstructorItem'];
-			if ($model->save()) {
-				$this->redirect(array('index'));
-			}
-		}
-		$this->render('update', array(
-			'model' => $model,
-		));
-	}
-
-	/**
-	 * Deletes a particular model.
-	 * If deletion is successful, the browser will be redirected to the 'admin' page.
-	 * @param integer $id the ID of the model to be deleted
-	 */
-	public function actionDelete($id)
-	{
-		$this->loadModel($id)->delete();
-
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if (!isset($_GET['ajax'])) {
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
-		}
-
-	}
-
-	/**
-	 * Lists all models.
-	 */
-	public function actionIndex()
-	{
-		$model = new InstructorItem('search');
-		$model->unsetAttributes();  // clear any default values
-		if (isset($_GET['InstructorItem'])) {
-			$model->attributes = $_GET['InstructorItem'];
-		}
-
-		$this->render('index',array(
-			'model' => $model,
-		));
-	}
-
-	/**
-	 * Returns the data model based on the primary key given in the GET variable.
-	 * If the data model is not found, an HTTP exception will be raised.
-	 * @param integer $id the ID of the model to be loaded
-	 * @return InstructorItem the loaded model
-	 * @throws CHttpException
-	 */
-	public function loadModel($id)
-	{
-		$model = InstructorItem::model()->findByPk($id);
-		if ($model === null) {
-			throw new CHttpException(404, 'Выбранный инструктор не найден.');
-		}
-		return $model;
-	}
-
-	/**
-	 * Performs the AJAX validation.
-	 * @param InstructorItem $model the model to be validated
-	 */
-	protected function performAjaxValidation($model)
-	{
-		if (isset($_POST['ajax']) && $_POST['ajax'] === 'instructor-form') {
-			echo CActiveForm::validate($model);
-			Yii::app()->end();
-		}
-	}
+    public function actions()
+    {
+        return array(
+            'delete' => array(
+                'class' => 'DeleteAction',
+                'model_name' => $this->_model_name,
+                'success_message' => 'Инструктор удален!',
+                'error_message' => 'Инструктор не удален!',
+                'e_404_message' => $this->_e_404_message,
+            ),
+            'create' => array(
+                'class' => 'CreateAction',
+                'model_name' => $this->_model_name,
+                'success_message' => 'Инструктор успешно создан!',
+                'error_message' => 'Не удалось создать инструктора!',
+            ),
+            'update' => array(
+                'class' => 'UpdateAction',
+                'model_name' => $this->_model_name,
+                'success_message' => 'Инструктор успешно изменен!',
+                'error_message' => 'Не удалось изменить инструктора!',
+                'e_404_message' => $this->_e_404_message,
+            ),
+            'index' => array(
+                'class' => 'IndexAction',
+                'model_name' => $this->_model_name,
+            ),
+            'turnOn' => array(
+                'class' => 'TurnOnAction',
+                'model_name' => $this->_model_name,
+                'success_message' => 'Инструктор успешно включен!',
+                'error_message' => 'Не удалось включить инструктора!',
+                'e_404_message' => $this->_e_404_message,
+            ),
+            'turnOff' => array(
+                'class' => 'TurnOffAction',
+                'model_name' => $this->_model_name,
+                'success_message' => 'Инструктор успешно выключен!',
+                'error_message' => 'Не удалось выключить инструктора!',
+                'e_404_message' => $this->_e_404_message,
+            ),
+        );
+    }
 }

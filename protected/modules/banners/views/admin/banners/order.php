@@ -1,7 +1,7 @@
 <?php
 $this->pageTitle = Yii::app()->name . ' - ' . 'Сортировать баннеры';
 
-$this->breadcrumbs=array(
+$this->breadcrumbs = array(
     'Баннеры' => array('index'),
     'Сортировать баннеры',
 );
@@ -29,23 +29,3 @@ $this->menu = array(
         <input type="button" id="save" value="Сохранить" class="btn btn-primary" />
     </div>
 </div>
-
-<script>
-$(function() {
-    $.post( '<?=Yii::app()->createUrl("banners/admin/banners/orderAjax")?>', {}, function( data ) {
-        $( '#orderResult' ).html( data );
-    });
-
-    $( '#save' ).click( function() {
-        oSortable = $('.sortable').nestedSortable('toArray');
-
-        $( '#orderResult' ).slideUp( function(){
-            $.post( '<?=Yii::app()->createUrl("banners/admin/banners/orderAjax")?>', { sortable: oSortable }, function( data ) {
-                $( '#orderResult' ).html( data );
-                $( '#orderResult' ).slideDown();
-            });
-        });
-
-    });
-});
-</script>

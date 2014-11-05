@@ -32,26 +32,4 @@ class BackEndController extends BaseController
 {
     public $breadcrumbs;
     public $menu;
-
-    public function actionCreate()
-    {
-
-    }
-
-    public function actionIndex()
-    {
-
-    }
-
-    public function actionUpdate($id)
-    {
-
-    }
-
-    public function actionDelete($id)
-    {
-
-    }
-
-
 }

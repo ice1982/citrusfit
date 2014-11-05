@@ -2,131 +2,50 @@
 
 class ClubItemsController extends BackEndController
 {
-	/**
-	 * Creates a new model.
-	 * If creation is successful, the browser will be redirected to the 'view' page.
-	 */
-	public function actionCreate()
-	{
-		$model = new ClubItem;
+    private $_model_name = 'ClubHall';
+    private $_e_404_message = 'Запрашиваемый клуб не найден.';
 
-		// $this->performAjaxValidation($model);
-
-		if (isset($_POST['ClubItem'])) {
-			$model->attributes = $_POST['ClubItem'];
-			if ($model->save()) {
-				$this->setSuccess('Клуб создан!');
-				$this->redirect(array('index'));
-			} else {
-				$this->setError('Клуб не создан!');
-			}
-		}
-
-		$this->render('create', array(
-			'model' => $model,
-		));
-	}
-
-	/**
-	 * Updates a particular model.
-	 * If update is successful, the browser will be redirected to the 'view' page.
-	 * @param integer $id the ID of the model to be updated
-	 */
-	public function actionUpdate($id)
-	{
-		$model = $this->loadModel($id);
-
-		// $this->performAjaxValidation($model);
-
-		if (isset($_POST['ClubItem'])) {
-			$model->attributes = $_POST['ClubItem'];
-			if ($model->save()) {
-				$this->setSuccess('Изменения сохранены!');
-				$this->redirect(array('index'));
-			} else {
-				$this->setError('Изменения не сохранены!');
-			}
-		}
-
-		$this->render('update', array(
-			'model' => $model,
-		));
-	}
-
-	/**
-	 * Deletes a particular model.
-	 * If deletion is successful, the browser will be redirected to the 'admin' page.
-	 * @param integer $id the ID of the model to be deleted
-	 */
-	public function actionDelete($id)
-	{
-		$this->loadModel($id)->delete();
-
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if (!isset($_GET['ajax'])) {
-			$this->setNotice('Клуб удален!');
-			$this->redirect(array('index'));
-		}
-	}
-
-	/**
-	 * Lists all models.
-	 */
-	public function actionIndex()
-	{
-		$model = new ClubItem('search');
-		$model->unsetAttributes();  // clear any default values
-		if (isset($_GET['ClubItem'])) {
-			$model->attributes = $_GET['ClubItem'];
-		}
-
-		$this->render('index', array(
-			'model' => $model,
-		));
-	}
-
-	/**
-	 * Returns the data model based on the primary key given in the GET variable.
-	 * If the data model is not found, an HTTP exception will be raised.
-	 * @param integer $id the ID of the model to be loaded
-	 * @return ClubItem the loaded model
-	 * @throws CHttpException
-	 */
-	public function loadModel($id)
-	{
-		$model = ClubItem::model()->findByPk($id);
-		if ($model === null) {
-			throw new CHttpException(404, 'Запрашиваемый клуб не существует.');
-		}
-		return $model;
-	}
-
-	/**
-	 * Performs the AJAX validation.
-	 * @param ClubItem $model the model to be validated
-	 */
-	protected function performAjaxValidation($model)
-	{
-		if (isset($_POST['ajax']) && $_POST['ajax'] === 'club-form') {
-			echo CActiveForm::validate($model);
-			Yii::app()->end();
-		}
-	}
-
-	public function actionTurnOn($id)
-	{
-		$this->loadModel($id)->updateByPk($id, array('active' => 1));
-		if (!isset($_GET['ajax'])) {
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
-		}
-	}
-
-	public function actionTurnOff($id)
-	{
-		$this->loadModel($id)->updateByPk($id, array('active' => 0));
-		if (!isset($_GET['ajax'])) {
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
-		}
-	}
-
+    public function actions()
+    {
+        return array(
+            'delete' => array(
+                'class' => 'DeleteAction',
+                'model_name' => $this->_model_name,
+                'success_message' => 'Клуб удален!',
+                'error_message' => 'Клуб не удален!',
+                'e_404_message' => $this->_e_404_message,
+            ),
+            'create' => array(
+                'class' => 'CreateAction',
+                'model_name' => $this->_model_name,
+                'success_message' => 'Клуб успешно создан!',
+                'error_message' => 'Не удалось создать клуб!',
+            ),
+            'update' => array(
+                'class' => 'UpdateAction',
+                'model_name' => $this->_model_name,
+                'success_message' => 'Клуб успешно изменен!',
+                'error_message' => 'Не удалось изменить клуб!',
+                'e_404_message' => $this->_e_404_message,
+            ),
+            'index' => array(
+                'class' => 'IndexAction',
+                'model_name' => $this->_model_name,
+            ),
+            'turnOn' => array(
+                'class' => 'TurnOnAction',
+                'model_name' => $this->_model_name,
+                'success_message' => 'Клуб успешно включен!',
+                'error_message' => 'Не удалось включить клуб!',
+                'e_404_message' => $this->_e_404_message,
+            ),
+            'turnOff' => array(
+                'class' => 'TurnOffAction',
+                'model_name' => $this->_model_name,
+                'success_message' => 'Клуб успешно выключен!',
+                'error_message' => 'Не удалось выключить клуб!',
+                'e_404_message' => $this->_e_404_message,
+            ),
+        );
+    }
 }

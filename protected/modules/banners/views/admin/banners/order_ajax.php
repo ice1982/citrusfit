@@ -1,30 +1,23 @@
-<?php
+    <?php if (count($items)) : ?>
+        <ol class="sortable">
+        <?php foreach ($items as $item) : ?>
+            <li id="list_<?=$item->id?>">
+                <div>
+                    <img width="100" src="uploads/<?=$item->image?>">&nbsp;<?=$item->title?>
+                </div>
+            </li>
+        <?php endforeach; ?>
+        </ol>
+    <?php endif; ?>
 
-    $str = '';
 
-    if (count($items)) {
-        $str .= '<ol class="sortable">';
-
-        foreach ($items as $item) {
-            $str .= '<li id="list_' . $item->id .'"><div><img width="100" src="uploads/' . $item->image. '"> ' . $item->title .'</div></li>' . PHP_EOL;
-        }
-
-        $str .= '</ol>' . PHP_EOL;
-    }
-
-    echo $str;
-
-?>
-
-<script>
-$(document).ready(function(){
-
-    $('.sortable').nestedSortable({
-        handle: 'div',
-        items: 'li',
-        toleranceElement: '> div',
-        maxLevels: 1
-    });
-
-});
-</script>
+    <script>
+        $(document).ready(function(){
+            $('.sortable').nestedSortable({
+                handle: 'div',
+                items: 'li',
+                toleranceElement: '> div',
+                maxLevels: 1
+            });
+        });
+    </script>

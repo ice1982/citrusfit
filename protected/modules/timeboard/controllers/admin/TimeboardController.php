@@ -149,6 +149,8 @@ class TimeboardController extends BackEndController
 
 		$workouts = TimeboardItem::model()->findAll($criteria);
 
+        $dump = array();
+
         foreach ($workouts as $workout) {
 			$dump[$workout->hall_id][CHelper::trimSeconds($workout->time_start)][$workout->day_of_week]->time_start  = CHelper::trimSeconds($workout->time_start);
 			$dump[$workout->hall_id][CHelper::trimSeconds($workout->time_start)][$workout->day_of_week]->time_finish = CHelper::trimSeconds($workout->time_finish);
