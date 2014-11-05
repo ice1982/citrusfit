@@ -16,6 +16,7 @@ return CMap::mergeArray(
             'application.components.backend.controllers.*',
             'application.components.backend.widgets.*',
             'application.components.backend.actions.*',
+            'application.components.backend.actions._base.*',
         ),
 
         // 'modules'=>array(
