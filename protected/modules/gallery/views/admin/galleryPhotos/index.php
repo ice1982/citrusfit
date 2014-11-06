@@ -42,7 +42,7 @@ $this->menu = array(
         array(
             'name' => 'album_id',
             'type' => 'html',
-            'value' => '$data->galleryAlbum->title',
+            'value' => '$data->album->title',
         ),
         array(
             'class' => 'CButtonColumn',
