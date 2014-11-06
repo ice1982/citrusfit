@@ -23,9 +23,9 @@ if (($environment == 'development') || ($environment == 'test')) {
     defined('YII_DEBUG') or define('YII_DEBUG', true);
     defined('YII_TRACE_LEVEL') or define('YII_TRACE_LEVEL', 3);
 } else {
-//     error_reporting(E_ALL);
-//     defined('YII_DEBUG') or define('YII_DEBUG', true);
-//     defined('YII_TRACE_LEVEL') or define('YII_TRACE_LEVEL', 3);
+    // error_reporting(E_ALL);
+    // defined('YII_DEBUG') or define('YII_DEBUG', true);
+    // defined('YII_TRACE_LEVEL') or define('YII_TRACE_LEVEL', 3);
     define('YII_DEBUG', false);
     error_reporting(0);
 }

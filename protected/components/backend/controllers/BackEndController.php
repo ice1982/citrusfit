@@ -35,8 +35,8 @@ Yii::import('application.modules.users.models._base.*');
 
 class BackEndController extends BaseController
 {
-    public $breadcrumbs;
-    public $menu;
+    public $breadcrumbs = array();
+    public $menu = array();
 
     public $layout = '//templates/column2';
 

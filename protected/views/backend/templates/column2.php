@@ -10,10 +10,12 @@
     <div class="col-xs-2">
         <div id="sidebar">
         <?php
-            array_unshift($this->menu, array('label' => 'Операции'));
-            $this->widget('zii.widgets.CMenu', array(
-                'items'=> $this->menu,
-            ));
+            if (count($this->menu)) {
+                array_unshift($this->menu, array('label' => 'Операции'));
+                $this->widget('zii.widgets.CMenu', array(
+                    'items'=> $this->menu,
+                ));
+            }
         ?>
         </div><!-- sidebar -->
     </div>
