@@ -20,12 +20,6 @@ $this->menu = array(
 
 <h1>Создать занятие</h1>
 
-<?php $this->widget('Alert', array(
-    'block'     => true,
-    'fade'      => true,
-    'closeText' => '&times;',
-)); ?>
-
 <?php echo $this->renderPartial('_form',
     array(
         'model' => $model,

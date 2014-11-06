@@ -11,7 +11,7 @@
  * Bootstrap alert widget.
  * @see http://twitter.github.com/bootstrap/javascript.html#alerts
  */
-class Alert extends CWidget
+class TbAlert extends CWidget
 {
     // Alert types.
     const TYPE_SUCCESS = 'success';

@@ -4,6 +4,12 @@
     <div class="col-xs-10">
         <div id="content">
 
+            <?php $this->widget('TbAlert', array(
+                'block' => true,
+                'fade' => true,
+                'closeText' => '&times;',
+            )); ?>
+
             <?php echo $content; ?>
         </div><!-- content -->
     </div>
@@ -12,7 +18,7 @@
         <?php
             if (count($this->menu)) {
                 array_unshift($this->menu, array('label' => 'Операции'));
-                $this->widget('zii.widgets.CMenu', array(
+                $this->widget('TbMenu', array(
                     'items'=> $this->menu,
                 ));
             }

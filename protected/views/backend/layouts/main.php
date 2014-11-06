@@ -25,12 +25,19 @@
 <div class="container-fluid" id="page">
 
 
-
-
 	<?php if (isset($this->breadcrumbs)):?>
-		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
-			'links'=>$this->breadcrumbs,
-		)); ?><!-- breadcrumbs -->
+        <?php $this->widget('zii.widgets.CBreadcrumbs', array(
+            'homeLink' => CHtml::link('', '/'),
+            'links' => $this->breadcrumbs,
+            'tagName' => 'ol',
+            'htmlOptions' => array(
+                'class' => 'breadcrumb',
+            ),
+            'activeLinkTemplate' => '<li><a href="{url}" title="{label}">{label}</a></li>',
+            'inactiveLinkTemplate' => '<li class="active">{label}</li>',
+            'separator' => '   ',
+            'encodeLabel' => false,
+        )); ?>
 	<?php endif?>
 
 

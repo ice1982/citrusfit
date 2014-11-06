@@ -171,8 +171,12 @@ class User extends BaseActiveRecord
 		$criteria->compare('modified_username', $this->modified_username, true);
 
 		return new CActiveDataProvider($this, array(
-			'criteria' => $criteria,
-		));
+            'criteria' => $criteria,
+            'pagination' => array('pageSize' => 50),
+            'sort' => array(
+                'defaultOrder' => 'id DESC',
+            ),
+        ));
 	}
 
 	protected function beforeSave()

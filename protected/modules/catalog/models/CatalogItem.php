@@ -243,7 +243,11 @@ class CatalogItem extends BaseActiveRecord
         $criteria->compare('active', $this->active);
 
         return new CActiveDataProvider($this, array(
-            'criteria' => $criteria,
+			'criteria' => $criteria,
+			'pagination' => array('pageSize' => 50),
+			'sort' => array(
+                'defaultOrder' => 'id DESC',
+            ),
         ));
     }
 

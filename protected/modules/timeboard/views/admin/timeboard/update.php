@@ -6,6 +6,7 @@ $this->pageTitle = Yii::app()->name . ' - ' . 'Редактировать зан
 
 $this->breadcrumbs = array(
     'Расписание' => array('index'),
+    $club->title => array('index'),
     'Редактировать занятие',
 );
 
@@ -32,12 +33,6 @@ $this->menu = array(
 ?>
 
 <h1>Редактировать занятие</h1>
-
-<?php $this->widget('Alert', array(
-    'block'     => true,
-    'fade'      => true,
-    'closeText' => '&times;',
-)); ?>
 
 <?php echo $this->renderPartial('_form',
     array(

@@ -22,7 +22,7 @@
 		<?php echo $form->labelEx($model,'hall_id'); ?>
 		<?php
 			echo $form->dropDownList($model,'hall_id',
-                CHtml::listData(ClubHall::model()->findAllByAttributes(array('club_id' => $club->id), array('order' => 'title')),'id','title'),
+                CHtml::listData(ClubHall::model()->findAllByAttributes(array('club_id' => $club->id), array('order' => 'title')), 'id', 'title'),
 				array('empty' => '--- Выберите зал ---', 'class' => 'form-control')
 			);
 		?>

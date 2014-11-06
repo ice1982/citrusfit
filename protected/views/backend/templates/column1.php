@@ -1,7 +1,7 @@
 <?php /* @var $this Controller */ ?>
 <?php $this->beginContent('//layouts/main'); ?>
 
-    <?php $this->widget('Alert', array(
+    <?php $this->widget('TbAlert', array(
         'block' => true,
         'fade' => true,
         'closeText' => '&times;',

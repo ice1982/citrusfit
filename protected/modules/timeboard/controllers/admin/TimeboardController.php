@@ -72,7 +72,10 @@ class TimeboardController extends BackEndController
 	 */
 	public function actionUpdate($id)
 	{
-		$model=$this->loadModel($id);
+		$model = $this->loadModel($id);
+
+        $club_id = $model->hall->club->id;
+        $club = ClubItem::model()->findByPk($club_id);
 
 		// $this->performAjaxValidation($model);
 
@@ -88,6 +91,7 @@ class TimeboardController extends BackEndController
 
 		$this->render('update', array(
 			'model' => $model,
+            'club' => $club,
 		));
 	}
 
