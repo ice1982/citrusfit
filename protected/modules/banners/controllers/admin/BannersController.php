@@ -60,4 +60,17 @@ class BannersController extends BackEndController
         );
     }
 
+    public function accessRules()
+    {
+        return array(
+            array('allow',
+                'actions' => array('create', 'index', 'update', 'delete', 'turnOn', 'turnOff', 'order', 'orderAjax'),
+                'roles' => array(User::ROLE_GLOBAL_ADMIN, User::ROLE_GLOBAL_MANAGER),
+            ),
+            array('deny',
+                'users' => array('?'),
+            ),
+        );
+    }
+
 }

@@ -13,23 +13,23 @@ $this->breadcrumbs = array(
 $this->menu = array(
     array(
         'label' => 'Список пользователей',
-        'icon'  => 'list',
-        'url'   => array('index')
+        'icon' => 'list',
+        'url' => array('index')
     ),
     array(
         'label' => 'Создать ползователя',
-        'icon'  => 'plus',
-        'url'   => array('create')
+        'icon' => 'plus',
+        'url' => array('create')
     ),
     array(
         'label' => 'Сменить пароль',
-        'icon'  => 'lock',
-        'url'   => array('user/changepassword&id=' . $model->id),
+        'icon' => 'lock',
+        'url' => array('user/changepassword&id=' . $model->id),
     ),
     array(
         'label' => 'Удалить пользователя',
-        'icon'  => 'remove',
-        'url'   => array('delete', 'id' => $model->id),
+        'icon' => 'remove',
+        'url' => array('delete', 'id' => $model->id),
         'htmlOptions' => array(
             'confirm' => 'Вы действительно хотите удалить этого пользователя (' . $model->username . ')?'
         ),
@@ -39,11 +39,5 @@ $this->menu = array(
 ?>
 
 <h1>Редактировать пользователя "<?php echo $model->username; ?>"</h1>
-
-<?php $this->widget('Alert', array(
-    'block'     => true,
-    'fade'      => true,
-    'closeText' => '&times;',
-)); ?>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

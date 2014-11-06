@@ -12,7 +12,7 @@ class UpdateAction extends BaseAction
         if (isset($_POST[$this->model_name])) {
             $model->attributes = $_POST[$this->model_name];
 
-            if ($model->save()) {
+            if (($model->validate()) && ($model->save())) {
                 $this->getController()->setSuccess($this->success_message);
                 $this->getController()->redirect($this->redirect_to);
             } else {
@@ -24,4 +24,4 @@ class UpdateAction extends BaseAction
             'model' => $model,
         ));
     }
-} 
+}

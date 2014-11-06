@@ -19,6 +19,24 @@
  */
 class User extends BaseActiveRecord
 {
+	const ROLE_BANNED = 0;
+	const ROLE_GLOBAL_ADMIN = 1;
+	const ROLE_GLOBAL_MANAGER = 2;
+
+    public $roles = array();
+
+    public function init()
+    {
+        parent::init();
+
+        $this->roles = array(
+			self::ROLE_GLOBAL_ADMIN => 'Админ сети',
+			self::ROLE_GLOBAL_MANAGER => 'Менеджер сети',
+			self::ROLE_BANNED => 'Неактивный',
+        );
+    }
+
+
 	public static function model($className = __CLASS__)
     {
         return parent::model($className);
@@ -41,8 +59,13 @@ class User extends BaseActiveRecord
 		// will receive user inputs.
 		return array(
 			array(
-				'username, password, created_username, modified_username',
+				'username',
 				'required',
+			),
+			array(
+				'password',
+				'required',
+				'on' => 'insert',
 			),
 			array(
 				'role, created_user, modified_user',
@@ -50,9 +73,14 @@ class User extends BaseActiveRecord
 				'integerOnly' => true,
 			),
 			array(
-				'username, password',
+				'username',
 				'length',
 				'max' => 50,
+			),
+			array(
+				'password',
+				'length',
+				'max' => 200,
 			),
 			array(
 				'created_ip, modified_ip, modified_username',
@@ -146,4 +174,36 @@ class User extends BaseActiveRecord
 			'criteria' => $criteria,
 		));
 	}
+
+	protected function beforeSave()
+    {
+        if (parent::beforeSave()) {
+
+        	if ($this->isNewRecord) {
+        		$this->password = $this->hashPassword($this->password);
+        	} else {
+        		if (empty($this->password)) {
+        			$old_password = $this->findByPk($this->id)->password;
+                	$this->password = $old_password;
+            	} else {
+            		$this->password = $this->hashPassword($this->password);
+            	}
+        	}
+
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+	public function validatePassword($password)
+    {
+        return CPasswordHelper::verifyPassword($password, $this->password);
+    }
+
+    public function hashPassword($password)
+    {
+        return CPasswordHelper::hashPassword($password);
+    }
+
 }

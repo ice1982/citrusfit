@@ -1,15 +1,9 @@
-<?php
-/* @var $this UserController */
-/* @var $model User */
-/* @var $form CActiveForm */
-?>
-
 <div class="form">
 
 <?php $form = $this->beginWidget('CActiveForm', array(
-	'id'                   => 'user-form',
-	'enableAjaxValidation' => true,
-	'clientOptions'        => array(
+	'id' => 'user-form',
+	'enableAjaxValidation' => false,
+	'clientOptions' => array(
     	'validateOnSubmit' => true,
     ),
 )); ?>
@@ -24,13 +18,11 @@
 		<?php echo $form->error($model,'username'); ?>
 	</div>
 
-	<?php if (empty($model->id)) : ?>
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'password'); ?>
-		<?php echo $form->passwordField($model,'password', array('class' => 'form-control input-large')); ?>
+		<?php echo $form->passwordField($model,'password', array('class' => 'form-control input-large', 'value' => '')); ?>
 		<?php echo $form->error($model,'password'); ?>
 	</div>
-	<?php endif; ?>
 
     <div>
         <?php echo $form->labelEx($model,'role'); ?>

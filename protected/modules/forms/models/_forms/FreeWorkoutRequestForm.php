@@ -61,6 +61,13 @@ class FreeWorkoutRequestForm extends BaseFormModel
 
         $message .= '<br>';
 
+        $form_request = new FormRequest;
+        $form_request->club_id = $this->club;
+        $form_request->fio = $this->fio;
+        $form_request->phone = $this->phone;
+        $form_request->description = 'Пробное занятие';
+        $form_request->save();
+
         return SendMail::sendEmail($from, $email, $subject, $message);
     }
 

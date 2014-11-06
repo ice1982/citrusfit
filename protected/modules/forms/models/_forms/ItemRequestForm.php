@@ -57,14 +57,23 @@ class ItemRequestForm extends BaseFormModel
         if (CHelper::isJson($this->item)) {
             $item_array = json_decode($this->item);
             foreach ($item_array as $key => $value) {
-                $message .= $key . ': ' . $value . '<br>';
+                $item = $key . ': ' . $value . '<br>';
             }
         } else {
-            $message .= $this->item . '<br>';
+            $item = $this->item . '<br>';
         }
+
+        $message .= $item;
 
 
         $message .= '<br>';
+
+        $form_request = new FormRequest;
+
+        $form_request->fio = $this->fio;
+        $form_request->phone = $this->phone;
+        $form_request->description = 'Заявка с сайта. ' . $item;
+        $form_request->save();
 
         return SendMail::sendEmail($from, $email, $subject, $message);
     }

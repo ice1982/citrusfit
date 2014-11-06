@@ -76,10 +76,10 @@ return CMap::mergeArray(
 
             // пользователь
             'user' => array(
-                'class'          => 'WebUser',
+                'class' => 'WebUser',
                 // enable cookie-based authentication
                 'allowAutoLogin' => true,
-                'loginUrl'       => array('/user/login'),
+                'loginUrl' => array('/users/admin/users/login'),
             ),
 
             'image'=>array(

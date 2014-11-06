@@ -86,6 +86,23 @@
                         <li><a href="<?=Yii::app()->createUrl('forms/admin/reports/index')?>">Отчеты о заявках</a></li>
                     </ul>
                 </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Пользователи <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="<?=Yii::app()->createUrl('users/admin/users/create')?>">Добавить пользователя</a></li>
+                        <li><a href="<?=Yii::app()->createUrl('users/admin/users/index')?>">Список пользователей</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?=Yii::app()->user->name?> <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Сменить пароль</a></li>
+                    </ul>
+                </li>
+                <li><a href="<?=Yii::app()->createUrl('users/admin/users/logout')?>">Выход</a></li>
             </ul>
         </div>
     </div>

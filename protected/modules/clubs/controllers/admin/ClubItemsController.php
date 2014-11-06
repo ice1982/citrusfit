@@ -2,7 +2,7 @@
 
 class ClubItemsController extends BackEndController
 {
-    private $_model_name = 'ClubHall';
+    private $_model_name = 'ClubItem';
     private $_e_404_message = 'Запрашиваемый клуб не найден.';
 
     public function actions()
@@ -45,6 +45,19 @@ class ClubItemsController extends BackEndController
                 'success_message' => 'Клуб успешно выключен!',
                 'error_message' => 'Не удалось выключить клуб!',
                 'e_404_message' => $this->_e_404_message,
+            ),
+        );
+    }
+
+    public function accessRules()
+    {
+        return array(
+            array('allow',
+                'actions' => array('create', 'index', 'update', 'delete', 'turnOn', 'turnOff'),
+                'roles' => array(User::ROLE_GLOBAL_ADMIN, User::ROLE_GLOBAL_MANAGER),
+            ),
+            array('deny',
+                'users' => array('?'),
             ),
         );
     }

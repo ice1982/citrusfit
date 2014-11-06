@@ -21,36 +21,29 @@ $this->menu = array(
 
 <h1>Список пользователей</h1>
 
-<?php $this->widget('Alert', array(
-    'block'     => true,
-    'fade'      => true,
-    'closeText' => '&times;',
-)); ?>
-
 <?php $this->widget('zii.widgets.grid.CGridView', array(
-    'id'               => 'type-of-article-grid',
-    'dataProvider'     => $model->search(),
-    'selectableRows'   => 0,
-    'type'             => 'striped',
+    'id' => 'type-of-article-grid',
+    'dataProvider' => $model->search(),
+    'selectableRows' => 0,
+    'itemsCssClass' => 'table table-striped',
     'enablePagination' => false,
-    'summaryText'      => false,
-    // 'filter'        => $model,
-    'columns'          => array(
+    'summaryText' => false,
+    'columns' => array(
         array(
-            'name'        => 'username',
+            'name' => 'username',
             'htmlOptions' => array('class' => 'user-username'),
-            'type'        => 'html',
-            'value'       => 'CHtml::link(CHtml::encode($data->username), array("update", "id" => $data->id))'
+            'type' => 'html',
+            'value' => 'CHtml::link(CHtml::encode($data->username), array("update", "id" => $data->id))'
         ),
         array(
-            'class'              => 'CButtonColumn',
-            'template'           => '{delete}',
+            'class' => 'CButtonColumn',
+            'template' => '{delete}',
             'deleteConfirmation' => "js:'Вы действительно хотите удалить пользователя ' + $(this).parents('tr').children('.user-username').text() + '?'",
-            'buttons'            => array(
+            'buttons' => array(
                 'delete' => array(
                     'label' => 'Удалить',
-                    'icon'  => 'remove',
-                    'url'   => 'Yii::app()->createUrl("user/delete", array("id" => $data->id))',
+                    'icon' => 'remove',
+                    'url' => 'Yii::app()->createUrl("user/delete", array("id" => $data->id))',
                 ),
             ),
         ),

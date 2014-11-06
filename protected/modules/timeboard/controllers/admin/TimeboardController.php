@@ -7,6 +7,19 @@ Yii::import('application.modules.instructors.models._base.*');
 
 class TimeboardController extends BackEndController
 {
+    public function accessRules()
+    {
+        return array(
+            array('allow',
+                'actions' => array('create', 'index', 'update', 'delete'),
+                'roles' => array(User::ROLE_GLOBAL_ADMIN, User::ROLE_GLOBAL_MANAGER),
+            ),
+            array('deny',
+                'users' => array('?'),
+            ),
+        );
+    }
+
 	/**
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.

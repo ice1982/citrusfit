@@ -35,30 +35,16 @@ $this->menu = array(
 
 <h1>Сменить пароль <?php echo $user->username; ?></h1>
 
-<?php $this->widget('Alert', array(
-    'block'     => true,
-    'fade'      => true,
-    'closeText' => '&times;',
-)); ?>
-
 <div class="form">
 
 <?php $form = $this->beginWidget('CActiveForm', array(
-    'id'                   => 'changepassword-form',
+    'id' => 'changepassword-form',
     'enableAjaxValidation' => false,
 )); ?>
 
     <p class="note">Поля, отмеченные <span class="required">*</span>, обязательны для заполнения.</p>
 
     <?php echo CHtml::errorSummary($model); ?>
-
-    <?php echo $form->hiddenField($model,'id', array('value' => $user->id)); ?>
-
-    <div class="form-group">
-        <?php echo $form->labelEx($model,'old_password'); ?>
-        <?php echo $form->passwordField($model,'old_password'); ?>
-        <?php echo $form->error($model,'old_password'); ?>
-    </div>
 
     <div class="form-group">
         <?php echo $form->labelEx($model,'new_password'); ?>

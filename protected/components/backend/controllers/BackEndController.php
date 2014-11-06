@@ -28,8 +28,33 @@ Yii::import('application.modules.gallery.models.*');
 Yii::import('application.modules.gallery.models._forms.*');
 Yii::import('application.modules.gallery.models._base.*');
 
+Yii::import('application.modules.users.*');
+Yii::import('application.modules.users.models.*');
+Yii::import('application.modules.users.models._forms.*');
+Yii::import('application.modules.users.models._base.*');
+
 class BackEndController extends BaseController
 {
     public $breadcrumbs;
     public $menu;
+
+    /*
+        Фильтры
+    */
+    public function filters()
+    {
+        return array(
+            'accessControl', // perform access control for CRUD operations
+            'postOnly + delete', // we only allow deletion via POST request
+        );
+    }
+
+    public function accessRules()
+    {
+        return array(
+            array('deny',
+                'users' => array('?'),
+            ),
+        );
+    }
 }

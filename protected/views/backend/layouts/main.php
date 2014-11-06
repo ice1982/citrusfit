@@ -20,7 +20,6 @@
 
 <body>
 
-
 <?php $this->widget('AdminMainMenu')?>
 
 <div class="container-fluid" id="page">

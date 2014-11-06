@@ -22,6 +22,18 @@ class FormRequest extends BaseActiveRecord
         return parent::model($className);
     }
 
+	public function behaviors(){
+        return array(
+            'DatetimeBehavior' => array(
+                'class' => 'DatetimeBehavior',
+            ),
+            'IpBehavior' => array(
+                'class' => 'IpBehavior',
+            ),
+
+        );
+    }
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -39,7 +51,7 @@ class FormRequest extends BaseActiveRecord
 		// will receive user inputs.
 		return array(
 			array(
-				'club_id, fio, phone',
+				'fio',
 				'required',
 			),
 			array(
@@ -51,6 +63,11 @@ class FormRequest extends BaseActiveRecord
 				'fio, created_ip',
 				'length',
 				'max' => 300,
+			),
+			array(
+				'email',
+				'length',
+				'max' => 200,
 			),
 			array(
 				'phone',

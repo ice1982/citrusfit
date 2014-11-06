@@ -48,6 +48,13 @@ class SubscribeForm extends BaseFormModel
 
         $message .= '<br>';
 
+        $form_request = new FormRequest;
+
+        $form_request->fio = $this->fio;
+        $form_request->email = $this->email;
+        $form_request->description = 'Заявка на рассылку';
+        $form_request->save();
+
         return SendMail::sendEmail($from, $email, $subject, $message);
     }
 
