@@ -6,7 +6,7 @@ $this->breadcrumbs = array(
 	'Update',
 );
 
-$this->menu=array(
+$this->menu = array(
 	array(
         'label' => 'List Instructor',
         'url'=>array('index'),

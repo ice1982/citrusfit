@@ -16,13 +16,15 @@ return CMap::mergeArray(
                 'enableParamLogging' => true,
                 'tablePrefix' => '',
             ),
-            'log'=>array(
-                'class'=>'CLogRouter',
-                'routes'=>array(
+            'log' => array(
+                'class' => 'CLogRouter',
+                'routes' => array(
                     array(
                         'class' => 'CWebLogRoute',
                         'categories' => 'application',
                         'levels' =>'error, warning, trace, profile, info',
+                        'showInFireBug' => true,
+                        'ignoreAjaxInFireBug' => true,
                     ),
                     array(
                         // направляем результаты профайлинга в ProfileLogRoute (отображается
@@ -47,23 +49,6 @@ return CMap::mergeArray(
                 ),
             ),
         ),
-
-        'params' => array(
-            'smtp' => array(
-                'host'     => 'CHANGEME',
-                'debug'    => 'CHANGEME',
-                'auth'     => 'CHANGEME',
-                'port'     => 'CHANGEME',
-                'username' => 'CHANGEME',
-                'password' => 'CHANGEME',
-                'addreply' => 'CHANGEME',
-                'replyto'  => 'CHANGEME',
-                'fromname' => 'CHANGEME',
-                'from'     => 'CHANGEME',
-                'charset'  => 'CHANGEME',
-            ),
-        ),
-
     )
 );
 

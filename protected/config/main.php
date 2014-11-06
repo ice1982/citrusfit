@@ -53,16 +53,21 @@ return array(
 		'errorHandler' => array(
 			'errorAction' => 'site/error',
 		),
-
-		'log' => array(
-			'class' => 'CLogRouter',
-			'routes' => array(
-				array(
-					'class' => 'CFileLogRoute',
-					'levels' => 'error, warning',
-				),
-			),
-		),
+        'log' => array(
+            'class'=>'CLogRouter',
+            'routes'=>array(
+                array(
+                    'class' => 'CFileLogRoute',
+                    'levels' => 'error, warning',
+                ),
+//                array(
+//                    'class' => 'CustomFileLogRoute',
+//                    'categories' => 'deleteAction',
+//                    'levels' => CLogger::LEVEL_INFO,
+//                    'logFile' => 'deleteAction.log',
+//                ),
+            ),
+        ),
         'mailer' => array(
             'class' => 'application.extensions.mailer.EMailer',
             'pathViews' => 'application.views.email',
