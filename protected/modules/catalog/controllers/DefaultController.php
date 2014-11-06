@@ -24,7 +24,9 @@ class DefaultController extends FrontEndController
         } else {
             $club_id = Yii::app()->session['club'];
 
-            $catalog_item_models = CatalogItem::model()->findAllItemsOfClub($club_id);
+            // $catalog_item_models = CatalogItem::model()->findAllItemsOfClub($club_id);
+            $catalog_item_models = CatalogItem::model()->findAllItemsOfClubJson($club_id);
+
             foreach ($catalog_item_models as $catalog_item_model) {
                 $catalog_items_content[$catalog_item_model->group_id][] = $catalog_item_model;
             }

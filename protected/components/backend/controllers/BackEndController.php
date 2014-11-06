@@ -38,6 +38,8 @@ class BackEndController extends BaseController
     public $breadcrumbs;
     public $menu;
 
+    public $layout = '//templates/column2';
+
     /*
         Фильтры
     */

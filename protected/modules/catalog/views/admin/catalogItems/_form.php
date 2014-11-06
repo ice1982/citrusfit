@@ -17,14 +17,14 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="form-group">
-		<?php echo $form->labelEx($model,'club_id'); ?>
+		<?php echo $form->labelEx($model,'clubs'); ?>
 		<?php
-			echo $form->dropDownList($model, 'club_id',
-				CHtml::listData(ClubItem::model()->findAll(array('order' => 'title')),'id','title'),
-				array('empty' => 'Для всех клубов', 'class' => 'form-control input-large')
+			echo $form->dropDownList($model, 'clubs',
+				CHtml::listData(ClubItem::model()->active()->findAll(array('order' => 'title')),'id','title'),
+				array('empty' => 'Для всех клубов', 'class' => 'form-control input-large', 'multiple' => 'multiple')
 			);
 		?>
-		<?php echo $form->error($model,'club_id'); ?>
+		<?php echo $form->error($model,'clubs'); ?>
 	</div>
 
 	<div class="form-group">
