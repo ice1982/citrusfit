@@ -42,6 +42,23 @@ class User extends BaseActiveRecord
         return parent::model($className);
     }
 
+    public function behaviors(){
+        return array(
+            'DatetimeBehavior' => array(
+                'class' => 'DatetimeBehavior',
+            ),
+            'IpBehavior' => array(
+                'class' => 'IpBehavior',
+            ),
+            'UserBehavior' => array(
+                'class' => 'UserBehavior',
+            ),
+            'UsernameBehavior' => array(
+                'class' => 'UsernameBehavior',
+            ),
+        );
+    }
+
 	/**
 	 * @return string the associated database table name
 	 */

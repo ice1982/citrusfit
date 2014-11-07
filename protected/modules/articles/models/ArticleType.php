@@ -39,12 +39,12 @@ class ArticleType extends BaseActiveRecord
             'IpBehavior' => array(
                 'class' => 'IpBehavior',
             ),
-            // 'UserBehavior' => array(
-            //     'class' => 'UserBehavior',
-            // ),
-            // 'UsernameBehavior' => array(
-            //     'class' => 'UsernameBehavior',
-            // ),
+             'UserBehavior' => array(
+                 'class' => 'UserBehavior',
+             ),
+             'UsernameBehavior' => array(
+                 'class' => 'UsernameBehavior',
+             ),
         );
     }
 

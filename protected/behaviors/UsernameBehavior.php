@@ -3,10 +3,12 @@ class UsernameBehavior extends CActiveRecordBehavior
 {
     public function beforeSave($event)
     {
+        $username = Yii::app()->user->name;
+
         if ($this->owner->isNewRecord) {
-            $this->owner->created = $this->owner->modified = date('Y-m-d H:i:s');
+            $this->owner->created_username = $this->owner->modified_username = $username;
         } else {
-            $this->owner->modified = date('Y-m-d H:i:s');
+            $this->owner->modified_username = $username;
         }
     }
 }
