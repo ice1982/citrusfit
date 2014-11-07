@@ -195,6 +195,20 @@ class Page extends BaseActiveRecord
         ));
 	}
 
+    protected function beforeValidate()
+    {
+        if (parent::beforeValidate()) {
+
+            if (empty($this->module)) {
+                $this->module = null;
+            }
+
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 	public function findMenuPages()
 	{
 		$models = $this->active()->findAllByAttributes(array('show_in_menu' => 1), array('order' => 'nn'));

@@ -26,16 +26,22 @@
                                 )?>
                             </a>
                         </div>
-                        <div class="col-xs-6">
-                        <div class="font-h4 margin-h3"><a href="<?=Yii::app()->createUrl('catalog/default/view', array('id' => $catalog_item->id))?>"><?=$catalog_item->title?></a></div>
-                            <div>
-                                <?=$catalog_item->annotation?>
+                        <div class="col-xs-9">
+                            <div class="font-h4 margin-h3"><a href="<?=Yii::app()->createUrl('catalog/default/view', array('id' => $catalog_item->id))?>"><?=$catalog_item->title?></a></div>
+
+                            <div class="row">
+                                <div class="col-xs-8">
+                                    <div>
+                                        <?=$catalog_item->annotation?>
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <a class="btn btn-default modal-item-request-button fancybox-modal" href="#modalCatalogItemRequest" data-item="<?=$catalog_item->group->title . ': ' . $catalog_item->title . '(' . $this->club->title . ')'?>" data-item-text="<?=$catalog_item->title . '(' . $this->club->title . ')'?>">
+                                        Оставить заявку
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-xs-3">
-                            <a class="btn btn-default modal-item-request-button fancybox-modal" href="#modalCatalogItemRequest" data-item="<?=$catalog_item->group->title . ': ' . $catalog_item->title . '(' . $this->club->title . ')'?>" data-item-text="<?=$catalog_item->title . '(' . $this->club->title . ')'?>">
-                                Оставить запрос
-                            </a>
+
                         </div>
                     </div>
                 </div>

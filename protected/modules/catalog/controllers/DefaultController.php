@@ -63,8 +63,8 @@ class DefaultController extends FrontEndController
         // Клубные карты
         // Карта
         $this->breadcrumbs['Сеть клубов &laquo;Цитрус&raquo;'] = Yii::app()->createUrl('clubs/default/index');
-        if (isset($catalog_item->club->id)) {
-            $this->breadcrumbs['Клуб &laquo;' . $catalog_item->club->title . '&raquo;'] = Yii::app()->createUrl('clubs/default/view', array('id' => $catalog_item->club_id));
+        if (isset($this->club->id)) {
+            $this->breadcrumbs['Клуб &laquo;' . $this->club->title . '&raquo;'] = Yii::app()->createUrl('clubs/default/view', array('id' => $this->club->id));
         } elseif (!empty(Yii::app()->session['club'])) {
             $club_id = Yii::app()->session['club'];
             $club_model = ClubItem::model()->active()->findByPk($club_id);

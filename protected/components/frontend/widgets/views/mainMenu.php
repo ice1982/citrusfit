@@ -14,22 +14,22 @@
         </li>
     <?php endif; ?>
 
-    <li class="">
+    <li class="<?=(Yii::app()->createUrl(Yii::app()->request->url) == Yii::app()->createUrl('pages/default/view', array('alias' => 'about'))) ? 'active' : ''?>">
         <a href="<?=Yii::app()->createUrl('pages/default/view', array('alias' => 'about'))?>">
             О сети &laquo;Цитрус&raquo;
         </a>
     </li>
-    <li class="">
+    <li class="<?=(Yii::app()->createUrl(Yii::app()->request->url) == Yii::app()->createUrl('catalog/default/index')) ? 'active' : ''?>">
         <a href="<?=Yii::app()->createUrl('catalog/default/index')?>">
             Клубные карты
         </a>
     </li>
-    <li class="">
+    <li class="<?=(Yii::app()->createUrl(Yii::app()->request->url) == Yii::app()->createUrl('timeboard/default/index')) ? 'active' : ''?>">
         <a href="<?=Yii::app()->createUrl('timeboard/default/index')?>">
             Расписание
         </a>
     </li>
-    <li class="">
+    <li class="<?=(Yii::app()->createUrl(Yii::app()->request->url) == Yii::app()->createUrl('pages/default/view', array('alias' => 'contacts'))) ? 'active' : ''?>">
         <a href="<?=Yii::app()->createUrl('pages/default/view', array('alias' => 'contacts'))?>">
             Контакты
         </a>

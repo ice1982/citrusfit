@@ -34,6 +34,12 @@
 
 <body>
 
+<?php
+
+
+
+?>
+
     <div class="header">
         <div class="container">
             <table>
@@ -88,20 +94,23 @@
 
     <div class="footer">
         <div class="container">
-            <div class="row">
+            <div class="row margin-h2">
                 <div class="col-xs-4">
-                    &copy; <?=date('Y')?>, фитнес-клуб "Цитрус"
+                    <div class="font-h4 margin-h3">&copy; <?=date('Y')?>, фитнес-клуб &laquo;Цитрус&raquo;</div>
                 </div>
                 <div class="col-xs-4">
-                    <a href="#">Франшиза фитнес-клуба Цитрус</a>
+                    <div class="font-h4 margin-h3">Наши проекты</div>
+                    <a href="http://девочкитакие.рф" title="Бар #ДевочкиТакиеДевочки" target="_blank"><img src="/img/dtd.png" width="250" alt=""/></a>
+<!--                    <a href="#">Франшиза фитнес-клуба Цитрус</a>-->
                 </div>
                 <div class="col-xs-4">
-                    <div><?=$this->club->title?></div>
+                    <div class="font-h4 margin-h3"><?=$this->club->title?></div>
                     <div><?=$this->club->contact_phones?></div>
                     <div><?=$this->club->contact_address?></div>
                 </div>
             </div>
-            <div class="row">
+            <hr/>
+            <div class="row margin-h3">
                 <div class="col-xs-4">
                     <?php
                         $this->widget('SubscribeWidget',
@@ -119,9 +128,17 @@
                         );
                     ?>
                 </div>
+                <div class="col-xs-4">
+
+                </div>
+                <div class="col-xs-4">
+                    <!-- Yandex.Metrika informer --><a href="https://metrika.yandex.ru/stat/?id=2667448&amp;from=informer" target="_blank" rel="nofollow"><img src="//bs.yandex.ru/informer/2667448/3_0_FFFFD2FF_FFE4B2FF_0_pageviews" style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" /></a><!-- /Yandex.Metrika informer -->
+                </div>
             </div>
         </div>
     </div>
+
+<!-- Yandex.Metrika counter --><script type="text/javascript">(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter2667448 = new Ya.Metrika({id:2667448, webvisor:true, clickmap:true, trackLinks:true, accurateTrackBounce:true}); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="//mc.yandex.ru/watch/2667448" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter -->
 
 </body>
 

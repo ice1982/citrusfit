@@ -1,6 +1,6 @@
-<?php foreach ($clubs as $club) : ?>
+<?php foreach ($clubs as $key => $club) : ?>
 
-    <div class="row">
+    <div class="row margin-h3">
         <div class="col-xs-5">
             <div class="font-h3 margin-h3"><?=$club->title?></div>
             <div class="margin-h3">
@@ -21,7 +21,7 @@
 
                 <script type="text/javascript">
                 ymaps.ready(function () {
-                    var myMap = new ymaps.Map('map', {
+                    var myMap = new ymaps.Map('map<?=$key?>', {
                             center: [<?=$club->contact_coordinates?>],
                             zoom: 14
                         });
@@ -40,9 +40,13 @@
                     myMap.behaviors.disable('scrollZoom')
                 });
                 </script>
-                <div id="map" style="height: 300px"></div>
+                <div id="map<?=$key?>" style="height: 300px"></div>
 
         </div>
     </div>
+
+    <?php if (count($clubs) > 1) : ?>
+        <hr/>
+    <?php endif; ?>
 
 <?php endforeach; ?>

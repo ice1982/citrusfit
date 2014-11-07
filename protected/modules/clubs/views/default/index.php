@@ -9,7 +9,7 @@
         <div class="font-h3 margin-h4"><a href="<?=Yii::app()->createUrl('clubs/default/switchClub', array('id' => $club->id, 'previous' => $previous))?>"><?=$club->title?></a></div>
 
         <div class="row margin-h4">
-            <div class="col-xs-5">
+            <div class="col-xs-7">
                 <div class="margin-h4">
                     <div>
                         Телефон: <?=$club->contact_phones?>
@@ -23,7 +23,7 @@
                     <?=$this->decodeWidgets($club->description)?>
                 </div>
             </div>
-            <div class="col-xs-7">
+            <div class="col-xs-5">
                 <?=$this->decodeWidgets($club->annotation)?>
             </div>
         </div>

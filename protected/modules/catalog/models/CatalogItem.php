@@ -5,7 +5,6 @@
  *
  * The followings are the available columns in table 'catalog_items':
  * @property integer $id
- * @property integer $club_id
  * @property string $clubs
  * @property integer $group_id
  * @property string $title
@@ -90,7 +89,7 @@ class CatalogItem extends BaseActiveRecord
                 'required',
             ),
             array(
-                'club_id, group_id, nn, meta_index, created_user, modified_user, active',
+                'group_id, nn, meta_index, created_user, modified_user, active',
                 'numerical',
                 'integerOnly' => true,
             ),
@@ -141,13 +140,13 @@ class CatalogItem extends BaseActiveRecord
                 'on' => 'update',
             ),
             array(
-                'club_id, clubs, group_id, title, image_attr_alt, image_attr_title, body, meta_index, meta_title, meta_keywords, meta_description',
+                'clubs, group_id, title, image_attr_alt, image_attr_title, body, meta_index, meta_title, meta_keywords, meta_description',
                 'safe',
             ),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
             array(
-                'id, club_id, clubs, group_id, title, image, image_attr_alt, image_attr_title, body, nn, meta_index, meta_title, meta_keywords, meta_description, created_ip, created_date, created_user, created_username, modified_ip, modified_date, modified_user, modified_username, active',
+                'id, clubs, group_id, title, image, image_attr_alt, image_attr_title, body, nn, meta_index, meta_title, meta_keywords, meta_description, created_ip, created_date, created_user, created_username, modified_ip, modified_date, modified_user, modified_username, active',
                 'safe',
                 'on' => 'search'
             ),
@@ -163,7 +162,6 @@ class CatalogItem extends BaseActiveRecord
         // class name for the relations automatically generated below.
         return array(
             'group' => array(self::BELONGS_TO, 'CatalogGroup', 'group_id'),
-            'club' => array(self::BELONGS_TO, 'ClubItem', 'club_id'),
         );
     }
 
@@ -174,7 +172,6 @@ class CatalogItem extends BaseActiveRecord
     {
         return array(
             'id' => 'ID',
-            'club_id' => 'Club',
             'clubs' => 'Clubs',
             'group_id' => 'Group',
             'title' => 'Title',
@@ -219,7 +216,6 @@ class CatalogItem extends BaseActiveRecord
         $criteria = new CDbCriteria;
 
         $criteria->compare('id', $this->id);
-        $criteria->compare('club_id', $this->club_id);
         $criteria->compare('clubs', $this->clubs);
         $criteria->compare('group_id', $this->group_id);
         $criteria->compare('title', $this->title, true);
@@ -288,32 +284,9 @@ class CatalogItem extends BaseActiveRecord
         }
     }
 
-    public function findAllItemsOfClub($club_id, $active = true)
-    {
-        $condition = array('club_id' => $club_id);
-
-        $criteria = new CDbCriteria;
-
-        if ($active) {
-            $criteria->scopes = array('active');
-        }
-
-        $criteria->condition = 'club_id = :club_id';
-        $criteria->addCondition('club_id IS NULL', 'OR');
-        $criteria->params = array(':club_id' => $club_id);
-
-        $criteria->order = 'group_id, nn';
-
-        $model = $this->findAll($criteria);
-
-        // $model = ($active) ? $this->active()->findAllByAttributes($condition) : $this->findAllByAttributes($condition);
-
-        return $model;
-    }
 
     public function findAllItemsOfClubJson($club_id, $active = true)
     {
-        $condition = array('club_id' => $club_id);
 
         $criteria = new CDbCriteria;
 
@@ -321,7 +294,8 @@ class CatalogItem extends BaseActiveRecord
             $criteria->scopes = array('active');
         }
 
-        $criteria->condition = 'club_id IS NULL';
+        $criteria->condition = 'clubs IS NULL';
+        $criteria->addSearchCondition('clubs', '[' . $club_id . ']', true, 'OR');
         $criteria->addSearchCondition('clubs', '[' . $club_id . ',', true, 'OR');
         $criteria->addSearchCondition('clubs', ',' . $club_id . ',', true, 'OR');
         $criteria->addSearchCondition('clubs', ',' . $club_id . ']', true, 'OR');

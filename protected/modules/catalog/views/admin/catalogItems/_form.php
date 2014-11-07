@@ -68,6 +68,12 @@
 		<?php echo $form->error($model,'image_attr_alt'); ?>
 	</div>
 
+    <div class="form-group">
+        <?php echo $form->labelEx($model,'annotation'); ?>
+        <?php echo $form->textArea($model,'annotation', array('class' => 'form-control input-large tinymce')); ?>
+        <?php echo $form->error($model,'annotation'); ?>
+    </div>
+
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'body'); ?>
 		<?php echo $form->textArea($model,'body', array('class' => 'form-control input-large tinymce')); ?>

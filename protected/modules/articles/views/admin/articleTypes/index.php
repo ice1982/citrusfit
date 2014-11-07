@@ -28,6 +28,7 @@ $this->menu = array(
     'summaryText'      => false,
     // 'filter'        => $model,
     'columns'          => array(
+        'id',
         array(
             'name'        => 'title',
             'htmlOptions' => array('class' => 'typeofarticle-title'),

@@ -68,8 +68,12 @@ class FrontEndController extends BaseController
     public function checkClubSession()
     {
         $club_id = Yii::app()->request->getQuery('club_id');
+
         if (empty($club_id)) {
             $club_id = Yii::app()->session['club'];
+        } elseif ($club_id == 'all') {
+            $club_id = false;
+            Yii::app()->session['club'] = false;
         }
 
         $club_model = ClubItem::model();

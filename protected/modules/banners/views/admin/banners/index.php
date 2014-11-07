@@ -41,6 +41,7 @@ $this->menu = array(
             ),
             'value' => 'CHtml::link(($data->active == 1) ? "<span class=\'glyphicon glyphicon-off\'></span>" : "<span class=\'glyphicon glyphicon-play\'></span>", array(($data->active == 1) ? "turnOff" : "turnOn", "id" => $data->id))',
         ),
+        'id',
         array(
             'name' => 'image',
             'type' => 'raw',

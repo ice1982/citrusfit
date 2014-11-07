@@ -29,23 +29,3 @@ $this->menu = array(
         <input type="button" id="save" value="Сохранить" class="btn btn-primary" />
     </div>
 </div>
-
-<script>
-$(function() {
-    $.post( '<?=Yii::app()->createUrl("catalog/admin/catalogItems/orderAjax")?>', {}, function( data ) {
-        $( '#orderResult' ).html( data );
-    });
-
-    $( '#save' ).click( function() {
-        oSortable = $('.sortable').nestedSortable('toArray');
-
-        $( '#orderResult' ).slideUp( function(){
-            $.post( '<?=Yii::app()->createUrl("catalog/admin/catalogItems/orderAjax")?>', { sortable: oSortable }, function( data ) {
-                $( '#orderResult' ).html( data );
-                $( '#orderResult' ).slideDown();
-            });
-        });
-
-    });
-});
-</script>
