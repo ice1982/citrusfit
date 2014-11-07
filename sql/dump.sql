@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `article_items` (
   KEY `articles_ibfk_2` (`club_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8 COMMENT='Статьи сайта';
 
--- Дамп данных таблицы v3.citrusfit.article_items: ~20 rows (приблизительно)
+-- Дамп данных таблицы v3.citrusfit.article_items: ~19 rows (приблизительно)
 DELETE FROM `article_items`;
 /*!40000 ALTER TABLE `article_items` DISABLE KEYS */;
 INSERT INTO `article_items` (`id`, `type_id`, `title`, `annotation`, `club_id`, `image`, `image_attr_title`, `image_attr_alt`, `body`, `pubdate`, `meta_index`, `meta_title`, `meta_keywords`, `meta_description`, `created_ip`, `created_date`, `created_user`, `created_username`, `modified_ip`, `modified_date`, `modified_user`, `modified_username`, `active`) VALUES
@@ -247,7 +247,7 @@ CREATE TABLE IF NOT EXISTS `catalog_items` (
   CONSTRAINT `catalog_items_ibfk_2` FOREIGN KEY (`club_id`) REFERENCES `club_items` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 COMMENT='Каталог товаров';
 
--- Дамп данных таблицы v3.citrusfit.catalog_items: ~31 rows (приблизительно)
+-- Дамп данных таблицы v3.citrusfit.catalog_items: ~29 rows (приблизительно)
 DELETE FROM `catalog_items`;
 /*!40000 ALTER TABLE `catalog_items` DISABLE KEYS */;
 INSERT INTO `catalog_items` (`id`, `club_id`, `clubs`, `group_id`, `title`, `annotation`, `image`, `image_attr_alt`, `image_attr_title`, `body`, `nn`, `meta_index`, `meta_title`, `meta_keywords`, `meta_description`, `created_ip`, `created_date`, `created_user`, `created_username`, `modified_ip`, `modified_date`, `modified_user`, `modified_username`, `active`) VALUES
@@ -456,6 +456,7 @@ CREATE TABLE IF NOT EXISTS `club_items` (
   `title` varchar(300) NOT NULL,
   `annotation` varchar(1024) DEFAULT NULL,
   `description` mediumtext,
+  `body` mediumtext,
   `contact_phones` varchar(300) DEFAULT NULL,
   `contact_address` varchar(500) DEFAULT NULL,
   `contact_info` mediumtext,
@@ -475,11 +476,11 @@ CREATE TABLE IF NOT EXISTS `club_items` (
 -- Дамп данных таблицы v3.citrusfit.club_items: ~4 rows (приблизительно)
 DELETE FROM `club_items`;
 /*!40000 ALTER TABLE `club_items` DISABLE KEYS */;
-INSERT INTO `club_items` (`id`, `title`, `annotation`, `description`, `contact_phones`, `contact_address`, `contact_info`, `contact_coordinates`, `created_ip`, `created_date`, `created_user`, `created_username`, `modified_ip`, `modified_date`, `modified_user`, `modified_username`, `active`) VALUES
-	(-1, 'Цитрус', NULL, '<p><a href="/kontakti/">Фитнес клуб &laquo;Цитрус&raquo;</a>&nbsp;&mdash; уютное место в&nbsp;центре Северо-Западного района г.Чебоксары, где&nbsp;Вы можете отложить все свои проблемы и&nbsp;посвятить время только себе и&nbsp;своему телу. Удобные сауны в&nbsp;раздевалках снимут стресс и&nbsp;облегчат усталость после тренировки.</p>\r\n{{w:GalleryBlock|album=Клуб СЗР}}\r\n<p>Для Вас ежедневно открыты двери <a href="/trenajeniy_zal/">тренажерного зала</a>, двух залов групповых занятий, двух залов персонального тренинга, маникюрного салона, spa-кабинета и&nbsp;<a href="/solyariy/">солярия</a>. Различные <a href="/strip-plastika/">танцевальные направления</a>, несколько видов <a href="/hatha/">йоги</a> и&nbsp;<a href="/step-aerobika/">аэробики</a>, <a href="/pilates/">пилатеса</a> и&nbsp;стрейтчинга, посещение тренажерного зала-в комплексе помогут Вам находится в&nbsp;тонусе и&nbsp;хорошем самочувствии всегда!</p>\r\n<p>Все это в&nbsp;шаговой доступности от&nbsp;остановки общ. транспорта <a href="/kontakti/">&laquo;Природа&raquo;</a> с&nbsp;удобной охраняемой парковкой для автомобилей.</p>\r\n<p>Ценителям индивидуального подхода мы&nbsp;предлагаем <a href="/individualnie_zanyatiya_s_trenerom/">персональные занятия с&nbsp;инструктором</a>, как в&nbsp;тренажерном зале, так и&nbsp;в&nbsp;залах персональных тренировок. Наши специалисты проведут фитнес тестирование и&nbsp;подберут нужную Вам программу питания и&nbsp;тренировок.</p>\r\n<p>Занятия фитнесом для будущих мам возможны в&nbsp;индивидуальном порядке и&nbsp;в&nbsp;коммерческих группах до&nbsp;6&nbsp;человек. Тренировки проводят сертифицированные специалисты в&nbsp;любое удобное для Вас время!</p>\r\n{{w:GalleryBlock|album=Клуб ЮЗР}}\r\n<p>Наш клуб работает по&nbsp;системе клубных карт, что является неоспоримым преимуществом в&nbsp;Чебоксарах. Плюсы клубной системы заключаются в&nbsp;возможности посещения различных видов групповых занятий, а&nbsp;также тренажерного зала без ограничений, участии в&nbsp;проходящих в&nbsp;клубе семинарах, в&nbsp;скидках и&nbsp;бонусах на&nbsp;пользование дополнительными услугами клуба.</p>\r\n<p>Дополнительную информацию о&nbsp;ценах на&nbsp;клубные карты и&nbsp;индивидуальные занятия&nbsp;Вы можете узнать в&nbsp;отделе продаж клуба &laquo;Цитрус&raquo; или во&nbsp;вкладке Прайс-лист. Для корпоративных клентов действует гибкая система скидок и&nbsp;различные схемы оплаты (подробности: <a href="/korporativhiy_fitnes/">корпоративный фитнес</a>).</p>\r\n<p>Звоните нам по&nbsp;телефону <span style="color: #800000;"><strong>45-25-16</strong></span>, менеджеры клуба ответят на&nbsp;все Ваши вопросы. Фитнес-клуб работает с&nbsp;понедельника по&nbsp;пятницу с&nbsp;8:00 до&nbsp;22:00, по&nbsp;выходным с&nbsp;9:00 до&nbsp;21:00. Наш адрес-улица Мичмана Павлова 10&nbsp;Б, 1&nbsp;минуту пешком от&nbsp;остановки &laquo;Природа&raquo;, 3&nbsp;минуты от&nbsp;остановки &laquo;Чебоксарец&raquo; и&nbsp;5&nbsp;минут от&nbsp;&laquo;Кривова&raquo; (<a href="/kontakti/">подробная схема проезда</a>).</p>\r\n<p>Всегда рады видеть Вас на&nbsp;занятиях в&nbsp;фитнес-клубе &laquo;Цитрус&raquo;!</p>', '8 (800) 123-45-67', NULL, '', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '', 0),
-	(1, 'Цитрус СЗР', '{{w:GalleryBlock|album=Клуб ЮЗР;limit=4;modal=1;order=id desc;width=100}}', NULL, '8 (8352) 12-34-56', 'г. Чебоксары, пр. мичмана Павлова, 10Б', NULL, '56.143713, 47.189751', NULL, NULL, NULL, '', NULL, NULL, NULL, '', 1),
-	(2, 'Цитрус ЮЗР', '{{w:GalleryBlock|album=Клуб ЮЗР;limit=4;modal=1;order=id desc;width=100}}', NULL, '8 (8352) 78-90-12', 'г. Чебоксары, ул. академика Королева, 2', NULL, '56.119674, 47.19763', NULL, NULL, NULL, '', NULL, NULL, NULL, '', 1),
-	(3, 'Йога студия', '{{w:GalleryBlock|album=Клуб ЮЗР;limit=4;modal=1;order=id desc;width=100}}', NULL, '8 (8352) 34-56-78', 'г. Чебоксары, ул. Ярославская, 72', NULL, '56.132663, 47.248882', NULL, NULL, NULL, '', NULL, NULL, NULL, '', 1);
+INSERT INTO `club_items` (`id`, `title`, `annotation`, `description`, `body`, `contact_phones`, `contact_address`, `contact_info`, `contact_coordinates`, `created_ip`, `created_date`, `created_user`, `created_username`, `modified_ip`, `modified_date`, `modified_user`, `modified_username`, `active`) VALUES
+	(-1, 'Цитрус', NULL, '<p><a href="/kontakti/">Фитнес клуб &laquo;Цитрус&raquo;</a>&nbsp;&mdash; уютное место в&nbsp;центре Северо-Западного района г.Чебоксары, где&nbsp;Вы можете отложить все свои проблемы и&nbsp;посвятить время только себе и&nbsp;своему телу. Удобные сауны в&nbsp;раздевалках снимут стресс и&nbsp;облегчат усталость после тренировки.</p>\r\n{{w:GalleryBlock|album=Клуб СЗР}}\r\n<p>Для Вас ежедневно открыты двери <a href="/trenajeniy_zal/">тренажерного зала</a>, двух залов групповых занятий, двух залов персонального тренинга, маникюрного салона, spa-кабинета и&nbsp;<a href="/solyariy/">солярия</a>. Различные <a href="/strip-plastika/">танцевальные направления</a>, несколько видов <a href="/hatha/">йоги</a> и&nbsp;<a href="/step-aerobika/">аэробики</a>, <a href="/pilates/">пилатеса</a> и&nbsp;стрейтчинга, посещение тренажерного зала-в комплексе помогут Вам находится в&nbsp;тонусе и&nbsp;хорошем самочувствии всегда!</p>\r\n<p>Все это в&nbsp;шаговой доступности от&nbsp;остановки общ. транспорта <a href="/kontakti/">&laquo;Природа&raquo;</a> с&nbsp;удобной охраняемой парковкой для автомобилей.</p>\r\n<p>Ценителям индивидуального подхода мы&nbsp;предлагаем <a href="/individualnie_zanyatiya_s_trenerom/">персональные занятия с&nbsp;инструктором</a>, как в&nbsp;тренажерном зале, так и&nbsp;в&nbsp;залах персональных тренировок. Наши специалисты проведут фитнес тестирование и&nbsp;подберут нужную Вам программу питания и&nbsp;тренировок.</p>\r\n<p>Занятия фитнесом для будущих мам возможны в&nbsp;индивидуальном порядке и&nbsp;в&nbsp;коммерческих группах до&nbsp;6&nbsp;человек. Тренировки проводят сертифицированные специалисты в&nbsp;любое удобное для Вас время!</p>\r\n{{w:GalleryBlock|album=Клуб ЮЗР}}\r\n<p>Наш клуб работает по&nbsp;системе клубных карт, что является неоспоримым преимуществом в&nbsp;Чебоксарах. Плюсы клубной системы заключаются в&nbsp;возможности посещения различных видов групповых занятий, а&nbsp;также тренажерного зала без ограничений, участии в&nbsp;проходящих в&nbsp;клубе семинарах, в&nbsp;скидках и&nbsp;бонусах на&nbsp;пользование дополнительными услугами клуба.</p>\r\n<p>Дополнительную информацию о&nbsp;ценах на&nbsp;клубные карты и&nbsp;индивидуальные занятия&nbsp;Вы можете узнать в&nbsp;отделе продаж клуба &laquo;Цитрус&raquo; или во&nbsp;вкладке Прайс-лист. Для корпоративных клентов действует гибкая система скидок и&nbsp;различные схемы оплаты (подробности: <a href="/korporativhiy_fitnes/">корпоративный фитнес</a>).</p>\r\n<p>Звоните нам по&nbsp;телефону <span style="color: #800000;"><strong>45-25-16</strong></span>, менеджеры клуба ответят на&nbsp;все Ваши вопросы. Фитнес-клуб работает с&nbsp;понедельника по&nbsp;пятницу с&nbsp;8:00 до&nbsp;22:00, по&nbsp;выходным с&nbsp;9:00 до&nbsp;21:00. Наш адрес-улица Мичмана Павлова 10&nbsp;Б, 1&nbsp;минуту пешком от&nbsp;остановки &laquo;Природа&raquo;, 3&nbsp;минуты от&nbsp;остановки &laquo;Чебоксарец&raquo; и&nbsp;5&nbsp;минут от&nbsp;&laquo;Кривова&raquo; (<a href="/kontakti/">подробная схема проезда</a>).</p>\r\n<p>Всегда рады видеть Вас на&nbsp;занятиях в&nbsp;фитнес-клубе &laquo;Цитрус&raquo;!</p>', NULL, '8 (800) 123-45-67', NULL, '', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '', 0),
+	(1, 'Цитрус СЗР', '{{w:GalleryBlock|album=Клуб ЮЗР;limit=4;modal=1;order=id desc;width=100}}', NULL, NULL, '8 (8352) 12-34-56', 'г. Чебоксары, пр. мичмана Павлова, 10Б', NULL, '56.143713, 47.189751', NULL, NULL, NULL, '', NULL, NULL, NULL, '', 1),
+	(2, 'Цитрус ЮЗР', '{{w:GalleryBlock|album=Клуб ЮЗР;limit=4;modal=1;order=id desc;width=100}}', NULL, NULL, '8 (8352) 78-90-12', 'г. Чебоксары, ул. академика Королева, 2', NULL, '56.119674, 47.19763', NULL, NULL, NULL, '', NULL, NULL, NULL, '', 1),
+	(3, 'Йога студия', '{{w:GalleryBlock|album=Клуб ЮЗР;limit=4;modal=1;order=id desc;width=100}}', NULL, NULL, '8 (8352) 34-56-78', 'г. Чебоксары, ул. Ярославская, 72', NULL, '56.132663, 47.248882', NULL, NULL, NULL, '', NULL, NULL, NULL, '', 1);
 /*!40000 ALTER TABLE `club_items` ENABLE KEYS */;
 
 
@@ -499,7 +500,7 @@ CREATE TABLE IF NOT EXISTS `form_requests` (
   CONSTRAINT `form_requests_ibfk_1` FOREIGN KEY (`club_id`) REFERENCES `club_items` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=958 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы v3.citrusfit.form_requests: ~883 rows (приблизительно)
+-- Дамп данных таблицы v3.citrusfit.form_requests: ~1 003 rows (приблизительно)
 DELETE FROM `form_requests`;
 /*!40000 ALTER TABLE `form_requests` DISABLE KEYS */;
 INSERT INTO `form_requests` (`id`, `club_id`, `fio`, `phone`, `email`, `description`, `created_ip`, `created_date`) VALUES
@@ -1513,15 +1514,10 @@ CREATE TABLE IF NOT EXISTS `gallery_photos` (
   CONSTRAINT `gallery_photos_FK1` FOREIGN KEY (`album_id`) REFERENCES `gallery_albums` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы v3.citrusfit.gallery_photos: ~27 rows (приблизительно)
+-- Дамп данных таблицы v3.citrusfit.gallery_photos: ~22 rows (приблизительно)
 DELETE FROM `gallery_photos`;
 /*!40000 ALTER TABLE `gallery_photos` DISABLE KEYS */;
 INSERT INTO `gallery_photos` (`id`, `album_id`, `image`, `image_attr_title`, `image_attr_alt`, `title`, `description`, `tags`, `nn`, `created_ip`, `created_date`, `created_user`, `created_username`, `modified_ip`, `modified_date`, `modified_user`, `modified_username`, `active`) VALUES
-	(1, 1, 'photo_13928756373279.JPG', '', '', 'Байконур ', '', 'байконур,ресепшн', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '', 1),
-	(2, 1, 'photo_13928753862913.JPG', '', '', 'Байконур ', '', 'байконур', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '', 1),
-	(3, 1, 'photo_13928757689602.JPG', '', '', 'Байконур ', '', 'байконур', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '', 1),
-	(4, 1, 'photo_13928758031266.JPG', '', '', 'Байконур ', '', 'байконур', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '', 1),
-	(5, 1, 'photo_13928758205593.JPG', '', '', 'Байконур', '', 'байконур', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '', 1),
 	(8, 2, 'photo_13960050837640.jpg', '', '', 'Цитрус СЗР. Кардиозона.', '', '', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '', 1),
 	(9, 2, 'photo_13960051726008.jpg', '', '', 'Цитрус СЗР. Тренажерный зал.', '', '', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '', 1),
 	(10, 2, 'photo_13960052012587.jpg', '', '', 'Цитрус СЗР. Тренажерный зал.', '', '', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '', 1),
@@ -1624,7 +1620,7 @@ CREATE TABLE IF NOT EXISTS `pages` (
   CONSTRAINT `pages_ibfk_1` FOREIGN KEY (`club_id`) REFERENCES `club_items` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8 COMMENT='Страницы сайта';
 
--- Дамп данных таблицы v3.citrusfit.pages: ~22 rows (приблизительно)
+-- Дамп данных таблицы v3.citrusfit.pages: ~29 rows (приблизительно)
 DELETE FROM `pages`;
 /*!40000 ALTER TABLE `pages` DISABLE KEYS */;
 INSERT INTO `pages` (`id`, `alias`, `module`, `title`, `begin_body`, `end_body`, `nn`, `club_id`, `show_in_menu`, `show_title`, `template`, `meta_index`, `meta_title`, `meta_keywords`, `meta_description`, `created_ip`, `created_date`, `created_user`, `created_username`, `modified_ip`, `modified_date`, `modified_user`, `modified_username`, `active`) VALUES

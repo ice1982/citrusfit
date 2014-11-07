@@ -44,7 +44,7 @@ class GalleryPhoto extends BaseActiveRecord
                 'original_resize_height' => false,
                 'thumb' => true,
                 'thumb_width' => 300,
-                'thumb_height' => 225,
+                'thumb_height' => false,
                 'original_image_filename' => 'photo_' . time(),
             ),
             'DatetimeBehavior' => array(

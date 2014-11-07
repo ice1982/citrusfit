@@ -12,11 +12,14 @@
         </div>
     </div>
     <div class="col-xs-7">
-        <?=$this->decodeWidgets($club_content->annotation)?>
+        <div class="margin-h4">
+            <?=$this->decodeWidgets($club_content->annotation)?>
+        </div>
     </div>
 </div>
+<hr>
 <div class="margin-h3">
-    <?=$this->decodeWidgets($club_content->description)?>
+    <?=$this->decodeWidgets($club_content->body)?>
 </div>
 
 

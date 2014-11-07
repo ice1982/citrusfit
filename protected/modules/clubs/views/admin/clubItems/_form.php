@@ -31,6 +31,12 @@
 	</div>
 
 	<div class="form-group">
+		<?php echo $form->labelEx($model,'body'); ?>
+		<?php echo $form->textArea($model,'body', array('class' => 'form-control input-large tinymce')); ?>
+		<?php echo $form->error($model,'body'); ?>
+	</div>
+
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'contact_phones'); ?>
 		<?php echo $form->textField($model,'contact_phones', array('class' => 'form-control input-large')); ?>
 		<?php echo $form->error($model,'contact_phones'); ?>

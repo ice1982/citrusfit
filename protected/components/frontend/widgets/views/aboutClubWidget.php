@@ -6,5 +6,5 @@
     <?php endif;?>
 </div>
 <div>
-    <?=$club->description?>
+    <?=$club->body?>
 </div>

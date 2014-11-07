@@ -26,7 +26,7 @@
                     'type' => 'form',
 
                     'form_caption' => 'Оставить заявку',
-                    'form_item' => $catalog_item->group->title . ': ' . $catalog_item->title,
+                    'form_item' => $catalog_item->group->title . ': ' . $catalog_item->title . ' (' . $this->club->title . ')',
                     'form_class' => 'catalog-form',
 
                     'form_button_text' => 'Отправить',

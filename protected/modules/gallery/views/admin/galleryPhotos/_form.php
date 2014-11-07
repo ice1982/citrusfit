@@ -20,7 +20,7 @@
 		<?php
 			echo $form->dropDownList($model, 'album_id',
 				CHtml::listData(GalleryAlbum::model()->findAll(array('order' => 'title')), 'id','title'),
-				array('empty' => 'Выберите клуб', 'class' => 'form-control input-large')
+				array('empty' => 'Выберите альбом', 'class' => 'form-control input-large')
 			);
 		?>
 		<?php echo $form->error($model,'album_id'); ?>

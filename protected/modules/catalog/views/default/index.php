@@ -33,7 +33,7 @@
                             </div>
                         </div>
                         <div class="col-xs-3">
-                            <a class="btn btn-default modal-item-request-button fancybox-modal" href="#modalCatalogItemRequest" data-item="<?=$catalog_item->group->title . ': ' . $catalog_item->title?>" data-item-text="<?=$catalog_item->title?>">
+                            <a class="btn btn-default modal-item-request-button fancybox-modal" href="#modalCatalogItemRequest" data-item="<?=$catalog_item->group->title . ': ' . $catalog_item->title . '(' . $this->club->title . ')'?>" data-item-text="<?=$catalog_item->title . '(' . $this->club->title . ')'?>">
                                 Оставить запрос
                             </a>
                         </div>

@@ -8,6 +8,7 @@
  * @property string $title
  * @property string $annotation
  * @property string $description
+ * @property string $body
  * @property string $contact_phones
  * @property string $contact_address
  * @property string $contact_info
@@ -99,12 +100,12 @@ class ClubItem extends BaseActiveRecord
 				'max' => 200,
 			),
 			array(
-				'title, annotation, description, contact_phones, contact_address, contact_info, contact_coordinates',
+				'title, annotation, description, body, contact_phones, contact_address, contact_info, contact_coordinates',
 				'safe',
 			),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, title, annotation, description, contact_phones, contact_address, contact_info, contact_coordinates, created_ip, created_date, created_user, created_username, modified_ip, modified_date, modified_user, modified_username, active',
+			array('id, title, annotation, description, body, contact_phones, contact_address, contact_info, contact_coordinates, created_ip, created_date, created_user, created_username, modified_ip, modified_date, modified_user, modified_username, active',
 				'safe',
 				'on' => 'search'
 			),
@@ -137,6 +138,7 @@ class ClubItem extends BaseActiveRecord
 			'title' => 'Title',
             'annotation' => 'Annotation',
 			'description' => 'Description',
+			'body' => 'Body',
 			'contact_phones' => 'Contact Phones',
 			'contact_address' => 'Contact Address',
 			'contact_info' => 'Contact Info',

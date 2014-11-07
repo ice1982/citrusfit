@@ -32,7 +32,7 @@ $this->menu = array(
         array(
             'name' => 'image',
             'type' => 'raw',
-            'value' => '"<img width=100 src=uploads/" . $data->image . ">"'
+            'value' => 'CHtml::link("<img width=100 src=uploads/" . $data->image . ">", array("update", "id" => $data->id))'
         ),
         array(
             'name' => 'title',
