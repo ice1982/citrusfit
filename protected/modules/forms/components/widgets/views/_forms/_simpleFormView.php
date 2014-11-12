@@ -61,6 +61,7 @@
     'htmlOptions' => array(
         'class' => $form_class,
         'role' => 'form',
+        'style' => $styles,
     ),
 )); ?>
 

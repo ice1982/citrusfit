@@ -9,8 +9,8 @@ abstract class BaseFormWidget extends CWidget
     public $type;
 
     public $form_caption = 'form_caption';
-    public $form_width = 'auto';
-    public $form_height = 'auto';
+    public $form_width = false;
+    public $form_height = false;
     public $form_item = '';
     public $form_notice = '';
     public $form_class = '';
@@ -53,6 +53,16 @@ abstract class BaseFormWidget extends CWidget
 
         return $widget_id;
     }
+
+    public function generateStyles()
+    {
+        $style = '';
+        $style .= (!empty($this->form_height) ? 'height: ' . $this->form_height . 'px;' : '');
+        $style .= (!empty($this->form_width) ? 'width: ' . $this->form_width . 'px' : '');
+
+        return $style;
+    }
+
 
     public function generateClasses($type, $size, $modal = false)
     {

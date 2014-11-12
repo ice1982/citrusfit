@@ -13,6 +13,8 @@ class SimpleFormWidget extends BaseFormWidget
 
         $form_model = new ItemRequestForm;
 
+        $styles = $this->generateStyles();
+
         $this->render('simpleFormWidget', array(
             'form_model' => $form_model,
 
@@ -20,6 +22,7 @@ class SimpleFormWidget extends BaseFormWidget
             'form_button_class' => $form_button_class,
             'form_button_text' => $this->form_button_text,
             'form_class' => $this->form_class,
+            'styles' => $styles,
 
             'form_item' => $this->form_item,
 
@@ -37,6 +40,8 @@ class SimpleFormWidget extends BaseFormWidget
         $button_widget_id = $this->genegateWidgetId('simpleFormButtonWidget');
         $button_class = $this->generateClasses($this->button_type, $this->button_size, true);
 
+        $styles = $this->generateStyles();
+
         $form_model = new ItemRequestForm;
 
         $this->render('simpleButtonAndFormWidget', array(
@@ -47,6 +52,7 @@ class SimpleFormWidget extends BaseFormWidget
             'form_widget_id' => $form_widget_id,
             'form_class' => $this->form_class,
             'form_item' => $this->form_item,
+            'styles' => $styles,
 
             'button_widget_id' => $button_widget_id,
             'button_class' => $button_class,
