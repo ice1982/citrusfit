@@ -13,7 +13,7 @@ class BannersWidget extends CWidget
         if ($this->id === false) {
             $models = Banner::model()->active()->findAll(array('order' => 'nn'));
         } else {
-            $banner = Banner::model()->active()->findByPk((int)$this->id);
+            $banner = Banner::model()->findByPk((int)$this->id);
             if (isset($banner->id)) {
                 $models[] = $banner;
             }

@@ -4,11 +4,21 @@ Yii::import('application.modules.clubs.models.*');
 
 class MapWidget extends CWidget
 {
+    public $club = false;
+
     public function run()
     {
         $all_clubs = ClubItem::model()->active()->findAll();
 
-        $club_id = Yii::app()->session['club'];
+        if (!empty($this->club)) {
+            if ($this->club == 'all') {
+                $club_id = false;
+            } else {
+                $club_id = (int)$this->club;
+            }
+        } else {
+            $club_id = Yii::app()->session['club'];
+        }
 
         if (!empty($club_id)) {
             $club = ClubItem::model()->active()->findByPk($club_id);

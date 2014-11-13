@@ -4,6 +4,8 @@ Yii::import('application.modules.clubs.models.*');
 
 class AboutClubWidget extends CWidget
 {
+    public $club = false;
+
     public function run()
     {
         $behavior = new DInlineWidgetsBehavior;
@@ -13,8 +15,16 @@ class AboutClubWidget extends CWidget
 
         // echo $behavior->decodeWidgets('{{w:GalleryBlock|album=Клуб ЮЗР}}');
 
+        if (!empty($this->club)) {
+            if ($this->club == 'all') {
+                $club_id = false;
+            } else {
+                $club_id = (int)$this->club;
+            }
+        } else {
+            $club_id = Yii::app()->session['club'];
+        }
 
-        $club_id = Yii::app()->session['club'];
 
         $club_model = ClubItem::model();
 
