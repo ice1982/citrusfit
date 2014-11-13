@@ -27,7 +27,7 @@
                 </td>
                 <td width="16%">
                     <img src="/img/icons/or-pers.png" alt="">
-                    <div><a href="<?=Yii::app()->createUrl('pages/default/view', array('alias' => 'personalki'))?>">Персональные тренировки</a></div>
+                    <div><a href="<?=Yii::app()->createUrl('pages/default/view', array('alias' => 'special-personalki'))?>">Персональные тренировки</a></div>
                 </td>
             </tr>
         </table>

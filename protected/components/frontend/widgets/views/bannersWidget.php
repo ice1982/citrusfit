@@ -1,5 +1,14 @@
 <?php if (count($models)) : ?>
     <div id="carousel-generic" class="banner-block carousel slide" data-ride="carousel">
+        <?php if (count($models) > 1) : ?>
+            <ol class="carousel-indicators">
+                <?php foreach ($models as $key => $banner) : ?>
+                    <li data-target="#carousel-generic" data-slide-to="<?=$key?>" class="<?=($key == 0) ? 'active' : ''?>"></li>
+                <?php endforeach; ?>
+            </ol>
+        <?php endif; ?>
+
+
         <div class="carousel-inner">
             <?php foreach ($models as $key => $banner) : ?>
                 <div class="item <?=($key == 0) ? 'active' : ''?>">
