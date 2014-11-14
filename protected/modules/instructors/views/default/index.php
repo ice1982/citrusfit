@@ -12,7 +12,7 @@
 
                 <div class="margin-h3">
                     <a href="<?=Yii::app()->createUrl('instructors/default/view/' , array('id' => $instructor->id))?>" title="<?=$instructor->fio?>">
-                        <?php if (file_exists('/uploads/thumb_' . $instructor->image)) : ?>
+                        <?php if (!empty($instructor->image)) : ?>
                             <img class="img-responsive instructor-item-img" src="/uploads/thumb_<?=$instructor->image?>" alt="<?=$instructor->fio?>" title="<?=$instructor->fio?>">
                         <?php else: ?>
                             <img class="img-responsive instructor-item-img" src="/pics/no-instructor.jpg" alt="<?=$instructor->fio?>" title="<?=$instructor->fio?>">
