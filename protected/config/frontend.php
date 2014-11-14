@@ -71,8 +71,10 @@ return CMap::mergeArray(
                     'catalog' => 'catalog/default/index',
                     'catalog/<id:\d+>' => 'catalog/default/view/',
 
+                    'raspisanie' => 'timeboard/default/index',
                     'timeboard' => 'timeboard/default/index',
 
+                    'instructor' => 'instructors/default/index',
                     'instructors' => 'instructors/default/index',
                     'instructors/<id:\d+>' => 'instructors/default/view/',
 
