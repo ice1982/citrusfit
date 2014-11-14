@@ -18,7 +18,7 @@ $this->menu = array(
 );
 ?>
 
-<h1>Создать занятие</h1>
+<h1>Создать занятие в клубе &laquo;<?=$club->title?>&raquo;</h1>
 
 <?php echo $this->renderPartial('_form',
     array(

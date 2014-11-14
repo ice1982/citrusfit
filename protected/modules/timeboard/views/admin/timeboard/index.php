@@ -1,3 +1,15 @@
+<?php
+
+$this->menu = array(
+    array(
+        'label' => 'Добавить расписание',
+        'icon' => 'plus',
+        'url' => Yii::app()->createUrl('timeboard/admin/timeboard/create', array('club_id' => $club->id))
+    ),
+);
+
+?>
+
 <h2>Расписание занятий в клубе &laquo;<?=$club->title?>&raquo;</h2>
 
 <div class="workout-view">
