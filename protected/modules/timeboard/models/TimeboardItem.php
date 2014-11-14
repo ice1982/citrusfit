@@ -66,7 +66,7 @@ class TimeboardItem extends BaseActiveRecord
 		// will receive user inputs.
 		return array(
 			array(
-				'hall_id, day_of_week, time_start, time_finish, body, created_username, modified_username',
+				'hall_id, day_of_week, time_start, time_finish, body',
 				'required',
 			),
 			array(
