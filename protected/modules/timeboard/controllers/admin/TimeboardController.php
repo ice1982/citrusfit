@@ -7,6 +7,7 @@ Yii::import('application.modules.instructors.models._base.*');
 
 class TimeboardController extends BackEndController
 {
+
     public function accessRules()
     {
         return array(
@@ -52,7 +53,7 @@ class TimeboardController extends BackEndController
                 $model->attributes = $_POST['TimeboardItem'];
                 if ($model->save()) {
                     $this->setSuccess('Занятие создано!');
-                    $this->redirect(Yii::app()->createUrl('index', array('hall_id' => $model->hall_id)));
+                    $this->redirect(Yii::app()->createUrl('timeboard/admin/timeboard/index', array('club_id' => $club->id)));
                 } else {
                     $this->setError('Занятие не создано!');
                 }
@@ -83,7 +84,7 @@ class TimeboardController extends BackEndController
 			$model->attributes = $_POST['TimeboardItem'];
 			if ($model->save()) {
 				$this->setSuccess('Изменения сохранены!');
-				$this->redirect(Yii::app()->createUrl('index', array('hall_id' => $model->hall_id)));
+				$this->redirect(Yii::app()->createUrl('timeboard/admin/timeboard/index', array('club_id' => $club->id)));
 			} else {
 				$this->setError('Изменения не сохранены!');
 			}
