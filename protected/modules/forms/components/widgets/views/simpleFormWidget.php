@@ -12,3 +12,21 @@
 
     'show_form_item' => $this->show_form_item,
 )); ?>
+
+
+
+<div style="display:none">
+    <div id="modalSuccess<?=$form_widget_id?>" class="modal-window">
+        <div class="message">
+
+        </div>
+    </div>
+</div>
+
+<div style="display:none">
+    <div id="modalError<?=$form_widget_id?>" class="modal-window">
+        <div class="message">
+
+        </div>
+    </div>
+</div>
