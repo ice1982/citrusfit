@@ -74,7 +74,28 @@ class ItemRequestForm extends BaseFormModel
         $form_request->phone = $this->phone;
         $form_request->description = 'Заявка с сайта. ' . $item;
         $form_request->system_info = Yii::app()->session['utm_session'];
-        $form_request->save();
+
+        if ($form_request->save()) {
+            $contact =  array(
+                'person_name' => $this->fio,
+                'contact_data' => array(
+                    'phone_numbers' => array(
+                        array('number' => $this->phone),
+                        array('location' => 'Other')
+                    ),
+                ),
+            );
+
+            $deal = array(
+                'name' => $form_request->description . ' (' . date('Y-m-d H:i:s') . ')',
+                // 'status_id' => 'ID статуса сделки',
+                'linked_contact' => $add_contact_result,
+            );
+
+            $deal_note = $form_request->description . '; ' . $form_request->system_info;
+
+            $form_request->addRequestInAmoCrm($contact, $deal, $deal_note);
+        }
 
         return SendMail::sendEmail($from, $email, $subject, $message);
     }

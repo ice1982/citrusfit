@@ -174,4 +174,46 @@ class FormRequest extends BaseActiveRecord
 		return $result;
 	}
 
+	public function addRequestInAmoCrm($contact, $deal, $deal_note)
+	{
+		$result = Yii::app()->amocrm->ping();
+
+        if ($result) {
+
+            // $contact =  array(
+            //     'person_name' => 'Фамилия Имя3',
+            //     'contact_data' => array(
+            //         'phone_numbers' => array(
+            //             array('number' => '+7 499 891-01-11'),
+            //             array('location' => 'Other')
+            //         ),
+            //         'email_addresses' => array(
+            //             array('address' => 'mail@mail.ru'),
+            //             array('location' => 'Other')
+            //         ),
+            //     ),
+            // );
+
+            $add_contact_result = Yii::app()->amocrm->addContact($contact);
+
+            if (!empty($add_contact_result)) {
+
+                // $deal = array(
+                //     'name' => 'Заявка с сайта',
+                //     // 'status_id' => 'ID статуса сделки',
+                //     'linked_contact' => $add_contact_result,
+                // );
+
+                $add_deal_result = Yii::app()->amocrm->addDeal($deal);
+
+                if (!empty($add_deal_result['result'])) {
+
+                    $add_deal_note_result = Yii::app()->amocrm->addDealNote($add_deal_result['result'], $deal_note);
+                }
+
+
+            }
+        }
+	}
+
 }
