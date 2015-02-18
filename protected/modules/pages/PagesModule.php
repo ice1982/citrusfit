@@ -4,6 +4,6 @@ class PagesModule extends BaseWebModule
 {
 	public function init()
 	{
-		$this->_setImport();
+		parent::init();
 	}
 }

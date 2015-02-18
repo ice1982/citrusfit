@@ -2,6 +2,24 @@
 
 class BaseController extends CController
 {
+    public function init()
+    {
+        parent::init();
+
+        $modules = $this->_getModulesNames();
+
+        // var_dump($modules);
+
+        foreach ($modules as $module) {
+            Yii::import('application.modules.' . $module . '.*');
+            Yii::import('application.modules.' . $module . '.models.*');
+            Yii::import('application.modules.' . $module . '.models._forms.*');
+            Yii::import('application.modules.' . $module . '.models._base.*');
+            Yii::import('application.modules.' . $module . '.components.*');
+            Yii::import('application.modules.' . $module . '.components.custom.*');
+            Yii::import('application.modules.' . $module . '.components.widgets.*');
+        }
+    }
 
     // флеш-нотис пользователю
     public function setSuccess($message)
@@ -53,6 +71,25 @@ class BaseController extends CController
             Yii::app()->end();
         }
 
+    }
+
+    protected function _getModulesNames()
+    {
+        $modules = array();
+
+        $modules_dump = Yii::app()->modules;
+        foreach ($modules_dump as $module_dump) {
+            $module_array = explode('.', $module_dump['class']);
+            $module = $module_array[0];
+
+            if ($module == 'system') {
+                continue;
+            }
+
+            $modules[] = $module;
+        }
+
+        return $modules;
     }
 
 }
