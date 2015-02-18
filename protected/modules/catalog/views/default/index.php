@@ -36,8 +36,8 @@
                                     </div>
                                 </div>
                                 <div class="col-xs-4">
-                                    <a class="btn btn-default modal-item-request-button fancybox-modal" href="#modalCatalogItemRequest" data-item="<?=$catalog_item->group->title . ': ' . $catalog_item->title . '(' . $this->club->title . ')'?>" data-item-text="<?=$catalog_item->title . '(' . $this->club->title . ')'?>">
-                                        Оставить заявку
+                                    <a class="btn btn-default modal-item-request-button fancybox-modal" href="#modalCatalogItemRequest" data-item="<?=$catalog_item->group->title . ': ' . $catalog_item->title . ' (' . $this->club->title . ')'?>" data-item-text="<?=$catalog_item->title . ' (' . $this->club->title . ')'?>">
+                                        Узнать стоимость
                                     </a>
                                 </div>
                             </div>
@@ -62,10 +62,10 @@
                 array(
                     'type' => 'form',
 
-                    'form_caption' => 'Оставить заявку',
+                    'form_caption' => 'Узнать стоимость',
                     'form_class' => 'catalog-form',
 
-                    'form_button_text' => 'Отправить',
+                    'form_button_text' => 'Узнать стоимость',
                     'form_button_size' => 'default',
                     'form_button_type' => 'red',
 
