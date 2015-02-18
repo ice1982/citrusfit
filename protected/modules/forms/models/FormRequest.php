@@ -9,6 +9,7 @@
  * @property string $fio
  * @property string $phone
  * @property string $description
+ * @property string $system_info
  * @property string $created_ip
  * @property string $created_date
  *
@@ -80,7 +81,7 @@ class FormRequest extends BaseActiveRecord
 				'max' => 500,
 			),
 			array(
-				'created_date',
+				'created_date, system_info',
 				'safe',
 			),
 			// The following rule is used by search().
@@ -116,6 +117,7 @@ class FormRequest extends BaseActiveRecord
 			'fio' => 'Fio',
 			'phone' => 'Phone',
 			'description' => 'Description',
+			'system_info' => 'system_info',
 			'created_ip' => 'Created Ip',
 			'created_date' => 'Created Date',
 		);
@@ -154,6 +156,22 @@ class FormRequest extends BaseActiveRecord
                 'defaultOrder' => 'id DESC',
             ),
         ));
+	}
+
+	public function parseJson($string)
+	{
+	$result = '';
+
+		if (CHelper::isJson($string)) {
+			$array = json_decode($string, TRUE);
+
+			if (count($array)) foreach ($array as $key => $value) {
+				$result .= '<b>' . $key . '</b>' . ': ' . $value . '<br>';
+			}
+		} else {
+			$result = $string;
+		}
+		return $result;
 	}
 
 }

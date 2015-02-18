@@ -73,6 +73,7 @@ class ItemRequestForm extends BaseFormModel
         $form_request->fio = $this->fio;
         $form_request->phone = $this->phone;
         $form_request->description = 'Заявка с сайта. ' . $item;
+        $form_request->system_info = Yii::app()->session['utm_session'];
         $form_request->save();
 
         return SendMail::sendEmail($from, $email, $subject, $message);
