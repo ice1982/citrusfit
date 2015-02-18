@@ -9,6 +9,7 @@ class DefaultController extends FrontEndController
 
         $group_title = false;
         $title = 'Новости сети клубов &laquo;Цитрус&raquo;';
+        $meta_title = 'Новости сети клубов Цитрус';
 
         if (($club == 'all') || ($club == false)) {
             $club_id = false;
@@ -18,6 +19,7 @@ class DefaultController extends FrontEndController
             $club_model = ClubItem::model()->active()->findByPk($club_id);
             if (isset($club_model->id)) {
                 $title = 'Новости клуба &laquo;' . $club_model->title . '&raquo;';
+                $meta_title = 'Новости клуба ' . $club_model->title;
             }
         }
 
@@ -30,7 +32,14 @@ class DefaultController extends FrontEndController
             $group_title = ArticleType::model()->findByPk($type)->title;
         }
 
-        $this->breadcrumbs[] = $title;
+        $this->breadcrumbs[] = array(
+            'route' => false,
+            'title' => $title,
+        );
+
+        if (empty($this->meta_title)) {
+            $this->setPageTitle($meta_title);
+        }
 
 		$this->render('index',
             array(
@@ -47,10 +56,16 @@ class DefaultController extends FrontEndController
     {
         $article_item = $this->_loadModel($id, ArticleItem::model(), true);
 
-        $this->breadcrumbs = array(
-            'Новости сети клубов &laquo;Цитрус&raquo;' => Yii::app()->createUrl('articles/default/index'),
-            $article_item->title,
+        $this->breadcrumbs[] = array(
+            'route' => Yii::app()->createUrl('articles/default/index'),
+            'title' => 'Новости сети клубов &laquo;Цитрус&raquo;',
         );
+        $this->breadcrumbs[] = array(
+            'route' => false,
+            'title' => $article_item->title,
+        );
+
+        $this->setPageTitle($article_item->title);
 
         $this->render('view',
             array(

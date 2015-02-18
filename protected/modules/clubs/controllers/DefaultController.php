@@ -26,10 +26,17 @@ class DefaultController extends FrontEndController
         $model->switchClub($id);
 
         $club_content = $this->_loadModel($id, $model, true);
-        $this->breadcrumbs = array(
-            'Сеть клубов &laquo;Цитрус&raquo;' => Yii::app()->createUrl('clubs/default/index'),
-            'Клуб &laquo;' . $club_content->title . '&raquo;',
+
+        $this->breadcrumbs[] = array(
+            'route' => Yii::app()->createUrl('clubs/default/index'),
+            'title' => 'Сеть клубов &laquo;Цитрус&raquo;',
         );
+        $this->breadcrumbs[] = array(
+            'route' => false,
+            'title' => 'Клуб &laquo;' . $club_content->title . '&raquo;',
+        );
+
+        $this->setPageTitle($club_content->title . ' | Сеть клубов Цитрус');
 
         $this->render('view',
             array(
@@ -43,10 +50,18 @@ class DefaultController extends FrontEndController
         $club_model = ClubItem::model();
         $clubs_content = $club_model->active()->findAll();
 
-        $this->breadcrumbs = array(
-            'Сеть клубов &laquo;Цитрус&raquo;' => Yii::app()->createUrl('clubs/default/index'),
-            'Выбор клуба',
+        $this->breadcrumbs[] = array(
+            'route' => Yii::app()->createUrl('clubs/default/index'),
+            'title' => 'Сеть клубов &laquo;Цитрус&raquo;',
         );
+        $this->breadcrumbs[] = array(
+            'route' => false,
+            'title' => 'Выбор клуба',
+        );
+
+        if (empty($this->meta_title)) {
+            $this->setPageTitle('Выбор клуба сети Цитрус');
+        }
 
 		$this->render('index',
             array(

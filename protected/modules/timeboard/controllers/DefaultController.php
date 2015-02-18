@@ -21,9 +21,13 @@ class DefaultController extends FrontEndController
             $club_model = ClubItem::model();
             $clubs_content = $club_model->active()->findAll();
 
-            $this->breadcrumbs = array(
-                'Выбор клуба для показа расписания',
+            $this->breadcrumbs[] = array(
+                'route' => false,
+                'title' => 'Выбор клуба для показа расписания',
             );
+
+            $this->setPageTitle('Выбор клуба для показа расписания');
+
 
             $this->render('application.modules.clubs.views.default.index',
                 array(
@@ -39,11 +43,22 @@ class DefaultController extends FrontEndController
                 $dump[$workout->hall->id][$workout->time_start][$workout->day_of_week] = $workout;
             }
 
-            $this->breadcrumbs = array(
-                'Сеть клубов &laquo;Цитрус&raquo;' => Yii::app()->createUrl('clubs/default/index'),
-                'Клуб &laquo;' . $this->club->title . '&raquo;' => Yii::app()->createUrl('clubs/default/view', array('id' => $club_id)),
-                'Расписание',
+            $this->breadcrumbs[] = array(
+                'route' => Yii::app()->createUrl('clubs/default/index'),
+                'title' => 'Сеть клубов &laquo;Цитрус&raquo;',
             );
+            $this->breadcrumbs[] = array(
+                'route' => Yii::app()->createUrl('clubs/default/view', array('id' => $club_id)),
+                'title' => 'Клуб &laquo;' . $this->club->title . '&raquo;',
+            );
+            $this->breadcrumbs[] = array(
+                'route' => false,
+                'title' => 'Расписание',
+            );
+
+            if (empty($this->meta_title)) {
+                $this->setPageTitle('Расписание | ' . 'Клуб ' . $this->club->title);
+            }
 
             $this->render('index', array(
                 'dump' => $dump,

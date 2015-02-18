@@ -33,10 +33,18 @@ class DefaultController extends FrontEndController
             ksort($workouts[$key]);
         }
 
-        $this->breadcrumbs = array(
-            'Инструктора сети клубов &laquo;Цитрус&raquo;' => Yii::app()->createUrl('instructors/default/index'),
-            $instructor->fio,
+        $this->breadcrumbs[] = array(
+            'route' => Yii::app()->createUrl('instructors/default/index'),
+            'title' => 'Инструктора сети клубов &laquo;Цитрус&raquo;',
         );
+        $this->breadcrumbs[] = array(
+            'route' => false,
+            'title' => $instructor->fio,
+        );
+
+        if (empty($this->meta_title)) {
+            $this->setPageTitle($instructor->fio);
+        }
 
         $this->render('view', array(
             'instructor' => $instructor,
@@ -53,9 +61,11 @@ class DefaultController extends FrontEndController
     {
         $instructors = InstructorItem::model()->active()->findAll();
 
-        $this->breadcrumbs = array(
-            'Инструктора сети клубов &laquo;Цитрус&raquo;'
+        $this->breadcrumbs[] = array(
+            'route' => false,
+            'title' => 'Инструктора сети клубов &laquo;Цитрус&raquo;',
         );
+        $this->setPageTitle('Инструктора сети клубов Цитрус');
 
         $this->render('index', array(
             'instructors' => $instructors,
