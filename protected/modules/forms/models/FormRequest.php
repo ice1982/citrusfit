@@ -198,6 +198,8 @@ class FormRequest extends BaseActiveRecord
 
             if (!empty($add_contact_result)) {
 
+                $deal['linked_contact'] = $add_contact_result;
+
                 // $deal = array(
                 //     'name' => 'Заявка с сайта',
                 //     // 'status_id' => 'ID статуса сделки',

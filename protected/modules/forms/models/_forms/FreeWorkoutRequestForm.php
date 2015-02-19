@@ -82,7 +82,7 @@ class FreeWorkoutRequestForm extends BaseFormModel
 
             $deal = array(
                 'name' => $form_request->description . ' ' . $club->title . ' (' . date('Y-m-d H:i:s') . ')',
-                // 'status_id' => 'ID статуса сделки',
+                'status_id' => '8309196',
                 'linked_contact' => $add_contact_result,
             );
 
