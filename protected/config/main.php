@@ -54,9 +54,11 @@ return array(
             'class' => 'application.extensions.EAmoCRM.EAmoCRM',
             'subdomain' => '', // Персональный поддомен на сайте amoCRM
             'login' => '', // Логин на сайте amoCRM
-            'password' => '', // Пароль на сайте amoCRM
-            // 'hash' => '00000000000000000000000000000000', // Вместо пароля можно использовать API ключ
+            // 'password' => '', // Пароль на сайте amoCRM
+            'hash' => '', // Вместо пароля можно использовать API ключ
         ),
+
+
 
 		'errorHandler' => array(
 			'errorAction' => 'site/error',
@@ -84,6 +86,7 @@ return array(
 	),
 
     'modules' => array(
+        'amocrm',
         'articles',
         'banners',
         'blocks',

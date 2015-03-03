@@ -67,6 +67,7 @@ return CMap::mergeArray(
 
 //                    'forms/ajax/<action:\d+>/*' => 'forms/ajax/<action>',
                     '<module:(forms)>/<controller:(ajax)>/<action:\w+>' => '<module>/<controller>/<action>',
+                    '<module:(amocrm)>/<controller:\w+>/<action:\w+>' => '<module>/<controller>/<action>',
 
                     'catalog' => 'catalog/default/index',
                     'catalog/<id:\d+>' => 'catalog/default/view/',

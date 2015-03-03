@@ -2,9 +2,15 @@
 
 	$params = array(
         'adminEmail' => '',
-        'fromEmail' => 'pv.danilov.dev@yandex.ru',
+        'fromEmail' => '',
         'managerEmail' => array(
-            'pv.danilov.dev@yandex.ru',
+            '',
+            '',
+        ),
+        'amocrm' => array(
+            'users' => array(
+
+            ),
         ),
 	);
 

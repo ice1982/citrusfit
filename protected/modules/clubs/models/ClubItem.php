@@ -75,6 +75,19 @@ class ClubItem extends BaseActiveRecord
 				'required',
 			),
 			array(
+				'manager_email',
+				'required',
+			),
+			array(
+                'manager_email',
+                'length',
+                'max' => 100,
+            ),
+            array(
+                'manager_email',
+                'email',
+            ),
+			array(
 				'created_user, modified_user, active',
 				'numerical',
 				'integerOnly' => true,
@@ -139,6 +152,7 @@ class ClubItem extends BaseActiveRecord
             'annotation' => 'Annotation',
 			'description' => 'Description',
 			'body' => 'Body',
+			'manager_email' => 'Email',
 			'contact_phones' => 'Contact Phones',
 			'contact_address' => 'Contact Address',
 			'contact_info' => 'Contact Info',
@@ -175,6 +189,7 @@ class ClubItem extends BaseActiveRecord
 
 		$criteria->compare('id', $this->id);
 		$criteria->compare('title', $this->title, true);
+		$criteria->compare('manager_email', $this->manager_email, true);
 		$criteria->compare('created_ip', $this->created_ip, true);
 		$criteria->compare('created_date', $this->created_date, true);
 		$criteria->compare('created_user', $this->created_user);

@@ -76,28 +76,21 @@ class ItemRequestForm extends BaseFormModel
         $form_request->system_info = Yii::app()->session['utm_session'];
 
         if ($form_request->save()) {
-            $contact =  array(
-                'person_name' => $this->fio,
-                'contact_data' => array(
-                    'phone_numbers' => array(
-                        array('number' => $this->phone),
-                        array('location' => 'Other')
-                    ),
-                ),
+
+            $dump = array(
+                'fio' => $this->fio,
+                'phone' => $this->phone,
+                'club_id' => Yii::app()->session['club'],
+                'description' => $form_request->description,
+                'system_info' => $form_request->system_info,
             );
+            $amocrm = new AmocrmModel;
+            $amocrm_request = $amocrm->addItemRequest($dump);
 
-            $deal = array(
-                'name' => $form_request->description . ' (' . date('Y-m-d H:i:s') . ')',
-                'status_id' => '8309196',
-                'linked_contact' => $add_contact_result,
-            );
-
-            $deal_note = $form_request->description . '; ' . $form_request->system_info;
-
-            $form_request->addRequestInAmoCrm($contact, $deal, $deal_note);
         }
 
-        return SendMail::sendEmail($from, $email, $subject, $message);
+        return true;
+        // return SendMail::sendEmail($from, $email, $subject, $message);
     }
 
 }
