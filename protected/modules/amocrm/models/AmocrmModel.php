@@ -6,6 +6,15 @@ class AmocrmModel extends CModel
 
     /* ----------- */
 
+    public function __construct()
+    {
+        // parent::__construct();
+
+        $auth = Yii::app()->amocrm->auth();
+
+        // var_dump($auth);
+    }
+
     public function addFreeWorkoutRequest($dump)
     {
         $result = Yii::app()->amocrm->ping();

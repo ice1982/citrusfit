@@ -81,8 +81,8 @@ class FreeWorkoutRequestForm extends BaseFormModel
             $amocrm_request = $amocrm->addFreeWorkoutRequest($dump);
         }
 
-        return true;
-        // return SendMail::sendEmail($from, $email, $subject, $message);
+        // return true;
+        return SendMail::sendEmail($from, $email, $subject, $message);
     }
 
 }

@@ -3,7 +3,7 @@
 $environment = 'development';
 
 switch (dirname(__FILE__)) {
-    case '/Users/paveldanilov/Sites/v3.citrusfit':
+    case '/Users/paveldanilov/Sites/sites.dev/v3.citrusfit':
     case 'd:\OpenServer\domains\sites.dev\v3.citrusfit':
     case 'D:\OpenServer\domains\sites.dev\v3.citrusfit':
         $yii = dirname(__FILE__) . '/_framework/1.1.15/yii.php';

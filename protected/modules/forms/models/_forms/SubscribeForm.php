@@ -68,8 +68,8 @@ class SubscribeForm extends BaseFormModel
 
         }
 
-        return true;
-        // return SendMail::sendEmail($from, $email, $subject, $message);
+        // return true;
+        return SendMail::sendEmail($from, $email, $subject, $message);
     }
 
 }
