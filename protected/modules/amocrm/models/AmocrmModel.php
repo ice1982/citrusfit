@@ -59,7 +59,7 @@ class AmocrmModel extends CModel
         $date->add(new DateInterval('P1D'));
         $date_end = $date->format('U');
 
-        $task_id = $this->createTask($amocrm_user, $deal_id, 'Позвонить контакту', $date_end, 61964);
+        // $task_id = $this->createTask($amocrm_user, $deal_id, 'Позвонить контакту', $date_end, 61964);
 
     }
 
@@ -109,7 +109,7 @@ class AmocrmModel extends CModel
         $date->add(new DateInterval('P1D'));
         $date_end = $date->format('U');
 
-        $task_id = $this->createTask($amocrm_user, $deal_id, 'Позвонить контакту', $date_end, 61964);
+        // $task_id = $this->createTask($amocrm_user, $deal_id, 'Позвонить контакту', $date_end, 61964);
     }
 
     public function addSubscribeRequest($dump)
@@ -153,7 +153,7 @@ class AmocrmModel extends CModel
         $date->add(new DateInterval('P1D'));
         $date_end = $date->format('U');
 
-        $task_id = $this->createTask($amocrm_user, $deal_id, 'Добавить адрес в базу рассылки', $date_end, 1);
+        // $task_id = $this->createTask($amocrm_user, $deal_id, 'Добавить адрес в базу рассылки', $date_end, 1);
 
     }
 
