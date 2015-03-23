@@ -1,6 +1,7 @@
-<a class="<?=$button_class?>" href="#modal<?=$form_widget_id?>" id="<?=$button_widget_id?>">
+<a class="<?=$button_class?>" href="#modal<?=$form_widget_id?>" id="<?=$button_widget_id?>" title="<?=$button_text?>" onclick="<?=(!empty($button_yandex_target)) ? "yaCounter" . Yii::app()->params['yaCounter'] . ".reachGoal('" . $button_yandex_target . "', '" . $button_yandex_target_param . "'); return true;" : ""?>">
     <?=$button_text?>
 </a>
+
 
 <div style="display:none">
     <div id="modal<?=$form_widget_id?>" class="modal-window">
@@ -18,6 +19,11 @@
             'styles' => $styles,
 
             'show_form_item' => $this->show_form_item,
+
+            'form_button_yandex_target' => $form_button_yandex_target,
+            'form_button_yandex_target_param' => $form_button_yandex_target_param,
+            'button_yandex_target' => $button_yandex_target,
+            'button_yandex_target_param' => $button_yandex_target_param,
         )); ?>
 
     </div>

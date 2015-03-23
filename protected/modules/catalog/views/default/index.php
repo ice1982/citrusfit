@@ -36,7 +36,13 @@
                                     </div>
                                 </div>
                                 <div class="col-xs-4">
-                                    <a class="btn btn-default modal-item-request-button fancybox-modal" href="#modalCatalogItemRequest" data-item="<?=$catalog_item->group->title . ': ' . $catalog_item->title . ' (' . $this->club->title . ')'?>" data-item-text="<?=$catalog_item->title . ' (' . $this->club->title . ')'?>">
+                                    <a
+                                        class="btn btn-default modal-item-request-button fancybox-modal"
+                                        href="#modalCatalogItemRequest"
+                                        data-item="<?=$catalog_item->group->title . ': ' . $catalog_item->title . ' (' . $this->club->title . ')'?>"
+                                        data-item-text="<?=$catalog_item->title . ' (' . $this->club->title . ')'?>"
+                                        onclick="yaCounter<?=Yii::app()->params['yaCounter']?>.reachGoal('CATALOG_BUTTON', '<?=$catalog_item->title . ' (' . $this->club->title . ')'?>'); return true;"
+                                    >
                                         Узнать стоимость
                                     </a>
                                 </div>
@@ -70,6 +76,9 @@
                     'form_button_type' => 'red',
 
                     'show_form_item' => true,
+
+                    // 'form_button_yandex_target' => 'CATALOG_FORM_BUTTON',
+                    // 'form_button_yandex_target_param' => addslashes($catalog_item->title),
                 )
             );
         ?>
@@ -84,8 +93,12 @@ $script = "
 
         var item = $( this ).data( 'item' );
 
+        console.log( item );
+
         $( '#itemName' ).text( $( this ).data( 'item-text' ));
         $( '#modalCatalogItemRequest .hidden-input-field' ).val( item );
+
+        $( '#modalCatalogItemRequest input[type=submit]' ).attr( 'onclick', 'yaCounter" . Yii::app()->params['yaCounter'] . ".reachGoal(\'CATALOG_BUTTON\', ' + item + '); return true;' );
     } );
 ";
 

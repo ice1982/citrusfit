@@ -27,6 +27,11 @@ class FreeWorkoutWidget extends BaseFormWidget
             'form_class' => $this->form_class,
 
             'clubs_list' => $clubs_list,
+
+            'form_button_yandex_target' => $this->form_button_yandex_target,
+            'form_button_yandex_target_param' => $this->form_button_yandex_target_param,
+            'button_yandex_target' => $this->button_yandex_target,
+            'button_yandex_target_param' => $this->button_yandex_target_param,
         ));
     }
 
@@ -60,6 +65,11 @@ class FreeWorkoutWidget extends BaseFormWidget
             'button_text' => $this->button_text,
 
             'clubs_list' => $clubs_list,
+
+            'form_button_yandex_target' => $this->form_button_yandex_target,
+            'form_button_yandex_target_param' => $this->form_button_yandex_target_param,
+            'button_yandex_target' => $this->button_yandex_target,
+            'button_yandex_target_param' => $this->button_yandex_target_param,
         ));
     }
 
@@ -73,6 +83,11 @@ class FreeWorkoutWidget extends BaseFormWidget
             'button_class' => $button_class,
             'button_text' => $this->button_text,
             'button_href' => $this->button_href,
+
+            'form_button_yandex_target' => $this->form_button_yandex_target,
+            'form_button_yandex_target_param' => $this->form_button_yandex_target_param,
+            'button_yandex_target' => $this->button_yandex_target,
+            'button_yandex_target_param' => $this->button_yandex_target_param,
         ));
     }
 

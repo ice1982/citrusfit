@@ -24,6 +24,12 @@ abstract class BaseFormWidget extends CWidget
     public $button_type = 'default';
     public $button_size = 'default';
 
+    // Yandex.Metrika
+    public $form_button_yandex_target = '';
+    public $form_button_yandex_target_param = '';
+    public $button_yandex_target = '';
+    public $button_yandex_target_param = '';
+
     protected $types = array('form', 'button_with_form', 'button_without_form');
 
     abstract protected function _loadFormWidget();

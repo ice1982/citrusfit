@@ -7,6 +7,11 @@
 
     'form_widget_id' => $form_widget_id,
     'form_class' => $form_class,
+
+    'form_button_yandex_target' => $form_button_yandex_target,
+    'form_button_yandex_target_param' => $form_button_yandex_target_param,
+    'button_yandex_target' => $button_yandex_target,
+    'button_yandex_target_param' => $button_yandex_target_param,
 )); ?>
 
 <div style="display:none">

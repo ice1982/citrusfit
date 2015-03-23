@@ -22,6 +22,11 @@
                     'form_widget_id' => $form_widget_id,
 
                     'button_class' => $button_class,
+
+                    'form_button_yandex_target' => $form_button_yandex_target,
+                    'form_button_yandex_target_param' => $form_button_yandex_target_param,
+                    'button_yandex_target' => $button_yandex_target,
+                    'button_yandex_target_param' => $button_yandex_target_param,
                 ));
             ?>
         </div>

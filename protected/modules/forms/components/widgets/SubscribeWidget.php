@@ -20,6 +20,11 @@ class SubscribeWidget extends BaseFormWidget
 
             'form_widget_id' => $form_widget_id,
             'form_class' => $this->form_class,
+
+            'form_button_yandex_target' => $this->form_button_yandex_target,
+            'form_button_yandex_target_param' => $this->form_button_yandex_target_param,
+            'button_yandex_target' => $this->button_yandex_target,
+            'button_yandex_target_param' => $this->button_yandex_target_param,
         ));
     }
 

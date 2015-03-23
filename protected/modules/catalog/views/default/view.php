@@ -34,6 +34,11 @@
                     'form_button_type' => 'red',
 
                     'show_form_item' => false,
+
+                    'form_button_yandex_target' => 'CATALOG_FORM_BUTTON',
+                    'form_button_yandex_target_param' => addslashes($catalog_item->title),
+                    'button_yandex_target' => 'CATALOG_BUTTON',
+                    'button_yandex_target_param' => addslashes($catalog_item->title),
                 )
             );
         ?>

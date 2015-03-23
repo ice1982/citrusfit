@@ -137,6 +137,7 @@
 //                    'id' => 'modalItemRequestFormSubmit',
             'class' => $form_button_class,
             'data-item' => '',
+            'onclick' => (!empty($form_button_yandex_target)) ? "yaCounter" . Yii::app()->params['yaCounter'] . ".reachGoal('" . $form_button_yandex_target . "', '" . $form_button_yandex_target_param . "'); return true;" : ""
         )
     );?>
 </div>

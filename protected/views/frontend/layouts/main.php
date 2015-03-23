@@ -65,6 +65,11 @@
 
                                     'button_text' => 'Записаться на бесплатное занятие',
                                     'button_type' => 'red',
+
+                                    'form_button_yandex_target' => 'FREEWORKOUT_FORM_BUTTON',
+                                    'form_button_yandex_target_param' => 'Кнопка в шапке',
+                                    'button_yandex_target' => 'FREEWORKOUT_BUTTON',
+                                    'button_yandex_target_param' => 'Кнопка в шапке',
                                 )
                             );
                         ?>

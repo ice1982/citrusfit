@@ -11,6 +11,11 @@
     'styles' => $styles,
 
     'show_form_item' => $this->show_form_item,
+
+    'form_button_yandex_target' => $form_button_yandex_target,
+    'form_button_yandex_target_param' => $form_button_yandex_target_param,
+    'button_yandex_target' => $button_yandex_target,
+    'button_yandex_target_param' => $button_yandex_target_param,
 )); ?>
 
 
