@@ -16,7 +16,7 @@ class FrontEndController extends BaseController
 
     public function init()
     {
-        $this->trailingSlashRedirect();
+        // $this->trailingSlashRedirect();
 
         parent::init();
 
