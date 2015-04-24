@@ -36,11 +36,12 @@
                                     </div>
                                 </div>
                                 <div class="col-xs-4">
+
                                     <a
                                         class="btn btn-default modal-item-request-button fancybox-modal"
                                         href="#modalCatalogItemRequest"
                                         data-item="<?=$catalog_item->group->title . ': ' . $catalog_item->title . ' (' . $this->club->title . ')'?>"
-                                        data-item-text="<?=$catalog_item->title . ' (' . $this->club->title . ')'?>"
+                                        data-item-text="<?=CHtml::encode($catalog_item->title . ' (' . $this->club->title . ')')?>"
                                         onclick="yaCounter<?=Yii::app()->params['yaCounter']?>.reachGoal('CATALOG_BUTTON', '<?=$catalog_item->title . ' (' . $this->club->title . ')'?>'); return true;"
                                     >
                                         Узнать стоимость

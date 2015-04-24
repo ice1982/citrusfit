@@ -19,6 +19,8 @@
     <div class="col-xs-7">
         <?=$catalog_item->body?>
     </div>
+
+
     <div class="col-xs-5">
         <?php
             $this->widget('SimpleFormWidget',

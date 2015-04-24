@@ -19,12 +19,6 @@ $this->menu = array(
 
 <h1>Список блоков</h1>
 
-<?php $this->widget('Alert', array(
-    'block'     => true,
-    'fade'      => true,
-    'closeText' => '&times;',
-)); ?>
-
 <?php $this->widget('zii.widgets.grid.CGridView', array(
     'id' => 'blocks-grid',
     'dataProvider' => $model->search(),
