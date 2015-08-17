@@ -38,6 +38,8 @@ class DefaultController extends FrontEndController
         } else {
             $club_id = Yii::app()->session['club'];
 
+            $dump = array();
+
             $workouts = TimeboardItem::model()->findAllItemsOfClub($club_id);
             foreach ($workouts as $workout) {
                 $dump[$workout->hall->id][$workout->time_start][$workout->day_of_week] = $workout;

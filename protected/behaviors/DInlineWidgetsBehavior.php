@@ -204,7 +204,13 @@ class DInlineWidgetsBehavior extends CBehavior
         {
             if ($param)
             {
-                list($attribute, $value) = explode('=', $param);
+                $explode = explode('=', $param);
+
+                if ( (isset($explode[0])) && (isset($explode[1])) ) {
+                    $attribute = $explode[0];
+                    $value = $explode[1];
+                }
+
                 if ($value) $attrs[$attribute] = trim($value);
             }
         }

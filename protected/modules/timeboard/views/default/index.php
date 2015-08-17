@@ -1,5 +1,3 @@
-<div class="font-h2 margin-h2">Расписание занятий в клубе &laquo;<?=$this->club->title?>&raquo;</div>
-
 <div class="workout-view">
     <?php if (count($dump)) : ?>
         <?php foreach ($dump as $hall => $workouts) : ?>
@@ -38,7 +36,7 @@
             </div>
         <?php endforeach; ?>
     <?php else: ?>
-        <p class="workout-notice">К сожалению, для этого клуба расписание еще не подготовлено</p>
+        <!-- <p class="workout-notice">К сожалению, для этого клуба расписание еще не подготовлено</p> -->
     <?php endif; ?>
 </div>
 

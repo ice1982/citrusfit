@@ -17,8 +17,8 @@ switch (dirname(__FILE__)) {
 }
 
 if (($environment == 'development') || ($environment == 'test')) {
-//    define('YII_DEBUG', false);
-//    error_reporting(0);
+   // define('YII_DEBUG', false);
+   // error_reporting(0);
     error_reporting(E_ALL);
     defined('YII_DEBUG') or define('YII_DEBUG', true);
     defined('YII_TRACE_LEVEL') or define('YII_TRACE_LEVEL', 3);

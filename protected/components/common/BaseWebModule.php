@@ -43,7 +43,17 @@ class BaseWebModule extends CWebModule
     {
         if ($this->id != 'pages') {
             Yii::import('application.modules.pages.models.*');
-            $this->page = Page::model()->active()->findByAttributes(array('module' => $this->id));
+
+            $club_session = Yii::app()->session['club'];
+
+            if (!empty($club_session)) {
+                $this->page = Page::model()->active()->findByAttributes(array('module' => $this->id, 'club_id' => $club_session));
+            } else {
+                $this->page = Page::model()->active()->findByAttributes(array('module' => $this->id));
+            }
+
+
+
         }
     }
 }

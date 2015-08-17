@@ -7,7 +7,7 @@ return CMap::mergeArray(
         'components'=>array(
             // переопределяем компонент db
             'db' => array(
-                'connectionString' => 'mysql:host=localhost;dbname=v3.citrusfit',
+                'connectionString' => 'mysql:host=localhost;dbname=citrusfit',
                 'emulatePrepare' => true,
                 'username' => 'root',
                 'password' => 'admin',

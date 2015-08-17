@@ -111,6 +111,8 @@ class FrontEndController extends BaseController
             Yii::app()->session['club'] = false;
         }
 
+        // var_dump($club_id);
+
         $club_model = ClubItem::model();
 
         if (!empty($club_id)) {
@@ -122,6 +124,8 @@ class FrontEndController extends BaseController
         } else {
             $this->club = $club_model->findByPk(-1);
         }
+
+        // var_dump($this->club);
     }
 
     public function behaviors()
