@@ -44,7 +44,7 @@
                                         data-item-text="<?=CHtml::encode($catalog_item->title . ' (' . $this->club->title . ')')?>"
                                         onclick="yaCounter<?=Yii::app()->params['yaCounter']?>.reachGoal('CATALOG_BUTTON', '<?=$catalog_item->title . ' (' . $this->club->title . ')'?>'); return true;"
                                     >
-                                        Узнать стоимость
+                                        Забронировать
                                     </a>
                                 </div>
                             </div>
@@ -69,10 +69,10 @@
                 array(
                     'type' => 'form',
 
-                    'form_caption' => 'Узнать стоимость',
+                    'form_caption' => 'Забронировать карту',
                     'form_class' => 'catalog-form',
 
-                    'form_button_text' => 'Узнать стоимость',
+                    'form_button_text' => 'Забронировать',
                     'form_button_size' => 'default',
                     'form_button_type' => 'red',
 

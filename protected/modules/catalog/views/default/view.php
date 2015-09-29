@@ -27,11 +27,11 @@
                 array(
                     'type' => 'form',
 
-                    'form_caption' => 'Оставить заявку',
+                    'form_caption' => 'Забронировать карту',
                     'form_item' => $catalog_item->group->title . ': ' . $catalog_item->title . ' (' . $this->club->title . ')',
                     'form_class' => 'catalog-form',
 
-                    'form_button_text' => 'Отправить',
+                    'form_button_text' => 'Забронировать',
                     'form_button_size' => 'default',
                     'form_button_type' => 'red',
 
