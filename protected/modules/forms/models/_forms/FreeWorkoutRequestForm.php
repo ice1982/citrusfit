@@ -77,8 +77,13 @@ class FreeWorkoutRequestForm extends BaseFormModel
                 'description' => $form_request->description,
                 'system_info' => $form_request->system_info,
             );
-            $amocrm = new AmocrmModel;
-            $amocrm_request = $amocrm->addFreeWorkoutRequest($dump);
+            try {
+                $amocrm = new AmocrmModel;
+                $amocrm_request = $amocrm->addFreeWorkoutRequest($dump);
+            } catch (CException $e) {
+                // var_dump($e);
+            }
+
         }
 
         // return true;

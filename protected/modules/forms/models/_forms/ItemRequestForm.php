@@ -84,9 +84,13 @@ class ItemRequestForm extends BaseFormModel
                 'description' => $form_request->description,
                 'system_info' => $form_request->system_info,
             );
-            $amocrm = new AmocrmModel;
-            $amocrm_request = $amocrm->addItemRequest($dump);
 
+            try {
+                $amocrm = new AmocrmModel;
+                $amocrm_request = $amocrm->addItemRequest($dump);
+            } catch (CException $e) {
+
+            }
         }
 
         // return true;

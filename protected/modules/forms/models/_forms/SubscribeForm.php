@@ -63,8 +63,13 @@ class SubscribeForm extends BaseFormModel
                 'description' => $form_request->description,
                 'system_info' => $form_request->system_info,
             );
-            $amocrm = new AmocrmModel;
-            $amocrm_request = $amocrm->addSubscribeRequest($dump);
+            try {
+                $amocrm = new AmocrmModel;
+                $amocrm_request = $amocrm->addSubscribeRequest($dump);
+            } catch (CException $e) {
+
+            }
+
 
         }
 
