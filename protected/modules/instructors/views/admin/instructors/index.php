@@ -1,24 +1,20 @@
 <?php
 
 $this->breadcrumbs = array(
-    'Instructors' => array('index'),
-    'Manage',
+    'Инструктора' => array('index'),
+    'Список',
 );
 
 $this->menu = array(
     array(
-        'label' => 'List Instructor',
-        'url' => array('index'),
-    ),
-    array(
-        'label' => 'Create Instructor',
-        'url'=>array('create'),
+        'label' => 'Добавить инструктора',
+        'url' => array('create'),
     ),
 );
 
 ?>
 
-<h1>Manage Instructors</h1>
+<h1>Список инструкторов</h1>
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
     'id' => 'instructor-grid',
@@ -41,7 +37,7 @@ $this->menu = array(
                 'delete' => array(
                     'label' => 'Удалить',
                     'icon' => 'remove',
-                    'url' => 'Yii::app()->createUrl("instructor/delete", array("id" => $data->id))',
+                    'url' => 'Yii::app()->createUrl("instructors/admin/instructors/delete", array("id" => $data->id))',
                 ),
             ),
         ),
