@@ -1,23 +1,21 @@
 <?php
 
 $this->breadcrumbs = array(
-	'Instructors' => array('index'),
-	'Create',
+	'Инструктора' => array('index'),
+	'Добавить',
 );
 
 $this->menu = array(
-	array(
-        'label' => 'List Instructor',
-        'url'=>array('index'),
-    ),
-	array(
-        'label' => 'Manage Instructor',
-        'url' => array('admin'),
+    array(
+        'label' => 'Список инструкторов',
+        'icon' => 'list',
+        'url' => array('index')
     ),
 );
+
 ?>
 
-<h1>Create Instructor</h1>
+<h1>Добавить инструктора</h1>
 
 <?php $this->renderPartial('_form',
     array(

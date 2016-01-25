@@ -1,32 +1,40 @@
 <?php
 
 $this->breadcrumbs = array(
-	'Instructors' => array('index'),
-	$model->id => array('view', 'id' => $model->id),
-	'Update',
+	'Инструктора' => array('index'),
+	$model->fio => array('view', 'id' => $model->id),
+	'Редактировать',
 );
 
 $this->menu = array(
-	array(
-        'label' => 'List Instructor',
-        'url'=>array('index'),
+    array(
+        'label' => 'Список инструкторов',
+        'icon' => 'list',
+        'url' => array('index')
     ),
-	array(
-        'label' => 'Create Instructor',
-        'url'=>array('create'),
+    array(
+        'label' => 'Добавить инструктора',
+        'icon' => 'plus',
+        'url' => array('create')
     ),
-	array(
-        'label' => 'View Instructor',
-        'url'=>array('view', 'id'=>$model->id),
+    array(
+        'label' => ($model->active == 1) ? 'Заблокировать инструктора' : 'Включить инструктора',
+        'icon' => ($model->active == 1) ? 'icon-off' : 'icon-ok',
+        'url' => ($model->active == 1) ? array('turnOff', 'id' => $model->id) : array('turnOn', 'id' => $model->id)
     ),
-	array(
-        'label' => 'Manage Instructor',
-        'url'=>array('admin'),
+    array(
+        'label' => 'Удалить инструктора',
+        'icon' => 'remove',
+        'url' => array('delete', 'id' => $model->id),
+        'htmlOptions' => array(
+            'confirm' => 'Вы действительно хотите удалить этого инструктора (' . $model->fio . ')?'
+        ),
     ),
 );
+
 ?>
 
-<h1>Update Instructor <?php echo $model->id; ?></h1>
+<h1>Редактировать инструктора <?php echo $model->fio; ?></h1>
 
 <?php $this->renderPartial('_form',
     array(
