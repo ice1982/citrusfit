@@ -22,38 +22,7 @@ $RECYCLE.BIN/
 ## Yii
 #############
 
-/assets/
-protected/runtime/
-themes/classic/views/
-
-#############
-## Codeigniter
-#############
-
-# */config/development
-# */logs/log-*.php
-# */logs/!index.html
-# */cache/*
-# */cache/!index.html
-
-#############
-## Rails
-#############
-
-# *.rbc
-# *.sassc
-# .sass-cache
-# capybara-*.html
-# .rspec
-# /.bundle
-# /vendor/bundle
-# /log/*
-# /tmp/*
-# /db/*.sqlite3
-# /public/system/*
-# /coverage/
-# /spec/tmp/*
-# **.orig
-# rerun.txt
-# pickle-email-*.html
-/.idea/
+/public_html/assets/
+/app/protected/runtime/
+/app/config/environment/production.php
+/themes/classic/views/
