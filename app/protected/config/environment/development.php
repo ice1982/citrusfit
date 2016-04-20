@@ -10,7 +10,7 @@ return CMap::mergeArray(
                 'connectionString' => 'mysql:host=localhost;dbname=citrusfit',
                 'emulatePrepare' => true,
                 'username' => 'root',
-                'password' => 'admin',
+                'password' => 'root',
                 'charset' => 'utf8',
                 'enableProfiling' => true,
                 'enableParamLogging' => true,
