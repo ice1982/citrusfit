@@ -85,44 +85,44 @@ class ItemRequestForm extends BaseFormModel
                 'system_info' => $form_request->system_info,
             );
 
-//            try {
-//                $status_request = '1';
-//                $amocrm_user = '4';
-//
-//                $contact =  array(
-//                    'name' => $dump['fio'],
-//                    'phone' => $dump['phone'],
-//                    'main_user_id' => $amocrm_user,
-//                    'status_request' => $status_request,
-//                );
-//
-//                $result = $this->addContact($contact);
-//                $contact_result = json_decode($result, true);
-//
-//                if ($contact_result['status'] == 'success') {
-//                    $contact_id = $contact_result['id'];
-//
-//                    if (empty($contact_id)) {
-//                        $contact_id = false;
-//                    }
-//
-//                    $lead = array(
-//                        'name' => strip_tags($dump['description']) . ' ' . $dump['club_id'] . ' (' . date('Y-m-d H:i:s') . ')',
-//                        'status_id' => $status_request,
-//                        'linked_contact' => $contact_id,
-//                        'main_user_id' => $amocrm_user,
-//                    );
-//
-//                    $result = $this->addLead($lead);
-//                    $lead_result = json_decode($result, true);
-//                } else {
-//
-//                }
-//
-//
-//            } catch (Exception $e) {
-//
-//            }
+           try {
+               $status_request = '1';
+               $amocrm_user = '4';
+
+               $contact =  array(
+                   'name' => $dump['fio'],
+                   'phone' => $dump['phone'],
+                   'main_user_id' => $amocrm_user,
+                   'status_request' => $status_request,
+               );
+
+               $result = $this->addContact($contact);
+               $contact_result = json_decode($result, true);
+
+               if ($contact_result['status'] == 'success') {
+                   $contact_id = $contact_result['id'];
+
+                   if (empty($contact_id)) {
+                       $contact_id = false;
+                   }
+
+                   $lead = array(
+                       'name' => strip_tags($dump['description']) . ' ' . $dump['club_id'] . ' (' . date('Y-m-d H:i:s') . ')',
+                       'status_id' => $status_request,
+                       'linked_contact' => $contact_id,
+                       'main_user_id' => $amocrm_user,
+                   );
+
+                   $result = $this->addLead($lead);
+                   $lead_result = json_decode($result, true);
+               } else {
+
+               }
+
+
+           } catch (Exception $e) {
+
+           }
 
             try {
                 $amocrm = new AmocrmModel;
