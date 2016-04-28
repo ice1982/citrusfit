@@ -3,7 +3,7 @@
 
 <?=$this->decodeWidgets($this->loadBlockBody('header'));?>
 
-<div style="width:100%;padding:40px 0;"></div>
+<div style="width:100%;padding:60px 0;"></div>
 
 <div class="">
 

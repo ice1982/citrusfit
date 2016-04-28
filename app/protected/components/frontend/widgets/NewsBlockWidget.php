@@ -6,7 +6,7 @@ class NewsBlockWidget extends CWidget
 {
     public function run()
     {
-        $all_clubs_model = ArticleItem::model()->active()->findAll(array('order' => 'pubdate DESC', 'limit' => 10));
+        $all_clubs_model = ArticleItem::model()->active()->findAll(array('order' => 'id DESC', 'limit' => 4));
 
         $this->render('newsBlockWidget', array(
             'all_clubs_model' => $all_clubs_model,
