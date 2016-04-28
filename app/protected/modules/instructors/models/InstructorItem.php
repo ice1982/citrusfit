@@ -83,7 +83,7 @@ class InstructorItem extends BaseActiveRecord
 				'required',
 			),
 			array(
-				'meta_index, created_user, modified_user, active',
+				'meta_index, groups, created_user, modified_user, active',
 				'numerical',
 				'integerOnly' => true,
 			),
@@ -119,13 +119,13 @@ class InstructorItem extends BaseActiveRecord
                 'on' => 'update',
             ),
 			array(
-				'fio, annotation, body, meta_index, meta_title, meta_keywords, meta_description',
+				'fio, annotation, body, meta_index, groups, meta_title, meta_keywords, meta_description',
 				'safe',
 			),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array(
-				'id, fio, image, annotation, body, meta_index, meta_title, meta_keywords, meta_description, created_ip, created_date, created_user, created_username, modified_ip, modified_date, modified_user, modified_username, active',
+				'id, fio, image, annotation, body, meta_index, groups, meta_title, meta_keywords, meta_description, created_ip, created_date, created_user, created_username, modified_ip, modified_date, modified_user, modified_username, active',
 				'safe',
 				'on' => 'search',
 			),
@@ -156,6 +156,7 @@ class InstructorItem extends BaseActiveRecord
 			'annotation' => 'Annotation',
 			'body' => 'Body',
 			'meta_index' => 'Meta Index',
+            'groups' => 'groups',
 			'meta_title' => 'Meta Title',
 			'meta_keywords' => 'Meta Keywords',
 			'meta_description' => 'Meta Description',
@@ -195,6 +196,7 @@ class InstructorItem extends BaseActiveRecord
 		$criteria->compare('annotation', $this->annotation, true);
 		$criteria->compare('body', $this->body, true);
 		$criteria->compare('meta_index', $this->meta_index);
+        $criteria->compare('groups', $this->groups);
 		$criteria->compare('meta_title', $this->meta_title, true);
 		$criteria->compare('meta_keywords', $this->meta_keywords, true);
 		$criteria->compare('meta_description', $this->meta_description, true);

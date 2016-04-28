@@ -5,14 +5,16 @@
         <?=CHelper::sqlDateToRussianDate($model->pubdate)?>
     </div>
 
-    <hr/>
+<!--    <hr/>-->
 
     <div>
         <?php if (!empty($model->image)) : ?>
             <div class="row">
+<!--
                 <div class="col-xs-3 image">
-                        <img class="img-responsive" src="/uploads/<?=$model->image?>" alt="<?=$model->image_attr_alt?>" title="<?=$model->image_attr_title?>">
+                        <img class="img-responsive" src="/uploads/<//?=$model->image?>" alt="<//?=$model->image_attr_alt?>" title="<//?=$model->image_attr_title?>">
                 </div>
+-->
                 <div class="col-xs-9">
                     <div class="annotation">
                         <i><?=$model->annotation?></i>

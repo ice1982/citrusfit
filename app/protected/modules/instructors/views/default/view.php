@@ -19,12 +19,14 @@
                         <div class="font-h3 margin-h4"><?=$day?></div>
                         <table class="table">
                         <?php foreach ($workouts[$number] as $workout) : ?>
+                           <?php if($workout->hall->club->active != 0) { ?>
                             <tr>
                                 <td><?=$workout->hall->club->title?></td>
                                 <td><?=$workout->hall->title?></td>
                                 <td><?=CHelper::trimSeconds($workout->time_start)?> - <?=CHelper::trimSeconds($workout->time_finish)?></td>
                                 <td><?=$workout->body?></td>
                             </tr>
+                            <?php } ?>
                         <?php endforeach; ?>
                         </table>
                     <?php endif; ?>

@@ -31,7 +31,16 @@
 		<p class="help-block">Короткий текст.</p>
 		<?php echo $form->error($model,'annotation'); ?>
 	</div>
-
+   
+    <div class="form-group">
+		<?php echo $form->labelEx($model,'groups'); ?>
+		<?php echo $form->dropDownList($model,'groups',
+			array(0 => 'Групповые', 1 => 'Тренажерные'),
+			array('class' => 'span2')
+		); ?>
+		<?php echo $form->error($model,'groups'); ?>
+	</div>
+	
 	<?php if (!empty($model->image)) : ?>
 	<div class="form-group">
 		<img width=100 src="uploads/<?=$model->image?>" alt="">
