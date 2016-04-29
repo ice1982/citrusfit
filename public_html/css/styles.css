@@ -57,6 +57,12 @@ LESS variables
   margin: 0;
   padding: 0;
 }
+.instructor-item {
+  height: 500px;
+}
+.instructor-item img {
+  height: 400px;
+}
 .form-control {
   width: auto;
 }
@@ -301,8 +307,16 @@ form input:-ms-input-placeholder {
   width: 100%;
 }
 .news .items {
-  padding-bottom: 50px;
+  padding-bottom: 25px;
   margin: 0 auto;
+}
+.news .items .imgwindow {
+  height: 200px;
+  position: relative;
+}
+.news .items .imgwindow img {
+  position: absolute;
+  bottom: 0;
 }
 .news .items span {
   font-size: 20px;

@@ -2,6 +2,7 @@
 <h2>Последние новости</h2>
 
         <div class="container">
+           
             <div class="items">
                 <div class="row">
                 <!--                <div class="col-xs-2 "></div>-->
@@ -9,7 +10,7 @@
                    <?php if ($key > 3) continue; ?>
                     
                         <div class="col col-xs-3 item">
-                            <div class="">
+                            <div class="imgwindow">
                                 <a href="<?=Yii::app()->createUrl('articles/default/view', array('id' => $model->id))?>" title="<?=$model->title?>">
                                     <img src="/uploads/thumb_<?=$model->image?>" class="img-responsive" alt="">
                                 </a>
@@ -27,5 +28,6 @@
                 </div>
             </div>
         </div>
+    <div class="allnews" style="text-align:center"><a href="articles">Все новости</a></div>
 </div>
 
