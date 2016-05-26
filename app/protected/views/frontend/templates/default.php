@@ -3,13 +3,13 @@
 
 <?=$this->decodeWidgets($this->loadBlockBody('header'));?>
 
-<div style="width:100%;padding:60px 0;"></div>
+<div style="width:100%;padding:40px 0;"></div>
 
 <div class="">
 
-    <div class="content">
+    <div class="content" style="min-height:700px">
 
-        <div class="container blank-padding white-blank">
+      <div class="container blank-padding white-blank">
 
             <?php if (isset($this->breadcrumbs)) : ?>
                 <?php $this->widget('MyBreadcrumbs', array(

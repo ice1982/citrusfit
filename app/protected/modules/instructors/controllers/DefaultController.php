@@ -35,7 +35,7 @@ class DefaultController extends FrontEndController
 
         $this->breadcrumbs[] = array(
             'route' => Yii::app()->createUrl('instructors/default/index'),
-            'title' => 'Инструктора сети клубов &laquo;Цитрус&raquo;',
+            'title' => 'Инструкторы сети клубов &laquo;Цитрус&raquo;',
         );
         $this->breadcrumbs[] = array(
             'route' => false,
@@ -63,9 +63,9 @@ class DefaultController extends FrontEndController
 
         $this->breadcrumbs[] = array(
             'route' => false,
-            'title' => 'Инструктора сети клубов &laquo;Цитрус&raquo;',
+            'title' => 'Инструкторы сети клубов &laquo;Цитрус&raquo;',
         );
-        $this->setPageTitle('Инструктора сети клубов Цитрус');
+        $this->setPageTitle('Инструкторы сети клубов Цитрус');
         
         $this->render('index', array(
             'instructors' => $instructors,

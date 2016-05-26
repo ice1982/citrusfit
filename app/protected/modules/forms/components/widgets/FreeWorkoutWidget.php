@@ -44,6 +44,11 @@ class FreeWorkoutWidget extends BaseFormWidget
         $button_class = $this->generateClasses($this->button_type, $this->button_size, true);
 
         $form_model = new FreeWorkoutRequestForm;
+        
+        $form_model->text = str_replace('"', "'", (json_encode($_GET))); 
+        
+//        $form_model->text = 'fgdfgdfg';
+        
         if (!empty(Yii::app()->session['club'])) {
             $form_model->club = Yii::app()->session['club'];
         }

@@ -27,16 +27,12 @@
             <?php endif; ?>
 
 
-            
-
-
             <?php if (isset($this->page->id)) : ?>
                 <div>
                     <?=$this->decodeWidgets($this->page->begin_body)?>
                 </div>
             <?php endif; ?>
 
-            
 
             <?php echo $content; ?>
 

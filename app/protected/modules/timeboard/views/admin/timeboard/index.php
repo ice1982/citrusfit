@@ -10,6 +10,11 @@ $this->menu = array(
 
 ?>
 
+<?php
+
+//var_dump($page);
+?>
+
 <h2>Расписание занятий в клубе &laquo;<?=$club->title?>&raquo;</h2>
 
 <div class="workout-view">

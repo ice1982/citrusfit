@@ -5,6 +5,7 @@ class FreeWorkoutRequestForm extends BaseFormModel
     public $fio;
     public $phone;
     public $club;
+    public $text;
 
     public function rules()
     {
@@ -28,6 +29,10 @@ class FreeWorkoutRequestForm extends BaseFormModel
                 'numerical',
                 'integerOnly' => true,
             ),
+            array(
+                'text',
+                'safe',
+            ),
         );
     }
 
@@ -37,6 +42,7 @@ class FreeWorkoutRequestForm extends BaseFormModel
             'fio' => 'Ф.И.О.',
             'phone' => 'Телефон',
             'club' => 'Клуб',
+            'text' => 'Метки utm',
         );
     }
 
@@ -47,6 +53,7 @@ class FreeWorkoutRequestForm extends BaseFormModel
 
         Yii::import('application.modules.clubs.models.*');
         $club = ClubItem::model()->active()->findByPk($this->club);
+        $array = json_decode(str_replace("'",'"', $this->text));//прием обработаного в аяксконтроллере поста и конвертация обратно в массив
 
         $subject = 'Поступил заказ c сайта www.citrusfit.ru';
 
@@ -54,9 +61,12 @@ class FreeWorkoutRequestForm extends BaseFormModel
 
         $message .= $this->getAttributeLabel('fio') . ': ' . $this->fio . '<br>';
         $message .= $this->getAttributeLabel('phone') . ': ' . $this->phone . '<br>';
+        
+        foreach($array as $key => $value){
+            $message .= 'Метки utm: ' . $key . ' -> ' . $value . '<br>';// разбиение и занесение полученого массива с метками в сообщение 
+        }
 
         $message .= '<br>';
-
         $message .= 'Клуб: ' . $club->title . '<br>';
 
         $message .= '<br>';
@@ -67,7 +77,6 @@ class FreeWorkoutRequestForm extends BaseFormModel
         $form_request->phone = $this->phone;
         $form_request->description = 'Пробное занятие';
         $form_request->system_info = Yii::app()->session['utm_session'];
-
 
         if ($form_request->save()) {
             $dump = array(
@@ -117,12 +126,12 @@ class FreeWorkoutRequestForm extends BaseFormModel
 
            }
 
-            try {
-                $amocrm = new AmocrmModel;
-                $amocrm_request = $amocrm->addFreeWorkoutRequest($dump);
-            } catch (CException $e) {
-                // var_dump($e);
-            }
+//            try {
+//                $amocrm = new AmocrmModel;
+//                $amocrm_request = $amocrm->addFreeWorkoutRequest($dump);
+//            } catch (CException $e) {
+//                // var_dump($e);
+//            }
 
         }
 

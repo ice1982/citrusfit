@@ -6,6 +6,7 @@
         'managerEmail' => array(
             'sales@citrusfit.ru',
             'pv.danilov.dev@yandex.ru',
+            'vn.gerasimov@citrus-plus.ru',
         ),
         'amocrm' => array(
             'users' => array(

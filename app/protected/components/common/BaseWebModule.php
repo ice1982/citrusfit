@@ -46,13 +46,11 @@ class BaseWebModule extends CWebModule
 
             $club_session = Yii::app()->session['club'];
 
-            if (!empty($club_session)) {
+            if (!empty($club_session)) {     //поиск и вывод из таблицы базы данных по полю module
                 $this->page = Page::model()->active()->findByAttributes(array('module' => $this->id, 'club_id' => $club_session));
             } else {
                 $this->page = Page::model()->active()->findByAttributes(array('module' => $this->id));
             }
-
-
 
         }
     }

@@ -99,6 +99,7 @@
     );?>
     <?=$form->error($form_model, 'fio');?>
 </div>
+
 <div class="form-group">
     <?=$form->labelEx(
         $form_model,
