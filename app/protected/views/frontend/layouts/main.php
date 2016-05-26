@@ -32,7 +32,7 @@
     <meta name="keywords" content='<?php echo CHtml::encode($this->pageKeywords); ?>'>
 
     <title><?php echo CHtml::encode($this->pageTitle); ?></title>
-     <!-- LeadoMed code -->
+   <!-- LeadoMed code -->
 <script>
     (function() {
         var config = {

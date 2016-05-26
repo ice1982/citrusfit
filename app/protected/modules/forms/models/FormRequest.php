@@ -43,6 +43,7 @@ class FormRequest extends BaseActiveRecord
 		return 'form_requests';
 	}
 
+    
 	/**
 	 * @return array validation rules for model attributes.
 	 */
@@ -116,6 +117,7 @@ class FormRequest extends BaseActiveRecord
 			'club_id' => 'Club',
 			'fio' => 'Fio',
 			'phone' => 'Phone',
+            'text' => 'text',
 			'description' => 'Description',
 			'system_info' => 'system_info',
 			'created_ip' => 'Created Ip',

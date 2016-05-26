@@ -1,6 +1,6 @@
 <?php $form = $this->beginWidget('CActiveForm', array(
     'id' => $form_widget_id,
-    'action' => Yii::app()->createUrl('forms/ajax/sendFromFreeWorkoutRequestForm'),
+    'action' => Yii::app()->createUrl('forms/ajax/sendFromFreeWorkoutRequestForm'), //sendFromFreeWorkoutRequestForm это экшен AjaxController'a где проходит валидация поста и отпправка в FreeWorkoutRequestForm.
     'enableAjaxValidation' => true,
     'enableClientValidation' => true,
     'clientOptions' => array(
@@ -127,6 +127,19 @@
             )
         );?>
         <?=$form->error($form_model, 'phone');?>
+
+</div>
+
+<div class="form-group">
+       <?=$form->hiddenField(
+            $form_model,
+            'text',
+            array(
+                'class' => 'form-control',
+                'type' => 'text',
+            )
+        );?>
+        <?=$form->error($form_model, 'text');?>
 
 </div>
 

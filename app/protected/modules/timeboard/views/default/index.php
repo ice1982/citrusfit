@@ -1,18 +1,44 @@
 <!--Селект с клубами-->
-<div class="font-h2 margin-h2">
-    <h2 style="width:auto; padding:0 0 10px;text-align:left;font-weight:400;">Расписание занятий в клубе</h2>
-</div>
 
 
-<div class="container" style="padding-left:0">
-    <div class="col-xs-12" style="padding-left:0">Выберите клуб:</div>
-    <div class="col-xs-12" style="padding-left:0">
-        <select class="form-control" name="timeboard_select">
-            <?php foreach ($clubs as $club) { ?>
-                <option value="<?=$club->id?>"><?= $club->title ?></option>
-            <?php } ?>
-        </select>
+
+<div class="container">
+   
+   <div class="row">
+       <div class="col-xs-6">
+            
+           <div>
+                <div class="font-h2 margin-h2">
+                    <h2 style="width:auto; padding:0 0 10px;text-align:left;font-weight:400;">Расписание занятий в клубе</h2>
+                </div>
+               <select class="form-control" name="timeboard_select">
+                    <?php foreach ($clubs as $club) { ?>
+                        <option value="<?=$club->id?>"><?= $club->title ?></option>
+                    <?php } ?>
+                </select>
+           </div>
+       </div>
+
+       <div class="col-xs-6" style="float: right;">
+           <?=$this->decodeWidgets($this->loadBlockBody('timeboard_banner'));?>
+       </div>
+   </div>
+   
+   
+   
+<!--
+    <div class="col-xs-6" style="padding-left:0">Выберите клуб:</div>
+    <div class="row">
+        <div class="col-xs-6" style="padding-left:0">
+            
+        </div>
+        <div class="col-xs-6">
+            <div>
+                
+            </div>
+        </div>
     </div>
+-->
 </div>
 
 <div class="workouts-items">

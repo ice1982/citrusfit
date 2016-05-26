@@ -6,6 +6,7 @@
     <div id="modal<?=$form_widget_id?>" class="modal-window">
         <?php $this->render('_forms/_freeWorkoutFormView', array(
             'form_model' => $form_model,
+    
 
             'form_caption' => $form_caption,
             'form_button_class' => $form_button_class,

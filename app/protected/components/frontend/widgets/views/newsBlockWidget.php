@@ -2,7 +2,6 @@
 <h2>Последние новости</h2>
 
         <div class="container">
-           
             <div class="items">
                 <div class="row">
                 <!--                <div class="col-xs-2 "></div>-->
@@ -28,6 +27,6 @@
                 </div>
             </div>
         </div>
-    <div class="allnews" style="text-align:center"><a href="articles">Все новости</a></div>
+  <div class="allnews" style="text-align:center"><a href="articles">Все новости</a></div>
 </div>
 

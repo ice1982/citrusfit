@@ -14,4 +14,4 @@ $( document ).ready( function() {
             maxWidth: 450
         })
     })
-});
+} );

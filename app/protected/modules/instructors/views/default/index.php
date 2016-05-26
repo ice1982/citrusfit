@@ -1,7 +1,7 @@
 <div class="instructor-list">
   
        <h3><?php echo $title[0]['title'] ?></h3>
-       <h2>Инструктора тренажерного зала</h2>
+       <h2>Инструкторы тренажерного зала</h2>
        <div class="row margin-h2">
         <?php foreach ($instructors as $key => $instructor) : ?>
         <?php if($instructor->groups == 1) { ?>
@@ -40,7 +40,7 @@
         <?php endforeach; ?>
     </div>
         <!-- блок 2 -->
-        <h2>Инструктора групповых занятий</h2>
+        <h2>Инструкторы групповых занятий</h2>
     <div class="row margin-h2" style="padding-bottom:60px;">
         <?php foreach ($instructors as $key => $instructor) : ?>
         <?php if($instructor->groups == 0) { ?>

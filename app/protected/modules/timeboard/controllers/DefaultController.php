@@ -16,6 +16,7 @@ class DefaultController extends FrontEndController
 
     public function actionIndex()
     {
+        
         $dump = array();
 
         $clubs = ClubItem::model()->active()->findAll();
@@ -39,9 +40,12 @@ class DefaultController extends FrontEndController
         if (empty($this->meta_title)) {
             $this->setPageTitle('Расписание | ' . 'Клуб ' . $this->club->title);
         }
+        
+//       var_dump($this->page);
 
 
         $this->render('index', array(
+            'page' => $this->page,
             'clubs' => $clubs,
             'dump' => $dump,
         ));
