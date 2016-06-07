@@ -1,7 +1,7 @@
 <?php
 
-$environment = 'development';
-$debug = true;
+$environment = 'production';
+$debug = false;
 
 $protected = '/../app/protected';
 

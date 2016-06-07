@@ -5,10 +5,10 @@ return CMap::mergeArray(
     array(
         'components'=>array(
             'db' => array(
-                'connectionString' => 'mysql:host=localhost;dbname=zokzok_citrus3',
+                'connectionString' => 'mysql:host=localhost;dbname=citrusfit_site',
                 'emulatePrepare' => true,
-                'username' => 'zokzok_citrus3',
-                'password' => 'h33OSBrb',
+                'username' => 'citrusfit_site',
+                'password' => 'S3s5R3i8',
                 'charset' => 'utf8',
                 'tablePrefix' => '',
             ),
