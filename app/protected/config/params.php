@@ -5,12 +5,6 @@
         'fromEmail' => 'distribution@citrusfit.ru',
         'managerEmail' => array(
             'sales@citrusfit.ru',
-
-<<<<<<< HEAD
-//            
-=======
-
->>>>>>> master2
             'pv.danilov.dev@yandex.ru',
         ),
 //        'amocrm' => array(

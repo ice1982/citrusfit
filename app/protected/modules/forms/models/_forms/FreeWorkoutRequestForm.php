@@ -66,11 +66,6 @@ class FreeWorkoutRequestForm extends BaseFormModel
             $message .= 'Метки utm: ' . $key . ' -> ' . $value . '<br>';// разбиение и занесение полученого массива с метками в сообщение 
         }
 
-<<<<<<< HEAD
-=======
-        
-
->>>>>>> master2
         $utm_contacts = '';
         foreach($array as $key => $value){
             $utm_contacts .= '<br> Метка utm: ' . $key . ' -> ' . $value; //подготовка меток для CRM
