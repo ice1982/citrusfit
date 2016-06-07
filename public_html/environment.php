@@ -1,6 +1,6 @@
 <?php
 
-$environment = 'development';
+$environment = 'production';
 $debug = true;
 
 $protected = '/../app/protected';

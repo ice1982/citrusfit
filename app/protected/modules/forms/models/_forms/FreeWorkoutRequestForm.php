@@ -66,6 +66,11 @@ class FreeWorkoutRequestForm extends BaseFormModel
             $message .= 'Метки utm: ' . $key . ' -> ' . $value . '<br>';// разбиение и занесение полученого массива с метками в сообщение 
         }
 
+        $utm_contacts = '';
+        foreach($array as $key => $value){
+            $utm_contacts .= '<br> Метка utm: ' . $key . ' -> ' . $value;
+        }
+
         $message .= '<br>';
         $message .= 'Клуб: ' . $club->title . '<br>';
 
@@ -83,8 +88,10 @@ class FreeWorkoutRequestForm extends BaseFormModel
                 'fio' => $this->fio,
                 'phone' => $this->phone,
                 'club_id' => $this->club,
+                'comment' => $utm_contacts,
                 'description' => $form_request->description,
                 'system_info' => $form_request->system_info,
+                
             );
 
            try {
@@ -113,10 +120,12 @@ class FreeWorkoutRequestForm extends BaseFormModel
                        'status_id' => $status_request,
                        'linked_contact' => $contact_id,
                        'main_user_id' => $amocrm_user,
+                       'comment' => $dump['comment'],
                    );
 
                    $result = $this->addLead($lead);
                    $lead_result = json_decode($result, true);
+
                } else {
 
                }
