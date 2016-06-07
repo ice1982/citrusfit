@@ -6,7 +6,7 @@ class BaseFormModel extends CFormModel
     {
         $curl = curl_init();
 
-        curl_setopt($curl, CURLOPT_URL, 'http://citrusfit.crm/crm/api/add-contact');
+        curl_setopt($curl, CURLOPT_URL, 'http://crm.citrusfit.ru/crm/api/add-contact');
 
         curl_setopt($curl, CURLOPT_RETURNTRANSFER,true);
         curl_setopt($curl, CURLOPT_POST, true);
@@ -23,7 +23,7 @@ class BaseFormModel extends CFormModel
     {
         $curl = curl_init();
 
-        curl_setopt($curl, CURLOPT_URL, 'http://citrusfit.crm/crm/api/add-lead');
+        curl_setopt($curl, CURLOPT_URL, 'http://crm.citrusfit.ru/crm/api/add-lead');
 
         curl_setopt($curl, CURLOPT_RETURNTRANSFER,true);
         curl_setopt($curl, CURLOPT_POST, true);
