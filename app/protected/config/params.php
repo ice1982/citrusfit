@@ -5,13 +5,13 @@
         'fromEmail' => 'distribution@citrusfit.ru',
         'managerEmail' => array(
             'sales@citrusfit.ru',
+
 <<<<<<< HEAD
-//            'pv.danilov.dev@yandex.ru',
-            'vn.gerasimov@citrus-plus.ru',
+//            
 =======
-            'pv.danilov.dev@yandex.ru',
 
 >>>>>>> master2
+            'pv.danilov.dev@yandex.ru',
         ),
 //        'amocrm' => array(
 //            'users' => array(

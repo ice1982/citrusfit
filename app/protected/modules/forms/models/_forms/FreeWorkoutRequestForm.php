@@ -68,12 +68,14 @@ class FreeWorkoutRequestForm extends BaseFormModel
 
 <<<<<<< HEAD
 =======
+        
+
+>>>>>>> master2
         $utm_contacts = '';
         foreach($array as $key => $value){
             $utm_contacts .= '<br> Метка utm: ' . $key . ' -> ' . $value; //подготовка меток для CRM
         }
-
->>>>>>> master2
+        
         $message .= '<br>';
         $message .= 'Клуб: ' . $club->title . '<br>';
 
@@ -91,7 +93,7 @@ class FreeWorkoutRequestForm extends BaseFormModel
                 'fio' => $this->fio,
                 'phone' => $this->phone,
                 'club_id' => $this->club,
-                'comment' => $utm_contacts,// Занесен
+                'comment' => $utm_contacts,// Занесение меток
                 'description' => $form_request->description,
                 'system_info' => $form_request->system_info,
                 
