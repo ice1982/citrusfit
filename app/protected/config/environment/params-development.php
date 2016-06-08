@@ -4,8 +4,9 @@
         'adminEmail' => '',
         'fromEmail' => 'distribution@citrusfit.ru',
         'managerEmail' => array(
-            'sales@citrusfit.ru',
-            'pv.danilov.dev@yandex.ru',
+//            'sales@citrusfit.ru',
+//            'pv.danilov.dev@yandex.ru',
+		'vn.gerasimov@citrus-plus.ru',
         ),
 //        'amocrm' => array(
 //            'users' => array(
@@ -18,8 +19,7 @@
 
         'yaCounter' => 2667448,
 
-		'crm'  => ['production'  => 'crm.citrusfit.ru',
-					'development' => 'crm.citrusfit']
+		'crm'  => ['domen' => 'crm.citrusfit']
 		
 	);
 

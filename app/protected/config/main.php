@@ -1,6 +1,7 @@
 <?php
 
-require_once(dirname(__FILE__) . '/params.php');
+require_once(dirname(__FILE__) . '/environment/params-' . $environment . '.php');
+//require_once(dirname(__FILE__) . '/params.php');
 
 return array(
 	'basePath'       => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..',

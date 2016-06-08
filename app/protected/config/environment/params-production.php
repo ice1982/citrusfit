@@ -18,8 +18,7 @@
 
         'yaCounter' => 2667448,
 
-		'crm'  => ['production'  => 'crm.citrusfit.ru',
-					'development' => 'crm.citrusfit']
+		'crm'  => ['domen'  => 'crm.citrusfit.ru']
 		
 	);
 

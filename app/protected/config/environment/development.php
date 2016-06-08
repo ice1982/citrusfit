@@ -2,7 +2,7 @@
 
 return CMap::mergeArray(
     // наследуемся от main.php
-    require(dirname(__FILE__) . '/../' . $config_file),
+    require(dirname(__FILE__) . '/../main.php'),
     array(
         'components'=>array(
             // переопределяем компонент db
@@ -52,4 +52,3 @@ return CMap::mergeArray(
     )
 );
 
-?>

@@ -1,11 +1,21 @@
 <?php
 
-$environment = 'production';
-$debug = false;
+$yii = dirname(__FILE__) . '/../framework/1.1.16/yii.php';
 
 $protected = '/../app/protected';
 
-$yii = dirname(__FILE__) . '/../framework/1.1.16/yii.php';
+    switch (dirname(__FILE__)) {
+        case '/Users/citrusplus01/Sites/citrusfit.ru/public_html':
+            $environment = 'development';
+            $debug = true;
+            break;
+        default:
+            $environment = 'production';
+            $debug = false;
+            break;
+    }
+
+//$debug = true;
 
 if ($debug == true) {
     error_reporting(E_ALL);
@@ -15,4 +25,3 @@ if ($debug == true) {
     define('YII_DEBUG', false);
     error_reporting(0);
 }
-?>

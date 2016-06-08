@@ -120,7 +120,7 @@ class FreeWorkoutRequestForm extends BaseFormModel
                        'status_id' => $status_request,
                        'linked_contact' => $contact_id,
                        'main_user_id' => $amocrm_user,
-                       'comment' => $dump['comment'],
+                       'comment' => $dump['comment'],// запись меток в примечания лида
                    );
 
                    $result = $this->addLead($lead);

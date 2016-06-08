@@ -1,7 +1,5 @@
 <?php
 
-$config_file = 'main.php';
-
 require_once(dirname( __FILE__ ) . '/environment.php');
 
 require_once($yii);
