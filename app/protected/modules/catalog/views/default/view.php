@@ -15,7 +15,7 @@
     </div>
 </div>
 <hr/>
-<div class="row">
+<div class="row" style="min-height: 250px">
     <div class="col-xs-7">
         <?=$catalog_item->body?>
     </div>

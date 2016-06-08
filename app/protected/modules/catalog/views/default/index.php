@@ -11,45 +11,47 @@
 
             <?php foreach ($catalog_items_content[$catalog_group->id] as $catalog_item) : ?>
 
-                <div class="margin-h3">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <a href="<?=Yii::app()->createUrl('catalog/default/view', array('id' => $catalog_item->id))?>">
-                                <?=CHtml::image(
-                                    '/uploads/' . $catalog_item->image,
-                                    $catalog_item->title,
-                                    array(
-                                        'class' => 'img-responsive',
-                                    )
-                                )?>
-                            </a>
-                        </div>
-                        <div class="col-xs-9">
-                            <div class="font-h4 margin-h3"><a href="<?=Yii::app()->createUrl('catalog/default/view', array('id' => $catalog_item->id))?>"><h3><?=$catalog_item->title?></h3></a></div>
+                <?php if($catalog_item->active == 1) { ?>
+                    <div class="margin-h3">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <a href="<?=Yii::app()->createUrl('catalog/default/view', array('id' => $catalog_item->id))?>">
+                                    <?=CHtml::image(
+                                        '/uploads/' . $catalog_item->image,
+                                        $catalog_item->title,
+                                        array(
+                                            'class' => 'img-responsive',
+                                        )
+                                    )?>
+                                </a>
+                            </div>
+                            <div class="col-xs-9">
+                                <div class="font-h4 margin-h3"><a href="<?=Yii::app()->createUrl('catalog/default/view', array('id' => $catalog_item->id))?>"><h3><?=$catalog_item->title?></h3></a></div>
 
-                            <div class="row">
-                                <div class="col-xs-8">
-                                    <div>
-                                        <?=$catalog_item->annotation?>
+                                <div class="row">
+                                    <div class="col-xs-8">
+                                        <div>
+                                            <?=$catalog_item->annotation?>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-4">
+
+                                        <a
+                                            class="btn btn-default modal-item-request-button fancybox-modal"
+                                            href="#modalCatalogItemRequest"
+                                            data-item="<?=$catalog_item->group->title . ': ' . $catalog_item->title?>"
+                                            data-item-text="<?=CHtml::encode($catalog_item->title)?>"
+                                            onclick="yaCounter<?=Yii::app()->params['yaCounter']?>.reachGoal('CATALOG_BUTTON', '<?= $catalog_item->title ?>'); return true;"
+                                        >
+                                            Забронировать
+                                        </a>
                                     </div>
                                 </div>
-                                <div class="col-xs-4">
 
-                                    <a
-                                        class="btn btn-default modal-item-request-button fancybox-modal"
-                                        href="#modalCatalogItemRequest"
-                                        data-item="<?=$catalog_item->group->title . ': ' . $catalog_item->title?>"
-                                        data-item-text="<?=CHtml::encode($catalog_item->title)?>"
-                                        onclick="yaCounter<?=Yii::app()->params['yaCounter']?>.reachGoal('CATALOG_BUTTON', '<?= $catalog_item->title ?>'); return true;"
-                                    >
-                                        Забронировать
-                                    </a>
-                                </div>
                             </div>
-
                         </div>
                     </div>
-                </div>
+                <?php } ?>
 
             <?php endforeach; ?>
 

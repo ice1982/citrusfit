@@ -121,25 +121,6 @@
 </div>
 
 <div class="form-group">
-    <?=$form->labelEx(
-        $form_model,
-        'email',
-        array(
-            'class' => '',
-        )
-    );?>
-    <?=$form->textField(
-        $form_model,
-        'email',
-        array(
-            'class' => 'form-control',
-            'placeholder' => 'Введите email',
-            'type' => 'email',
-        )
-    );?>
-    <?=$form->error($form_model, 'phone');?>
-</div>
-<div class="form-group">
     <?=CHtml::submitButton(
         $form_button_text,
         array(
