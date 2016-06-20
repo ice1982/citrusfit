@@ -18,6 +18,7 @@
                     data: $( form ).serialize(),
                     dataType: 'json',
                     success: function( response ) {
+                        yaCounter2667448.reachGoal('FORM_SUBMIT');
 
                         $( '#modalSuccess" . $form_widget_id . " .message' ).text( response.message );
 
@@ -61,6 +62,7 @@
     'htmlOptions' => array(
         'class' => $form_class,
         'role' => 'form',
+        'onsubmit' => "_gaq.push(['_trackEvent', 'cart','sale']);return true;",
         'style' => $styles,
     ),
 )); ?>

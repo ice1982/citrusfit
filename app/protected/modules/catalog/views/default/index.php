@@ -43,7 +43,7 @@
                                             data-item-text="<?=CHtml::encode($catalog_item->title)?>"
                                             onclick="yaCounter<?=Yii::app()->params['yaCounter']?>.reachGoal('CATALOG_BUTTON', '<?= $catalog_item->title ?>'); return true;"
                                         >
-                                            Забронировать
+                                            Узнать стоимость
                                         </a>
                                     </div>
                                 </div>

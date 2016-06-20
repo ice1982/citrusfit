@@ -18,6 +18,7 @@
                     data: $( form ).serialize(),
                     dataType: 'json',
                     success: function( response ) {
+                        yaCounter2667448.reachGoal('FORM_SUBMIT');
 
                         $( '#modalSuccess" . $form_widget_id . " .message' ).text( response.message );
 

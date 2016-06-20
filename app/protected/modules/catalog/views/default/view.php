@@ -27,11 +27,11 @@
                 array(
                     'type' => 'form',
 
-                    'form_caption' => 'Забронировать карту',
+                    'form_caption' => 'Узнайте цену и получите пробную тренировку бесплатно до '.$datePlusThree,
                     'form_item' => $catalog_item->group->title . ': ' . $catalog_item->title,
                     'form_class' => 'catalog-form',
 
-                    'form_button_text' => 'Забронировать',
+                    'form_button_text' => 'Узнать стоимость',
                     'form_button_size' => 'default',
                     'form_button_type' => 'red',
 

@@ -4,16 +4,16 @@ $yii = dirname(__FILE__) . '/../framework/1.1.16/yii.php';
 
 $protected = '/../app/protected';
 
-    switch (dirname(__FILE__)) {
-        case '/Users/citrusplus01/Sites/citrusfit.ru/public_html':
-            $environment = 'development';
-            $debug = true;
-            break;
-        default:
-            $environment = 'production';
-            $debug = false;
-            break;
-    }
+switch (dirname(__FILE__)) {
+    case '/Users/citrusplus01/Sites/citrusfit.ru/public_html':
+        $environment = 'development';
+        $debug = true;
+        break;
+    default:
+        $environment = 'production';
+        $debug = false;
+        break;
+}
 
 //$debug = true;
 

@@ -27,8 +27,14 @@ class DefaultController extends FrontEndController
         );
 	}
 
+
     public function actionView($id)
     {
+        $formatter = new IntlDateFormatter('ru_RU', IntlDateFormatter::FULL, IntlDateFormatter::FULL);
+        $formatter->setPattern('d MMMM');
+        $formatter->format($time = new DateTime());
+        $datePlusThree = $formatter->format($time->add(new DateInterval('P3D')));
+
         $catalog_item = $this->_loadModel($id, CatalogItem::model(), true);
 
         $this->breadcrumbs[] = array(
@@ -45,6 +51,7 @@ class DefaultController extends FrontEndController
         $this->render('view',
             array(
                 'catalog_item' => $catalog_item,
+                'datePlusThree' => $datePlusThree,
             )
         );
     }
