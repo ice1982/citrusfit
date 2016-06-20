@@ -41,7 +41,7 @@
 -->
 </div>
 
-<div class="workouts-items">
+<div class="workouts-items" style="min-height: 1725px">
 
     <?php foreach ($clubs as $club) : ?>
 
