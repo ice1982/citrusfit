@@ -26,6 +26,41 @@
 
     <script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (d, w, c) {
+            (w[c] = w[c] || []).push(function () {
+                try {
+                    w.yaCounter2667448 = new Ya.Metrika({
+                        id: 2667448
+                        , clickmap: true
+                        , trackLinks: true
+                        , accurateTrackBounce: true
+                        , webvisor: true
+                        , trackHash: true
+                    });
+                } catch (e) {}
+            });
+            var n = d.getElementsByTagName("script")[0]
+                , s = d.createElement("script")
+                , f = function () {
+                n.parentNode.insertBefore(s, n);
+            };
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = "https://mc.yandex.ru/metrika/watch.js";
+            if (w.opera == "[object Opera]") {
+                d.addEventListener("DOMContentLoaded", f, false);
+            } else {
+                f();
+            }
+        })(document, window, "yandex_metrika_callbacks");
+    </script>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/2667448" style="position:absolute; left:-9999px;" alt="" /></div>
+    </noscript>
+    <!-- /Yandex.Metrika counter -->
+
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,400italic,300&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 
     <meta name="description" content='<?php echo CHtml::encode($this->pageDescription); ?>'>
